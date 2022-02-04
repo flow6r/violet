@@ -1,0 +1,144 @@
+body, html {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    background-color: #edf2f9;
+}
+
+a {
+    color: #2569c3;
+}
+
+#logoTxtDiv {
+    position: relative;
+    padding: 0px;
+    margin: 10px auto;
+    width: 100%;
+    height: 50px;
+}
+
+#logoTxt {
+    position: absolute;
+    margin: 0px 18px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#loginFormDiv {
+    position: relative;
+    padding: 0px;
+    margin: 30px auto 0px auto;
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+#loginForm {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 258px;
+    height: 450px;
+}
+
+#loginTxtDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 20px auto 0px auto;
+    width: 258px;
+    height: 50px;
+    text-align: center;
+}
+
+#loginTxt {
+    padding: 0px;
+    margin: auto;
+    font-size: 30px;
+    color: #2569c3;
+}
+
+#loginBoxDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 70px auto 0px auto;
+    width: 258px;
+    height: 250px;
+}
+
+#idBoxDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 10px auto 0px auto;
+    width: 258px;
+    height: 50px;
+}
+
+#passwdBoxDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 70px auto 0px auto;
+    width: 258px;
+    height: 50px;
+}
+
+#idBox, #passwdBox {
+    margin: 2px auto;
+    font-size: 25px;
+    width: 250px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 20px;
+}
+
+#loginBtnDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 130px auto 0px auto;
+    width: 258px;
+    height: 50px;
+}
+
+#loginBtn {
+    margin: 5px auto;
+    font-size: 25px;
+    color: #ffffff;
+    width: 258px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #2569c3;
+    border: 2px solid #2569c3;
+}
+
+#helpTxtDiv {
+    position: absolute;
+    padding: 0px;
+    bottom: 15px;
+    width: 258px;
+    height: 20px;
+    text-align: center;
+}
+
+#helpTxt {
+    color: #2569c3;
+}
+
+#footerTxtDiv {
+    position: relative;
+    padding: 0px;
+    margin: 20px auto;
+    width: 400px;
+    height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid #2569c3;
+    background-color: #ffffff;
+}
+
+#footerTxt {
+    margin: 0 auto;
+    font-size: small;
+    color: #2569c3;
+}
