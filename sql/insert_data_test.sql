@@ -1,0 +1,1 @@
+INSERT INTO Users_STD VALUES ('000000000000','测试','$2y$10$RNyVMeyjY822GTLOVo4./uJKaD0JgYrHWEtYwQVqjZfQc8eQUZ2.G','男','11111111111','test@example.com','唐山师范学院','物理科学与技术学院','2018','教育技术学本科班');
