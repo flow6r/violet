@@ -43,9 +43,9 @@ CREATE TABLE Users_ADMIN (
 );
 
 -- Create database users.
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON EEMS.Users_STD TO 'student_test@localhost' IDENTIFIED BY 'studenttest123';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON EEMS.Users_TCH TO 'teacher_test@localhost' IDENTIFIED BY 'teachertest123';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE ON EEMS.Users_ADMIN TO 'admin_test@localhost' IDENTIFIED BY 'admintest123';
+GRANT SELECT, INSERT, UPDATE, DELETE ON EEMS.Users_STD TO 'studenttest'@'localhost' IDENTIFIED BY 'studenttest123';
+GRANT SELECT, INSERT, UPDATE, DELETE ON EEMS.Users_TCH TO 'teachertest'@'localhost' IDENTIFIED BY 'teachertest123';
+GRANT SELECT, INSERT, UPDATE, DELETE ON EEMS.Users_ADMIN TO 'admintest'@'localhost' IDENTIFIED BY 'admintest123';
 
 -- Flush privileges.
 FLUSH PRIVILEGES;
