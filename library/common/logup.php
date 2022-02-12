@@ -7,7 +7,7 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   
     $passwd = $_POST["passwd"];
     //加密密码
     $passwd = password_hash($passwd, PASSWORD_BCRYPT);
-    
+
     /*连接数据库，插入用户数据*/
     //连接数据库
     require_once("../dbuser/student.php");
@@ -27,7 +27,7 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   
     $stmt->execute();
     //关闭链接
     $db->close();
-    
+
     //注册成功，跳转至用户面板页面
     header("location:../../pages/panel.html");
 } else {    //跳转至登录界面
