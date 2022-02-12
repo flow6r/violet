@@ -74,7 +74,7 @@ body, html {
 #nameBoxDiv {
     position: absolute;
     padding: 0px;
-    margin: 70px auto 0px auto;
+    margin: 80px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -82,7 +82,7 @@ body, html {
 #passwdBoxDiv {
     position: absolute;
     padding: 0px;
-    margin: 130px auto 0px auto;
+    margin: 150px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -90,7 +90,7 @@ body, html {
 #verifyBoxDiv {
     position: absolute;
     padding: 0px;
-    margin: 190px auto 0px auto;
+    margin: 220px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -98,7 +98,7 @@ body, html {
 #logupBtnDiv {
     position: absolute;
     padding: 0px;
-    margin: 250px auto 0px auto;
+    margin: 290px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -126,6 +126,46 @@ input::-webkit-input-placeholder {text-align: center;}
     border-radius: 20px;
     background-color: #2569c3;
     border: 2px solid #2569c3;
+}
+
+#idTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 53px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
+}
+
+#nameTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 123px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
+}
+
+#passwdTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 193px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
+}
+
+#verifyTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 263px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
 }
 
 #footerTxtDiv {
