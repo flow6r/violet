@@ -9,7 +9,8 @@ $passwd = password_hash($passwd, PASSWORD_BCRYPT);
 
 /*连接数据库，插入用户数据*/
 //连接数据库
-$db = mysqli_connect("localhost", "studenttest", "studenttest123", "EEMS");
+require_once("../dbuser/student.php");
+$db = mysqli_connect($db_server, $db_user_name, $db_passwd, $db_name);
 //检查连接
 if (mysqli_connect_error()) {
     echo "<script type='text/javascript'>alert('错误：连接数据库失败，请联系管理员并反馈问题。');</script>";
