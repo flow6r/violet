@@ -9,6 +9,8 @@ a {
     color: #2569c3;
 }
 
+input::-webkit-input-placeholder {text-align: center;}
+
 #logoTxtDiv {
     position: relative;
     padding: 0px;
@@ -64,7 +66,7 @@ a {
     padding: 0px;
     margin: 70px auto 0px auto;
     width: 258px;
-    height: 250px;
+    height: 300px;
 }
 
 #idBoxDiv {
@@ -78,7 +80,7 @@ a {
 #passwdBoxDiv {
     position: absolute;
     padding: 0px;
-    margin: 70px auto 0px auto;
+    margin: 80px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -96,7 +98,7 @@ a {
 #loginBtnDiv {
     position: absolute;
     padding: 0px;
-    margin: 130px auto 0px auto;
+    margin: 150px auto 0px auto;
     width: 258px;
     height: 50px;
 }
@@ -110,6 +112,26 @@ a {
     border-radius: 20px;
     background-color: #2569c3;
     border: 2px solid #2569c3;
+}
+
+#idTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 53px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
+}
+
+#passwdTipDiv {
+    position: absolute;
+    padding: 0px;
+    margin: 123px auto 0px auto;
+    width: 258px;
+    height: 40px;
+    text-align: center;
+    color: #2569c3;
 }
 
 #helpTxtDiv {
