@@ -11,12 +11,12 @@
 <body>
     <div id="logoTxtDiv"><span id="logoTxt">violet</span></div>
     <div id="loginFormDiv">
-        <form id="loginForm" action="pages/panel.html" method="post" onsubmit="return checkForm()">
+        <form id="loginForm" action="library/common/login.php" method="post" onsubmit="return checkForm()">
             <div id="loginTxtDiv"><span id="loginTxt">用户登录</span></div>
             <div id="loginBoxDiv">
-                <div id="idBoxDiv"><input id="idBox" type="text" maxlength="15" placeholder="用户ID" onblur="checkID()"/></div>
+                <div id="idBoxDiv"><input id="idBox" name="id" type="text" maxlength="15" placeholder="用户ID" onblur="checkID()"/></div>
                 <div id="idTipDiv"><span id="idTipText" style="visibility: hidden;">请输入用户ID</span></div>
-                <div id="passwdBoxDiv"><input id="passwdBox" type="password" maxlength="18" placeholder="密码" onblur="checkPasswd()"/></div>
+                <div id="passwdBoxDiv"><input id="passwdBox" name="passwd" type="password" maxlength="18" placeholder="密码" onblur="checkPasswd()"/></div>
                 <div id="passwdTipDiv"><span id="passwdTipText" style="visibility: hidden;">请输入密码</span></div>
                 <div id="loginBtnDiv"><input id="loginBtn" type="submit" value="登录" /></div>
             </div>
