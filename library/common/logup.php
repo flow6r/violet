@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {
+if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   //检查表单域是否存在
     /*获取表单域信息*/
     //获取用户输入的信息
     $userID = $_POST["id"];
@@ -30,7 +30,7 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {
     
     //注册成功，跳转至用户面板页面
     header("location:../../pages/panel.html");
-} else {
+} else {    //跳转至登录界面
     header(("location:../../login.html"));
 }
 ?>
