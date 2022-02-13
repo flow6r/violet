@@ -11,7 +11,7 @@ if (isset($_POST["id"]) && isset($_POST["passwd"])) {   //检查表单域是否�
     $db = mysqli_connect($db_server, $db_user_name, $db_passwd, $db_name);
     //检查连接
     if (mysqli_connect_error()) {
-        echo "<script type='text/javascript'>alert('错误：连接数据库失败，请联系管理员并反馈问题。');</script>";
+        echo "<script type='text/javascript'>alert('错误：连接数据库失败，请联系管理员并反馈问题');</script>";
         echo "<script type='text/javascript'>window.location.href='../../login.html';</script>";
     }
     //设置查询语句
@@ -30,7 +30,7 @@ if (isset($_POST["id"]) && isset($_POST["passwd"])) {   //检查表单域是否�
         //绑定查询结果
         $stmt->fetch();
         //判断密码是否正确
-        if (password_verify($passwd, $std_passwd)) {    //密码正确
+        if (password_verify($passwd, $user_passwd)) {    //密码正确
             header("location:../../pages/panel.html");
         } else {    //密码错误
             echo "<script type='text/javascript'>alert('密码错误，请检查密码');</script>";
