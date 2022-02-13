@@ -28,7 +28,7 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   
     $db->close();
 
     //注册成功，跳转至用户面板页面
-    header("location:../../pages/panel.html");
+    header("location:../../pages/panel.php");
 } else {    //跳转至登录界面
     header(("location:../../login.html"));
 }
