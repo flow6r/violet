@@ -4,6 +4,8 @@
 session_start();
 if (!isset($_SESSION["user_info"])) {
     header("location:../login.html");
+} else if (!isset($_SESSION["user_info"]["email"])) {
+    echo "<script type='text/javascript'>alert('恭喜您注册成功，请前往个人中心完善信息。未完善邮箱信息无法重置密码。');</script>";
 }
 ?>
 
