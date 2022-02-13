@@ -44,6 +44,24 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   
         $stmt->bind_param("sss", $userID, $name, $passwd);
         //执行查询
         $stmt->execute();
+        /*创建会话，保存用户注册的信息*/
+        //设置查询语句
+        $query = "SELECT * FROM Users_STD WHERE Student_ID = ?";
+        $stmt = $db->prepare($query);
+        //绑定参数
+        $stmt->bind_param("s", $userID);
+        //执行查询
+        $stmt->execute();
+        //缓存查询结果数据行
+        $stmt->store_result();
+        //设置与查询结果进行绑定的变量
+        $stmt->bind_result($user_id, $user_name, $user_passwd, $user_gen, $user_pn, $user_email, $user_univ, $user_colg, $user_grd, $user_cls);
+        //绑定查询结果
+        $stmt->fetch();
+        //创建会话
+        require_once("../session/student.php");
+        //释放结果集
+        $stmt->free_result();
         //关闭链接
         $db->close();
     
