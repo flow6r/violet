@@ -15,7 +15,6 @@ if (isset($_POST["id"]) && isset($_POST["name"]) &&isset($_POST["passwd"])) {   
     //检查连接
     if (mysqli_connect_error()) {
         echo "<script type='text/javascript'>alert('错误：连接数据库失败，请联系管理员并反馈问题。');</script>";
-        // echo "<script type='text/javascript'>window.location.href='https://www.flow6r.fun/';</script>";
         echo "<script type='text/javascript'>window.location.href='../../login.html';</script>";
     }
     //设置查询语句
