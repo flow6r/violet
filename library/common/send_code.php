@@ -26,8 +26,13 @@ if (!isset($_POST["email"])) {
     $stmt->execute();
     //缓存查询结果数据行
     $stmt->store_result();
+    $exist = $stmt->num_rows();
+    //释放结果集
+    $stmt->free_result();
+    //关闭链接
+    $db->close();
     //判断用户是否存在
-    if ($stmt->num_rows()) {    //当前邮箱已被绑定
+    if ($exist) {    //当前邮箱已被绑定
         //生成随机数作邮件验证码
         $code = rand(10000, 99999);
         //发送随机验证码至指定的电子邮箱地址
@@ -40,9 +45,5 @@ if (!isset($_POST["email"])) {
         echo "<script type='text/javascript'>alert('当前邮箱未被绑定，请输入正确的邮箱地址');</script>";
         echo "<script type='text/javascript'>window.location.href='../../pages/forget.html';</script>";
     }
-    //释放结果集
-    $stmt->free_result();
-    //关闭链接
-    $db->close();
 }
 ?>
