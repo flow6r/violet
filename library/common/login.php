@@ -26,12 +26,15 @@ if (isset($_POST["id"]) && isset($_POST["passwd"])) {   //检查表单域是否�
     //判断用户是否存在
     if ($stmt->num_rows()) {    //用户存在
         //设置与查询结果进行绑定的变量
-        $stmt->bind_result($user_id, $user_name, $user_passwd, $user_gen, $user_pn, $user_email, $user_univ, $user_colg, $user_grd, $user_cl);
+        $stmt->bind_result($user_id, $user_name, $user_passwd, $user_gen, $user_pn, $user_email, $user_univ, $user_colg, $user_grd, $user_cls);
         //绑定查询结果
         $stmt->fetch();
         //判断密码是否正确
         if (password_verify($passwd, $user_passwd)) {    //密码正确
-            header("location:../../pages/panel.html");
+            /*创建会话，保存用户信息*/
+            require_once("../session/student.php");
+            /*跳转到用户面板*/
+            header("location:../../pages/panel.php");
         } else {    //密码错误
             echo "<script type='text/javascript'>alert('密码错误，请检查密码');</script>";
             echo "<script type='text/javascript'>window.location.href='../../login.html';</script>";    
