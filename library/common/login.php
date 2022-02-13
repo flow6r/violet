@@ -23,12 +23,17 @@ if (isset($_POST["id"]) && isset($_POST["passwd"])) {   //检查表单域是否�
     $stmt->execute();
     //缓存查询结果数据行
     $stmt->store_result();
+    $result = $stmt->num_rows();
     //判断用户是否存在
-    if ($stmt->num_rows()) {    //用户存在
+    if ($result) {    //用户存在
         //设置与查询结果进行绑定的变量
         $stmt->bind_result($user_id, $user_name, $user_passwd, $user_gen, $user_pn, $user_email, $user_univ, $user_colg, $user_grd, $user_cls);
         //绑定查询结果
         $stmt->fetch();
+        //释放结果集
+        $stmt->free_result();
+        //关闭链接
+        $db->close();
         //判断密码是否正确
         if (password_verify($passwd, $user_passwd)) {    //密码正确
             /*创建会话，保存用户信息*/
@@ -40,13 +45,13 @@ if (isset($_POST["id"]) && isset($_POST["passwd"])) {   //检查表单域是否�
             echo "<script type='text/javascript'>window.location.href='../../login.html';</script>";    
         }
     } else {    //用户不存在
+        //释放结果集
+        $stmt->free_result();
+        //关闭链接
+        $db->close();
         echo "<script type='text/javascript'>alert('该用户不存在，请先注册用户');</script>";
         echo "<script type='text/javascript'>window.location.href='../../login.html';</script>";
     }
-    //释放结果集
-    $stmt->free_result();
-    //关闭链接
-    $db->close();
 } else {    //跳转至登录界面
     header("location:../../login.html");
 }
