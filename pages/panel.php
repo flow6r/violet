@@ -9,7 +9,9 @@
 
 <body>
     <div id="panel">
-        <div id="userBar"></div>
+        <div id="userBar">
+            <div id="userName"><span><a></a></span></div>
+        </div>
     </div>
     <div id="footer"></div>
 </body>
