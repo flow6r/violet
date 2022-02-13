@@ -23,7 +23,7 @@ function checkName() {
 function checkPasswd() {
     var passwd = document.getElementById("passwdBox").value;
     var tip = document.getElementById("passwdTipText");
-    if (passwd == "") {
+    if (passwd == "" || passwd.length < 6) {
         tip.style.visibility = "visible";
     } else {
         tip.style.visibility = "hidden";
