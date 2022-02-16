@@ -118,3 +118,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON eems.* TO 'admintest'@'localhost' IDENTI
 
 -- 刷新权限
 FLUSH PRIVILEGES;
+
+-- 插入测试数据
+-- 插入用户信息
+
+-- 插入器材设备信息
