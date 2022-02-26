@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <title>VIOLET-重置密码</title>
+    <script type="text/javascript" src="../scripts/jquery/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <h1>VIOLET-重置密码</h1>
+    <form id="resetForm" name="resetForm">
+        <table border="1">
+            <tr><th colspan="2">验证邮箱</th></tr>
+            <tr><td><label for="userEmail">电子邮箱：</label></td>
+                <td><input type="email" id="userEmail" name="userEmail" size="20" /></td>
+            </tr>
+            <tr><td colspan="2"><span id="verifyUserEmail" style="visibility: hidden;">请输合法的电子邮箱地址</span></td></tr>
+            <tr><td colspan="2"><input type="button" id="sendCodeBtn" name="sendCodeBtn" value="继续" /></td></tr>
+        </table>
+    </form>
+    <footer></footer>
+    <script type="text/javascript" src="../scripts/common/reset.js"></script>
+</body>
+
+</html>

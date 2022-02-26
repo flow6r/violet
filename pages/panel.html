@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <title>VIOLET-用户面板</title>
+    <script type="text/javascript" src="../scripts/jquery/jquery-3.5.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../styles/panel.css" />
+    <link type="text/css" rel="stylesheet" href="../styles/security_set.css" />
+    <link type="text/css" rel="stylesheet" href="../styles/popup.css" />
+</head>
+
+<body>
+    <div id="mask" name="mask"></div>
+    <div id="main" class="main">
+        <div id="nav" class="nav">
+            <ul id="" name="" class="userNav">
+                <li id="userPanel" name="userPanel">用户面板</li>
+                <li id="userInfo" name="userInfo">个人中心
+                    <ul id="userInfoSubNav" name="userInfoSubNav">
+                        <li id="basicInfo" name="basicInfo">基本信息</li>
+                        <li id="secSet" name="secSet">安全性设置</li>
+                    </ul>
+                </li>
+                <li id="userAppls" name="userAppls">我的申请
+                    <ul id="userApplsSubNav" name="userApplsSubNav">
+                        <li id="unrvwAppls" name="unrvwAppls">未审核申请</li>
+                        <li id="rvwedAppls" name="rvwedAppls">已审核申请</li>
+                        <li id="allAppls" name="allAppls">全部申请</li>
+                    </ul>
+                </li>
+                <li id="lendInfo" name="lendInfo">我的借用
+                    <ul id="lendInfoSubNav" name="lendInfoSubNav">
+                        <li id="eqptOnLoan" name="eqptOnLoan">借用中的设备</li>
+                        <li id="eqptBeRtn" name="eqptBeRtn">已归还的设备</li>
+                    </ul>
+                </li>
+                <li id="BrkAppls" name="BrkAppls">损坏报修</li>
+                <li id="logout" name="logout">注销用户</li>
+            </ul>
+        </div>
+        <div id="content" class="content">
+        </div>
+    </div>
+    <script type="text/javascript" src="../scripts/common/panel.js"></script>
+    <script type="text/javascript" src="../scripts/common/popup.js"></script>
+</body>
+
+</html>
