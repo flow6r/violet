@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <title>VIOLET-用户登录</title>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <h1>VIOLET-用户登录</h1>
+    <form id="loginForm" name="loginForm">
+        <table border="1">
+            <tr><th colspan="2">用户登录</th></tr>
+            <tr><td><label for="userID">用户ID:</label></td>
+                <td><input type="text" id="userID" name="userID" size="20" maxlength="12" /></td>
+            </tr>
+            <tr><td colspan="2"><span id="verifyUserID" style="visibility: hidden;">请输入用户ID</span></td></tr>
+            <tr><td><label for="userPasswd">密码:</label></td>
+                <td><input type="password" id="userPasswd" name="userPasswd" size="20" maxlength="18" /></td>
+            </tr>
+            <tr><td colspan="2"><span id="verifyUserPasswd" style="visibility: hidden;">请输入密码</span></td></tr>
+            <tr><td colspan="2"><input type="button" id="loginBtn" value="登录" onclick="login()" /></td></tr>
+            <tr><td colspan="2"><a href="pages/register.html">创建账户</a>|<a href="pages/reset.html">忘记密码</a></td></tr>
+        </table>
+    </form>
+    <footer></footer>
+    <script type="text/javascript" src="scripts/common/login.js"></script>
+</body>
+
+</html>
