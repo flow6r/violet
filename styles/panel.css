@@ -1,0 +1,56 @@
+/*用户面板样式表文件*/
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: #edf2f9;
+}
+
+#mask {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    visibility: hidden;
+    z-index: 9;
+}
+
+/*从这开始*/
+.nav {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #347bd6;
+}
+
+.userNav,
+#userInfoSubNav,
+#userMgtSubNav,
+#userApplsSubNav,
+#lendInfoSubNav {
+    list-style: none;
+}
+
+.userNav {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+/*到这结束*/
+
+.content {
+    position: absolute;
+    padding: 0;
+    margin: 0 0 0 17%;
+    width: 83%;
+    height: 100%;
+}
