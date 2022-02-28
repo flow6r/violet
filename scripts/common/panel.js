@@ -3,6 +3,11 @@ var userInfo = null;
 /*获取登录用户的信息*/
 $(document).ready(function () {
     $("#content").empty();
+    obtainUserInfo();
+});
+
+/*获取用户信息*/
+function obtainUserInfo() {
     $.get("../../library/session/obtain_info.php", function (userInfoJSON) {
         if (JSON.parse(userInfoJSON).error === "启动会话时发生错误，请联系管理员并反馈问题") {
             window.location.href = "../../index.html";
@@ -15,7 +20,7 @@ $(document).ready(function () {
             }
         }
     });
-});
+}
 
 /*打印学生用户导航栏*/
 function printStdNav() {
@@ -50,9 +55,29 @@ function printAdminNav() {
     );
 }
 
+/*显示用户信息设置*/
+$(".userNav").on("click", "#basicInfo", function () {
+    printUserInfo();
+});
+
+/*显示用户信息的函数*/
+function printUserInfo() {
+    let content = $("#content");
+    content.empty();
+    content.append(
+        ""
+    );
+}
+
 /*显示安全性设置*/
 $(".userNav").on("click", "#secSet", function () {
+    printSecSet();
+});
+
+/*显示用户安全性设置的函数*/
+function printSecSet() {
     let content = $("#content");
+    content.empty();
     content.append(
         "<div id='secSetDiv' name='secSetDiv'>\n<form id='secSetFrm' name='secSetFrm'>\n" +
         "<table id='secSetTbl'>\n<tr>\n<td colspan='3'><span id='secTitleTxt'>安全性设置</span></td>\n" +
@@ -65,7 +90,7 @@ $(".userNav").on("click", "#secSet", function () {
         "</td>\n<td><input type='button' id='updatePasswdBtn' name='updatePasswdBtn' value='更新' /></td>" +
         "\n</tr>\n</table>\n</form>\n</div>"
     );
-});
+}
 
 /*退出登录*/
 $(".userNav").on("click", "#logout", function () {
