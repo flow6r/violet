@@ -65,7 +65,7 @@
     border-spacing: 10px;
 }
 
-#updateEmailFrm #userPasswd, #updatePasswdFrm #userPasswd {
+#updateEmailFrm #userPasswd, #updatePasswdFrm #newPasswd {
     margin: 2px auto;
     font-size: 25px;
     width: 470px;
@@ -95,7 +95,7 @@
     border-radius: 20px;
 }
 
-#updateEmailFrm #sendCodeBtn, #updatePasswdFrm #sendCodeBtn {
+#updateEmailFrm #sendCodeBtn-updateEmail, #updatePasswdFrm #sendCodeBtn-updatePasswd {
     font-size: 1.2em;
     color: #ffffff;
     width: 150px;
@@ -105,7 +105,7 @@
     border: 2px solid #2569c3;
 }
 
-#updateEmailFrm #code, #updatePasswdFrm #code {
+#updateEmailFrm #code-updateEmail, #updatePasswdFrm #code-updatePasswd {
     margin: 2px auto;
     font-size: 25px;
     width: 470px;
@@ -121,7 +121,7 @@
     color: #ec8b1c;
 }
 
-#cancelBtn, #updateBtn {
+#cancelBtn, .updateBtn {
     float: right;
 }
 
@@ -135,7 +135,7 @@
     border: 0 solid #ffffff;
 }
 
-#updateEmailFrm #updateBtn, #updatePasswdFrm #updateBtn {
+#updateEmailFrm #toUpdateEmail, #updatePasswdFrm #toUpdatePasswd {
     font-size: 1.2em;
     color: #ffffff;
     width: 100px;
