@@ -14,8 +14,8 @@ $("#content").on("click", "#updateEmailBtn", function popUpUpdateEmail() {
         "</span></td></tr><tr><td><label for='code'>验证码</label></td>" +
         "<td colspan='2'><input id='code-updateEmail' name='code' maxlength='5' /></td></tr><tr>" +
         "<td colspan='3'><span id='verifyCode' class='helpTxt' style='visibility: hidden;'>请输正确的验证码</span>" +
-        "</td></tr><tr><td colspan='3'><input type='button' id='toUpdateEmail' name='toUpdateEmail' class='updateBtn' value='更新' />" +
-        "<input type='button' id='cancelBtn' name='cancelBtn' value='取消' /></td></tr></table></form></div>"
+        "</td></tr><tr><td colspan='3'><input type='button' id='toUpdateEmail' name='toUpdateEmail' class='popUpBtn' value='更新' />" +
+        "<input type='button' id='cancelBtn' name='cancelBtn' class='popUpBtn' value='取消' /></td></tr></table></form></div>"
     );
 });
 
@@ -38,8 +38,8 @@ $("body").on("click", "#updatePasswdBtn", function popUpUpdatePasswd() {
         "</tr><tr><td><label for='retype'>重复密码</label></td>" +
         "<td colspan='2'><input type='password' id='retype' name='retype' maxlength='18' disabled='disabled' /></td>" +
         "</tr><tr><td colspan='3'><span id='verifyRetype' class='helpTxt' style='visibility: hidden;'>两次密码不一致</span></td>" +
-        "</tr><tr><td colspan='3'><input type='button' id='toUpdatePasswd' name='toUpdatePasswd' class='updateBtn' value='更新' />" +
-        "<input type='button' id='cancelBtn' name='cancelBtn' value='取消' /></td></tr></table></form></div>"
+        "</tr><tr><td colspan='3'><input type='button' id='toUpdatePasswd' name='toUpdatePasswd' class='popUpBtn' value='更新' />" +
+        "<input type='button' id='cancelBtn' name='cancelBtn' class='popUpBtn' value='取消' /></td></tr></table></form></div>"
     );
 });
 
@@ -98,10 +98,8 @@ $("body").on("click", "#toUpdateEmail", function updateEmail() {
             function (status) {
                 if (status != "successful") alert(status);
                 else {
+                    alert("成功更新电子邮箱");
                     obtainUserInfoUpdated();
-                    $(".popup").remove();
-                    $("#mask").attr("style", "visibility: hidden;");
-                    $("#secSetDiv").find("#userEmail").attr("placeholder", userInfo.userEmail);
                 }
             });
     } else alert("请完善必要信息");
@@ -112,6 +110,9 @@ function obtainUserInfoUpdated() {
     let currUserId = userInfo.userID;
     $.get("../../library/common/obtain_info_updated.php", { userID: currUserId }, function (userInfoJSON) {
         userInfo = JSON.parse(userInfoJSON);
+        $(".popup").remove();
+        $("#mask").attr("style", "visibility: hidden;");
+        $("#userEmail").attr("placeholder", userInfo.userEmail);
     });
 }
 
@@ -164,8 +165,6 @@ $("body").on("click", "#toUpdatePasswd", function () {
             if (status === "successful") {
                 alert("成功更新密码");
                 obtainUserInfoUpdated();
-                $(".popup").remove();
-                $("#mask").attr("style", "visibility: hidden;");
             }
         });
     } else alert("请完善必要信息");
