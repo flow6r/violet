@@ -52,4 +52,5 @@ if ($stmt->num_rows()) {
 //释放结果集并关闭链接
 $stmt->free_result();
 $db->close();
+exit;
 ?>
