@@ -30,4 +30,5 @@ $stmt->free_result();
 $db->close();
 $majorJSON = json_encode($major, JSON_UNESCAPED_UNICODE);
 echo $majorJSON;
+exit;
 ?>
