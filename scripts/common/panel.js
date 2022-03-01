@@ -65,9 +65,153 @@ function printUserInfo() {
     let content = $("#content");
     content.empty();
     content.append(
-        ""
+        "<div id='basicInfoDiv' name='basicInfoDiv'><form id='basicInfoFrm' name='basicInfoFrm'>" +
+        "<table id='basicInfoTbl'><tr><td colspan='2'><span id='basicInfoTitle'>基本信息设置</span></td>" +
+        "</tr><tr><td><label for='userID'>用户ID</label></td>" +
+        "<td><input type='text' id='userID' name='userID' class='basicInfo' placeholder='" + userInfo.userID + "' disabled='disabled' maxlength='15' />" +
+        "</td></tr><tr><td><label for='userName'>姓名</label></td>" +
+        "<td><input type='text' id='userName' name='userName' class='basicInfo' placeholder='" + userInfo.userName + "' disabled='disabled' />" +
+        "</td></tr><tr><td><label for='userGen'>性别</label></td>" +
+        "<td><select id='userGen' name='userGen' class='basicInfo' disabled='disabled'>" +
+        "<option selected='selected'>" + userInfo.userGen + "</option>" +
+        "</select></td></tr><tr><td><label for='userAdms'>入学年份</label></td>" +
+        "<td><select id='userAdms' name='userAdms' class='basicInfo' disabled='disabled'>" +
+        "<option selected='selected'>" + userInfo.userAdms + "</option></select></td></tr><tr>" +
+        "<td><label for='colgName'>学院</label></td>" +
+        "<td><select id='colgName' name='colgName' class='basicInfo' disabled='disabled'>" +
+        "<option selected='selected'>" + userInfo.colgName + "</option></select></td></tr><tr>" +
+        "<td><label for='mjrName'>专业</label></td>" +
+        "<td><select id='mjrName' name='mjrName' class='basicInfo' disabled='disabled'>" +
+        "<option selected='selected'>" + userInfo.mjrName + "</option></select></td></tr><tr><td>" +
+        "<input type='button' id='editInfoBtn' name='editInfoBtn' value='编辑' /></td>" +
+        "<td class='optBtn' style='visibility: hidden;'>" +
+        "<input type='button' id='cancelBtn' name='cancelBtn' class='basicInfo' value='取消'/>" +
+        "<input type='button' id='updateBtn' name='updateBtn' class='basicInfo' value='更新'/></td></tr></table></form></div>"
     );
 }
+
+$("body").on("click", "#editInfoBtn", function () {
+    $("#editInfoBtn").attr("style", "visibility: hidden;");
+    $(".optBtn").attr("style", "visibility: visible;");
+    $("#userName").removeAttr("disabled");
+    $("#userName").removeAttr("placeholder");
+    $("#userName").val(userInfo.userName);
+
+    $("#userGen").removeAttr("disabled");
+    $("#userGen").empty();
+    $("#userGen").append("<option value='male'>男</option><option value='female'>女</option>")
+    if (userInfo.userGen === "男") $("option[value=male]").attr("selected", "selected");
+    else $("option[value=female]").attr("selected", "selected");
+
+    $("#userAdms").removeAttr("disabled");
+    $("#userAdms").empty();
+    let userAdms = $("#userAdms");
+    let currYear = new Date();
+    let yyyy = Number(currYear.getFullYear());
+    for (let lower = yyyy - 4; lower <= yyyy; lower++) {
+        userAdms.append("<option value='" + lower + "'>" + lower + "</option>");
+    }
+    $("option[value=" + userInfo.userAdms + "]").attr("selected", "selected");
+
+    $("#colgName").removeAttr("disabled");
+    $("#colgName").empty();
+    $.get("../../library/common/query_college.php", function (colgJSON) {
+        $.each(JSON.parse(colgJSON), function (colgIndx, colgInfo) {
+            $("#colgName").append("<option value='" + colgInfo.ColgAbrv + "'>" + colgInfo.ColgName + "</option>");
+            if (colgInfo.ColgName === userInfo.colgName) {
+                $("option[value=" + colgInfo.ColgAbrv + "]").attr("selected", "selected");
+            }
+        });
+        let currUserColgAbrv = $("#colgName option:selected").val();
+        $("#mjrName").removeAttr("disabled");
+        $("#mjrName").empty();
+        $.post("../../library/common/query_major.php", { colgAbrv: currUserColgAbrv }, function (majorJSON) {
+            $.each(JSON.parse(majorJSON), function (majorIndx, majorInfo) {
+                $("#mjrName").append("<option value='" + majorInfo.MjrAbrv + "'>" + majorInfo.MjrName + "</option>");
+                if (majorInfo.MjrName === userInfo.mjrName) $("option[value=" + majorInfo.MjrAbrv + "]").attr("selected", "selected");
+            });
+        });
+    });
+});
+
+$("body").on("change", "#colgName", function () {
+    $("#mjrName").empty();
+    let colgAbrv = $("#colgName").val();
+    $.post("../../library/common/query_major.php", { colgAbrv: colgAbrv }, function (majorJSON) {
+        let mjrName = $("#mjrName");
+        $.each(JSON.parse(majorJSON), function (majorIndx, majorInfo) {
+            mjrName.append(
+                "<option value='" + majorInfo.MjrAbrv + "'>" + majorInfo.MjrName + "</option>"
+            );
+        });
+    });
+});
+
+$("#content").on("click", "#cancelBtn", function () {
+    $("#editInfoBtn").attr("style", "visibility: visible;");
+    $(".optBtn").attr("style", "visibility: hidden;");
+    $("#userName").attr("disabled", "disabled");
+    $("#userName").val("");
+    $("#userName").attr("placeholder", userInfo.userName);
+    $("#userGen").attr("disabled", "disabled");
+    $("#userGen").empty();
+    $("#userGen").append("<option>" + userInfo.userGen + "</option>");
+    $("#userAdms").attr("disabled", "disabled");
+    $("#userAdms").empty();
+    $("#userAdms").append("<option>" + userInfo.userAdms + "</option>");
+    $("#colgName").attr("disabled", "disabled");
+    $("#colgName").empty();
+    $("#colgName").append("<option>" + userInfo.colgName + "</option>");
+    $("#mjrName").attr("disabled", "disabled");
+    $("#mjrName").empty();
+    $("#mjrName").append("<option>" + userInfo.mjrName + "</option>");
+});
+
+/*更新用户信息*/
+$("#content").on("click", "#updateBtn", function () {
+    let currUserID = userInfo.userID;
+    let newName = $("#userName").val();
+    let newGen = $("#userGen").val();
+    let newAdms = $("#userAdms").val();
+    let newColg = $("#colgName").val();
+    let newMjr = $("#mjrName").val();
+    let currUserRole = userInfo.userRole;
+
+    $.ajax({
+        type: "POST",
+        url: "../../library/common/update_info.php",
+        async: false,
+        data: {
+            currUserID: currUserID, newName: newName, newGen: newGen, newAdms: newAdms,
+            newColg: newColg, newMjr: newMjr, currUserRole: currUserRole
+        },
+        success: function (status) {
+            alert("成功更新用户信息");
+            //获取更新后的用户信息
+            $.get("../../library/common/obtain_info_updated.php", { userID: userInfo.userID }, function (userInfoJSON) {
+                userInfo = JSON.parse(userInfoJSON);
+                $("#editInfoBtn").attr("style", "visibility: visible;");
+                $(".optBtn").attr("style", "visibility: hidden;");
+                $("#userName").attr("disabled", "disabled");
+                $("#userName").val("");
+                $("#userName").attr("placeholder", userInfo.userName);
+                $("#userGen").attr("disabled", "disabled");
+                $("#userGen").empty();
+                $("#userGen").append("<option>" + userInfo.userGen + "</option>");
+                $("#userAdms").attr("disabled", "disabled");
+                $("#userAdms").empty();
+                $("#userAdms").append("<option>" + userInfo.userAdms + "</option>");
+                $("#colgName").attr("disabled", "disabled");
+                $("#colgName").empty();
+                $("#colgName").append("<option>" + userInfo.colgName + "</option>");
+                $("#mjrName").attr("disabled", "disabled");
+                $("#mjrName").empty();
+                $("#mjrName").append("<option>" + userInfo.mjrName + "</option>");
+            });
+        }
+    });
+
+});
 
 /*显示安全性设置*/
 $(".userNav").on("click", "#secSet", function () {
