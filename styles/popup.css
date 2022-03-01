@@ -121,7 +121,7 @@
     color: #ec8b1c;
 }
 
-#cancelBtn, .updateBtn {
+.popUpBtn #cancelBtn, .popUpBtn {
     float: right;
 }
 
