@@ -1,0 +1,95 @@
+/*基本信息设置样式表文件*/#basicInfoDiv {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+#basicInfoDiv #basicInfoTbl {
+    border-spacing: 10px;
+}
+
+#basicInfoDiv span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#basicInfoDiv label {
+    font-size: 1.5em;
+    color: #2569c3;
+}
+
+#basicInfoDiv input, #basicInfoDiv select {
+    font-size: 1.5em;
+}
+
+#basicInfoDiv #userGen {
+    margin: 2px auto;
+    padding: 1px 2px;
+    font-size: 25px;
+    width: 90px;
+    height: 34px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#basicInfoDiv #userAdms {
+    margin: 2px auto;
+    padding: 1px 2px;
+    font-size: 25px;
+    width: 90px;
+    height: 34px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#basicInfoDiv #colgName, #basicInfoDiv #mjrName {
+    margin: 2px auto;
+    padding: 1px 2px;
+    font-size: 25px;
+    width: 350px;
+    height: 34px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#basicInfoDiv #editInfoBtn {
+    float: right;
+}
+
+#basicInfoDiv #userName, #basicInfoDiv #userID{
+    margin: 2px auto;
+    font-size: 25px;
+    width: 350px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#basicInfoDiv #editInfoBtn, #basicInfoDiv #updateBtn{
+    font-size: 1.5em;
+    color: #ffffff;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #2569c3;
+    border: 2px solid #2569c3;
+}
+
+#basicInfoDiv #cancelBtn {
+    font-size: 1.5em;
+    color: #2569c3;
+    width: 60px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 0 solid #ffffff;
+}
