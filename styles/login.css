@@ -48,7 +48,7 @@ input::-webkit-input-placeholder {
 }
 
 #loginForm {
-    position: relative;
+    position: absolute;
     padding: 0px;
     margin: 0 auto;
     width: 400px;
