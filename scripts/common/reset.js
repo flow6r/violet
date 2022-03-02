@@ -64,7 +64,7 @@ $("#resetForm").on("focusout", "#retype", function () {
     var retype = $("#retype").val();
     var verify = $("#verifyRetype");
 
-    if (retype === "" || (userPasswd != retype)) verify.attr("style", "visibility: visible;");
+    if (userPasswd != retype) verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
 });
 
