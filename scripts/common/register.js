@@ -32,7 +32,7 @@ $("#userEmail").on("focusout", function checkUserEmail() {
     /*需要改进，验证邮箱地址是否合法！*/
     var userEmail = $("#userEmail").val();
 
-    if (userEmail === "") $("#userEmail").attr("placeholder", "请输合法的邮箱地址");
+    if (userEmail === "") $("#userEmail").attr("placeholder", "请输合法的电子邮箱地址");
     else $("#userNuserEmailame").removeAttr("placeholder");
 });
 
