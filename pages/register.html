@@ -5,42 +5,40 @@
     <meta charset="utf-8" />
     <title>VIOLET-创建账户</title>
     <script type="text/javascript" src="../scripts/jquery/jquery-3.5.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../styles/register.css" />
 </head>
 
 <body>
-    <h1>VIOLET-创建账户</h1>
-    <form id="registerForm" name="registerForm">
-        <table border="1">
-            <tr><th colspan="2">创建学生账户</th></tr>
-            <tr><td><label for="userID">学号：</label></td>
-                <td><input type="text" id="userID" name="userID" size="20" maxlength="12" /></td>
-            </tr>
-            <tr><td colspan="2"><span id="verifyUserID" style="visibility: hidden;">请输入用户ID</span></td></tr>
-            <tr><td><label for="userName">姓名：</label></td>
-                <td><input type="text" id="userName" name="userName" size="20" maxlength="10" /></td>
-            </tr>
-            <tr><td colspan="2"><span id="verifyUserName" style="visibility: hidden;">请输入姓名</span></td></tr>
-            <tr><td><label for="userPasswd">密码：</label></td>
-                <td><input type="password" id="userPasswd" name="userPasswd" size="20" maxlength="18" /></td>
-            </tr>
-            <tr><td colspan="2"><span id="verifyUserPasswd" style="visibility: hidden;">请输入6~18密码</span></td></tr>
-            <tr><td><label for="retype">重复密码：</label></td>
-                <td><input type="password" id="retype" name="retype" size="20" maxlength="18" /></td>
-            </tr>
-            <tr><td colspan="2"><span id="verifyRetype" style="visibility: hidden;">两次密码不一致</span></td></tr>
-            <tr><td><label for="userGen">性别：</label></td>
-                <td><select id="userGen" name="userGen"><option value="male">男</option><option value="female">女</option></select></td>
-            </tr>
-            <tr><td><label for="userEmail">电子邮箱：</label></td>
-                <td><input type="email" id="userEmail" name="userEmail" size="20" /></td>
-            </tr>
-            <tr><td colspan="2"><span id="verifyUserEmail" style="visibility: hidden;">请输合法的电子邮箱地址</span></td></tr>
-            <tr><td><label for="userAdms">入学年份：</label></td><td><select id="userAdms" name="userAdms"></select></td></tr>
-            <tr><td><label for="colgName">学院：</label></td><td><select id="colgName" name="colgName"></select></td></tr>
-            <tr><td><label for="mjrName">专业：</label></td><td><select id="mjrName" name="mjrName"></select></td></tr>
-            <tr><td colspan="2"><input type="button" id="createAccBtn" name="createAccBtn" value="创建学生账户" /></td></tr>
-        </table>
-    </form>
+    <div id="logoTxtDiv"><span id="logoTxt">VIOLET</span></div>
+    <div id="registerFormDiv">
+        <form id="registerForm" name="registerForm">
+            <table id="registerFormTbl">
+                <tr><th colspan="2">创建学生账户</th></tr>
+                <tr><td><label for="userID">学号</label></td>
+                    <td><input type="text" id="userID" name="userID"  maxlength="12" /></td>
+                </tr>
+                <tr><td><label for="userName">姓名</label></td>
+                    <td><input type="text" id="userName" name="userName"  maxlength="10" /></td>
+                </tr>
+                <tr><td><label for="userPasswd">密码</label></td>
+                    <td><input type="password" id="userPasswd" name="userPasswd"  maxlength="18" /></td>
+                </tr>
+                <tr><td><label for="retype">重复密码</label></td>
+                    <td><input type="password" id="retype" name="retype"  maxlength="18" /></td>
+                </tr>
+                <tr><td><label for="userGen">性别</label></td>
+                    <td><select id="userGen" name="userGen"></select></td>
+                </tr>
+                <tr><td><label for="userEmail">电子邮箱</label></td>
+                    <td><input type="email" id="userEmail" name="userEmail"  /></td>
+                </tr>
+                <tr><td><label for="userAdms">入学年份</label></td><td><select id="userAdms" name="userAdms"></select></td></tr>
+                <tr><td><label for="colgName">学院</label></td><td><select id="colgName" name="colgName"></select></td></tr>
+                <tr><td><label for="mjrName">专业</label></td><td><select id="mjrName" name="mjrName"></select></td></tr>
+                <tr class="btn"><td colspan="2"><input type="button" id="createAccBtn" name="createAccBtn" value="创建学生账户" /></td></tr>
+            </table>
+        </form>
+    </div>
     <footer></footer>
     <script type="text/javascript" src="../scripts/common/register.js"></script>
 </body>
