@@ -40,7 +40,7 @@
 |-|-|-|-|-|
 |ApplID|INT(5) UNSIGNED|主键|否|用户设备申请ID|
 |UserID|CHAR(15)|外键|否|用户ID|
-|ApplQty|NT(4) UNSIGNED|-|否|申请设备的数量|
+|ApplQty|INT(4) UNSIGNED|-|否|申请设备的数量|
 |LendBegn|DATETIME|-|否|设备借用开始时间|
 |LendEnd|DATETIME|-|否|设备借用结束时间|
 |ApplDesc|TEXT|-|否|申请说明|
