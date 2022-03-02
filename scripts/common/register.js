@@ -1,44 +1,47 @@
 $("#userID").on("focusout", function checkUserID() {
     var userID = $("#userID").val();
-    var verify = $("#verifyUserID");
 
-    if (userID === "") verify.attr("style", "visibility: visible;");
-    else verify.attr("style", "visibility: hidden;");
+    if (userID === "") $("#userID").attr("placeholder", "请输入用户ID");
+    else $("#userID").removeAttr("placeholder");
 
 });
 
 $("#userName").on("focusout", function checkUserName() {
     var userName = $("#userName").val();
-    var verify = $("#verifyUserName");
 
-    if (userName === "") verify.attr("style", "visibility: visible;");
-    else verify.attr("style", "visibility: hidden;");
+    if (userName === "") $("#userName").attr("placeholder", "请输入姓名");
+    else $("#userName").removeAttr("placeholder");
 });
 
 $("#userPasswd").on("focusout", function checkUserPasswd() {
     var userPasswd = $("#userPasswd").val();
-    var verify = $("#verifyUserPasswd");
 
-    if (userPasswd === "") verify.attr("style", "visibility: visible;");
-    else verify.attr("style", "visibility: hidden;");
+    if (userPasswd === "") $("#userPasswd").attr("placeholder", "请输入6~18位密码");
+    else $("#userPasswd").removeAttr("placeholder");
 });
 
 $("#retype").on("focusout", function checkRetype() {
     var userPasswd = $("#userPasswd").val();
     var retype = $("#retype").val();
-    var verify = $("#verifyRetype");
 
-    if (retype === "" || (userPasswd != retype)) verify.attr("style", "visibility: visible;");
-    else verify.attr("style", "visibility: hidden;");
+    if (userPasswd != retype) $("#retype").attr("placeholder", "两次密码不一致");
+    else $("#retype").removeAttr("placeholder");
 });
 
 $("#userEmail").on("focusout", function checkUserEmail() {
     /*需要改进，验证邮箱地址是否合法！*/
     var userEmail = $("#userEmail").val();
-    var verify = $("#verifyUserEmail");
 
-    if (userEmail === "") verify.attr("style", "visibility: visible;");
-    else verify.attr("style", "visibility: hidden;");
+    if (userEmail === "") $("#userEmail").attr("placeholder", "请输合法的邮箱地址");
+    else $("#userNuserEmailame").removeAttr("placeholder");
+});
+
+$("#userGen").on("focusin", function () {
+    $("#userGen").empty();
+    $("#userGen").append(
+        "<option value='male'>男</option>" +
+        "<option value='female'>女</option>"
+    );
 });
 
 $("#userAdms").on("focusin", function queryYear() {
