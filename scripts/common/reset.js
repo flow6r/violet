@@ -9,21 +9,24 @@ $("#userEmail").on("focusout", function checkUserEmail() {
 
 $("#sendCodeBtn").on("click", function sendCode() {
     var userEmail = $("#userEmail").val();
-    $.post("../../library/common/verify_email.php", { userEmail: userEmail }, function (bound) {
-        if (bound === "bound") {
-            var resetForm = $("#resetForm");
-            $("table").remove();
-            resetForm.append(
-                "<table border='1'><tr><th colspan='2'>验证邮箱</th></tr>\n" +
-                "<tr><td><label for='code'>验证码：</label></td>" +
-                "<td><input type='text' id='code' name='code' size='20' maxlength='5' /></td></tr>\n" +
-                "<tr><td colspan='2'>" +
-                "<input type='button' id='verifyCodeBtn' name='verifyCodeBtn' value='继续' />" +
-                "</td></tr></table>"
-            );
-            $.post("../../library/common/send_code.php", { userEmail: userEmail });
-        } else alert("该邮箱未被绑定");
-    });
+    if (userEmail === "") alert("请输合法的电子邮箱地址");
+    else {
+        $.post("../../library/common/verify_email.php", { userEmail: userEmail }, function (bound) {
+            if (bound === "bound") {
+                var resetForm = $("#resetForm");
+                $("table").remove();
+                resetForm.append(
+                    "<table><tr><th>验证邮箱</th></tr>\n" +
+                    "<tr></tr><tr>" +
+                    "<td><input type='text' id='code' name='code' maxlength='5' placeholder='验证码'/></td></tr>\n" +
+                    "<tr></tr><tr><td>" +
+                    "<input type='button' id='verifyCodeBtn' name='verifyCodeBtn' value='继续' />" +
+                    "</td></tr></table>"
+                );
+                $.post("../../library/common/send_code.php", { userEmail: userEmail });
+            } else alert("该邮箱未被绑定");
+        });
+    }
 });
 
 $("#resetForm").on("click", "#verifyCodeBtn", function verifyCode() {
@@ -33,14 +36,14 @@ $("#resetForm").on("click", "#verifyCodeBtn", function verifyCode() {
             var resetForm = $("#resetForm");
             $("table").remove();
             resetForm.append(
-                "<table border='1'>\n<tr><th colspan='2'>重置密码</th></tr>" +
-                "<tr><td><label for='userPasswd'>密码：</label></td>\n" +
-                "<td><input type='password' id='userPasswd' name='userPasswd' size='20' maxlength='18' /></td></tr>\n" +
+                "<table style='text-align: center;'>\n<tr><th>重置密码</th></tr>" +
+                "<tr></tr><tr>\n" +
+                "<td><input type='password' id='userPasswd' name='userPasswd' maxlength='18' placeholder='新密码' /></td></tr>\n" +
                 "<tr><td colspan='2'><span id='verifyUserPasswd' style='visibility: hidden;'>请输入6~18密码</span></td></tr>\n" +
-                "<tr><td><label for='retype'>重复密码：</label></td>\n" +
-                "<td><input type='password' id='retype' name='retype' size='20' maxlength='18' /></td></tr>\n" +
-                "<tr><td colspan='2'><span id='verifyRetype' style='visibility: hidden;'>两次密码不一致</span></td></tr>\n" +
-                "<tr><td colspan='2'>" +
+                "<tr>\n" +
+                "<td><input type='password' id='retype' name='retype' maxlength='18' placeholder='重复密码' /></td></tr>\n" +
+                "<tr><td><span id='verifyRetype' style='visibility: hidden;'>两次密码不一致</span></td></tr>\n" +
+                "<tr><td>" +
                 "<input type='button' id='resetPasswdBtn' name='resetPasswdBtn' value='重置密码' />" +
                 "</td></tr>\n</table>"
             );
