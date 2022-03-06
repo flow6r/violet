@@ -27,7 +27,7 @@ function printStdNav() {
     var userNav = $(".userNav");
     userNav.attr("id", "stdNav");
     userNav.attr("name", "stdNav");
-    $("#userInfo").append("<li id='eqptQuery' name='eqptQuery'>设备查询</li>\n");
+    $("#userInfo").append("<li id='queryEqpts' name='queryEqpts'>设备查询</li>\n");
 }
 
 /*打印教师用户导航栏*/
@@ -235,6 +235,38 @@ function printSecSet() {
         "\n</tr>\n</table>\n</form>\n</div>"
     );
 }
+
+/*查询设备*/
+$(".userNav").on("click", "#queryEqpts", function () {
+    printQueryEqpt()
+});
+
+/*显示查询设备的函数*/
+function printQueryEqpt() {
+    let content = $("#content");
+    content.empty();
+    content.append(
+        "<div id='queryEqptsDiv'><form id='queryEqptsForm' name='queryEqptsForm'>" +
+        "<table id='queryEqptsTbl'><tr><td colspan='3'><span id='titleTxt'>实验室设备查询</span></td></tr><tr>" +
+        "<td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
+        "<td><select id='searchType' name='searchType'><option value='eqptID'>设备ID</option><option value='eqptName'>设备名称</option>" +
+        "<option value='colgName'>隶属学院</option><option value='eqptStat'>设备状态</option></select></td>" +
+        "<td><input type='button' id='queryEqptsBtn' name='queryEqptsBtn' value='查询' /></td></tr></table>" +
+        "<table id='queryRsltTbl'><tr id='queryRsltTblHead'><th width='50px'></th><th>设备ID</th><th>设备名称</th><th>隶属学院</th>" +
+        "<th>设备状态</th><th>设备详情</th><th>其他操作</th></tr></table><table id='pageCtlTbl'>" +
+        "<tr><td><input type='button' id='prevPage' value='上一页' /></td>" +
+        "<td><input type='text' id='pageInfo' value='' size='12' disabled='disabled' /></td>" +
+        "<td><input type='button' id='nextPage' value='下一页' /></td>" +
+        "<td><input type='text' id='trgtPage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='jump' value='跳转' /></td></tr></table></form></div>"
+    );
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    queryEqpts("学生", userInfo.colgName, "colgName");
+
+}
+
 
 /*退出登录*/
 $(".userNav").on("click", "#logout", function () {
