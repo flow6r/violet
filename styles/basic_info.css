@@ -1,4 +1,6 @@
-/*基本信息设置样式表文件*/#basicInfoDiv {
+/*基本信息设置样式表文件*/
+
+#basicInfoDiv {
     position: absolute;
     padding: 0;
     margin: 0;
