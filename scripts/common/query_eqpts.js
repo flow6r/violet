@@ -4,6 +4,7 @@ var totPages = null;
 var currPage = null;
 var eqptDetl = null;
 var eqptIndx = null;
+var eqptOldID = null;
 
 $("#content").on("click", "#queryEqptsBtn", function () {
     $("#content").find("#queryRsltTblHead").siblings().remove();
@@ -11,7 +12,7 @@ $("#content").on("click", "#queryEqptsBtn", function () {
     let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
     let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
-    if (searchItem != "") queryEqpts("学生", searchItem, searchType);
+    if (searchItem != "") queryEqpts(userInfo.userRole, searchItem, searchType);
     else alert("请输入关键词");
 });
 
@@ -70,7 +71,7 @@ function echoEqptRecords(page) {
         );
         if (eqptInfo[begnPage].EqptStat != "未借出") $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
     }
-    
+
     ($("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#pageCtlTbl").find("#pageInfo")).val("第" + currPage + "页，共" + totPages + "页");
 }
 
@@ -103,7 +104,7 @@ $("#content").on("click", "a", function eqptDetail(event) {
 
     eqptDetl = $(event.target).attr("name");
     eqptIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == eqptDetl);
-   
+
     $("body").append(
         "<div id='eqptDetlDiv' class='popup'><form id='eqptDetlForm' name='eqptDetlForm'>" +
         "<table id='eqptDetlTbl'><tr><th><span id='detlTitleTxt'>实验设备详情</span></th>" +
@@ -128,8 +129,9 @@ $("body").on("click", "#editEqptDetlInfo", function () {
     $("body").find("#editDetlUpdateBtn").attr("style", "visibility: visible");
 
     $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val(eqptInfo[eqptIndx].EqptID);
+    eqptOldID = $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val();
 
-    $("body").find("#eqptDetlName").removeAttr("disabled").removeAttr("placeholder").val(eqptInfo[eqptIndx].EqptName);
+    $("body").find("#eqptDetlName").removeAttr("disabled").removeAttr("placeholder").val();
 
     $("body").find("#eqptDetlColg").removeAttr("disabled").empty();
 
@@ -158,17 +160,41 @@ $("body").on("click", "#editEqptDetlInfo", function () {
 $("body").on("click", "#editDetlCancelBtn", function () {
     eqptDetl = null;
     eqptIndx = null;
-    
+
     $("#mask").attr("style", "visibility: hidden;");
-    
+
     $(".popup").remove();
 });
 
 //保存更新的信息并更新设备信息
 $("body").on("click", "#editDetlUpdateBtn", function () {
-    alert("成功更新");
-    
-    $("body").find("#editDetlUpdateBtn").attr("style", "visibility: hidden");
-})
+    let currUserRole = userInfo.userRole;
+    let eqptNewID = $("body").find("#eqptDetlID").val();
+    let eqptNewName = $("body").find("#eqptDetlName").val();
+    let eqptNewColg = $("body").find("#eqptDetlColg").val();
+    let eqptNewCre = $("body").find("#eqptDetlCre").val();
+    let eqptNewDesc = $("body").find("#eqptDetlDesc").val();
+    eqptNewCre = eqptNewCre.replace("T", " ");
 
-//显示添加设备的弹窗
+    $.ajax({
+        url: "../../library/common/update_eqpt_info.php",
+        type: "POST",
+        async: false,
+        data: {
+            currUserRole: currUserRole, eqptNewID: eqptNewID, eqptOldID: eqptOldID,
+            eqptNewName: eqptNewName, eqptNewColg: eqptNewColg,
+            eqptNewCre: eqptNewCre, eqptNewDesc: eqptNewDesc
+        },
+        dataType: "text",
+        success: function (status) {
+            switch (status) {
+                case "0": alert("连接数据库时发生错误，请联系管理员并反馈问题"); break;
+                case "1": alert("已存在同ID设备，请确认后再更新设备ID"); break;
+                case "2": alert("查询学院信息时发生错误，请联系管理员并反馈问题"); break;
+                default: alert("成功更新设备信息"); break;
+            }
+        }
+    });
+
+    $("body").find("#editDetlUpdateBtn").attr("style", "visibility: hidden");
+});
