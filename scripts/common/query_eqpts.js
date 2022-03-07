@@ -118,6 +118,7 @@ $("#content").on("click", "a", function eqptDetail(event) {
         "<td><input type='button' id='editDetlUpdateBtn' name='editDetlUpdateBtn' value='更新' style='visibility: hidden;' /></td></tr></table></form></div>"
     );
     //判断下是否为学生，如果是学生，隐藏更新按钮！
+    if (userInfo.userRole === "学生") $("body").find("#editEqptDetlInfo").attr("style", "visibility: hidden");
 });
 
 //点击更新设备信息按钮
