@@ -158,12 +158,21 @@ $("body").on("click", "#editEqptDetlInfo", function () {
 
 //取消更新设备信息
 $("body").on("click", "#editDetlCancelBtn", function () {
-    eqptDetl = null;
-    eqptIndx = null;
-
     $("#mask").attr("style", "visibility: hidden;");
 
     $(".popup").remove();
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = userInfo.colgName;
+        searchType = "colgName";
+    }
+
+    queryEqpts(userInfo.userRole, searchItem, searchType);
 });
 
 //保存更新的信息并更新设备信息
@@ -196,5 +205,19 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
         }
     });
 
-    $("body").find("#editDetlUpdateBtn").attr("style", "visibility: hidden");
+    $("#mask").attr("style", "visibility: hidden;");
+
+    $(".popup").remove();
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = userInfo.colgName;
+        searchType = "colgName";
+    }
+
+    queryEqpts(userInfo.userRole, searchItem, searchType);
 });
