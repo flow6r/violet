@@ -241,6 +241,10 @@ $(".userNav").on("click", "#queryEqpts", function () {
     printQueryEqpt()
 });
 
+$(".userNav").on("click", "#eqptMgt", function () {
+    printQueryEqpt()
+});
+
 /*显示查询设备的函数*/
 function printQueryEqpt() {
     let content = $("#content");
