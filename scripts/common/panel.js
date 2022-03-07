@@ -27,7 +27,7 @@ function printStdNav() {
     var userNav = $(".userNav");
     userNav.attr("id", "stdNav");
     userNav.attr("name", "stdNav");
-    $("#userInfo").append("<li id='queryEqpts' name='queryEqpts'>设备查询</li>\n");
+    $("#userInfo").after("<li id='queryEqpts' name='queryEqpts'>设备查询</li>\n");
 }
 
 /*打印教师用户导航栏*/
@@ -35,7 +35,7 @@ function printTchNav() {
     var userNav = $(".userNav");
     userNav.attr("id", "tchNav");
     userNav.attr("name", "tchNav");
-    $("#userInfo").append(
+    $("#userInfo").after(
         "<li id='stdMgt' name='stdMgt'>学生管理</li>\n" +
         "<li id='eqptMgt' name='eqptMgt'>设备管理</li>"
     );
@@ -46,7 +46,7 @@ function printAdminNav() {
     var userNav = $(".userNav");
     userNav.attr("id", "adminNav");
     userNav.attr("name", "adminNav");
-    $("#userInfo").append(
+    $("#userInfo").after(
         "<li id='userMgt' name='userMgt'>用户管理\n" +
         "<ul id='userMgtSubNav' name='userMgtSubNav'>\n" +
         "<li id='stdUser' name='stdUser'>学生用户</li>\n" +
