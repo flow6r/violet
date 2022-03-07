@@ -64,12 +64,13 @@ function echoEqptRecords(page) {
             "<td>" + eqptInfo[begnPage].EqptName + "</td>" +
             "<td>" + eqptInfo[begnPage].ColgName + "</td>" +
             "<td>" + eqptInfo[begnPage].EqptStat + "</td>" +
-            "<td><a id='" + eqptInfo[begnPage].EqptID + "' href='#'>详情</a></td>" +
+            "<td><a name='" + eqptInfo[begnPage].EqptID + "' href='#'>详情</a></td>" +
             "<td><input type='button' id='" + eqptInfo[begnPage].EqptID + "' class='lendBtn' value='借用' /></td>" +
             "</tr>"
         );
         if (eqptInfo[begnPage].EqptStat != "未借出") $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
     }
+    
     ($("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#pageCtlTbl").find("#pageInfo")).val("第" + currPage + "页，共" + totPages + "页");
 }
 
@@ -99,14 +100,15 @@ $("#content").on("click", "#jump", function () {
 //显示设备详情的弹窗
 $("#content").on("click", "a", function eqptDetail(event) {
     $("#mask").attr("style", "visibility: visible;");
-    //获取当前选择记录在JSON数据中的索引值
-    eqptDetl = $(event.target).attr("id");
+
+    eqptDetl = $(event.target).attr("name");
     eqptIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == eqptDetl);
+   
     $("body").append(
         "<div id='eqptDetlDiv' class='popup'><form id='eqptDetlForm' name='eqptDetlForm'>" +
         "<table id='eqptDetlTbl'><tr><th><span id='detlTitleTxt'>实验设备详情</span></th>" +
         "<th><input type='button' id='editEqptDetlInfo' name='editEqptDetlInfo' value='更新设备信息' /></th>" +
-        "</tr><tr id='eqptImg'><td colspan='2'><img src='images/eqpts/" + eqptInfo[eqptIndx].EqptID + ".jpg' width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
+        "</tr><tr id='eqptImg'><td colspan='2'><img src='../../images/eqpts/" + eqptInfo[eqptIndx].EqptID + ".jpg' width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
         "</tr><tr><td><span>设备ID</span></td><td><input type='text' id='eqptDetlID' name='eqptDetlID' value='" + eqptInfo[eqptIndx].EqptID + "' disabled='disabled' />" +
         "</td></tr><tr><td><span>设备名称</span></td>" +
         "<td><input type='text' id='eqptDetlName' name='eqptDetlName' value='" + eqptInfo[eqptIndx].EqptName + "' disabled='disabled' />" +
@@ -117,7 +119,7 @@ $("#content").on("click", "a", function eqptDetail(event) {
         "<tr style='text-align:center'><td><input type='button' id='editDetlCancelBtn' name='editDetlCancelBtn' value='取消' /></td>" +
         "<td><input type='button' id='editDetlUpdateBtn' name='editDetlUpdateBtn' value='更新' style='visibility: hidden;' /></td></tr></table></form></div>"
     );
-    //判断下是否为学生，如果是学生，隐藏更新按钮！
+
     if (userInfo.userRole === "学生") $("body").find("#editEqptDetlInfo").attr("style", "visibility: hidden");
 });
 
@@ -156,13 +158,16 @@ $("body").on("click", "#editEqptDetlInfo", function () {
 $("body").on("click", "#editDetlCancelBtn", function () {
     eqptDetl = null;
     eqptIndx = null;
+    
     $("#mask").attr("style", "visibility: hidden;");
+    
     $(".popup").remove();
 });
 
 //保存更新的信息并更新设备信息
 $("body").on("click", "#editDetlUpdateBtn", function () {
     alert("成功更新");
+    
     $("body").find("#editDetlUpdateBtn").attr("style", "visibility: hidden");
 })
 
