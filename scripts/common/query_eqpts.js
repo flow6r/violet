@@ -221,3 +221,8 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
 
     queryEqpts(userInfo.userRole, searchItem, searchType);
 });
+
+//借用设备
+$("#content").on("click", ".lendBtn", function (event) {
+    alert($(event.target).attr("id"));
+})
