@@ -268,7 +268,8 @@ $("#content").on("click", "#addEqptBtn", function () {
     $("#mask").attr("style", "visibility: visible;");
 
     $("body").append(
-        "<div id='addEqptDiv' class='popup'><form id='addEqptForm' name='addEqptForm'>" +
+        "<div id='addEqptDiv' class='popup'>" +
+        "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='donotfresh' method='post' enctype='multipart/form-data'>" +
         "<table id='addEqptTbl' name='addEqptTbl'><tr><th colspan='2'>新增设备</th></tr>" +
         "<tr><th colspan='2'><span id='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
         "<tr><td><span>设备ID</span></td><td><input type='text' id='newEqptID' name='newEqptID' maxlength='50' /></td></tr>" +
@@ -278,8 +279,8 @@ $("#content").on("click", "#addEqptBtn", function () {
         "<tr><td><span>隶属学院</span></td><td><select id='newEqptColg' name='newEqptColg'></select></td></tr>" +
         "<tr><td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='newEqptCre' name='newEqptCre' /></td></tr>" +
         "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' value='取消' />" +
-        "<input type='button' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
-        "</tr></table></form></div>"
+        "<input type='submit' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
+        "</tr></table></form><iframe id='donotfresh' name='donotfresh' title='donotfresh' style='display: none;'></iframe></div>"
     );
 });
 
