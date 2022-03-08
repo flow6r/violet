@@ -255,7 +255,10 @@ function printQueryEqpt() {
         "<td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='eqptID'>设备ID</option><option value='eqptName'>设备名称</option>" +
         "<option value='clsName'>设备分类</option><option value='colgName'>隶属学院</option><option value='eqptStat'>设备状态</option></select></td>" +
-        "<td><input type='button' id='queryEqptsBtn' name='queryEqptsBtn' value='查询' /></td></tr></table>" +
+        "<td><input type='button' id='queryEqptsBtn' name='queryEqptsBtn' value='查询' /></td>"+
+        "<td><input type='button' id='addEqptBtn' name='addEqptBtn' value='新增设备' style='visibility: visible' /></td>"+
+        "<td><input type='button' id='impEqptsBtn' name='impEqptsBtn' value='批量导入' style='visibility: visible' /></td>"+
+        "<td><input type='button' id='delEqptsBtn' name='delEqptsBtn' value='删除设备' style='visibility: visible' /></td></tr></table>" +
         "<table id='queryRsltTbl'><tr id='queryRsltTblHead'><th width='50px'></th><th>设备ID</th><th>设备名称</th><th>隶属学院</th>" +
         "<th>设备状态</th><th>设备详情</th><th>其他操作</th></tr></table><table id='pageCtlTbl'>" +
         "<tr><td><input type='button' id='prevPage' value='上一页' /></td>" +
