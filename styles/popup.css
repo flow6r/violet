@@ -194,7 +194,7 @@
     padding: 0px;
     margin: 0 auto;
     top: 40px;
-    width: 550px;
+    width: 500px;
     height: 625px;
     border-radius: 25px;
     background-color: #ffffff;
@@ -207,7 +207,7 @@
     position: absolute;
     padding: 0px;
     margin: 0 auto;
-    width: 550px;
+    width: 500px;
     height: 625px;
 }
 
@@ -235,7 +235,7 @@
 }
 
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl tr td span {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
 }
@@ -335,4 +335,150 @@
 
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptImg {
     text-align: center;
+}
+
+/*添加单个设备的表单*/
+#addEqptDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 45px;
+    width: 400px;
+    height: 450px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#addEqptDiv #addEqptForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 400px;
+    height: 450px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 100%;
+    border-spacing: 8px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl tr:nth-child(1) th:nth-child(1) {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #tips {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl span {
+
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptID,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptName {
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptImg {
+    width: 200px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptCls,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptColg {
+    font-size: 1.2em;
+    width: 228px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptCre {
+    font-size: 1.2em;
+    width: 223px;
+    height: 32px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptID,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptName,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptImg,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptCls,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptColg,
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptCre {
+    float: right;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl tr:last-child {
+    text-align: center;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #addNewEqptBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 130px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #cancelAddEqptBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 130px;
+    height: 36px;
+    outline: none;
+    color: #2569c3;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #addNewEqptBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 130px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl #cancelAddEqptBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 130px;
+    height: 36px;
+    outline: none;
+    color: #4586db;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 15px;
 }
