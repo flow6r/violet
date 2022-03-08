@@ -140,7 +140,6 @@ $("body").on("click", "#editEqptDetlInfo", function () {
     if (userInfo.userRole != "学生") {
         $("body").find("#editDetlUpdateBtn").attr("style", "visibility: visible");
 
-
         $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val(eqptInfo[eqptIndx].EqptID);
         eqptOldID = $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val();
 
@@ -265,6 +264,7 @@ $("#content").on("click", ".lendBtn", function (event) {
 });
 
 //添加单个实验设备
+
 
 //批量添加实验设备
 
