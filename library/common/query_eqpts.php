@@ -10,6 +10,7 @@ $searchItem = "%".$searchItem."%";
 switch ($searchType) {
     case "eqptID":$searchType = "EqptID";break;
     case "eqptName":$searchType = "EqptName";break;
+    case "clsName":$searchType = "ClsName";break;
     case "colgName":$searchType = "ColgName";break;
     case "eqptStat":$searchType = "EqptStat";break;
 }
