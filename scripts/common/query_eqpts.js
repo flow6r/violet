@@ -210,6 +210,7 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
     let currUserRole = userInfo.userRole;
     let eqptNewID = $("body").find("#eqptDetlID").val();
     let eqptNewName = $("body").find("#eqptDetlName").val();
+    let eqptNewCls = $("body").find("#eqptDetlCls").val();
     let eqptNewColg = $("body").find("#eqptDetlColg").val();
     let eqptNewCre = $("body").find("#eqptDetlCre").val();
     let eqptNewDesc = $("body").find("#eqptDetlDesc").val();
@@ -221,7 +222,7 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
         async: false,
         data: {
             currUserRole: currUserRole, eqptNewID: eqptNewID, eqptOldID: eqptOldID,
-            eqptNewName: eqptNewName, eqptNewColg: eqptNewColg,
+            eqptNewCls: eqptNewCls, eqptNewName: eqptNewName, eqptNewColg: eqptNewColg,
             eqptNewCre: eqptNewCre, eqptNewDesc: eqptNewDesc
         },
         dataType: "text",
@@ -229,7 +230,8 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
             switch (status) {
                 case "0": alert("连接数据库时发生错误，请联系管理员并反馈问题"); break;
                 case "1": alert("已存在同ID设备，请确认后再更新设备ID"); break;
-                case "2": alert("查询学院信息时发生错误，请联系管理员并反馈问题"); break;
+                case "2": alert("查询设备分类时发生错误，请联系管理员并反馈问题"); break;
+                case "3": alert("查询学院信息时发生错误，请联系管理员并反馈问题"); break;
                 default: alert("成功更新设备信息"); break;
             }
         }
