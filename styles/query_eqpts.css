@@ -26,6 +26,10 @@
     color: #2569c3;
 }
 
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:last-child td:first-child {
+    width: 366px;
+}
+
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #searchItem {
     font-size: 1.5em;
     width: 350px;
@@ -57,6 +61,18 @@
     border-radius: 15px;
 }
 
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #queryEqptsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #addEqptBtn,
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #impEqptsBtn,
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn {
@@ -68,6 +84,20 @@
     color: #ffffff;
     border: 2px solid #2569c3;
     background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #addEqptBtn:hover,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #impEqptsBtn:hover,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
     border-radius: 15px;
 }
 

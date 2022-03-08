@@ -111,6 +111,17 @@
     border: 2px solid #2569c3;
 }
 
+#updateEmailFrm #sendCodeBtn-updateEmail:hover,
+#updatePasswdFrm #sendCodeBtn-updatePasswd:hover {
+    font-size: 1.2em;
+    color: #ffffff;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #4586db;
+    border: 2px solid #4586db;
+}
+
 #updateEmailFrm #code-updateEmail,
 #updatePasswdFrm #code-updatePasswd {
     margin: 2px auto;
@@ -145,6 +156,17 @@
     border: 0 solid #ffffff;
 }
 
+#updateEmailFrm #cancelBtn:hover,
+#updatePasswdFrm #cancelBtn:hover {
+    font-size: 1.2em;
+    color: #4586db;
+    width: 60px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 0 solid #ffffff;
+}
+
 #updateEmailFrm #toUpdateEmail,
 #updatePasswdFrm #toUpdatePasswd {
     font-size: 1.2em;
@@ -154,6 +176,17 @@
     border-radius: 20px;
     background-color: #2569c3;
     border: 2px solid #2569c3;
+}
+
+#updateEmailFrm #toUpdateEmail:hover,
+#updatePasswdFrm #toUpdatePasswd:hover {
+    font-size: 1.2em;
+    color: #ffffff;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #4586db;
+    border: 2px solid #4586db;
 }
 
 #eqptDetlDiv {

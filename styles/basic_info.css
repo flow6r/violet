@@ -86,9 +86,29 @@
     border: 2px solid #2569c3;
 }
 
+#basicInfoDiv #editInfoBtn:hover, #basicInfoDiv #updateBtn:hover{
+    font-size: 1.5em;
+    color: #ffffff;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #4586db;
+    border: 2px solid #4586db;
+}
+
 #basicInfoDiv #cancelBtn {
     font-size: 1.5em;
     color: #2569c3;
+    width: 60px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 0 solid #ffffff;
+}
+
+#basicInfoDiv #cancelBtn:hover {
+    font-size: 1.5em;
+    color: #4586db;
     width: 60px;
     height: 40px;
     border-radius: 20px;
