@@ -137,53 +137,56 @@ $("#content").on("click", "a", function eqptDetail(event) {
 
 //点击更新设备信息按钮
 $("body").on("click", "#editEqptDetlInfo", function () {
-    $("body").find("#editDetlUpdateBtn").attr("style", "visibility: visible");
+    if (userInfo.userRole != "学生") {
+        $("body").find("#editDetlUpdateBtn").attr("style", "visibility: visible");
 
-    $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val(eqptInfo[eqptIndx].EqptID);
-    eqptOldID = $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val();
 
-    $("body").find("#eqptDetlName").removeAttr("disabled").removeAttr("placeholder").val();
+        $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val(eqptInfo[eqptIndx].EqptID);
+        eqptOldID = $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val();
 
-    $("body").find("#eqptDetlCls").removeAttr("disabled").empty();
+        $("body").find("#eqptDetlName").removeAttr("disabled").removeAttr("placeholder").val();
 
-    $.ajax({
-        url: "../../library/common/query_cls.php",
-        type: "GET",
-        async: false,
-        data: { userRole: userInfo.userRole },
-        dataType: "json",
-        success: function (clsJSON) {
-            let cls = clsJSON;
-            for (let indx = 0; indx < cls.length; indx++) {
-                $("body").find("#eqptDetlCls").append("<option value='" + cls[indx].ClsAbrv + "'>" + cls[indx].ClsName + "</option>");
-                if (cls[indx].ClsName === eqptInfo[eqptIndx].ClsName) {
-                    $("body").find("#eqptDetlCls").find("option[value=" + cls[indx].ClsAbrv + "]").attr("selected", "selected");
+        $("body").find("#eqptDetlCls").removeAttr("disabled").empty();
+
+        $.ajax({
+            url: "../../library/common/query_cls.php",
+            type: "GET",
+            async: false,
+            data: { userRole: userInfo.userRole },
+            dataType: "json",
+            success: function (clsJSON) {
+                let cls = clsJSON;
+                for (let indx = 0; indx < cls.length; indx++) {
+                    $("body").find("#eqptDetlCls").append("<option value='" + cls[indx].ClsAbrv + "'>" + cls[indx].ClsName + "</option>");
+                    if (cls[indx].ClsName === eqptInfo[eqptIndx].ClsName) {
+                        $("body").find("#eqptDetlCls").find("option[value=" + cls[indx].ClsAbrv + "]").attr("selected", "selected");
+                    }
                 }
             }
-        }
-    });
+        });
 
-    $("body").find("#eqptDetlColg").removeAttr("disabled").empty();
+        $("body").find("#eqptDetlColg").removeAttr("disabled").empty();
 
-    $.ajax({
-        url: "../../library/common/query_college.php",
-        type: "GET",
-        async: false,
-        dataType: "json",
-        success: function (colgJSON) {
-            let colgs = colgJSON;
-            for (let indx = 0; indx < colgs.length; indx++) {
-                $("body").find("#eqptDetlColg").append("<option value='" + colgs[indx].ColgAbrv + "'>" + colgs[indx].ColgName + "</option>");
-                if (colgs[indx].ColgName === eqptInfo[eqptIndx].ColgName) {
-                    $("body").find("#eqptDetlColg").find("option[value=" + colgs[indx].ColgAbrv + "]").attr("selected", "selected");
+        $.ajax({
+            url: "../../library/common/query_college.php",
+            type: "GET",
+            async: false,
+            dataType: "json",
+            success: function (colgJSON) {
+                let colgs = colgJSON;
+                for (let indx = 0; indx < colgs.length; indx++) {
+                    $("body").find("#eqptDetlColg").append("<option value='" + colgs[indx].ColgAbrv + "'>" + colgs[indx].ColgName + "</option>");
+                    if (colgs[indx].ColgName === eqptInfo[eqptIndx].ColgName) {
+                        $("body").find("#eqptDetlColg").find("option[value=" + colgs[indx].ColgAbrv + "]").attr("selected", "selected");
+                    }
                 }
             }
-        }
-    });
+        });
 
-    $("body").find("#eqptDetlCre").removeAttr("disabled").val((eqptInfo[eqptIndx].EqptCre).replace(" ", "T"));
+        $("body").find("#eqptDetlCre").removeAttr("disabled").val((eqptInfo[eqptIndx].EqptCre).replace(" ", "T"));
 
-    $("body").find("#eqptDetlDesc").removeAttr("disabled");
+        $("body").find("#eqptDetlDesc").removeAttr("disabled");
+    } else alert("禁止学生操作");
 });
 
 //取消更新设备信息
@@ -215,6 +218,7 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
     let eqptNewCre = $("body").find("#eqptDetlCre").val();
     let eqptNewDesc = $("body").find("#eqptDetlDesc").val();
     eqptNewCre = eqptNewCre.replace("T", " ");
+
 
     $.ajax({
         url: "../../library/common/update_eqpt_info.php",
@@ -252,9 +256,18 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
     }
 
     queryEqpts(userInfo.userRole, searchItem, searchType);
+
 });
 
 //借用设备
 $("#content").on("click", ".lendBtn", function (event) {
     alert($(event.target).attr("id"));
-})
+});
+
+//添加单个实验设备
+
+//批量添加实验设备
+
+//批量借用实验设备
+
+//批量删除实验设备
