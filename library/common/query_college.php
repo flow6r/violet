@@ -14,8 +14,9 @@ $stmt->execute();
 //将查询结果保存为JSON数据并返回给浏览器端
 $result = $stmt->get_result();
 $colleges = $result->fetch_all(MYSQLI_ASSOC);
-$stmt->free_result();
-$db->close();
 $collegesJSON = json_encode($colleges, JSON_UNESCAPED_UNICODE);
 echo $collegesJSON;
+//释放结果集并关闭链接
+$stmt->free_result();
+$db->close();
 ?>
