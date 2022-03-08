@@ -48,24 +48,28 @@
     background-color: #ffffff;
 }
 
-#updateEmailFrm #updateTitleTxt, #updatePasswdFrm #updateTitleTxt {
+#updateEmailFrm #updateTitleTxt,
+#updatePasswdFrm #updateTitleTxt {
     font-size: 1.8em;
     color: #2569c3;
 }
 
-#updateEmailFrm label, #updatePasswdFrm label {
+#updateEmailFrm label,
+#updatePasswdFrm label {
     font-size: 1.5em;
     color: #2569c3;
 }
 
-#updateEmailTbl, #updatePasswdTbl {
+#updateEmailTbl,
+#updatePasswdTbl {
     position: relative;
     padding: 0;
     margin: 8.5px auto;
     border-spacing: 10px;
 }
 
-#updateEmailFrm #userPasswd, #updatePasswdFrm #newPasswd {
+#updateEmailFrm #userPasswd,
+#updatePasswdFrm #newPasswd {
     margin: 2px auto;
     font-size: 25px;
     width: 470px;
@@ -85,7 +89,8 @@
     border-radius: 20px;
 }
 
-#updateEmailFrm #userEmail, #updatePasswdFrm #userEmail {
+#updateEmailFrm #userEmail,
+#updatePasswdFrm #userEmail {
     margin: 2px auto;
     font-size: 25px;
     width: 300px;
@@ -95,7 +100,8 @@
     border-radius: 20px;
 }
 
-#updateEmailFrm #sendCodeBtn-updateEmail, #updatePasswdFrm #sendCodeBtn-updatePasswd {
+#updateEmailFrm #sendCodeBtn-updateEmail,
+#updatePasswdFrm #sendCodeBtn-updatePasswd {
     font-size: 1.2em;
     color: #ffffff;
     width: 150px;
@@ -105,7 +111,8 @@
     border: 2px solid #2569c3;
 }
 
-#updateEmailFrm #code-updateEmail, #updatePasswdFrm #code-updatePasswd {
+#updateEmailFrm #code-updateEmail,
+#updatePasswdFrm #code-updatePasswd {
     margin: 2px auto;
     font-size: 25px;
     width: 470px;
@@ -116,16 +123,19 @@
 }
 
 
-#updateEmailFrm .helpTxt, #updatePasswdFrm .helpTxt {
+#updateEmailFrm .helpTxt,
+#updatePasswdFrm .helpTxt {
     font-size: 1.2em;
     color: #ec8b1c;
 }
 
-.popUpBtn #cancelBtn, .popUpBtn {
+.popUpBtn #cancelBtn,
+.popUpBtn {
     float: right;
 }
 
-#updateEmailFrm #cancelBtn, #updatePasswdFrm #cancelBtn {
+#updateEmailFrm #cancelBtn,
+#updatePasswdFrm #cancelBtn {
     font-size: 1.2em;
     color: #2569c3;
     width: 60px;
@@ -135,7 +145,8 @@
     border: 0 solid #ffffff;
 }
 
-#updateEmailFrm #toUpdateEmail, #updatePasswdFrm #toUpdatePasswd {
+#updateEmailFrm #toUpdateEmail,
+#updatePasswdFrm #toUpdatePasswd {
     font-size: 1.2em;
     color: #ffffff;
     width: 100px;
@@ -151,7 +162,7 @@
     margin: 0 auto;
     top: 40px;
     width: 550px;
-    height: 600px;
+    height: 625px;
     border-radius: 25px;
     background-color: #ffffff;
     border: 2px solid #2569c3;
@@ -164,7 +175,7 @@
     padding: 0px;
     margin: 0 auto;
     width: 550px;
-    height: 600px;
+    height: 625px;
 }
 
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl {
@@ -172,7 +183,7 @@
     padding: 0px;
     margin: 0 auto;
     width: 90%;
-    border-spacing: 10px;
+    border-spacing: 8px;
 }
 
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl #detlTitleTxt {
@@ -211,20 +222,21 @@
     border-radius: 15px;
 }
 
-#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptDetlCre {
-    font-size: 1.2em;
-    width: 223px;
-    height: 32px;
-    outline: none;
-    border: 2px solid #2569c3;
-    border-radius: 15px;
-}
-
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptDetlCls,
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptDetlColg {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 228px;
     height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptDetlCre {
+    font-size: 1.2em;
+    width: 223px;
+    height: 32px;
     outline: none;
     border: 2px solid #2569c3;
     border-radius: 15px;
