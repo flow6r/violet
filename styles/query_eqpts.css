@@ -57,6 +57,20 @@
     border-radius: 15px;
 }
 
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #addEqptBtn,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #impEqptsBtn,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
 #queryEqptsDiv #queryEqptsForm #queryRsltTbl {
     width: 100%;
     border-collapse: collapse;
