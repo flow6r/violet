@@ -263,8 +263,91 @@ $("#content").on("click", ".lendBtn", function (event) {
     alert($(event.target).attr("id"));
 });
 
-//添加单个实验设备
+//显示添加设备的表单
+$("#content").on("click", "#addEqptBtn", function () {
+    $("#mask").attr("style", "visibility: visible;");
 
+    $("body").append(
+        "<div id='addEqptDiv' class='popup'><form id='addEqptForm' name='addEqptForm'>" +
+        "<table id='addEqptTbl' name='addEqptTbl'><tr><th colspan='2'>新增设备</th></tr>" +
+        "<tr><th colspan='2'><span id='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
+        "<tr><td><span>设备ID</span></td><td><input type='text' id='newEqptID' name='newEqptID' maxlength='50' /></td></tr>" +
+        "<tr><td><span>设备名称</span></td><td><input type='text' id='newEqptName' name='newEqptName' maxlength='50' /></td></tr>" +
+        "<tr><td><span>设备图片</span></td><td><input type='file' id='newEqptImg' name='newEqptImg' /></td></tr>" +
+        "<tr><td><span>设备分类</span></td><td><select id='newEqptCls' name='newEqptCls'></select></td></tr>" +
+        "<tr><td><span>隶属学院</span></td><td><select id='newEqptColg' name='newEqptColg'></select></td></tr>" +
+        "<tr><td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='newEqptCre' name='newEqptCre' /></td></tr>" +
+        "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' value='取消' />" +
+        "<input type='button' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
+        "</tr></table></form></div>"
+    );
+});
+
+//添加设备-显示设备分类
+$("body").on("focusin", "#newEqptCls", function () {
+    $("body").find("#newEqptCls").empty();
+
+    $.ajax({
+        url: "../../library/common/query_cls.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole },
+        dataType: "json",
+        success: function (clsJSON) {
+            let cls = clsJSON;
+            for (let indx = 0; indx < cls.length; indx++) {
+                $("body").find("#newEqptCls").append("<option value='" + cls[indx].ClsAbrv + "'>" + cls[indx].ClsName + "</option>");
+            }
+        }
+    });
+});
+//添加设备-显示学院信息
+$("body").on("focusin", "#newEqptColg", function () {
+    $("body").find("#newEqptColg").empty();
+
+    $.ajax({
+        url: "../../library/common/query_college.php",
+        type: "GET",
+        async: false,
+        dataType: "json",
+        success: function (colgJSON) {
+            let colgs = colgJSON;
+            for (let indx = 0; indx < colgs.length; indx++) {
+                $("body").find("#newEqptColg").append("<option value='" + colgs[indx].ColgAbrv + "'>" + colgs[indx].ColgName + "</option>");
+            }
+        }
+    });
+});
+
+//添加单个实验设备
+$("body").on("click", "#addNewEqptBtn", function () {
+    let newEqptID = $("body").find("#newEqptID").val();
+    let newEqptName = $("body").find("#newEqptName").val();
+    // let newEqptImg = ;
+    let newEqptCls = $("body").find("#newEqptCls").val();
+    let newEqptColg = $("body").find("#newEqptColg").val();
+    let newEqptCre = $("body").find("#newEqptCre").val();
+
+    newEqptCre = newEqptCre.replace("T", " ");
+
+    //测试
+    alert(
+        "待添加新设备的信息" +
+        "\n设备ID：" + newEqptID +
+        "\n设备名称：" + newEqptName +
+        "\n设备分类：" + newEqptCls +
+        "\n隶属学院：" + newEqptColg +
+        "\n入库时间：" + newEqptCre
+    );
+
+})
+
+//取消添加实验设备
+$("body").on("click", "#cancelAddEqptBtn", function () {
+    $("#mask").attr("style", "visibility: hidden;");
+
+    $(".popup").remove();
+});
 
 //批量添加实验设备
 
