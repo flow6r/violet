@@ -115,13 +115,18 @@ $("#content").on("click", "a", function eqptDetail(event) {
         "<div id='eqptDetlDiv' class='popup'><form id='eqptDetlForm' name='eqptDetlForm'>" +
         "<table id='eqptDetlTbl'><tr><th><span id='detlTitleTxt'>实验设备详情</span></th>" +
         "<th><input type='button' id='editEqptDetlInfo' name='editEqptDetlInfo' value='更新设备信息' /></th>" +
-        "</tr><tr id='eqptImg'><td colspan='2'><img src='../../images/eqpts/" + eqptInfo[eqptIndx].EqptID + ".jpg' width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
-        "</tr><tr><td><span>设备ID</span></td><td><input type='text' id='eqptDetlID' name='eqptDetlID' value='" + eqptInfo[eqptIndx].EqptID + "' disabled='disabled' />" +
+        "</tr><tr id='eqptImg'><td colspan='2'><img src='../../images/eqpts/" + eqptInfo[eqptIndx].EqptID +
+        ".jpg' width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
+        "</tr><tr><td><span>设备ID</span></td><td><input type='text' id='eqptDetlID' name='eqptDetlID' value='" +
+        eqptInfo[eqptIndx].EqptID + "' disabled='disabled' />" +
         "</td></tr><tr><td><span>设备名称</span></td>" +
         "<td><input type='text' id='eqptDetlName' name='eqptDetlName' value='" + eqptInfo[eqptIndx].EqptName + "' disabled='disabled' />" +
-        "</td></tr><tr><td><span>隶属学院</span></td><td><select id='eqptDetlColg' name='eqptDetlColg' disabled='disabled'>" +
-        "<option value='spst'>" + eqptInfo[eqptIndx].ColgName + "</option></select></td></tr><tr>" +
-        "<td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='eqptDetlCre' name='eqptDetlCre' value='" + (eqptInfo[eqptIndx].EqptCre).replace(" ", "T") + "' disabled='disabled' /></td></tr><tr>" +
+        "</td></tr><tr><td><span>设备分类</span></td><td><select id='eqptDetlCls' name='eqptDetlCls' disabled='disabled'><option>" +
+        eqptInfo[eqptIndx].ClsName + "<option></select></td></tr>" +
+        "<tr><td><span>隶属学院</span></td><td><select id='eqptDetlColg' name='eqptDetlColg' disabled='disabled'>" +
+        "<option>" + eqptInfo[eqptIndx].ColgName + "</option></select></td></tr><tr>" +
+        "<td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='eqptDetlCre' name='eqptDetlCre' value='" +
+        (eqptInfo[eqptIndx].EqptCre).replace(" ", "T") + "' disabled='disabled' /></td></tr><tr>" +
         "<td><span>设备描述</span></td><td><textarea id='eqptDetlDesc' disabled='disabled'>" + eqptInfo[eqptIndx].EqptDesc + "</textarea></td></tr>" +
         "<tr style='text-align:center'><td><input type='button' id='editDetlCancelBtn' name='editDetlCancelBtn' value='取消' /></td>" +
         "<td><input type='button' id='editDetlUpdateBtn' name='editDetlUpdateBtn' value='更新' style='visibility: hidden;' /></td></tr></table></form></div>"
@@ -138,6 +143,25 @@ $("body").on("click", "#editEqptDetlInfo", function () {
     eqptOldID = $("body").find("#eqptDetlID").removeAttr("disabled").removeAttr("placeholder").val();
 
     $("body").find("#eqptDetlName").removeAttr("disabled").removeAttr("placeholder").val();
+
+    $("body").find("#eqptDetlCls").removeAttr("disabled").empty();
+
+    $.ajax({
+        url: "../../library/common/query_cls.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole },
+        dataType: "json",
+        success: function (clsJSON) {
+            let cls = clsJSON;
+            for (let indx = 0; indx < cls.length; indx++) {
+                $("body").find("#eqptDetlCls").append("<option value='" + cls[indx].ClsAbrv + "'>" + cls[indx].ClsName + "</option>");
+                if (cls[indx].ClsName === eqptInfo[eqptIndx].ClsName) {
+                    $("body").find("#eqptDetlCls").find("option[value=" + cls[indx].ClsAbrv + "]").attr("selected", "selected");
+                }
+            }
+        }
+    });
 
     $("body").find("#eqptDetlColg").removeAttr("disabled").empty();
 
