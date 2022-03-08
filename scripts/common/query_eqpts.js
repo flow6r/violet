@@ -26,8 +26,14 @@ function queryEqpts(userRole, searchItem, searchType) {
         success: function (eqptJSON) {
             eqptInfo = eqptJSON;
 
-            if (eqptInfo.length === 0) alert("共0条记录");
-            else {
+            if (eqptInfo.length === 0) {
+                alert("共0条记录");
+                totPages = 0;
+                currPage = 0;
+                ($("#content").find("#pageInfo")).val("第0页，共0页");
+                $("#content").find("#prevPage").attr("disabled", "disabled");
+                $("#content").find("#nextPage").attr("disabled", "disabled");
+            } else {
                 if (eqptInfo.length < recLimit) {
                     totPages = 1;
                     currPage = 1;
