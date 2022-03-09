@@ -343,8 +343,8 @@
     padding: 0;
     margin: 0 auto;
     top: 45px;
-    width: 400px;
-    height: 450px;
+    width: 450px;
+    height: 550px;
     border-radius: 25px;
     background-color: #ffffff;
     border: 2px solid #2569c3;
@@ -356,8 +356,8 @@
     position: absolute;
     padding: 0;
     margin: 0 auto;
-    width: 400px;
-    height: 450px;
+    width: 450px;
+    height: 550px;
     border-radius: 25px;
     background-color: #ffffff;
 }
@@ -427,8 +427,21 @@
 #addEqptDiv #addEqptForm #addEqptTbl #newEqptImg,
 #addEqptDiv #addEqptForm #addEqptTbl #newEqptCls,
 #addEqptDiv #addEqptForm #addEqptTbl #newEqptColg,
-#addEqptDiv #addEqptForm #addEqptTbl #newEqptCre {
+#addEqptDiv #addEqptForm #addEqptTbl #newEqptCre,
+#addEqptDiv #addEqptForm #addEqptTbl textarea {
     float: right;
+}
+
+#addEqptDiv #addEqptForm #addEqptTbl textarea {
+    font-size: 1.2em;
+    width: 220px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
 }
 
 #addEqptDiv #addEqptForm #addEqptTbl tr:last-child {
