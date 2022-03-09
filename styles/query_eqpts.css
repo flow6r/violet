@@ -38,20 +38,14 @@
     width: 83px;
 }
 
-#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(4) {
-    width: 108px;
-}
-
-#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(5) {
-    width: 108px;
-}
-
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(4),
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(5),
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(6) {
-    width: 178px;
+    width: 108px;
 }
 
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(7) {
-    width: 108px;
+    width: 178px;
 }
 
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #searchItem {
