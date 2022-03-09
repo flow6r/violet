@@ -269,15 +269,18 @@ $("#content").on("click", "#addEqptBtn", function () {
 
     $("body").append(
         "<div id='addEqptDiv' class='popup'>" +
-        "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='donotfresh' method='post' enctype='multipart/form-data'>" +
+        "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='donotfresh' method='post' enctype='multipart/form-data' onsubmit='return checkAddNewEqpt()'>" +
         "<table id='addEqptTbl' name='addEqptTbl'><tr><th colspan='2'>新增设备</th></tr>" +
-        "<tr><th colspan='2'><span id='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
+        "<tr><th colspan='2'><span class='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
+        "<tr><th colspan='2'><span class='tips'>注意，单个图片文件上传限制为20M</span></th></tr>" +
+        "<tr><th colspan='2'><span class='tips'>注意，目前仅支持JPG和JPEG格式文件</span></th></tr>" +
         "<tr><td><span>设备ID</span></td><td><input type='text' id='newEqptID' name='newEqptID' maxlength='50' /></td></tr>" +
         "<tr><td><span>设备名称</span></td><td><input type='text' id='newEqptName' name='newEqptName' maxlength='50' /></td></tr>" +
         "<tr><td><span>设备图片</span></td><td><input type='file' id='newEqptImg' name='newEqptImg' /></td></tr>" +
         "<tr><td><span>设备分类</span></td><td><select id='newEqptCls' name='newEqptCls'></select></td></tr>" +
         "<tr><td><span>隶属学院</span></td><td><select id='newEqptColg' name='newEqptColg'></select></td></tr>" +
         "<tr><td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='newEqptCre' name='newEqptCre' /></td></tr>" +
+        "<tr><td><span>设备描述</span></td><td><textarea id='newEqptDesc' name='newEqptDesc'></textarea></td></tr>" +
         "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' value='取消' />" +
         "<input type='submit' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
         "</tr></table></form><iframe id='donotfresh' name='donotfresh' title='donotfresh' style='display: none;'></iframe></div>"
@@ -320,28 +323,22 @@ $("body").on("focusin", "#newEqptColg", function () {
     });
 });
 
-//添加单个实验设备
-$("body").on("click", "#addNewEqptBtn", function () {
+//检查添加单个实验设备信息
+function checkAddNewEqpt() {
     let newEqptID = $("body").find("#newEqptID").val();
     let newEqptName = $("body").find("#newEqptName").val();
-    // let newEqptImg = ;
+    let newEqptImg = $("body").find("#newEqptImg").val();
     let newEqptCls = $("body").find("#newEqptCls").val();
     let newEqptColg = $("body").find("#newEqptColg").val();
     let newEqptCre = $("body").find("#newEqptCre").val();
+    let newEqptDesc = $("body").find("#newEqptDesc").val();
 
-    newEqptCre = newEqptCre.replace("T", " ");
-
-    //测试
-    alert(
-        "待添加新设备的信息" +
-        "\n设备ID：" + newEqptID +
-        "\n设备名称：" + newEqptName +
-        "\n设备分类：" + newEqptCls +
-        "\n隶属学院：" + newEqptColg +
-        "\n入库时间：" + newEqptCre
-    );
-
-})
+    if (newEqptID === "" || newEqptName === "" || newEqptImg === "" ||
+        newEqptCls === "" || newEqptColg === "" || newEqptCre === "" || newEqptDesc === "") {
+        alert("设备信息不全，请输入必要信息");
+        return false;
+    }
+}
 
 //取消添加实验设备
 $("body").on("click", "#cancelAddEqptBtn", function () {
