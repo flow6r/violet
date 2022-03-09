@@ -271,7 +271,7 @@ $("#content").on("click", "#addEqptBtn", function () {
 
     $("body").append(
         "<div id='addEqptDiv' class='popup'>" +
-        "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='donotfresh' method='post' enctype='multipart/form-data' onsubmit='return checkAddNewEqpt()'>" +
+        "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='doNotRefresh' method='post' enctype='multipart/form-data' onsubmit='return checkAddNewEqpt()'>" +
         "<table id='addEqptTbl' name='addEqptTbl'><tr><th colspan='2'>新增设备</th></tr>" +
         "<tr><th colspan='2'><span class='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
         "<tr><th colspan='2'><span class='tips'>注意，单个图片文件上传限制为20M</span></th></tr>" +
@@ -285,7 +285,7 @@ $("#content").on("click", "#addEqptBtn", function () {
         "<tr><td><span>设备描述</span></td><td><textarea id='newEqptDesc' name='newEqptDesc'></textarea></td></tr>" +
         "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' value='取消' />" +
         "<input type='submit' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
-        "</tr></table></form><iframe id='donotfresh' name='donotfresh' title='donotfresh' style='display: none;'></iframe></div>"
+        "</tr></table></form><iframe id='doNotRefresh' name='doNotRefresh' title='doNotRefresh' style='display: none;'></iframe></div>"
     );
 });
 
