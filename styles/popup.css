@@ -376,9 +376,9 @@
     color: #2569c3;
 }
 
-#addEqptDiv #addEqptForm #addEqptTbl #tips {
-    font-size: 1.2em;
-    font-weight: bold;
+#addEqptDiv #addEqptForm #addEqptTbl .tips {
+    font-size: 1em;
+    /* font-weight: bold; */
     color: #2569c3;
 }
 
