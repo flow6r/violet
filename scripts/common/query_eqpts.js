@@ -333,13 +333,15 @@ function checkAddNewEqpt() {
     let newEqptCre = $("body").find("#newEqptCre").val();
     let newEqptDesc = $("body").find("#newEqptDesc").val();
 
-    if (newEqptID === "" || newEqptName === "" || newEqptImg === "" ||
+    if (userInfo.userRole === "学生") {
+        alert("禁止学生操作");
+        return false;
+    } else if (newEqptID === "" || newEqptName === "" || newEqptImg === "" ||
         newEqptCls === "" || newEqptColg === "" || newEqptCre === "" || newEqptDesc === "") {
         alert("设备信息不全，请输入必要信息");
         return false;
     }
 }
-
 //取消添加实验设备
 $("body").on("click", "#cancelAddEqptBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
