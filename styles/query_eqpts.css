@@ -50,6 +50,10 @@
     width: 178px;
 }
 
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl tr:nth-child(2) td:nth-child(7) {
+    width: 108px;
+}
+
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #searchItem {
     font-size: 1.5em;
     width: 350px;
@@ -95,7 +99,8 @@
 
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #addEqptBtn,
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #impEqptsBtn,
-#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn {
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #lendEqptsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100px;
@@ -109,7 +114,8 @@
 
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #addEqptBtn:hover,
 #queryEqptsDiv #queryEqptsForm #queryEqptsTbl #impEqptsBtn:hover,
-#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn:hover {
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #delEqptsBtn:hover,
+#queryEqptsDiv #queryEqptsForm #queryEqptsTbl #lendEqptsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100px;
