@@ -5,6 +5,8 @@ var currPage = null;
 var eqptDetl = null;
 var eqptIndx = null;
 var eqptOldID = null;
+var eqptIDs = new Array();
+var eqptIDsIndx = 0;
 
 $("#content").on("click", "#queryEqptsBtn", function () {
     $("#content").find("#queryRsltTblHead").siblings().remove();
@@ -66,7 +68,7 @@ function echoEqptRecords(page) {
 
     for (; begnPage <= endPage && begnPage < eqptInfo.length; begnPage++) {
         ($("#content").find("#queryRsltTbl")).append(
-            "<tr><td><input type='checkbox' value='" + eqptInfo[begnPage].EqptID + "' name='eqptCheckbox' class='checkbox' /></td>" +
+            "<tr><td><input type='checkbox' value='" + eqptInfo[begnPage].EqptID + "' name='eqptCheckbox' class='eqptCheckbox' /></td>" +
             "<td>" + eqptInfo[begnPage].EqptID + "</td>" +
             "<td>" + eqptInfo[begnPage].EqptName + "</td>" +
             "<td>" + eqptInfo[begnPage].ColgName + "</td>" +
@@ -354,3 +356,56 @@ $("body").on("click", "#cancelAddEqptBtn", function () {
 //批量借用实验设备
 
 //批量删除实验设备
+//获取选中的设备ID
+$("#content").on("click", ".eqptCheckbox", function (event) {
+    let currEqptID = $(event.target).val();
+
+    if ($(event.target).attr("checked")) {
+        $(event.target).removeAttr("checked");
+        let currEqptIndx = eqptIDs.indexOf(currEqptID);
+        eqptIDs.splice(currEqptIndx, 1);
+    } else {
+        $(event.target).attr("checked", "ture");
+        eqptIDs[eqptIDsIndx++] = currEqptID;
+    }
+});
+//遍历、检查获取的设备ID
+$("#content").on("click", "#delEqptsBtn", function () {
+    if (userInfo.userRole != "学生") {
+        if (eqptIDs.length != 0) {
+            $.ajax({
+                url: "../../library/common/del_eqpts.php",
+                type: "POST",
+                async: false,
+                data: { userRole: userInfo.userRole, eqptsBeDel: eqptIDs },
+                dataType: "text",
+                success: function (status) {
+                    if (status != "successful") {
+                        alert(status);
+
+                        for (let indx = 0; indx < eqptIDs.length; indx++) {
+                            $("#content").find("input[value='" + eqptIDs[indx] + "']").removeAttr("checked");
+                            $("#content").find("input[value='" + eqptIDs[indx] + "']").prop("checked", false);
+                        }
+                    } else {
+                        alert("成功删除设备");
+
+                        $("#content").find("#queryRsltTblHead").siblings().remove();
+
+                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+                        if (searchItem === "") {
+                            searchItem = userInfo.colgName;
+                            searchType = "colgName";
+                        }
+
+                        queryEqpts(userInfo.userRole, searchItem, searchType);
+                    }
+                }
+            });
+        } else alert("您选择了" + eqptIDs.length + "条记录，请选择待删除的设备再进行操作");
+        eqptIDs = new Array();
+        eqptIDsIndx = 0;
+    } else alert("禁止学生操作");
+});
