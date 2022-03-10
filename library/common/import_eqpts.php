@@ -102,6 +102,7 @@ for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
     $stmt->store_result();
     if ($stmt->num_rows()) {
         echo "<script>alert('您所导入的设备信息中，包含已在库的设备，请检查无误后继续导入');</script>";
+        unlink($trgtPath);
         $isExist = true;
         break;
     }
