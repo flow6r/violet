@@ -109,7 +109,7 @@ for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
 
 //将设备信息插入数据库中
 if (!$isExist) {
-    $eqptStat = "未借用";
+    $eqptStat = "未借出";
 
     for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
         $query = "INSERT INTO Equipments VALUES (?,?,?,?,?,?,?)";
