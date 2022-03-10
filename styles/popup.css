@@ -495,3 +495,82 @@
     background-color: #ffffff;
     border-radius: 15px;
 }
+
+/*批量导入设备的弹框的样式表文件*/
+#impEqptsDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 100px;
+    width: 400px;
+    height: 220px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#impEqptsDiv #impEqptsForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 400px;
+    height: 220px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 100%;
+    border-spacing: 16px;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl a {
+    font-weight: bold;
+    color: #2569c3;
+    text-decoration: none;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl a:hover {
+    font-weight: bold;
+    color: #4586db;
+    text-decoration: none;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl #cancelImpEqptsBtn,
+#impEqptsDiv #impEqptsForm #impEqptsTbl #impNewEqptsBtn {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#impEqptsDiv #impEqptsForm #impEqptsTbl #cancelImpEqptsBtn:hover,
+#impEqptsDiv #impEqptsForm #impEqptsTbl #impNewEqptsBtn:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
