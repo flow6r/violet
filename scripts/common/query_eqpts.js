@@ -382,6 +382,18 @@ $("body").on("click", ".cancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
 
     $(".popup").remove();
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = userInfo.colgName;
+        searchType = "colgName";
+    }
+
+    queryEqpts(userInfo.userRole, searchItem, searchType);
 });
 
 //批量借用实验设备
