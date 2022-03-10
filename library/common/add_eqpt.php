@@ -30,7 +30,6 @@ $userRole = $_SESSION["userInfo"]["userRole"];
 
 //引入数据库用户信息脚本
 switch ($userRole) {
-    case "学生":require_once("../dbuser/student.php");break;
     case "教师":require_once("../dbuser/teacher.php");break;
     case "管理员":require_once("../dbuser/admin.php");break;
 }
@@ -89,10 +88,10 @@ $stmt->bind_param("sssssss", $newEqptID, $newEqptName, $newEqptCls, $newEqptColg
 $stmt->execute();
 
 //将图片文件移动至指定位置
-$targetPath = $docRoot."/images/eqpts/".$newEqptID.".jpg";
+$trgtPath = $docRoot."/images/eqpts/".$newEqptID.".jpg";
 
 if (is_uploaded_file($_FILES["newEqptImg"]["tmp_name"])) {
-    if (!move_uploaded_file($_FILES["newEqptImg"]["tmp_name"], $targetPath)) {
+    if (!move_uploaded_file($_FILES["newEqptImg"]["tmp_name"], $trgtPath)) {
         echo "<script>alert('移动设备图片文件时发生错误，请联系管理员并反馈问题');</script>";
         exit;
     } else {
