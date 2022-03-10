@@ -265,7 +265,7 @@ $("#content").on("click", ".lendBtn", function (event) {
     alert($(event.target).attr("id"));
 });
 
-//显示添加设备的表单
+/*添加设备*/
 $("#content").on("click", "#addEqptBtn", function () {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
     else {
@@ -285,13 +285,12 @@ $("#content").on("click", "#addEqptBtn", function () {
             "<tr><td><span>隶属学院</span></td><td><select id='newEqptColg' name='newEqptColg'></select></td></tr>" +
             "<tr><td><span>入库时间</span></td><td><input type='datetime-local' step='1' id='newEqptCre' name='newEqptCre' /></td></tr>" +
             "<tr><td><span>设备描述</span></td><td><textarea id='newEqptDesc' name='newEqptDesc'></textarea></td></tr>" +
-            "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' value='取消' />" +
+            "<tr><td colspan='2'><input type='button' id='cancelAddEqptBtn' name='cancelAddEqptBtn' class='cancelBtn' value='取消' />" +
             "<input type='submit' id='addNewEqptBtn' name='addNewEqptBtn' value='添加设备' /></td>" +
             "</tr></table></form><iframe id='doNotRefresh' name='doNotRefresh' title='doNotRefresh' style='display: none;'></iframe></div>"
         );
     }
 });
-
 //添加设备-显示设备分类
 $("body").on("focusin", "#newEqptCls", function () {
     $("body").find("#newEqptCls").empty();
@@ -327,7 +326,6 @@ $("body").on("focusin", "#newEqptColg", function () {
         }
     });
 });
-
 //检查添加单个实验设备信息
 function checkAddNewEqpt() {
     let newEqptID = $("body").find("#newEqptID").val();
@@ -347,18 +345,50 @@ function checkAddNewEqpt() {
         return false;
     }
 }
+//批量添加实验设备
+$("#content").on("click", "#impEqptsBtn", function () {
+    if (userInfo.userRole === "学生") alert("禁止学生操作");
+    else {
+        $("#mask").attr("style", "visibility: visible;");
+
+        $("body").append(
+            "<div id='impEqptsDiv' class='popup'>" +
+            "<form id='impEqptsForm' name='impEqptsForm' enctype='multipart/form-data' action='../../library/common/import_eqpts.php' method='post' target='doNotRefresh' onsubmit='return checkImpNewEqpts()'>" +
+            "<table id='impEqptsTbl' name='impEqptsTbl'><tr><th colspan='2'><span>批量添加设备</span></th></tr>" +
+            "<tr><td colspan='2'><a href='http://localhost/data/tmpl/EqptInfoTmpl.xlsx'>点击我下载模板</a></td></tr>" +
+            "<tr><td colspan='2'><input type='file' id='impNewEqpts' name='impNewEqpts' /></td></tr>" +
+            "<tr><td><input type='button' id='cancelImpEqptsBtn' name='cancelImpEqptsBtn' class='cancelBtn' value='取消' /></td>" +
+            "<td><input type='submit' id='impNewEqptsBtn' value='上传' /></td></tr></table></form>" +
+            "<iframe id='doNotRefresh' name='doNotRefresh' title='doNotRefresh' style='display: none;'>" +
+            "</iframe></div>"
+        );
+    }
+});
+//检查设备模板文件的函数
+function checkImpNewEqpts() {
+    if (userInfo.userRole != "学生") {
+        let eqptInfoTmpl = $("body").find("#impNewEqpts").val();
+        if (eqptInfoTmpl != "") {
+            alert(eqptInfoTmpl);
+        } else {
+            alert("请选择待上传的设备信息文件再执行上传操作");
+            return false;
+        }
+    } else {
+        alert("禁止学生操作");
+        return false;
+    }
+}
 //取消添加实验设备
-$("body").on("click", "#cancelAddEqptBtn", function () {
+$("body").on("click", ".cancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
 
     $(".popup").remove();
 });
 
-//批量添加实验设备
-
 //批量借用实验设备
 
-//批量删除实验设备
+/*批量删除实验设备*/
 //获取选中的设备ID
 $("#content").on("click", ".eqptCheckbox", function (event) {
     let currEqptID = $(event.target).val();
