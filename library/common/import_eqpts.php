@@ -55,33 +55,27 @@ if (is_uploaded_file($_FILES["newEqptsInfoTmpl"]["tmp_name"])) {
 //尝试读取文件
 $readXlsx = new Xlsx();
 $spreadsheet = $readXlsx->load($trgtPath);
-$newEqptInfo = $spreadsheet->getActiveSheet();
-$newEqptID = $newEqptInfo->getCellByColumnAndRow(1, 4)->getValue();
-$newEqptName = $newEqptInfo->getCellByColumnAndRow(2, 4)->getValue();
-$newEqptCls = $newEqptInfo->getCellByColumnAndRow(3, 4)->getValue();
-$newEqptColg = $newEqptInfo->getCellByColumnAndRow(4, 4)->getValue();
-$newEqptCre = $newEqptInfo->getCellByColumnAndRow(5, 4)->getValue();
-$newEqptDesc = $newEqptInfo->getCellByColumnAndRow(6, 4)->getValue();
+$newEqptsInfo = $spreadsheet->getActiveSheet(0);
 
-echo "<script>alert('新设备ID：".$newEqptID.
-"\\n新设备名称：".$newEqptName.
-"\\n新设备分类：".$newEqptCls.
-"\\n新设备隶属学院：".$newEqptColg.
-"\\n新设备入库时间：".$newEqptCre.
-"\\n新设备设备描述：".$newEqptDesc."');</script>";
+//获取数据行数
+$dataRows = $newEqptsInfo->getHighestRow() - 3;
+$begnRows = 4;
+
+//遍历数据表并初始化数组
+for ($outer = 0; $outer < $dataRows; $outer++, $begnRows++) {
+    $newEqptsInfoAray[$outer]["newEqptID"] = $newEqptsInfo->getCellByColumnAndRow(1, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptName"] = $newEqptsInfo->getCellByColumnAndRow(2, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptCls"] = $newEqptsInfo->getCellByColumnAndRow(3, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptColg"] = $newEqptsInfo->getCellByColumnAndRow(4, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptCre"] = $newEqptsInfo->getCellByColumnAndRow(5, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptDesc"] = $newEqptsInfo->getCellByColumnAndRow(6, $begnRows)->getValue();
+}
+
+//将数组保存为JSON数据并写入文件
+// $newEqptsInfoJSON = json_encode($newEqptsInfoAray, JSON_UNESCAPED_UNICODE);
+// file_put_contents("newEqptsInfo.json", $newEqptsInfoJSON);
+
+//检查数据表中是否包含已在库的设备
+
 exit;
-
-// //引入数据库用户信息脚本
-// switch ($userRole) {
-//     case "教师":require_once("../dbuser/teacher.php");break;
-//     case "管理员":require_once("../dbuser/admin.php");break;
-// }
-
-// //连接数据库
-// $db = mysqli_connect($dbServer, $dbUser, $dbUserPasswd, $dbName);
-// if (mysqli_connect_error()) {
-//     echo "<script>alert('连接数据库时发生错误，请联系管理员并反馈问题');</script>";
-//     exit;
-// }
-
 ?>
