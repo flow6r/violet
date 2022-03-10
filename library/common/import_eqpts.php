@@ -1,5 +1,12 @@
 <?php
 /*批量导入设备信息的脚本*/
+
+//使用命名空间
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
+//引入PHPSpreadsheet文件
+require_once("../PHPSpreadsheet/vendor/autoload.php");
+
 //获取文档根目录
 $docRoot = $_SERVER["DOCUMENT_ROOT"];
 
@@ -42,9 +49,27 @@ if (is_uploaded_file($_FILES["newEqptsInfoTmpl"]["tmp_name"])) {
         exit;
     } else {
         echo "<script>alert('成功导入设备');</script>";
-        exit;
     }
 }
+
+//尝试读取文件
+$readXlsx = new Xlsx();
+$spreadsheet = $readXlsx->load($trgtPath);
+$newEqptInfo = $spreadsheet->getActiveSheet();
+$newEqptID = $newEqptInfo->getCellByColumnAndRow(1, 4)->getValue();
+$newEqptName = $newEqptInfo->getCellByColumnAndRow(2, 4)->getValue();
+$newEqptCls = $newEqptInfo->getCellByColumnAndRow(3, 4)->getValue();
+$newEqptColg = $newEqptInfo->getCellByColumnAndRow(4, 4)->getValue();
+$newEqptCre = $newEqptInfo->getCellByColumnAndRow(5, 4)->getValue();
+$newEqptDesc = $newEqptInfo->getCellByColumnAndRow(6, 4)->getValue();
+
+echo "<script>alert('新设备ID：".$newEqptID.
+"\\n新设备名称：".$newEqptName.
+"\\n新设备分类：".$newEqptCls.
+"\\n新设备隶属学院：".$newEqptColg.
+"\\n新设备入库时间：".$newEqptCre.
+"\\n新设备设备描述：".$newEqptDesc."');</script>";
+exit;
 
 // //引入数据库用户信息脚本
 // switch ($userRole) {
