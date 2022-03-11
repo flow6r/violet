@@ -353,8 +353,9 @@ $("#content").on("click", "#impEqptsBtn", function () {
             "<div id='impEqptsDiv' class='popup'>" +
             "<form id='impEqptsForm' name='impEqptsForm' enctype='multipart/form-data' action='../../library/common/import_eqpts.php' method='post' target='doNotRefresh' onsubmit='return checkImpNewEqpts()'>" +
             "<table id='impEqptsTbl' name='impEqptsTbl'><tr><th colspan='2'><span>批量添加设备</span></th></tr>" +
-            "<tr><td colspan='2'><a href='http://localhost/data/tmpl/EqptInfoTmpl.xlsx'>点击我下载模板</a></td></tr>" +
-            "<tr><td colspan='2'><input type='file' id='newEqptsInfoTmpl' name='newEqptsInfoTmpl' /></td></tr>" +
+            "<tr><th colspan='2'><a href='http://localhost/data/tmpl/EqptInfoTmpl.xlsx'>点击我下载模板</a></th></tr>" +
+            "<tr><td><label>设备信息文件</label></td><td><input type='file' id='newEqptsInfoTmpl' name='newEqptsInfoTmpl' /></td></tr>" +
+            "<tr><td><label>设备图片文件</label></td><td><input type='file' id='newEqptsImgs' name='newEqptsImgs[]' multiple='multiple' /></td></tr>" +
             "<tr><td><input type='button' id='cancelImpEqptsBtn' name='cancelImpEqptsBtn' class='cancelBtn' value='取消' /></td>" +
             "<td><input type='submit' id='impNewEqptsBtn' value='上传' /></td></tr></table></form>" +
             "<iframe id='doNotRefresh' name='doNotRefresh' title='doNotRefresh' style='display: none;'>" +
@@ -366,8 +367,13 @@ $("#content").on("click", "#impEqptsBtn", function () {
 function checkImpNewEqpts() {
     if (userInfo.userRole != "学生") {
         let eqptInfoTmpl = $("body").find("#newEqptsInfoTmpl").val();
+        let eqptImgs = $("body").find("#newEqptsImgs").val();
         if (eqptInfoTmpl === "") {
             alert("请选择待上传的设备信息文件再执行上传操作");
+            return false;
+        }
+        if (eqptImgs === "") {
+            alert("请选择待上传的设备图片文件再执行上传操作");
             return false;
         }
     } else {
