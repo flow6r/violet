@@ -117,8 +117,8 @@ $("#content").on("click", "a", function eqptDetail(event) {
         "<div id='eqptDetlDiv' class='popup'><form id='eqptDetlForm' name='eqptDetlForm'>" +
         "<table id='eqptDetlTbl'><tr><th><span id='detlTitleTxt'>实验设备详情</span></th>" +
         "<th><input type='button' id='editEqptDetlInfo' name='editEqptDetlInfo' value='更新设备信息' /></th>" +
-        "</tr><tr id='eqptImg'><td colspan='2'><img src='../../images/eqpts/" + eqptInfo[eqptIndx].EqptID +
-        ".jpg' width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
+        "</tr><tr id='eqptImg'><td colspan='2'><img src='" + eqptInfo[eqptIndx].ImgPath + "'" +
+        " width='200' height='200' alt='eqptDetlInfo' title='" + eqptInfo[eqptIndx].EqptID + "' /></td>" +
         "</tr><tr><td><span>设备ID</span></td><td><input type='text' id='eqptDetlID' name='eqptDetlID' value='" +
         eqptInfo[eqptIndx].EqptID + "' disabled='disabled' />" +
         "</td></tr><tr><td><span>设备名称</span></td>" +
