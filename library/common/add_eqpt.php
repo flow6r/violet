@@ -7,6 +7,8 @@ $newEqptCls = $_POST["newEqptCls"];
 $newEqptColg = $_POST["newEqptColg"];
 $newEqptCre = $_POST["newEqptCre"];
 $newEqptDesc = $_POST["newEqptDesc"];
+
+//获取文档根目录
 $docRoot = $_SERVER["DOCUMENT_ROOT"];
 
 //格式化时间字符串
@@ -82,9 +84,10 @@ if ($stmt->num_rows()) {
 
 //将新设备信息插入到数据库
 $newEqptStat = "未借出";
-$query = "INSERT INTO Equipments VALUES(?,?,?,?,?,?,?)";
+$newEqptImgPath = "../images/eqpts/".$newEqptID.".jpg";
+$query = "INSERT INTO Equipments VALUES(?,?,?,?,?,?,?,?)";
 $stmt = $db->prepare($query);
-$stmt->bind_param("sssssss", $newEqptID, $newEqptName, $newEqptCls, $newEqptColg, $newEqptCre, $newEqptDesc, $newEqptStat);
+$stmt->bind_param("ssssssss", $newEqptID, $newEqptName, $newEqptCls, $newEqptColg, $newEqptCre, $newEqptImgPath, $newEqptDesc, $newEqptStat);
 $stmt->execute();
 
 //将图片文件移动至指定位置
