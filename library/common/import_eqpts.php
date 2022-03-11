@@ -68,6 +68,7 @@ for ($outer = 0; $outer < $dataRows; $outer++, $begnRows++) {
     $newEqptsInfoAray[$outer]["newEqptCls"] = $newEqptsInfo->getCellByColumnAndRow(3, $begnRows)->getValue();
     $newEqptsInfoAray[$outer]["newEqptColg"] = $newEqptsInfo->getCellByColumnAndRow(4, $begnRows)->getValue();
     $newEqptsInfoAray[$outer]["newEqptCre"] = $newEqptsInfo->getCellByColumnAndRow(5, $begnRows)->getValue();
+    $newEqptsInfoAray[$outer]["newEqptImgPath"] = "../images/eqpts/".$newEqptsInfoAray[$outer]["newEqptID"]."jpg";
     $newEqptsInfoAray[$outer]["newEqptDesc"] = $newEqptsInfo->getCellByColumnAndRow(6, $begnRows)->getValue();
 }
 
@@ -94,7 +95,7 @@ if (mysqli_connect_error()) {
 
 //检查数据表中是否包含已在库的设备
 $isExist = false;
-for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
+for ($indx = 0; $indx < $dataRows; $indx++) {
     $query = "SELECT EqptID FROM Equipments WHERE EqptID = ?";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $newEqptsInfoAray[$indx]["newEqptID"]);
@@ -112,23 +113,24 @@ for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
 if (!$isExist) {
     $eqptStat = "未借出";
 
-    for ($indx = 0; $indx < count($newEqptsInfoAray); $indx++) {
-        $query = "INSERT INTO Equipments VALUES (?,?,?,?,?,?,?)";
+    for ($indx = 0; $indx < $dataRows; $indx++) {
+        $query = "INSERT INTO Equipments VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $db->prepare($query);
         $stmt->bind_param(
-            "sssssss",
+            "ssssssss",
             $newEqptsInfoAray[$indx]["newEqptID"],
             $newEqptsInfoAray[$indx]["newEqptName"],
             $newEqptsInfoAray[$indx]["newEqptCls"],
             $newEqptsInfoAray[$indx]["newEqptColg"],
             $newEqptsInfoAray[$indx]["newEqptCre"],
+            $newEqptsInfoAray[$indx]["newEqptImgPath"],
             $newEqptsInfoAray[$indx]["newEqptDesc"],
             $eqptStat
         );
         $stmt->execute();
     }
 
-    echo "<script>alert('成功导入" . count($newEqptsInfoAray) . "条新设备记录');</script>";
+    echo "<script>alert('成功导入" . $dataRows . "条新设备记录');</script>";
 }
 
 //释放结果集并关闭链接
