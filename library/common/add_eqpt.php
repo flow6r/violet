@@ -20,10 +20,14 @@ if ($_FILES["newEqptImg"]["error"] === 1) {
     exit;
 }
 
-//检查文件类型
-if ($_FILES["newEqptImg"]["type"] != "image/jpeg") {
-    echo "<script>alert('当前仅支持jpg和jpeg格式的图片');</script>";
-    exit;
+//检查文件类型并设置后置名
+$extName = null;
+switch ($_FILES["newEqptImg"]["type"]) {
+    case "image/bmp" : $extName = ".bmp"; break;
+    case "image/gif" : $extName = ".gif"; break;
+    case "image/jpeg": $extName = ".jpg"; break;
+    case "image/png" : $extName = ".png"; break;
+    default: echo  "<script>alert('您上传的图片格式不符合要求，请上传bmp、gif、jpg或png格式的图片文件');</script>"; exit;
 }
 
 //获取当前用户的角色信息
@@ -91,7 +95,7 @@ $stmt->bind_param("ssssssss", $newEqptID, $newEqptName, $newEqptCls, $newEqptCol
 $stmt->execute();
 
 //将图片文件移动至指定位置
-$trgtPath = $docRoot."/images/eqpts/".$newEqptID.".jpg";
+$trgtPath = $docRoot."/images/eqpts/".$newEqptID.$extName;
 
 if (is_uploaded_file($_FILES["newEqptImg"]["tmp_name"])) {
     if (!move_uploaded_file($_FILES["newEqptImg"]["tmp_name"], $trgtPath)) {
