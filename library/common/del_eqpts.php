@@ -15,9 +15,6 @@ $delEqptsCnt = count($eqptsBeDel);
 
 //引入数据库用户信息脚本
 switch ($userRole) {
-    case "学生":
-        require_once("../dbuser/student.php");
-        break;
     case "教师":
         require_once("../dbuser/teacher.php");
         break;
@@ -55,11 +52,20 @@ for ($index = 0; $index < $delEqptsCnt; $index++) {
 
 //从数据库中删除设备记录并删除相应的设备图片
 for ($index = 0; $index < $delEqptsCnt; $index++) {
+    $query = "SELECT ImgPath FROM Equipments WHERE EqptID = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $eqptsBeDel[$index]);
+    $stmt->execute();
+    $stmt->bind_result($extName);
+    $stmt->fetch();
+    $extName = substr($extName, -4);
+    $stmt->free_result();
+
     $query = "DELETE FROM Equipments WHERE EqptID = ?";
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $eqptsBeDel[$index]);
     $stmt->execute();
-    unlink($docRoot."/images/eqpts/".$eqptsBeDel[$index].".jpg");
+    unlink($docRoot."/images/eqpts/".$eqptsBeDel[$index].$extName);
 }
 echo "successful";
 
