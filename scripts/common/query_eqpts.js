@@ -435,7 +435,7 @@ $("#content").on("click", "#delEqptsBtn", function () {
                             $("#content").find("input[value='" + eqptIDs[indx] + "']").prop("checked", false);
                         }
                     } else {
-                        alert("成功删除设备");
+                        alert("成功删除" + eqptIDs.length + "条设备记录");
 
                         $("#content").find("#queryRsltTblHead").siblings().remove();
 
