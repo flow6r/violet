@@ -88,7 +88,7 @@ if ($stmt->num_rows()) {
 
 //将新设备信息插入到数据库
 $newEqptStat = "未借出";
-$newEqptImgPath = "../images/eqpts/".$newEqptID.".jpg";
+$newEqptImgPath = "../images/eqpts/".$newEqptID.$extName;
 $query = "INSERT INTO Equipments VALUES(?,?,?,?,?,?,?,?)";
 $stmt = $db->prepare($query);
 $stmt->bind_param("ssssssss", $newEqptID, $newEqptName, $newEqptCls, $newEqptColg, $newEqptCre, $newEqptImgPath, $newEqptDesc, $newEqptStat);
