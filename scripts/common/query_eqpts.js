@@ -275,9 +275,7 @@ $("#content").on("click", "#addEqptBtn", function () {
             "<div id='addEqptDiv' class='popup'>" +
             "<form id='addEqptForm' name='addEqptForm' action='../../library/common/add_eqpt.php' target='doNotRefresh' method='post' enctype='multipart/form-data' onsubmit='return checkAddNewEqpt()'>" +
             "<table id='addEqptTbl' name='addEqptTbl'><tr><th colspan='2'>新增设备</th></tr>" +
-            "<tr><th colspan='2'><span class='tips'>注意，设备图片文件名与设备ID一致</span></th></tr>" +
             "<tr><th colspan='2'><span class='tips'>注意，单个图片文件上传限制为20M</span></th></tr>" +
-            "<tr><th colspan='2'><span class='tips'>注意，目前仅支持JPG和JPEG格式文件</span></th></tr>" +
             "<tr><td><span>设备ID</span></td><td><input type='text' id='newEqptID' name='newEqptID' maxlength='50' /></td></tr>" +
             "<tr><td><span>设备名称</span></td><td><input type='text' id='newEqptName' name='newEqptName' maxlength='50' /></td></tr>" +
             "<tr><td><span>设备图片</span></td><td><input type='file' id='newEqptImg' name='newEqptImg' /></td></tr>" +
