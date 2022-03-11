@@ -9,13 +9,12 @@ $eqptNewCls = $_POST["eqptNewCls"];
 $eqptNewColg = $_POST["eqptNewColg"];
 $eqptNewCre = $_POST["eqptNewCre"];
 $eqptNewDesc = $_POST["eqptNewDesc"];
+
+//获取文档根目录
 $docRoot = $_SERVER["DOCUMENT_ROOT"];
 
 //引入数据库用户信息脚本
 switch ($currUserRole) {
-    case "学生":
-        require_once("../dbuser/student.php");
-        break;
     case "教师":
         require_once("../dbuser/teacher.php");
         break;
@@ -52,13 +51,35 @@ if ($eqptNewID === $eqptOldID) {
         if ($stmt->num_rows()) {
             $stmt->bind_result($eqptNewColg);
             $stmt->fetch();
-            //更新设备信息
-            $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, EqptDesc = ? WHERE EqptID = ?";
-            $stmt = $db->prepare($query);
-            $stmt->bind_param("sssssss", $eqptNewID, $eqptNewName, $eqptNewCls, $eqptNewColg, $eqptNewCre, $eqptNewDesc, $eqptOldID);
-            $stmt->execute();
             //更新设备图片文件名
-            rename($docRoot . "/images/eqpts/" . $eqptOldID . ".jpg", $docRoot . "/images/eqpts/" . $eqptNewID . ".jpg");
+            $stmt->free_result();
+            $query = "SELECT ImgPath FROM Equipments WHERE EqptID = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param("s", $eqptOldID);
+            $stmt->execute();
+            $stmt->bind_result($extName);
+            $stmt->fetch();
+            $extName = substr($extName, -4);
+            $oldPath = $docRoot . "/images/eqpts/" . $eqptOldID . $extName;
+            $newPath = $docRoot . "/images/eqpts/" . $eqptNewID . $extName;
+            rename($oldPath, $newPath);
+            //更新设备信息
+            $stmt->free_result();
+            $eqptImgNewPath = "../images/eqpts/" . $eqptNewID . $extName;
+            $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, ImgPath = ?, EqptDesc = ? WHERE EqptID = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param(
+                "ssssssss",
+                $eqptNewID,
+                $eqptNewName,
+                $eqptNewCls,
+                $eqptNewColg,
+                $eqptNewCre,
+                $eqptImgNewPath,
+                $eqptNewDesc,
+                $eqptOldID
+            );
+            $stmt->execute();
         } else echo "3";
     } else echo "2";
 } else {
@@ -87,14 +108,35 @@ if ($eqptNewID === $eqptOldID) {
             if ($stmt->num_rows()) {
                 $stmt->bind_result($eqptNewColg);
                 $stmt->fetch();
-                //更新设备信息
-                $eqptImgNewPath = "../images/eqpts/".$eqptNewID.".jpg";
-                $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, ImgPath = ?, EqptDesc = ? WHERE EqptID = ?";
-                $stmt = $db->prepare($query);
-                $stmt->bind_param("ssssssss", $eqptNewID, $eqptNewName, $eqptNewCls, $eqptNewColg, $eqptNewCre, $eqptImgNewPath, $eqptNewDesc, $eqptOldID);
-                $stmt->execute();
-                //更新设备图片文件名
-                rename($docRoot . "/images/eqpts/" . $eqptOldID . ".jpg", $docRoot . "/images/eqpts/" . $eqptNewID . ".jpg");
+            //更新设备图片文件名
+            $stmt->free_result();
+            $query = "SELECT ImgPath FROM Equipments WHERE EqptID = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param("s", $eqptOldID);
+            $stmt->execute();
+            $stmt->bind_result($extName);
+            $stmt->fetch();
+            $extName = substr($extName, -4);
+            $stmt->free_result();
+            $oldPath = $docRoot . "/images/eqpts/" . $eqptOldID . $extName;
+            $newPath = $docRoot . "/images/eqpts/" . $eqptNewID . $extName;
+            rename($oldPath, $newPath);
+            //更新设备信息
+            $eqptImgNewPath = "../images/eqpts/" . $eqptNewID . $extName;
+            $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, ImgPath = ?, EqptDesc = ? WHERE EqptID = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param(
+                "ssssssss",
+                $eqptNewID,
+                $eqptNewName,
+                $eqptNewCls,
+                $eqptNewColg,
+                $eqptNewCre,
+                $eqptImgNewPath,
+                $eqptNewDesc,
+                $eqptOldID
+            );
+            $stmt->execute();
             } else echo "3";
         } else echo "2";
     }
