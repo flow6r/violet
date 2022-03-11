@@ -88,9 +88,10 @@ if ($eqptNewID === $eqptOldID) {
                 $stmt->bind_result($eqptNewColg);
                 $stmt->fetch();
                 //更新设备信息
-                $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, EqptDesc = ? WHERE EqptID = ?";
+                $eqptImgNewPath = "../images/eqpts/".$eqptNewID.".jpg";
+                $query = "UPDATE Equipments SET EqptID = ?, EqptName = ?, ClsName = ?, ColgName = ?, EqptCre = ?, ImgPath = ?, EqptDesc = ? WHERE EqptID = ?";
                 $stmt = $db->prepare($query);
-                $stmt->bind_param("sssssss", $eqptNewID, $eqptNewName, $eqptNewCls, $eqptNewColg, $eqptNewCre, $eqptNewDesc, $eqptOldID);
+                $stmt->bind_param("ssssssss", $eqptNewID, $eqptNewName, $eqptNewCls, $eqptNewColg, $eqptNewCre, $eqptImgNewPath, $eqptNewDesc, $eqptOldID);
                 $stmt->execute();
                 //更新设备图片文件名
                 rename($docRoot . "/images/eqpts/" . $eqptOldID . ".jpg", $docRoot . "/images/eqpts/" . $eqptNewID . ".jpg");
