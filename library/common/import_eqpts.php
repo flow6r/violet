@@ -201,6 +201,8 @@ for ($indx = 0; $indx < $newEqptsImgsArayLen; $indx++) {
     }
 }
 
+echo "<script>alert('导入成功，新增" . $dataRows . "条设备记录');</script>";
+
 //释放结果集并关闭链接
 $stmt->free_result();
 $db->close();
