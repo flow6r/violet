@@ -164,6 +164,7 @@ for ($indx = 0; $indx < $dataRows; $indx++) {
 }
 
 //将设备信息插入数据库中
+$stmt->free_result();
 if (!$isExist) {
     $eqptStat = "未借出";
 
@@ -176,15 +177,15 @@ if (!$isExist) {
             $newEqptsInfoAray[$indx]["newEqptName"],
             $newEqptsInfoAray[$indx]["newEqptCls"],
             $newEqptsInfoAray[$indx]["newEqptColg"],
-            $newEqptsInfoAray[$indx]["newEqptImgPath"],
             $newEqptsInfoAray[$indx]["newEqptCre"],
+            $newEqptsInfoAray[$indx]["newEqptImgPath"],
             $newEqptsInfoAray[$indx]["newEqptDesc"],
             $eqptStat
         );
         $stmt->execute();
     }
 
-    echo "<script>alert('成功导入" . $dataRows . "条新设备记录');</script>";
+    echo "<script>alert('数据库新增" . $dataRows . "条设备记录');</script>";
 }
 
 //将上传的文件移动至指定位置
