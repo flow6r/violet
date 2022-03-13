@@ -260,11 +260,6 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
 
 });
 
-//借用设备
-$("#content").on("click", ".lendBtn", function (event) {
-    alert($(event.target).attr("id"));
-});
-
 /*添加设备*/
 $("#content").on("click", "#addEqptBtn", function () {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
@@ -381,7 +376,7 @@ function checkImpNewEqpts() {
         return false;
     }
 }
-//取消添加实验设备
+//取消
 $("body").on("click", ".cancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
 
@@ -400,6 +395,28 @@ $("body").on("click", ".cancelBtn", function () {
     queryEqpts(userInfo.userRole, searchItem, searchType);
 });
 
+//借用单个设备
+$("#content").on("click", ".lendBtn", function (event) {
+    $("#mask").attr("style", "visibility: visible;");
+
+    beLentEqptIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == $(event.target).attr("id"));
+
+    $("body").append(
+        "<div id='lendEqptDiv' name='lendEqptDiv' class='popup'><form id='lendEqptForm' name='lendEqptForm'><table id='lendEqptTbl' name='lendEqptTbl'>" +
+        "<tr><th colspan='2'><span>借用设备</span></th></tr>" +
+        "<tr><td colspan='2'><img src='" + eqptInfo[beLentEqptIndx].ImgPath + "' width='200' height='200' alt='eqptImg' title='eqptInfo[beLentEqptIndx].EqptID' /></td></tr>" +
+        "<tr><td><label>设备ID</label></td><td><input type='text' id='beLentEqptID' name='beLentEqptID' placeholder='" + eqptInfo[beLentEqptIndx].EqptID + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>借用开始时间</label></td><td><input type='datetime-local' step='1' id='lendBegn' /></td></tr>" +
+        "<tr><td><label>借用结束时间</label></td><td><input type='datetime-local' step='1' id='lendEnd' /></td></tr>" +
+        "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc'></textarea></td></tr>" +
+        "<tr><td><input type='button' id='cancelLendEqptBtn' name='cancelLendEqptBtn' class='cancelBtn' value='取消' /></td>" +
+        "<td><input type='button' id='lendAnEqptBtn' name='lendAnEqptBtn' value='借用' /></td></tr></table></form></div>"
+    );
+});
+//处理借用设备的函数
+$("body").on("click", "#lendOneEqptBtn", function () {
+
+});
 //批量借用实验设备
 
 /*批量删除实验设备*/
