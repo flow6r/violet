@@ -284,6 +284,7 @@ $("#content").on("click", "#addEqptBtn", function () {
         );
     }
 });
+
 //添加设备-显示设备分类
 $("body").on("focusin", "#newEqptCls", function () {
     $("body").find("#newEqptCls").empty();
@@ -302,6 +303,7 @@ $("body").on("focusin", "#newEqptCls", function () {
         }
     });
 });
+
 //添加设备-显示学院信息
 $("body").on("focusin", "#newEqptColg", function () {
     $("body").find("#newEqptColg").empty();
@@ -319,6 +321,7 @@ $("body").on("focusin", "#newEqptColg", function () {
         }
     });
 });
+
 //检查添加单个实验设备信息
 function checkAddNewEqpt() {
     let newEqptID = $("body").find("#newEqptID").val();
@@ -338,6 +341,7 @@ function checkAddNewEqpt() {
         return false;
     }
 }
+
 //批量添加实验设备
 $("#content").on("click", "#impEqptsBtn", function () {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
@@ -358,6 +362,7 @@ $("#content").on("click", "#impEqptsBtn", function () {
         );
     }
 });
+
 //检查设备模板文件的函数
 function checkImpNewEqpts() {
     if (userInfo.userRole != "学生") {
@@ -376,6 +381,7 @@ function checkImpNewEqpts() {
         return false;
     }
 }
+
 //取消
 $("body").on("click", ".cancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
@@ -393,6 +399,9 @@ $("body").on("click", ".cancelBtn", function () {
     }
 
     queryEqpts(userInfo.userRole, searchItem, searchType);
+
+    eqptIDs = new Array();
+    eqptIDsIndx = 0;
 });
 
 //借用单个设备
@@ -406,13 +415,14 @@ $("#content").on("click", ".lendBtn", function (event) {
         "<tr><th colspan='2'><span>借用设备</span></th></tr>" +
         "<tr><td colspan='2'><img src='" + eqptInfo[beLentEqptIndx].ImgPath + "' width='200' height='200' alt='eqptImg' title='eqptInfo[beLentEqptIndx].EqptID' /></td></tr>" +
         "<tr><td><label>设备ID</label></td><td><input type='text' id='beLentEqptID' name='beLentEqptID' placeholder='" + eqptInfo[beLentEqptIndx].EqptID + "' disabled='disabled' /></td></tr>" +
-        "<tr><td><label>借用开始时间</label></td><td><input type='datetime-local' step='1' id='lendBegn' /></td></tr>" +
-        "<tr><td><label>借用结束时间</label></td><td><input type='datetime-local' step='1' id='lendEnd' /></td></tr>" +
-        "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc'></textarea></td></tr>" +
+        "<tr><td><label>借用开始时间</label></td><td><input type='datetime-local' step='1' id='lendBegn' name='lendBegn' /></td></tr>" +
+        "<tr><td><label>借用结束时间</label></td><td><input type='datetime-local' step='1' id='lendEnd' name='lendEnd' /></td></tr>" +
+        "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc' name='applDesc'></textarea></td></tr>" +
         "<tr><td><input type='button' id='cancelLendEqptBtn' name='cancelLendEqptBtn' class='cancelBtn' value='取消' /></td>" +
         "<td><input type='button' id='lendAnEqptBtn' name='lendAnEqptBtn' value='借用' /></td></tr></table></form></div>"
     );
 });
+
 //处理借用设备的函数
 $("body").on("click", "#lendAnEqptBtn", function () {
     let currUserRole = userInfo.userRole;
@@ -441,7 +451,7 @@ $("body").on("click", "#lendAnEqptBtn", function () {
                     if (status != "successful") alert(status);
                     else {
                         alert("借用成功");
-                        
+
                         $("#mask").attr("style", "visibility: hidden;");
 
                         $(".popup").remove();
@@ -465,9 +475,7 @@ $("body").on("click", "#lendAnEqptBtn", function () {
     } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
 
 });
-//批量借用实验设备
 
-/*批量删除实验设备*/
 //获取选中的设备ID
 $("#content").on("click", ".eqptCheckbox", function (event) {
     let currEqptID = $(event.target).val();
@@ -481,7 +489,50 @@ $("#content").on("click", ".eqptCheckbox", function (event) {
         eqptIDs[eqptIDsIndx++] = currEqptID;
     }
 });
-//遍历、检查获取的设备ID
+
+//批量借用实验设备
+$("#content").on("click", "#lendEqptsBtn", function () {
+    if (eqptIDs.length === 0) alert("您未选择任何设备");
+    else {
+        $("#mask").attr("style", "visibility: visible;");
+
+        $("body").append(
+            "<div id='lendEqptsDiv' name='lendEqptsDiv' class='popup'><form id='lendEqptsForm' name='lendEqptsForm'>" +
+            "<table id='lendEqptsTbl' name='lendEqptsTbl'><tr><th colspan='2'><span>批量借用</span></th></tr>" +
+            "<tr><td><label>设备ID</label></td><td><select id='lendEqptsID' name='lendEqptsID'></select></td></tr>" +
+            "<tr><td colspan='2'><img src='' width='200' height='200' alt='eqptImg' title='' /></td></tr>" +
+            "<tr><td><label>借用开始时间</label></td><td><input type='datetime-local' step='1' id='lendBegn' name='lendBegn' /></td></tr>" +
+            "<tr><td><label>借用结束时间</label></td><td><input type='datetime-local' step='1' id='lendEnd' name='lendEnd' /></td></tr>" +
+            "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc' name='applDesc'></textarea></td></tr>" +
+            "<tr><td><label>借用设备数量</label></td><td><input type='text' id='lendQty' name='lendQty' placeholder='' disabled='disabled' /></td></tr>" +
+            "<tr><td><input type='button' id='cancelLendEqptsBtn' name='cancelLendEqptsBtn' class='cancelBtn' value='取消' /></td>" +
+            "<td><input type='button' id='bulkLendEqptsBtn' name='bulkLendEqptsBtn' value='借用' /></td></tr></table></form></div>"
+        );
+        
+        $("body").find("#lendQty").attr("placeholder", eqptIDs.length);
+
+        $("body").find("#lendEqptsID").empty();
+        for (let indx = 0; indx < eqptIDs.length; indx++) {
+            $("body").find("#lendEqptsID").append("<option value='" + eqptIDs[indx] + "'>" + eqptIDs[indx] + "</option>");
+        }
+
+        let temp = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == eqptIDs[0]);
+        $("body").find("img").attr("src", eqptInfo[temp].ImgPath);
+        $("body").find("img").attr("title", eqptIDs[0]);
+
+    }
+});
+
+$("body").on("click", "#lendEqptsID", function () {
+    let selEqptID = $("body").find("#lendEqptsID").val();
+    selEqptIDIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == selEqptID);
+    $("body").find("img").attr("src", eqptInfo[selEqptIDIndx].ImgPath);
+    $("body").find("img").attr("title", selEqptID);
+
+});
+
+/*批量删除实验设备*/
+//遍历、检查获取的设备ID并执行删除操作
 $("#content").on("click", "#delEqptsBtn", function () {
     if (userInfo.userRole != "学生") {
         if (eqptIDs.length != 0) {
