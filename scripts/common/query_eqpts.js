@@ -414,7 +414,55 @@ $("#content").on("click", ".lendBtn", function (event) {
     );
 });
 //处理借用设备的函数
-$("body").on("click", "#lendOneEqptBtn", function () {
+$("body").on("click", "#lendAnEqptBtn", function () {
+    let currUserRole = userInfo.userRole;
+    let currUserID = userInfo.userID;
+    let beLentEqptID = $("body").find("#beLentEqptID").attr("placeholder");
+    let lendBegnTime = $("body").find("#lendBegn").val();
+    let lendEndTime = $("body").find("#lendEnd").val();
+    let applDesc = $("body").find("#applDesc").val();
+
+    if (lendBegnTime != "" && lendEndTime != "" && applDesc != "") {
+        if (lendBegnTime === lendEndTime) alert("借用开始时间和结束时间一致，请重新设置");
+        else if (lendBegnTime > lendEndTime) alert("借用开始时间晚于结束时间，请重新设置");
+        else {
+            lendBegnTime = lendBegnTime.replace("T", " ");
+            lendEndTime = lendEndTime.replace("T", " ");
+            $.ajax({
+                url: "../../library/common/lend_eqpt.php",
+                type: "POST",
+                async: false,
+                data: {
+                    userID: currUserID, userRole: currUserRole,
+                    eqptID: beLentEqptID, lendBegn: lendBegnTime,
+                    lendEnd: lendEndTime, applDesc: applDesc
+                },
+                success: function (status) {
+                    if (status != "successful") alert(status);
+                    else {
+                        alert("借用成功");
+                        
+                        $("#mask").attr("style", "visibility: hidden;");
+
+                        $(".popup").remove();
+
+                        $("#content").find("#queryRsltTblHead").siblings().remove();
+
+                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+                        if (searchItem === "") {
+                            searchItem = userInfo.colgName;
+                            searchType = "colgName";
+                        }
+
+                        queryEqpts(userInfo.userRole, searchItem, searchType);
+
+                    }
+                }
+            });
+        }
+    } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
 
 });
 //批量借用实验设备
