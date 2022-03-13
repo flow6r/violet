@@ -588,3 +588,132 @@
 #impEqptsDiv #impEqptsForm #impEqptsTbl #impNewEqptsBtn:hover {
     float: right;
 }
+
+#lendEqptDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 45px;
+    width: 450px;
+    height: 540px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#lendEqptDiv #lendEqptForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 450px;
+    height: 540px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 100%;
+    border-spacing: 8px;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl th {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl tr:nth-child(2) {
+    text-align: center;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #beLentEqptID {
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendBegn,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendEnd {
+    font-size: 1.2em;
+    width: 223px;
+    height: 32px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl textarea {
+    font-size: 1.2em;
+    width: 220px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl tr:nth-child(3) td:nth-child(1),
+#lendEqptDiv #lendEqptForm #lendEqptTbl tr:nth-child(4) td:nth-child(1),
+#lendEqptDiv #lendEqptForm #lendEqptTbl tr:nth-child(5) td:nth-child(1),
+#lendEqptDiv #lendEqptForm #lendEqptTbl tr:nth-child(6) td:nth-child(1) {
+    float: left;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #beLentEqptID,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendBegn,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendEnd,
+#lendEqptDiv #lendEqptForm #lendEqptTbl textarea {
+    float: right;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #cancelLendEqptBtn,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #cancelLendEqptBtn:hover,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #cancelLendEqptBtn,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #cancelLendEqptBtn:hover {
+    float: left;
+}
+
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn,
+#lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn:hover {
+    float: right;
+}
