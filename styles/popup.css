@@ -617,7 +617,7 @@
     position: relative;
     padding: 0px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
     border-spacing: 8px;
 }
 
@@ -715,5 +715,145 @@
 
 #lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn,
 #lendEqptDiv #lendEqptForm #lendEqptTbl #lendAnEqptBtn:hover {
+    float: right;
+}
+
+#lendEqptsDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 45px;
+    width: 450px;
+    height: 600px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#lendEqptsDiv #lendEqptsForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 450px;
+    height: 600px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 8px;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl th {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl tr:nth-child(3) {
+    text-align: center;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEqptsID{
+    font-size: 1.2em;
+    width: 228px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendBegn,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEnd {
+    font-size: 1.2em;
+    width: 223px;
+    height: 32px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl textarea {
+    font-size: 1.2em;
+    width: 220px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendQty {
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #cancelLendEqptsBtn,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #bulkLendEqptsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #cancelLendEqptsBtn:hover,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #bulkLendEqptsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #cancelLendEqptsBtn,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #cancelLendEqptsBtn:hover {
+    float: left;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #bulkLendEqptsBtn,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #bulkLendEqptsBtn:hover {
+    float: right;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl tr:nth-child(2) td:nth-child(1),
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl tr:nth-child(4) td:nth-child(1),
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl tr:nth-child(5) td:nth-child(1),
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl tr:nth-child(6) td:nth-child(1) {
+    float: left;
+}
+
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEqptsID,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendBegn,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEnd,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl textarea,
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendQty {
     float: right;
 }
