@@ -322,7 +322,19 @@
     border-radius: 15px;
 }
 
-#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editDetlCancelBtn {
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editEqptDetlInfo:hover,
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editDetlUpdateBtn:hover {
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+/* #eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editDetlCancelBtn {
     font-size: 1.2em;
     width: 150px;
     height: 36px;
@@ -331,7 +343,29 @@
     border: 2px solid #dd6933;
     background-color: #dd6933;
     border-radius: 15px;
+} */
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editDetlCancelBtn {
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
 }
+
+#eqptDetlDiv #eqptDetlForm #eqptDetlTbl #editDetlCancelBtn:hover {
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
 
 #eqptDetlDiv #eqptDetlForm #eqptDetlTbl #eqptImg {
     text-align: center;
@@ -724,7 +758,7 @@
     margin: 0 auto;
     top: 45px;
     width: 450px;
-    height: 600px;
+    height: 585px;
     border-radius: 25px;
     background-color: #ffffff;
     border: 2px solid #2569c3;
@@ -737,7 +771,7 @@
     padding: 0;
     margin: 0 auto;
     width: 450px;
-    height: 600px;
+    height: 585px;
     border-radius: 25px;
     background-color: #ffffff;
 }
