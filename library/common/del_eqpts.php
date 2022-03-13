@@ -41,7 +41,7 @@ for ($index = 0; $index < $delEqptsCnt; $index++) {
         $stmt->bind_result($eqptStat);
         $stmt->fetch();
         if ($eqptStat === "已借出" || $eqptStat === "申请中") {
-            echo "设备ID为" . $eqptsBeDel[$index] . "的设备，当前状态为" . $eqptStat . "无法删除";
+            echo "设备ID为" . $eqptsBeDel[$index] . "的设备，当前状态为：" . $eqptStat . "，无法删除";
             exit;
         }
     } else {
