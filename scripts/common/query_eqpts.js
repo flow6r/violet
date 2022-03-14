@@ -150,7 +150,7 @@ $("body").on("click", "#editEqptDetlInfo", function () {
         $("body").find("#eqptDetlCls").removeAttr("disabled").empty();
 
         $.ajax({
-            url: "../../library/common/query_cls.php",
+            url: "../../library/common/query_class.php",
             type: "GET",
             async: false,
             data: { userRole: userInfo.userRole },
@@ -290,7 +290,7 @@ $("body").on("focusin", "#newEqptCls", function () {
     $("body").find("#newEqptCls").empty();
 
     $.ajax({
-        url: "../../library/common/query_cls.php",
+        url: "../../library/common/query_class.php",
         type: "GET",
         async: false,
         data: { userRole: userInfo.userRole },
