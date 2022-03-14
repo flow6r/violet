@@ -585,7 +585,7 @@ $("#content").on("click", "#delEqptsBtn", function () {
     if (userInfo.userRole != "学生") {
         if (eqptIDs.length != 0) {
             $.ajax({
-                url: "../../library/common/del_eqpts.php",
+                url: "../../library/common/delete_eqpts.php",
                 type: "POST",
                 async: false,
                 data: { userRole: userInfo.userRole, eqptsBeDel: eqptIDs },
