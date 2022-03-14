@@ -467,13 +467,11 @@ $("body").on("click", "#lendAnEqptBtn", function () {
                         }
 
                         queryEqpts(userInfo.userRole, searchItem, searchType);
-
                     }
                 }
             });
         }
     } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
-
 });
 
 //获取选中的设备ID
@@ -484,6 +482,7 @@ $("#content").on("click", ".eqptCheckbox", function (event) {
         $(event.target).removeAttr("checked");
         let currEqptIndx = eqptIDs.indexOf(currEqptID);
         eqptIDs.splice(currEqptIndx, 1);
+        eqptIDsIndx--;
     } else {
         $(event.target).attr("checked", "ture");
         eqptIDs[eqptIDsIndx++] = currEqptID;
@@ -508,7 +507,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
             "<tr><td><input type='button' id='cancelLendEqptsBtn' name='cancelLendEqptsBtn' class='cancelBtn' value='取消' /></td>" +
             "<td><input type='button' id='bulkLendEqptsBtn' name='bulkLendEqptsBtn' value='借用' /></td></tr></table></form></div>"
         );
-        
+
         $("body").find("#lendQty").attr("placeholder", eqptIDs.length);
 
         $("body").find("#lendEqptsID").empty();
@@ -532,7 +531,52 @@ $("body").on("click", "#lendEqptsID", function () {
 });
 //实现批量借用设备的函数
 $("body").on("click", "#bulkLendEqptsBtn", function () {
-    alert(eqptIDs.length);
+    let currUserID = userInfo.userID;
+    let currUserRole = userInfo.userRole;
+    let lendBegnTime = $("body").find("#lendBegn").val();
+    let lendEndTime = $("body").find("#lendEnd").val();
+    let applDesc = $("body").find("#applDesc").val();
+
+    if (lendBegnTime != "" && lendEndTime != "" && applDesc != "") {
+        if (lendBegnTime === lendEndTime) alert("借用开始时间和结束时间一致，请重新设置");
+        else if (lendBegnTime > lendEndTime) alert("借用开始时间晚于结束时间，请重新设置");
+        else {
+            lendBegnTime = lendBegnTime.replace("T", " ");
+            lendEndTime = lendEndTime.replace("T", " ");
+            $.ajax({
+                url: "../../library/common/lend_eqpts.php",
+                type: "POST",
+                async: false,
+                data: {
+                    userID: currUserID, userRole: currUserRole,
+                    eqpts: eqptIDs, lendBegn: lendBegnTime,
+                    lendEnd: lendEndTime, applDesc: applDesc
+                },
+                success: function (status) {
+                    if (status != "successful") alert(status);
+                    else {
+                        alert("借用成功");
+
+                        $("#mask").attr("style", "visibility: hidden;");
+
+                        $(".popup").remove();
+
+                        $("#content").find("#queryRsltTblHead").siblings().remove();
+
+                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+                        if (searchItem === "") {
+                            searchItem = userInfo.colgName;
+                            searchType = "colgName";
+                        }
+
+                        queryEqpts(userInfo.userRole, searchItem, searchType);
+                    }
+                }
+            });
+        }
+    } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
 });
 
 /*批量删除实验设备*/
