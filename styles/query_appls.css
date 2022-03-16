@@ -88,3 +88,14 @@
     color: #ffffff;
     border: 1px solid #ffffff;
 }
+
+#queryApplsDiv #queryApplsForm #applRsltsTbl td {
+    font-size: 1.1em;
+    background-color: #c4cdda;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+#queryApplsDiv #queryApplsForm #applRsltsTbl a {
+    text-decoration: none;
+}
