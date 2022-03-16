@@ -281,29 +281,16 @@ function printQueryEqpt() {
 
 }
 
-/*显示未审核的申请记录*/
-$(".userNav").on("click", "#unrvwAppls", function () {
-    let headerTxt = "未审核申请记录查询";
-    printQueryAppl(headerTxt);
+/*设备申请记录*/
+$(".userNav").on("click", "#userAppls", function () {
+    printQueryAppl();
 });
 
-/*显示已审核申请记录*/
-$(".userNav").on("click", "#rvwedAppls", function () {
-    let headerTxt = "已审核申请记录查询";
-    printQueryAppl(headerTxt);
-});
-
-/*显示全部申请记录*/
-$(".userNav").on("click", "#allAppls", function () {
-    let headerTxt = "全部审核申请记录查询";
-    printQueryAppl(headerTxt);
-});
-
-function printQueryAppl(param) {
+function printQueryAppl() {
     $("#content").empty();
     $("#content").append(
-        "<div id='unrvwApplsDiv' name='unrvwApplsDiv'><form id='unrvwApplsForm' name='unrvwApplsForm'>" +
-        "<table id='queryApplsMenuTbl'><tr><td colspan='3'><span>"+param+"</span></td></tr>" +
+        "<div id='queryApplsDiv' name='queryApplsDiv'><form id='queryApplsForm' name='queryApplsForm'>" +
+        "<table id='queryApplsMenuTbl'><tr><td colspan='3'><span>设备申请记录查询</span></td></tr>" +
         "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='applID'>申请记录ID</option>" +
         "<option value='userID'>申请用户ID</option><option value='applStat'>申请状态</option></select></td>" +
@@ -315,6 +302,8 @@ function printQueryAppl(param) {
         "<td><input type='button' id='nextPage' value='下一页' /></td><td><input type='text' id='trgtPage' placeholder='输入想要跳转的页数' /></td>" +
         "<td><input type='button' id='jump' value='跳转' /></td></tr></table></form></div>"
     );
+
+    queryAppls(userInfo.userRole, userInfo.colgName, "未处理", "applStat");
 }
 
 /*退出登录*/
