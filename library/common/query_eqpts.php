@@ -32,7 +32,7 @@ $stmt = $db->prepare($query);
 $stmt->bind_param("s", $searchItem);
 $stmt->execute();
 //将查询结果以JSON数据格式返回给浏览器
-$result = $stmt->GET_result();
+$result = $stmt->get_result();
 $equipments = $result->fetch_all(MYSQLI_ASSOC);
 $equipmentsJSON = json_encode($equipments, JSON_UNESCAPED_UNICODE);
 // 将JSON写入文件
