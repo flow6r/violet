@@ -256,7 +256,7 @@ function printQueryEqpt() {
         "<td><select id='searchType' name='searchType'><option value='eqptID'>设备ID</option><option value='eqptName'>设备名称</option>" +
         "<option value='clsName'>设备分类</option><option value='colgName'>隶属学院</option><option value='eqptStat'>设备状态</option></select></td>" +
         "<td><input type='button' id='queryEqptsBtn' name='queryEqptsBtn' value='查询' /></td>" +
-        "<td><input type='button' id='lendEqptsBtn' name='lendEqptsBtn' value='批量借用' style='visibility: visible' /></td>"+
+        "<td><input type='button' id='lendEqptsBtn' name='lendEqptsBtn' value='批量借用' style='visibility: visible' /></td>" +
         "<td><input type='button' id='addEqptBtn' name='addEqptBtn' value='新增设备' style='visibility: visible' /></td>" +
         "<td><input type='button' id='impEqptsBtn' name='impEqptsBtn' value='批量导入' style='visibility: visible' /></td>" +
         "<td><input type='button' id='delEqptsBtn' name='delEqptsBtn' value='删除设备' style='visibility: visible' /></td></tr></table>" +
@@ -281,6 +281,41 @@ function printQueryEqpt() {
 
 }
 
+/*显示未审核的申请记录*/
+$(".userNav").on("click", "#unrvwAppls", function () {
+    let headerTxt = "未审核申请记录查询";
+    printQueryAppl(headerTxt);
+});
+
+/*显示已审核申请记录*/
+$(".userNav").on("click", "#rvwedAppls", function () {
+    let headerTxt = "已审核申请记录查询";
+    printQueryAppl(headerTxt);
+});
+
+/*显示全部申请记录*/
+$(".userNav").on("click", "#allAppls", function () {
+    let headerTxt = "全部审核申请记录查询";
+    printQueryAppl(headerTxt);
+});
+
+function printQueryAppl(param) {
+    $("#content").empty();
+    $("#content").append(
+        "<div id='unrvwApplsDiv' name='unrvwApplsDiv'><form id='unrvwApplsForm' name='unrvwApplsForm'>" +
+        "<table id='queryApplsMenuTbl'><tr><td colspan='3'><span>"+param+"</span></td></tr>" +
+        "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
+        "<td><select id='searchType' name='searchType'><option value='applID'>申请记录ID</option>" +
+        "<option value='userID'>申请用户ID</option><option value='applStat'>申请状态</option></select></td>" +
+        "<td><input type='button' id='queryUnrvwApplsBtn' name='queryUnrvwApplsBtn' value='查询' /></td></tr>" +
+        "</table><table id='applRsltsTbl' name='applRsltsTbl'>" +
+        "<tr id='applRsltsTblHead'><th width='50px'></th><th>申请记录ID</th><th>申请用ID</th><th>申请详情</th><th>申请状态</th><th>操作</th></tr>" +
+        "</table><table id='pageCtlTbl'>" +
+        "<tr><td><input type='button' id='prevPage' value='上一页' /></td><td><input type='text' id='pageInfo' value='' size='12' disabled='disabled' /></td>" +
+        "<td><input type='button' id='nextPage' value='下一页' /></td><td><input type='text' id='trgtPage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='jump' value='跳转' /></td></tr></table></form></div>"
+    );
+}
 
 /*退出登录*/
 $(".userNav").on("click", "#logout", function () {
