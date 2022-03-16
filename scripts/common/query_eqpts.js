@@ -78,6 +78,7 @@ function echoEqptRecords(page) {
             "<td><input type='button' id='" + eqptInfo[begnPage].EqptID + "' class='lendBtn' value='借用' /></td>" +
             "</tr>"
         );
+        if (eqptInfo[begnPage].EqptStat != "未借出") $("input[type='checkbox'][value='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
         if (eqptInfo[begnPage].EqptStat != "未借出") $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
     }
 
@@ -108,7 +109,7 @@ $("#content").on("click", "#jump", function () {
 });
 
 //显示设备详情的弹窗
-$("#content").on("click", "a", function eqptDetail(event) {
+$("#content").on("click", "#queryEqptsDiv a", function eqptDetail(event) {
     $("#mask").attr("style", "visibility: visible;");
 
     eqptDetl = $(event.target).attr("name");
