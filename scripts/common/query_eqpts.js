@@ -9,13 +9,14 @@ var eqptIDs = new Array();
 var eqptIDsIndx = 0;
 
 $("#content").on("click", "#queryEqptsBtn", function () {
-    $("#content").find("#queryRsltTblHead").siblings().remove();
 
     let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
     let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
-    if (searchItem != "") queryEqpts(userInfo.userRole, searchItem, searchType);
-    else alert("请输入关键词");
+    if (searchItem != "") {
+        $("#content").find("#queryRsltTblHead").siblings().remove();
+        queryEqpts(userInfo.userRole, searchItem, searchType);
+    } else alert("请输入关键词");
 });
 
 function queryEqpts(userRole, searchItem, searchType) {
