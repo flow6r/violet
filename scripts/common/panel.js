@@ -296,11 +296,11 @@ function printQueryAppl() {
         "<option value='userID'>申请用户ID</option><option value='applStat'>申请状态</option></select></td>" +
         "<td><input type='button' id='queryUnrvwApplsBtn' name='queryUnrvwApplsBtn' value='查询' /></td></tr>" +
         "</table><table id='applRsltsTbl' name='applRsltsTbl'>" +
-        "<tr id='applRsltsTblHead'><th width='50px'></th><th>申请记录ID</th><th>申请用ID</th><th>申请详情</th><th>申请状态</th><th>操作</th></tr>" +
-        "</table><table id='pageCtlTbl'>" +
-        "<tr><td><input type='button' id='prevPage' value='上一页' /></td><td><input type='text' id='pageInfo' value='' size='12' disabled='disabled' /></td>" +
-        "<td><input type='button' id='nextPage' value='下一页' /></td><td><input type='text' id='trgtPage' placeholder='输入想要跳转的页数' /></td>" +
-        "<td><input type='button' id='jump' value='跳转' /></td></tr></table></form></div>"
+        "<tr id='applRsltsTblHead'><th width='50px'></th><th>申请记录ID</th><th>申请用户ID</th><th>申请详情</th><th>申请状态</th><th>操作</th></tr>" +
+        "</table><table id='applsPageCtlTbl'>" +
+        "<tr><td><input type='button' id='applsPrevPage' value='上一页' /></td><td><input type='text' id='applsPageInfo' value='' size='12' disabled='disabled' /></td>" +
+        "<td><input type='button' id='applsNextPage' value='下一页' /></td><td><input type='text' id='applsTrgtPage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='applsJump' value='跳转' /></td></tr></table></form></div>"
     );
 
     queryAppls(userInfo.userRole, userInfo.colgName, "未处理", "applStat");
