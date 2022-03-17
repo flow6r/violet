@@ -2,7 +2,6 @@
 /*查询设备申请记录的脚本*/
 //获取GET请求
 $userRole = $_GET["userRole"];
-$colgName = $_GET["colgName"];
 $searchItem = $_GET["searchItem"];
 $searchType = $_GET["searchType"];
 
@@ -31,9 +30,9 @@ if (mysqli_connect_error()) {
 }
 
 //查询数据库
-$query = "SELECT A.* FROM Users AS U, Applications AS A WHERE A.UserID = U.UserID AND U.ColgName = ? AND A.".$searchType." LIKE ?";
+$query = "SELECT A.* FROM Applications AS A WHERE A.".$searchType." LIKE ?";
 $stmt = $db->prepare($query);
-$stmt->bind_param("ss", $colgName, $searchItem);
+$stmt->bind_param("s", $searchItem);
 $stmt->execute();
 
 //将查询结果以JSON数据格式返回给浏览器
