@@ -70,7 +70,7 @@ function echoApplsRecords(page) {
             "<td>" + appls[begnPage].UserID + "</td>" +
             "<td><a name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
             "<td>" + appls[begnPage].ApplStat + "</td>" +
-            "<td><input type='button' id='procApplBtn' name='procApplBtn' value='处理' /></td></tr>"
+            "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' /></td></tr>"
         );
     }
 
