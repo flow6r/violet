@@ -73,6 +73,7 @@ function echoApplsRecords(page) {
             "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
             "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
         );
+        if (appls[begnPage].ApplStat != "未处理") $("#content").find("input[type='button'][id='"+appls[begnPage].ApplID+"']").attr("disabled", "disabled");
     }
 
     if (userInfo.userRole === "学生") $("#content").find(".procApplBtn").attr("style", "display: none");
@@ -171,4 +172,14 @@ $("body").on("click", "#applDetlCancelBtn", function () {
         searchType = "applStat";
     }
     queryAppls(userInfo.userRole, searchItem, searchType);
+});
+
+//处理单个设备申请记录
+$("#content").on("click", ".procApplBtn", function(event) {
+    alert($(event.target).attr("id"));
+});
+
+//删除单个设备申请记录
+$("#content").on("click", ".delApplBtn", function(event) {
+    alert($(event.target).attr("name"));
 });
