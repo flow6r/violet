@@ -11,16 +11,16 @@ $("#content").on("click", "#queryUnrvwApplsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#applRsltsTblHead").siblings().remove();
-        queryAppls(userInfo.userRole, userInfo.colgName, searchItem, searchType);
+        queryAppls(userInfo.userRole, searchItem, searchType);
     } else alert("请输入关键词");
 });
 
-function queryAppls(userRole, colgName, searchItem, searchType) {
+function queryAppls(userRole, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_appls.php",
         type: "GET",
         async: false,
-        data: { userRole: userRole, colgName: colgName, searchItem: searchItem, searchType: searchType },
+        data: { userRole: userRole, searchItem: searchItem, searchType: searchType },
         dataType: "json",
         success: function (applsJSON) {
             appls = applsJSON;
