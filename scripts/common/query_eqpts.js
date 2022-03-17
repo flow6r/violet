@@ -524,7 +524,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
     }
 });
 //根据选择的ID更换对应的设备图图片
-$("body").on("click", "#lendEqptsID", function () {
+$("body").on("change", "#lendEqptsID", function () {
     let selEqptID = $("body").find("#lendEqptsID").val();
     selEqptIDIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == selEqptID);
     $("body").find("img").attr("src", eqptInfo[selEqptIDIndx].ImgPath);
