@@ -69,12 +69,46 @@
     border-radius: 15px;
 }
 
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #delApplsBtn,
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #procApplsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #delApplsBtn:hover,
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #procApplsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4d86d1;
+    background-color: #4d86d1;
+    border-radius: 15px;
+}
+
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(1) {
     width: 366px;
 }
 
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(2) {
     width: 158px;
+}
+
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(3) {
+    width: 83px;
+}
+
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(4) {
+    width: 108px;
 }
 
 #queryApplsDiv #queryApplsForm #applRsltsTbl {
@@ -100,6 +134,8 @@
     text-decoration: none;
 }
 
-#queryApplsDiv #queryApplsForm #applRsltsTbl .procApplBtn {
+#queryApplsDiv #queryApplsForm #applRsltsTbl .procApplBtn,
+#queryApplsDiv #queryApplsForm #applRsltsTbl .delApplBtn {
     font-size: 1.1em;
+    margin-right: 10px;
 }
