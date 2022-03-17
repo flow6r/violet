@@ -891,3 +891,130 @@
 #lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendQty {
     float: right;
 }
+
+/*设备借用申请详情*/
+#applDetlDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 22px;
+    width: 450px;
+    height: 645px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#applDetlDiv #applDetlForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 450px;
+    height: 645px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 8px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl label {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl tr:nth-child(4) {
+    text-align: center;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #applQty,
+#applDetlDiv #applDetlForm #applDetlTbl #dspUser {
+    font-size: 1.2em;
+    width: 220px;
+    height: 25px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #applEqptID {
+    font-size: 1.2em;
+    width: 228px;
+    height: 31px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #lendBegn,
+#applDetlDiv #applDetlForm #applDetlTbl #lendEnd,
+#applDetlDiv #applDetlForm #applDetlTbl #applCre,
+#applDetlDiv #applDetlForm #applDetlTbl #dspDate {
+    font-size: 1.2em;
+    width: 223px;
+    height: 27px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl textarea {
+    font-size: 1.2em;
+    width: 220px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #applDetlCancelBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #applDetlCancelBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#applDetlDiv #applDetlForm #applDetlTbl #applQty,
+#applDetlDiv #applDetlForm #applDetlTbl #applEqptID,
+#applDetlDiv #applDetlForm #applDetlTbl #lendBegn,
+#applDetlDiv #applDetlForm #applDetlTbl #lendEnd,
+#applDetlDiv #applDetlForm #applDetlTbl textarea,
+#applDetlDiv #applDetlForm #applDetlTbl #applCre,
+#applDetlDiv #applDetlForm #applDetlTbl #dspUser,
+#applDetlDiv #applDetlForm #applDetlTbl #dspDate {
+    float: right;
+}
