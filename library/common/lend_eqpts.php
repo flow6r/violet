@@ -59,8 +59,9 @@ $stmt->bind_param("sisssss", $userID, $applQty, $lendBegn, $lendEnd, $applDesc, 
 $stmt->execute();
 
 //获取新创建的设备申请ID
-$query = "SELECT LAST_INSERT_ID(ApplID) FROM Applications";
+$query = "SELECT ApplID FROM Applications WHERE UserID = ? AND ApplCre = ?";
 $stmt = $db->prepare($query);
+$stmt->bind_param("ss", $userID, $applCre);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows()) {
@@ -71,7 +72,7 @@ if ($stmt->num_rows()) {
     for ($indx = 0; $indx < $applQty; $indx++) {
         $query = "INSERT INTO Details VALUES(?,?)";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss", $applID, $eqpts[$indx]);
+        $stmt->bind_param("is", $applID, $eqpts[$indx]);
         $stmt->execute();
         $query = "UPDATE Equipments SET EqptStat = ? WHERE EqptID = ?";
         $stmt = $db->prepare($query);
