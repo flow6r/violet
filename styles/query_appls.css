@@ -99,3 +99,7 @@
 #queryApplsDiv #queryApplsForm #applRsltsTbl a {
     text-decoration: none;
 }
+
+#queryApplsDiv #queryApplsForm #applRsltsTbl .procApplBtn {
+    font-size: 1.1em;
+}
