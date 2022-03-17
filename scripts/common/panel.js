@@ -303,7 +303,7 @@ function printQueryAppl() {
         "<td><input type='button' id='applsJump' value='跳转' /></td></tr></table></form></div>"
     );
 
-    queryAppls(userInfo.userRole, userInfo.colgName, "未处理", "applStat");
+    queryAppls(userInfo.userRole, "未处理", "applStat");
 }
 
 /*退出登录*/
