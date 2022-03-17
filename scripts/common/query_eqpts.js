@@ -574,6 +574,9 @@ $("body").on("click", "#bulkLendEqptsBtn", function () {
                         }
 
                         queryEqpts(userInfo.userRole, searchItem, searchType);
+
+                        eqptIDs = new Array();
+                        eqptIDsIndx = 0;
                     }
                 }
             });
