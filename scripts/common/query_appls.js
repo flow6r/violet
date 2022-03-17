@@ -70,9 +70,12 @@ function echoApplsRecords(page) {
             "<td>" + appls[begnPage].UserID + "</td>" +
             "<td><a name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
             "<td>" + appls[begnPage].ApplStat + "</td>" +
-            "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' /></td></tr>"
+            "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
+            "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
         );
     }
+
+    if (userInfo.userRole === "学生") $("#content").find(".procApplBtn").attr("style", "display: none");
 
     $("#content").find("#applsPageInfo").val("第" + applsCurrPage + "页，共" + applsTotPages + "页");
 }
