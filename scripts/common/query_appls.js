@@ -12,16 +12,20 @@ $("#content").on("click", "#queryUnrvwApplsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#applRsltsTblHead").siblings().remove();
-        queryAppls(userInfo.userRole, searchItem, searchType);
+        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
     } else alert("请输入关键词");
 });
 
-function queryAppls(userRole, searchItem, searchType) {
+function queryAppls(userID, userRole, colgName, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_appls.php",
         type: "GET",
         async: false,
-        data: { userRole: userRole, searchItem: searchItem, searchType: searchType },
+        data:
+        {
+            userID: userID, userRole: userRole, colgName: colgName,
+            searchItem: searchItem, searchType: searchType
+        },
         dataType: "json",
         success: function (applsJSON) {
             appls = applsJSON;
@@ -171,7 +175,7 @@ $("body").on("click", "#applDetlCancelBtn", function () {
         searchItem = "";
         searchType = "applStat";
     }
-    queryAppls(userInfo.userRole, searchItem, searchType);
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //处理单个设备申请记录
@@ -194,7 +198,7 @@ $("#content").on("click", ".procApplBtn", function (event) {
                         searchItem = "";
                         searchType = "applStat";
                     }
-                    queryAppls(userInfo.userRole, searchItem, searchType);
+                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 
                 } else alert(status);
             }
