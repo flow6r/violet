@@ -149,7 +149,7 @@ $("#content").on("click", "#queryApplsDiv a", function (event) {
         "<tr><td><label>创建申请时间</label></td><td><input type='datetime-local' step='1' id='applCre' name='applCre' value='" + (appls[applIndx].ApplCre).replace(" ", "T") + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>处理申请用户</label></td><td><input type='text' id='dspUser' name='dspUser' placeholder='" + (appls[applIndx].DspUser == null ? "暂无" : appls[applIndx].DspUser) + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>处理申请时间</label></td><td><input type='datetime-local' step='1' id='dspDate' name='dspDate' value='" + (appls[applIndx].DspDate == null ? "" : (appls[applIndx].DspDate).replace(" ", "T")) + "' disabled='disabled' /></td></tr>" +
-        "<tr><td colspan='2'><input type='button' id='applDetlCancelBtn' name='applDetlCancelBtn' value='取消' /></td></tr></table></form></div>"
+        "<tr><td colspan='2'><input type='button' id='applDetlCancelBtn' name='applDetlCancelBtn' class='applsCancelBtn' value='取消' /></td></tr></table></form></div>"
     );
 
     $("body").find("#applEqptID").empty();
@@ -169,7 +169,7 @@ $("body").on("change", "#applEqptID", function (event) {
 });
 
 //关闭详情弹窗
-$("body").on("click", "#applDetlCancelBtn", function () {
+$("body").on("click", ".applsCancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
 
     $(".popup").remove();
@@ -212,6 +212,31 @@ $("#content").on("click", ".procApplBtn", function (event) {
         });
     } else alert("禁止学生操作");
 });
+
+//显示驳回单个申请记录的弹窗
+$("#content").on("click", ".rjctApplBtn", function (event) {
+    if (userInfo.userRole === "学生") alert("禁止学生操作");
+    else {
+        $("#mask").attr("style", "visibility: visible;");
+
+        $("body").append(
+            "<div id='rjctApplDiv' name='rjctApplDiv' class='popup'><form id='rjctApplForm' name='rjctApplForm'>" +
+            "<table id='rjctApplTbl' name='rjctApplTbl'><tr><th colspan='2'><span>驳回设备借用申请</span></th></tr>" +
+            "<tr><td><label>申请ID</label></td><td><input type='text' id='rjctedApplID' name='rjctedApplID' placeholder='" + $(event.target).attr("name") +
+            "' disabled='disabled' /></td></tr>" +
+            "<tr><td><label>驳回原因</label></td><td><textarea id='rjctRsn' name='rjctRsn'></textarea></td></tr>" +
+            "<tr><td><input type='button' id='cancelRjctBtn' name='cancelRjctBtn' class='applsCancelBtn' value='取消' /></td>" +
+            "<td><input type='button' id='rjctApplBtn' name='rjctApplBtn' value='驳回' /></td></tr></table></form></div>"
+        );
+    }
+});
+//实现驳回单个设备申请记录
+$("body").on("click", "#rjctApplBtn", function () {
+    let rjctedApplID = $("body").find("#rjctedApplID").attr("placeholder");
+    let rjctRsn = $("body").find("#rjctRsn").val();
+    alert("您要驳回的设备借用申请ID："+rjctedApplID+"\n驳回理由："+rjctRsn);
+});
+
 
 //删除单个设备申请记录
 $("#content").on("click", ".delApplBtn", function (event) {
