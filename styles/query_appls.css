@@ -135,6 +135,7 @@
 }
 
 #queryApplsDiv #queryApplsForm #applRsltsTbl .procApplBtn,
+#queryApplsDiv #queryApplsForm #applRsltsTbl .rjctApplBtn,
 #queryApplsDiv #queryApplsForm #applRsltsTbl .delApplBtn {
     font-size: 1.1em;
     margin-right: 10px;
