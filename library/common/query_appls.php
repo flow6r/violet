@@ -1,25 +1,39 @@
 <?php
 /*查询设备申请记录的脚本*/
 //获取GET请求
+$userID = $_GET["userID"];
 $userRole = $_GET["userRole"];
+$colgName = $_GET["colgName"];
 $searchItem = $_GET["searchItem"];
 $searchType = $_GET["searchType"];
 
 //设置查询关键词
-$searchItem = "%".$searchItem."%";
+$searchItem = "%" . $searchItem . "%";
 
 //设置查询类型和关键词
 switch ($searchType) {
-    case "applID":$searchType = "ApplID";break;
-    case "userID":$searchType = "UserID";break;
-    case "applStat":$searchType = "ApplStat";break;
+    case "applID":
+        $searchType = "ApplID";
+        break;
+    case "userID":
+        $searchType = "UserID";
+        break;
+    case "applStat":
+        $searchType = "ApplStat";
+        break;
 }
 
 //引入数据库用户信息脚本
 switch ($userRole) {
-    case "学生":require_once("../dbuser/student.php");break;
-    case "教师":require_once("../dbuser/teacher.php");break;
-    case "管理员":require_once("../dbuser/admin.php");break;
+    case "学生":
+        require_once("../dbuser/student.php");
+        break;
+    case "教师":
+        require_once("../dbuser/teacher.php");
+        break;
+    case "管理员":
+        require_once("../dbuser/admin.php");
+        break;
 }
 
 //连接数据库
@@ -30,9 +44,23 @@ if (mysqli_connect_error()) {
 }
 
 //查询数据库
-$query = "SELECT A.* FROM Applications AS A WHERE A.".$searchType." LIKE ?";
-$stmt = $db->prepare($query);
-$stmt->bind_param("s", $searchItem);
+switch ($userRole) {
+    case "学生":
+        $query = "SELECT A.* FROM Applications AS A WHERE A.UserID = ? AND A." . $searchType . " LIKE ?";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("ss", $userID, $searchItem);
+        break;
+    case "教师":
+        $query = "SELECT A.* FROM Users AS U, Applications AS A WHERE U.UserID = A.UserID AND U.ColgName = ? AND A." . $searchType . " LIKE ? AND U.UserRole != '管理员';";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("ss", $colgName, $searchItem);
+        break;
+    case "管理员":
+        $query = "SELECT A.* FROM Applications AS A WHERE A." . $searchType . " LIKE ?";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("s", $searchItem);
+        break;
+}
 $stmt->execute();
 
 //将查询结果以JSON数据格式返回给浏览器
