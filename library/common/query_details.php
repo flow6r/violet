@@ -28,10 +28,10 @@ $stmt->execute();
 $result = $stmt->get_result();
 $details = $result->fetch_all(MYSQLI_ASSOC);
 $detailsJSON = json_encode($details, JSON_UNESCAPED_UNICODE);
+echo $detailsJSON;
 
 //将JSON写入文件
 // file_put_contents("details.json", $detailsJSON);
-// echo $detailsJSON;
 
 //释放结果集并关闭链接
 $stmt->free_result();
