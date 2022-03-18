@@ -75,12 +75,19 @@ function echoApplsRecords(page) {
             "<td><a name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
             "<td>" + appls[begnPage].ApplStat + "</td>" +
             "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
+            "<input type='button' name='" + appls[begnPage].ApplID + "' class='rjctApplBtn' value='驳回' />" +
             "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
         );
-        if (appls[begnPage].ApplStat != "未处理") $("#content").find("input[type='button'][id='" + appls[begnPage].ApplID + "']").attr("disabled", "disabled");
+        if (appls[begnPage].ApplStat != "未处理") {
+            $("#content").find("input[type='button'][id='" + appls[begnPage].ApplID + "']").attr("disabled", "disabled");
+            $("#content").find("input[type='button'][name='" + appls[begnPage].ApplID + "'][class='rjctApplBtn']").attr("disabled", "disabled");
+        }
     }
 
-    if (userInfo.userRole === "学生") $("#content").find(".procApplBtn").attr("style", "display: none");
+    if (userInfo.userRole === "学生") {
+        $("#content").find(".procApplBtn").attr("style", "display: none");
+        $("#content").find(".rjctApplBtn").attr("style", "display: none");
+    }
 
     $("#content").find("#applsPageInfo").val("第" + applsCurrPage + "页，共" + applsTotPages + "页");
 }
@@ -208,5 +215,25 @@ $("#content").on("click", ".procApplBtn", function (event) {
 
 //删除单个设备申请记录
 $("#content").on("click", ".delApplBtn", function (event) {
-    alert($(event.target).attr("name"));
+    $.ajax({
+        url: "../../library/common/del_appl.php",
+        type: "POST",
+        async: false,
+        data: { userRole: userInfo.userRole, applID: $(event.target).attr("name") },
+        success: function (status) {
+            if (status === "successful") {
+                alert("申请ID为" + $(event.target).attr("name") + "的借用申请删除成功");
+
+                let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                $("#content").find("#applRsltsTblHead").siblings().remove();
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "applStat";
+                }
+                queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+            } else alert(status);
+        }
+    });
 });
