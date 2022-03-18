@@ -73,7 +73,7 @@ function echoApplsRecords(page) {
             "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
             "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
         );
-        if (appls[begnPage].ApplStat != "未处理") $("#content").find("input[type='button'][id='"+appls[begnPage].ApplID+"']").attr("disabled", "disabled");
+        if (appls[begnPage].ApplStat != "未处理") $("#content").find("input[type='button'][id='" + appls[begnPage].ApplID + "']").attr("disabled", "disabled");
     }
 
     if (userInfo.userRole === "学生") $("#content").find(".procApplBtn").attr("style", "display: none");
@@ -175,11 +175,34 @@ $("body").on("click", "#applDetlCancelBtn", function () {
 });
 
 //处理单个设备申请记录
-$("#content").on("click", ".procApplBtn", function(event) {
-    alert($(event.target).attr("id"));
+$("#content").on("click", ".procApplBtn", function (event) {
+    if (userInfo.userRole != "学生") {
+        $.ajax({
+            url: "../../library/common/proc_appl.php",
+            type: "POST",
+            async: false,
+            data: { userRole: userInfo.userRole, applID: $(event.target).attr("id"), dspUser: userInfo.userID },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("申请ID为" + $(event.target).attr("id") + "的借用申请处理成功");
+
+                    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                    $("#content").find("#applRsltsTblHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "applStat";
+                    }
+                    queryAppls(userInfo.userRole, searchItem, searchType);
+
+                } else alert(status);
+            }
+        });
+    } else alert("禁止学生操作");
 });
 
 //删除单个设备申请记录
-$("#content").on("click", ".delApplBtn", function(event) {
+$("#content").on("click", ".delApplBtn", function (event) {
     alert($(event.target).attr("name"));
 });
