@@ -125,7 +125,7 @@ $mail->addAddress($userEmail);
 // 添加该邮件的主题
 $mail->Subject = "HelloWorld!";
 // 添加邮件正文
-$mail->Body = "<h1>您好，您提交的申请ID为".$applID."的申请被驳回</h1><br /><p>".$rjctRsn."</p>";
+$mail->Body = "<h1>您好，您提交的申请ID为".$applID."的申请被驳回</h1><br /><p>驳回原因：".$rjctRsn."</p>";
 // 为该邮件添加附件
 //$mail->addAttachment("./example.pdf");
 // 发送邮件 返回状态
