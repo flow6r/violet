@@ -52,7 +52,7 @@ for ($indx = 0; $indx < $applQty; $indx++) {
 
 //创建新的设备申请记录
 $applCre = date("Y-m-d H:i:s");
-$applStat = "未处理";
+$applStat = "未通过";
 $query = "INSERT INTO Applications VALUES(NULL,?,?,?,?,?,?,?,NULL,NULL)";
 $stmt = $db->prepare($query);
 $stmt->bind_param("sisssss", $userID, $applQty, $lendBegn, $lendEnd, $applDesc, $applCre, $applStat);
