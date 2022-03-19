@@ -18,9 +18,9 @@ $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($applStat);
 $stmt->fetch();
-if ($applStat === "未处理") {
+if ($applStat === "未通过") {
     //更新设备申请信息
-    $query = "UPDATE Applications SET ApplStat = '已处理', DspUser = ?, DspDate = ? WHERE ApplID = ?";
+    $query = "UPDATE Applications SET ApplStat = '已通过', DspUser = ?, DspDate = ? WHERE ApplID = ?";
     $stmt = $db->prepare($query);
     $stmt->bind_param("sss", $dspUser, $dspDate, $applID);
     $stmt->execute();
@@ -54,7 +54,7 @@ if ($applStat === "未处理") {
     }
     echo "处理成功";
 } else {
-    echo "该申请已处理，不能重复处理申请";
+    echo "该申请已通过，不能重复处理申请";
 }
 //释放结果集并关闭链接
 $stmt->free_result();
