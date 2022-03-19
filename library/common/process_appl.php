@@ -26,7 +26,7 @@ if (mysqli_connect_error()) {
 }
 
 //处理设备借用申请
-$applStat = "未处理";
+$applStat = "未通过";
 $query = "SELECT * FROM Applications WHERE ApplID = ? AND ApplStat = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("is", $applID, $applStat);
@@ -58,7 +58,7 @@ if ($stmt->num_rows()) {
 }
 
 //更新申请状态
-$applStat = "已处理";
+$applStat = "已通过";
 $query = "UPDATE Applications SET ApplStat = ?, DspUser = ?, DspDate = ? WHERE ApplID = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("sssi", $applStat, $dspUser, $dspDate, $applID);
