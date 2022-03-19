@@ -37,10 +37,10 @@ $stmt->store_result();
 if ($stmt->num_rows()) {
     $stmt->bind_result($applStat);
     $stmt->fetch();
-    if ($applStat === "已处理") {
+    if ($applStat === "已通过") {
         $stmt->free_result();
         $db->close();
-        echo "该申请已处理，请勿重复处理";
+        echo "该申请已通过，请勿重复处理";
         exit;
     }
 }
@@ -105,6 +105,8 @@ if ($canDel) {
     }
     echo "抱歉，您选择的申请中包含不符合删除条件的设备状态的设备：" . $tips . "\n请确认无误后再进行删除操作";
 }
+
+echo "successful";
 
 //释放结果集并关闭链接
 $stmt->free_result();
