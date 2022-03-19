@@ -70,6 +70,7 @@
 }
 
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl #delApplsBtn,
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #rjctApplsBtn,
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl #procApplsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
@@ -83,6 +84,7 @@
 }
 
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl #delApplsBtn:hover,
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #rjctApplsBtn:hover,
 #queryApplsDiv #queryApplsForm #queryApplsMenuTbl #procApplsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
@@ -107,7 +109,8 @@
     width: 83px;
 }
 
-#queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(4) {
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(4),
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl tr:nth-child(2) td:nth-child(5) {
     width: 108px;
 }
 
