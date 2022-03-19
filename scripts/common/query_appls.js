@@ -78,7 +78,7 @@ function echoApplsRecords(page) {
             "<input type='button' name='" + appls[begnPage].ApplID + "' class='rjctApplBtn' value='驳回' />" +
             "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
         );
-        if (appls[begnPage].ApplStat != "未处理") {
+        if (appls[begnPage].ApplStat != "未通过") {
             $("#content").find("input[type='button'][id='" + appls[begnPage].ApplID + "']").attr("disabled", "disabled");
             $("#content").find("input[type='button'][name='" + appls[begnPage].ApplID + "'][class='rjctApplBtn']").attr("disabled", "disabled");
         }
@@ -189,7 +189,7 @@ $("body").on("click", ".applsCancelBtn", function () {
 $("#content").on("click", ".procApplBtn", function (event) {
     if (userInfo.userRole != "学生") {
         $.ajax({
-            url: "../../library/common/proc_appl.php",
+            url: "../../library/common/process_appl.php",
             type: "POST",
             async: false,
             data: { userRole: userInfo.userRole, applID: $(event.target).attr("id"), dspUser: userInfo.userID },
@@ -206,7 +206,6 @@ $("#content").on("click", ".procApplBtn", function (event) {
                         searchType = "applStat";
                     }
                     queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
                 } else alert(status);
             }
         });
@@ -234,14 +233,46 @@ $("#content").on("click", ".rjctApplBtn", function (event) {
 $("body").on("click", "#rjctApplBtn", function () {
     let rjctedApplID = $("body").find("#rjctedApplID").attr("placeholder");
     let rjctRsn = $("body").find("#rjctRsn").val();
-    alert("您要驳回的设备借用申请ID："+rjctedApplID+"\n驳回理由："+rjctRsn);
-});
 
+    if (rjctRsn === "") alert("驳回理由不能为空");
+    else {
+        $.ajax({
+            url: "../../library/common/reject_appl.php",
+            type: "POST",
+            async: false,
+            data: {
+                dspUser: userInfo.userID, userRole: userInfo.userRole,
+                applID: rjctedApplID, rjctRsn: rjctRsn
+            },
+            success: function (status) {
+                if (status != "successful") alert(status);
+                else {
+                    alert("申请ID为" + rjctedApplID + "的申请，驳回成功");
+
+                    $("#mask").attr("style", "visibility: hidden;");
+
+                    $(".popup").remove();
+                    
+                    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                    $("#content").find("#applRsltsTblHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "applStat";
+                    }
+                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+                }
+            }
+        });
+    }
+
+});
 
 //删除单个设备申请记录
 $("#content").on("click", ".delApplBtn", function (event) {
     $.ajax({
-        url: "../../library/common/del_appl.php",
+        url: "../../library/common/delete_appl.php",
         type: "POST",
         async: false,
         data: { userRole: userInfo.userRole, applID: $(event.target).attr("name") },
