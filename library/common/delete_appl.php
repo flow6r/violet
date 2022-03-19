@@ -28,25 +28,7 @@ if (mysqli_connect_error()) {
     exit;
 }
 
-//检查申请状态
-$query = "SELECT ApplStat FROM Applications WHERE ApplID = ?";
-$stmt = $db->prepare($query);
-$stmt->bind_param("i", $applID);
-$stmt->execute();
-$stmt->store_result();
-if ($stmt->num_rows()) {
-    $stmt->bind_result($applStat);
-    $stmt->fetch();
-    if ($applStat === "已通过") {
-        $stmt->free_result();
-        $db->close();
-        echo "该申请已通过，请勿重复处理";
-        exit;
-    }
-}
-
 //获取申请借用的设备ID
-$stmt->free_result();
 $query = "SELECT EqptID FROM Details WHERE ApplID = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("i", $applID);
