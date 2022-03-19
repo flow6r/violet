@@ -296,6 +296,7 @@ function printQueryAppl() {
         "<option value='userID'>申请用户ID</option><option value='applStat'>申请状态</option></select></td>" +
         "<td><input type='button' id='queryUnrvwApplsBtn' name='queryUnrvwApplsBtn' value='查询' /></td>" +
         "<td><input type='button' id='delApplsBtn' name='delApplsBtn' value='批量删除'/></td>" +
+        "<td><input type='button' id='rjctApplsBtn' name='rjctApplsBtn' value='批量驳回'/></td>" +
         "<td><input type='button' id='procApplsBtn' name='procApplsBtn' value='批量处理'/></td></tr>" +
         "</table><table id='applRsltsTbl' name='applRsltsTbl'>" +
         "<tr id='applRsltsTblHead'><th width='50px'></th><th>申请记录ID</th><th>申请用户ID</th><th>申请详情</th><th>申请状态</th><th>操作</th></tr>" +
@@ -306,6 +307,7 @@ function printQueryAppl() {
     );
 
     if (userInfo.userRole === "学生") {
+        $("#content").find("#rjctApplsBtn").attr("style", "display: none");
         $("#content").find("#procApplsBtn").attr("style", "display: none");
         $("#content").find("option[value='userID']").remove();
     }
