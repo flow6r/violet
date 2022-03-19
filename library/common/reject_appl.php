@@ -123,7 +123,7 @@ $mail->isHTML(true);
 // 设置收件人邮箱地址,添加多个收件人 则多次调用方法即可
 $mail->addAddress($userEmail);
 // 添加该邮件的主题
-$mail->Subject = "HelloWorld!";
+$mail->Subject = "设备借用申请驳回通知";
 // 添加邮件正文
 $mail->Body = "<h1>您好，您提交的申请ID为".$applID."的申请被驳回</h1><br /><p>驳回原因：".$rjctRsn."</p>";
 // 为该邮件添加附件
