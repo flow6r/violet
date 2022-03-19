@@ -29,7 +29,7 @@ if (mysqli_connect_error()) {
 }
 
 //检查申请状态
-$query = "SELECT * FROM Applications WHERE ApplID = ?";
+$query = "SELECT ApplStat FROM Applications WHERE ApplID = ?";
 $stmt = $db->prepare($query);
 $stmt->bind_param("i", $applID);
 $stmt->execute();
