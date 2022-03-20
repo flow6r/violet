@@ -45,7 +45,7 @@
     border-radius: 15px;
 }
 
-#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #queryUnrvwApplsBtn {
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #queryApplsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 75px;
@@ -57,7 +57,7 @@
     border-radius: 15px;
 }
 
-#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #queryUnrvwApplsBtn:hover {
+#queryApplsDiv #queryApplsForm #queryApplsMenuTbl #queryApplsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 75px;
