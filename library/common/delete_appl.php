@@ -86,6 +86,7 @@ if ($canDel) {
         $tips .= "\n设备ID：" . $cantDelApplEqpts[$indx][0] . "，设备状态：" . $cantDelApplEqpts[$indx][1];
     }
     echo "抱歉，您选择的申请中包含不符合删除条件的设备状态的设备：" . $tips . "\n请确认无误后再进行删除操作";
+    exit;
 }
 
 echo "successful";
