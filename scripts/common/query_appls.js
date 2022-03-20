@@ -5,7 +5,8 @@ var applsTotPages = null;
 var applsCurrPage = null;
 var applDetls = null;
 
-$("#content").on("click", "#queryUnrvwApplsBtn", function () {
+//显示
+$("#content").on("click", "#queryApplsBtn", function () {
 
     let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
     let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
@@ -229,6 +230,7 @@ $("#content").on("click", ".rjctApplBtn", function (event) {
         );
     }
 });
+
 //实现驳回单个设备申请记录
 $("body").on("click", "#rjctApplBtn", function () {
     let rjctedApplID = $("body").find("#rjctedApplID").attr("placeholder");
