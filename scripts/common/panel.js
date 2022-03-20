@@ -294,7 +294,7 @@ function printQueryAppl() {
         "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='applID'>申请记录ID</option>" +
         "<option value='userID'>申请用户ID</option><option value='applStat'>申请状态</option></select></td>" +
-        "<td><input type='button' id='queryUnrvwApplsBtn' name='queryUnrvwApplsBtn' value='查询' /></td>" +
+        "<td><input type='button' id='queryApplsBtn' name='queryApplsBtn' value='查询' /></td>" +
         "<td><input type='button' id='delApplsBtn' name='delApplsBtn' value='批量删除'/></td>" +
         "<td><input type='button' id='rjctApplsBtn' name='rjctApplsBtn' value='批量驳回'/></td>" +
         "<td><input type='button' id='procApplsBtn' name='procApplsBtn' value='批量处理'/></td></tr>" +
