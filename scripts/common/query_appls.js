@@ -4,6 +4,8 @@ var applsRecLimit = 16;
 var applsTotPages = null;
 var applsCurrPage = null;
 var applDetls = null;
+var applIDs = new Array();
+var applIDsIndx = 0;
 
 //显示
 $("#content").on("click", "#queryApplsBtn", function () {
@@ -116,6 +118,21 @@ $("#content").on("click", "#applsJump", function () {
     else echoApplsRecords(trgtPage);
 });
 
+//获取选中的申请ID
+$("#content").on("click", ".applCheckbox", function (event) {
+    let currApplID = $(event.target).val();
+
+    if ($(event.target).attr("checked")) {
+        $(event.target).removeAttr("checked");
+        let currApplIndx = applIDs.indexOf(currApplID);
+        applIDs.splice(currApplIndx, 1);
+        applIDsIndx--;
+    } else {
+        $(event.target).attr("checked", "ture");
+        applIDs[applIDsIndx++] = currApplID;
+    }
+});
+
 //查询指定申请ID的借用设备ID
 function queryEqptsByApplID(applID) {
     $.ajax({
@@ -213,6 +230,37 @@ $("#content").on("click", ".procApplBtn", function (event) {
     } else alert("禁止学生操作");
 });
 
+//批量处理设备借用申请
+$("#content").on("click", "#procApplsBtn", function () {
+    if (userInfo.userRole === "学生") alert("禁止学生操作");
+    else {
+        $.ajax({
+            url: "../../library/common/process_appls.php",
+            async: false,
+            type: "POST",
+            data: { userRole: userInfo.userRole, appls: applIDs, dspUser: userInfo.userID },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("批量处理成功");
+
+                    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                    $("#content").find("#applRsltsTblHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "applStat";
+                    }
+                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+
+                    applIDs = new Array();
+                    applIDsIndx = 0;
+                } else alert(status);
+            }
+        });
+    }
+});
+
 //显示驳回单个申请记录的弹窗
 $("#content").on("click", ".rjctApplBtn", function (event) {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
@@ -254,7 +302,7 @@ $("body").on("click", "#rjctApplBtn", function () {
                     $("#mask").attr("style", "visibility: hidden;");
 
                     $(".popup").remove();
-                    
+
                     let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
                     let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
 
