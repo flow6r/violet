@@ -241,7 +241,7 @@ $("#content").on("click", "#procApplsBtn", function () {
             data: { userRole: userInfo.userRole, appls: applIDs, dspUser: userInfo.userID },
             success: function (status) {
                 if (status === "successful") {
-                    alert("批量处理成功");
+                    alert("成功处理" + applIDs.length + "条记录");
 
                     let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
                     let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
@@ -339,6 +339,34 @@ $("#content").on("click", ".delApplBtn", function (event) {
                     searchType = "applStat";
                 }
                 queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+            } else alert(status);
+        }
+    });
+});
+
+//批量删除设备借用申请
+$("#content").on("click", "#delApplsBtn", function () {
+    $.ajax({
+        url: "../../library/common/delete_appls.php",
+        type: "POST",
+        async: false,
+        data: { userRole: userInfo.userRole, appls: applIDs },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功删除" + applIDs.length + "条记录");
+
+                let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                $("#content").find("#applRsltsTblHead").siblings().remove();
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "applStat";
+                }
+                queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+
+                applIDs = new Array();
+                applIDsIndx = 0;
             } else alert(status);
         }
     });
