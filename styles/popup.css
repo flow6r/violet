@@ -1020,7 +1020,8 @@
 }
 
 /*驳回设备借用申请的弹窗*/
-#rjctApplDiv {
+#rjctApplDiv,
+#rjctApplsDiv {
     position: relative;
     padding: 0;
     margin: 0 auto;
@@ -1034,7 +1035,8 @@
     z-index: 10;
 }
 
-#rjctApplDiv #rjctApplForm {
+#rjctApplDiv #rjctApplForm,
+#rjctApplsDiv #rjctApplsForm {
     position: absolute;
     padding: 0;
     margin: 0 auto;
@@ -1044,7 +1046,8 @@
     background-color: #ffffff;
 }
 
-#rjctApplDiv #rjctApplForm #rjctApplTbl {
+#rjctApplDiv #rjctApplForm #rjctApplTbl,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1052,13 +1055,15 @@
     border-spacing: 15px;
 }
 
-#rjctApplDiv #rjctApplForm #rjctApplTbl span {
+#rjctApplDiv #rjctApplForm #rjctApplTbl span,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl span {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#rjctApplDiv #rjctApplForm #rjctApplTbl label {
+#rjctApplDiv #rjctApplForm #rjctApplTbl label,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl label {
     float: left;
     font-size: 1.5em;
     font-weight: bold;
@@ -1075,7 +1080,8 @@
     border-radius: 15px;
 }
 
-#rjctApplDiv #rjctApplForm #rjctApplTbl textarea {
+#rjctApplDiv #rjctApplForm #rjctApplTbl textarea,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl textarea {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1089,7 +1095,9 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl #cancelRjctBtn,
-#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn {
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #cancelRjctBtn,
+#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #bulkRjctApplsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 170px;
@@ -1102,7 +1110,9 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl #cancelRjctBtn:hover,
-#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn:hover {
+#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn:hover,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #cancelRjctBtn:hover,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #bulkRjctApplsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 170px;
@@ -1115,11 +1125,24 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl #cancelRjctBtn,
-#rjctApplDiv #rjctApplForm #rjctApplTbl #cancelRjctBtn:hover {
+#rjctApplDiv #rjctApplForm #rjctApplTbl #cancelRjctBtn:hover,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #cancelRjctBtn,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #cancelRjctBtn:hover {
     float: left;
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn,
-#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn:hover {
+#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctApplBtn:hover,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #bulkRjctApplsBtn,
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #bulkRjctApplsBtn:hover {
     float: right;
+}
+
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl #rjctedApplsID {
+    font-size: 1.2em;
+    width: 220px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
 }
