@@ -57,6 +57,7 @@ function queryAppls(userID, userRole, colgName, searchItem, searchType) {
     });
 }
 
+//显示指定页的设备借用申请记录
 function echoApplsRecords(page) {
     applIDs = new Array();
     applIDsIndx = 0;
@@ -349,6 +350,7 @@ $("#content").on("click", "#rjctApplsBtn", function () {
     }
 });
 
+//实现批量驳回设备借用申请记录
 $("body").on("click", "#bulkRjctApplsBtn", function () {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
     else {
