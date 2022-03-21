@@ -7,7 +7,7 @@ var applDetls = null;
 var applIDs = new Array();
 var applIDsIndx = 0;
 
-//显示
+//查询借用申请记录
 $("#content").on("click", "#queryApplsBtn", function () {
 
     let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
@@ -19,6 +19,7 @@ $("#content").on("click", "#queryApplsBtn", function () {
     } else alert("请输入关键词");
 });
 
+//实现查询借用申请记录的函数
 function queryAppls(userID, userRole, colgName, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_appls.php",
@@ -57,6 +58,8 @@ function queryAppls(userID, userRole, colgName, searchItem, searchType) {
 }
 
 function echoApplsRecords(page) {
+    applIDs = new Array();
+    applIDsIndx = 0;
     applsCurrPage = page;
 
     if (applsCurrPage === 1) $("#content").find("#applsPrevPage").attr("disabled", "disabled");
@@ -378,6 +381,9 @@ $("body").on("click", "#bulkRjctApplsBtn", function () {
                             searchType = "applStat";
                         }
                         queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+
+                        applIDs = new Array();
+                        applIDsIndx = 0;
                     }
                 }
             });
