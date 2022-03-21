@@ -328,8 +328,60 @@ $("#content").on("click", "#rjctApplsBtn", function () {
     if (userInfo.userRole === "学生") alert("禁止学生操作");
     else {
         if (applIDs.length != 0) {
-            //AJAX实现批量驳回
+            $("#mask").attr("style", "visibility: visible;");
+
+            $("body").append(
+                "<div id='rjctApplsDiv' name='rjctApplsDiv' class='popup'><form id='rjctApplsForm' name='rjctApplsForm'>" +
+                "<table id='rjctApplsTbl' name='rjctApplsTbl'><tr><th colspan='2'><span>驳回设备借用申请</span></th></tr>" +
+                "<tr><td><label>申请ID</label></td><td><select id='rjctedApplsID' ></select></td></tr>" +
+                "<tr><td><label>驳回原因</label></td><td><textarea id='rjctRsn' name='rjctRsn'></textarea></td></tr>" +
+                "<tr><td><input type='button' id='cancelRjctBtn' name='cancelRjctBtn' class='applsCancelBtn' value='取消' /></td>" +
+                "<td><input type='button' id='bulkRjctApplsBtn' name='rjctApplsBtn' value='驳回' /></td></tr></table></form></div>"
+            );
+
+            for (let indx = 0; indx < applIDs.length; indx++) {
+                $("body").find("#rjctedApplsID").append("<option>" + applIDs[indx] + "</option>");
+            }
         } else alert("您选择了0条记录，请选择申请记录后再执行批量驳回操作");
+    }
+});
+
+$("body").on("click", "#bulkRjctApplsBtn", function () {
+    if (userInfo.userRole === "学生") alert("禁止学生操作");
+    else {
+        let rjctRsn = $("body").find("#rjctRsn").val();
+        if (rjctRsn === "") alert("驳回理由不能为空");
+        else {
+            $.ajax({
+                url: "../../library/common/reject_appls.php",
+                type: "POST",
+                async: false,
+                data: {
+                    dspUser: userInfo.userID, userRole: userInfo.userRole,
+                    appls: applIDs, rjctRsn: rjctRsn
+                },
+                success: function (status) {
+                    if (status != "successful") alert(status);
+                    else {
+                        alert("成功驳回" + applIDs.length + "条设备借用申请");
+
+                        $("#mask").attr("style", "visibility: hidden;");
+
+                        $(".popup").remove();
+
+                        let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+                        let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+                        $("#content").find("#applRsltsTblHead").siblings().remove();
+                        if (searchItem === "") {
+                            searchItem = "";
+                            searchType = "applStat";
+                        }
+                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+                    }
+                }
+            });
+        }
     }
 });
 
