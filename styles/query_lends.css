@@ -1,0 +1,131 @@
+#queryLendsDiv {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+#queryLendsDiv #queryLendsForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu {
+    width: 100%;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #searchItem {
+    font-size: 1.5em;
+    width: 350px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #searchType {
+    padding: 1px 2px;
+    font-size: 1.5em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #queryLendEqptsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #queryLendEqptsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn:hover,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4d86d1;
+    background-color: #4d86d1;
+    border-radius: 15px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(1) {
+    width: 366px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(2) {
+    width: 158px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(3) {
+    width: 83px;
+}
+
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(4) {
+    width: 108px;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs th {
+    font-size: 1.2em;
+    background-color: #4d86d1;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs td {
+    font-size: 1.1em;
+    background-color: #c4cdda;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
