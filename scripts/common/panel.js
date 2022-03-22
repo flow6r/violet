@@ -333,9 +333,9 @@ function printLentEqpts() {
         "<td><input type='button' id='creBrkRecsBtn' name='creBrkRecsBtn' value='批量报修' /></td>" +
         "</tr></table><table id='lendEqptsRecs' name='lendEqptsRecs'><tr id='lendEqptsRecsHead' name='lendEqptsRecsHead'>" +
         "<th width='50px'></th><th>用户ID</th><th>设备ID</th><th>借用开始时间</th><th>借用结束时间</th><th>借用状态</th><th>实际归还时间</th><th>其他操作</th>" +
-        "</tr></table><table id='lendRecsPagesCtl' name='lendRecsPagesCtl'><input type='button' id='lendPrevPage' name='lendPrevPage' value='上一页' />" +
-        "<input type='text' id='lendRecsPageInfoCtl' name='lendRecsPageInfoCtl' placeholder='' /><input type='button' id='lendNextPage' name='lendNextPage' value='下一页' />" +
-        "<input type='text' id='lendJump' name='lendJump' placeholder='输入想要跳转的页数' /><input type='button' id='lendJumpToTrgtPage' name='lendJumpToTrgtPage' value='跳转'/>" +
+        "</tr></table><table id='lendRecsPagesCtl' name='lendRecsPagesCtl'><td><input type='button' id='lendPrevPage' name='lendPrevPage' value='上一页' /></td>" +
+        "<td><input type='text' id='lendRecsPageInfoCtl' name='lendRecsPageInfoCtl' size='12' placeholder='' /></td><td><input type='button' id='lendNextPage' name='lendNextPage' value='下一页' /></td>" +
+        "<td><input type='text' id='lendJump' name='lendJump' placeholder='输入想要跳转的页数' /></td><td><input type='button' id='lendJumpToTrgtPage' name='lendJumpToTrgtPage' value='跳转'/></td>" +
         "</table></form></div>"
     );
 }
