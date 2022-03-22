@@ -315,6 +315,31 @@ function printQueryAppl() {
     queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "applStat");
 }
 
+/*设备借用记录*/
+$(".userNav").on("click", "#lentEqpts", function () {
+    printLentEqpts()
+});
+
+function printLentEqpts() {
+    $("#content").empty();
+    $("#content").append(
+        "<div id='queryLendsDiv' name='queryLendsDiv'><form id='queryLendsForm' name='queryLendsForm'>" +
+        "<table id='queryLendsFormMenu' name='queryLendsFormMenu'><tr><td colspan='5'><span>设备借用记录查询</span></td></tr>" +
+        "<tr><td><input type='text' id='searchItem' name='searchItem'/></td>" +
+        "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option><option value='eqptID'>设备ID</option>" +
+        "<option value='lendStat'>借用状态</option><option value='colgName'>学院名称</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<td><input type='button' id='queryLendEqptsBtn' name='queryLendEqptsBtn' value='查询' /></td>" +
+        "<td><input type='button' id='delLendRecsBtn' name='delLendRecsBtn' value='批量删除' /></td>" +
+        "<td><input type='button' id='creBrkRecsBtn' name='creBrkRecsBtn' value='批量报修' /></td>" +
+        "</tr></table><table id='lendEqptsRecs' name='lendEqptsRecs'><tr id='lendEqptsRecsHead' name='lendEqptsRecsHead'>" +
+        "<th width='50px'></th><th>用户ID</th><th>设备ID</th><th>借用开始时间</th><th>借用结束时间</th><th>借用状态</th><th>实际归还时间</th><th>其他操作</th>" +
+        "</tr></table><table id='lendRecsPagesCtl' name='lendRecsPagesCtl'><input type='button' id='lendPrevPage' name='lendPrevPage' value='上一页' />" +
+        "<input type='text' id='lendRecsPageInfoCtl' name='lendRecsPageInfoCtl' placeholder='' /><input type='button' id='lendNextPage' name='lendNextPage' value='下一页' />" +
+        "<input type='text' id='lendJump' name='lendJump' placeholder='输入想要跳转的页数' /><input type='button' id='lendJumpToTrgtPage' name='lendJumpToTrgtPage' value='跳转'/>" +
+        "</table></form></div>"
+    );
+}
+
 /*退出登录*/
 $(".userNav").on("click", "#logout", function () {
     $.post("../../library/session/user_logout.php", function (status) {
