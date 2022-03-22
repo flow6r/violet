@@ -3,7 +3,7 @@
 //获取GET请求
 $userID = $_GET["userID"];
 $userRole = $_GET["userRole"];
-$colgName = $_GET["colgName"];
+$mjrName = $_GET["mjrName"];
 $searchItem = $_GET["searchItem"];
 $searchType = $_GET["searchType"];
 
@@ -51,9 +51,9 @@ switch ($userRole) {
         $stmt->bind_param("ss", $userID, $searchItem);
         break;
     case "教师":
-        $query = "SELECT A.* FROM Users AS U, Applications AS A WHERE U.UserID = A.UserID AND U.ColgName = ? AND A." . $searchType . " LIKE ? AND U.UserRole != '管理员';";
+        $query = "SELECT A.* FROM Users AS U, Applications AS A WHERE U.UserID = A.UserID AND U.MjrName = ? AND A." . $searchType . " LIKE ? AND U.UserRole != '管理员';";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss", $colgName, $searchItem);
+        $stmt->bind_param("ss", $mjrName, $searchItem);
         break;
     case "管理员":
         $query = "SELECT A.* FROM Applications AS A WHERE A." . $searchType . " LIKE ?";
