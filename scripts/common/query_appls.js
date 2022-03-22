@@ -35,7 +35,6 @@ function queryAppls(userID, userRole, mjrName, searchItem, searchType) {
             appls = applsJSON;
 
             if (appls.length === 0) {
-                alert("共0条记录");
                 $("#content").find("#applsPrevPage").attr("disabled", "disabled");
                 $("#content").find("#applsPageInfo").val("第0页，共0页");
                 $("#content").find("#applsNextPage").attr("disabled", "disabled");
