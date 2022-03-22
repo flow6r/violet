@@ -327,7 +327,7 @@ function printLentEqpts() {
         "<table id='queryLendsFormMenu' name='queryLendsFormMenu'><tr><td colspan='5'><span>设备借用记录查询</span></td></tr>" +
         "<tr><td><input type='text' id='searchItem' name='searchItem'/></td>" +
         "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option><option value='eqptID'>设备ID</option>" +
-        "<option value='lendStat'>借用状态</option><option value='colgName'>学院名称</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<option value='lendStat'>借用状态</option><option value='mjrName'>专业名称</option><option value='colgName'>学院名称</option></select></td>" +
         "<td><input type='button' id='queryLendEqptsBtn' name='queryLendEqptsBtn' value='查询' /></td>" +
         "<td><input type='button' id='delLendRecsBtn' name='delLendRecsBtn' value='批量删除' /></td>" +
         "<td><input type='button' id='creBrkRecsBtn' name='creBrkRecsBtn' value='批量报修' /></td>" +
