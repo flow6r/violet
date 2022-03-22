@@ -312,7 +312,7 @@ function printQueryAppl() {
         $("#content").find("option[value='userID']").remove();
     }
 
-    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "applStat");
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "applStat");
 }
 
 /*退出登录*/
