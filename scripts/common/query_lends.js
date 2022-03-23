@@ -107,3 +107,51 @@ $("#content").on("click", "#lendJumpToTrgtPage", function () {
     if (trgtPage < 1 || trgtPage > lentTotPages) alert("请输入合法的页数");
     else echoLentEqptRecs(trgtPage);
 });
+
+//用户信息
+$("#content").on("click", ".lendUserID", function (event) {
+    let currLendEqptID = $(event.target).attr("name");
+    alert(currLendEqptID);
+});
+
+//设备信息
+$("#content").on("click", ".lentEqptID", function (event) {
+    let currLentEqptID = $(event.target).attr("name");
+
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='lentEqptInfoDiv' name='lentEqptInfoDiv' class='popup'><form id='lentEqptInfoForm' name='lentEqptInfoForm'>" +
+        "<table id='lentEqptInfoTbl' name='lentEqptInfoTbl'><tr><th colspan='2'><span>实验设备详情</span></th>" +
+        "</tr><tr><td colspan='2'><img src='../images/eqpts/3D4403-01.jpg' width='200' height='200' alt='eqptImg' title='' /></td>" +
+        "</tr><tr><td><label>设备ID</label></td><td><input type='text' id='eqptID' name='eqptID' value='' disabled='disabled' />" +
+        "</td></tr><tr><td><label>设备名称</label></td>" +
+        "<td><input type='text' id='eqptName' name='eqptName' value='' disabled='disabled' />" +
+        "</td></tr><tr><td><label>设备分类</label></td>" +
+        "<td><input type='text' id='eqptCls' name='eqptCls' placeholder='' disabled='disabled' /></td>" +
+        "</tr><tr><td><label>隶属学院</label></td>" +
+        "<td><input type='text' id='colgName' name='colgName' placeholder='' disabled='disabled' /></td>" +
+        "</tr><tr><td><label>入库时间</label></td>" +
+        "<td><input type='text' id='eqptCre' name='eqptCre' value='' disabled='disabled' /></td>" +
+        "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' disabled='disabled'></textarea></td></tr><tr>" +
+        "<td colspan='2'><input type='button' id='lendEqptInfoCancel' name='lendEqptInfoCancel' class='lendCancelBtn' value='取消'></td>" +
+        "</tr></table></form></div>"
+    );
+});
+
+//关闭弹框
+$("body").on("click", ".lendCancelBtn", function () {
+    $("#mask").attr("style", "visibility: hidden;");
+
+    $(".popup").remove();
+
+    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "lendStat";
+    }
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+});
