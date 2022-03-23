@@ -1146,3 +1146,100 @@
     border: 2px solid #2569c3;
     border-radius: 15px;
 }
+
+#lentEqptInfoDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 40px;
+    width: 450px;
+    height: 630px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 630px;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 8px;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl th {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl tr:nth-child(2) {
+    text-align: center;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptID,
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptName,
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptCls,
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #colgName,
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptCre {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl textarea {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
