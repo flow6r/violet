@@ -118,25 +118,37 @@ $("#content").on("click", ".lendUserID", function (event) {
 $("#content").on("click", ".lentEqptID", function (event) {
     let currLentEqptID = $(event.target).attr("name");
 
-    $("#mask").attr("style", "visibility: visible;");
+    $.ajax({
+        url: "../../library/common/query_eqpt.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, eqptID: currLentEqptID },
+        dataType: "json",
+        error: function () {
+            alert("查询数据库失败，请联系管理员并反馈问题");
+        },
+        success: function (eqptJson) {
+            $("#mask").attr("style", "visibility: visible;");
 
-    $("body").append(
-        "<div id='lentEqptInfoDiv' name='lentEqptInfoDiv' class='popup'><form id='lentEqptInfoForm' name='lentEqptInfoForm'>" +
-        "<table id='lentEqptInfoTbl' name='lentEqptInfoTbl'><tr><th colspan='2'><span>实验设备详情</span></th>" +
-        "</tr><tr><td colspan='2'><img src='../images/eqpts/3D4403-01.jpg' width='200' height='200' alt='eqptImg' title='' /></td>" +
-        "</tr><tr><td><label>设备ID</label></td><td><input type='text' id='eqptID' name='eqptID' value='' disabled='disabled' />" +
-        "</td></tr><tr><td><label>设备名称</label></td>" +
-        "<td><input type='text' id='eqptName' name='eqptName' value='' disabled='disabled' />" +
-        "</td></tr><tr><td><label>设备分类</label></td>" +
-        "<td><input type='text' id='eqptCls' name='eqptCls' placeholder='' disabled='disabled' /></td>" +
-        "</tr><tr><td><label>隶属学院</label></td>" +
-        "<td><input type='text' id='colgName' name='colgName' placeholder='' disabled='disabled' /></td>" +
-        "</tr><tr><td><label>入库时间</label></td>" +
-        "<td><input type='text' id='eqptCre' name='eqptCre' value='' disabled='disabled' /></td>" +
-        "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' disabled='disabled'></textarea></td></tr><tr>" +
-        "<td colspan='2'><input type='button' id='lendEqptInfoCancel' name='lendEqptInfoCancel' class='lendCancelBtn' value='取消'></td>" +
-        "</tr></table></form></div>"
-    );
+            $("body").append(
+                "<div id='lentEqptInfoDiv' name='lentEqptInfoDiv' class='popup'><form id='lentEqptInfoForm' name='lentEqptInfoForm'>" +
+                "<table id='lentEqptInfoTbl' name='lentEqptInfoTbl'><tr><th colspan='2'><span>实验设备详情</span></th>" +
+                "</tr><tr><td colspan='2'><img src='" + eqptJson[0].ImgPath + "' width='200' height='200' alt='eqptImg' title='' /></td>" +
+                "</tr><tr><td><label>设备ID</label></td><td><input type='text' id='eqptID' name='eqptID' placeholder='" + eqptJson[0].EqptID + "' disabled='disabled' />" +
+                "</td></tr><tr><td><label>设备名称</label></td>" +
+                "<td><input type='text' id='eqptName' name='eqptName' placeholder='" + eqptJson[0].EqptName + "' disabled='disabled' />" +
+                "</td></tr><tr><td><label>设备分类</label></td>" +
+                "<td><input type='text' id='eqptCls' name='eqptCls' placeholder='" + eqptJson[0].ClsName + "' disabled='disabled' /></td>" +
+                "</tr><tr><td><label>隶属学院</label></td>" +
+                "<td><input type='text' id='colgName' name='colgName' placeholder='" + eqptJson[0].ColgName + "' disabled='disabled' /></td>" +
+                "</tr><tr><td><label>入库时间</label></td>" +
+                "<td><input type='text' id='eqptCre' name='eqptCre' placeholder='" + eqptJson[0].EqptCre + "' disabled='disabled' /></td>" +
+                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "'></textarea></td></tr><tr>" +
+                "<td colspan='2'><input type='button' id='lendEqptInfoCancel' name='lendEqptInfoCancel' class='lendCancelBtn' value='取消'></td>" +
+                "</tr></table></form></div>"
+            );
+        }
+    });
 });
 
 //关闭弹框
