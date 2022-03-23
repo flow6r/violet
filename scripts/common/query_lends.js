@@ -110,8 +110,36 @@ $("#content").on("click", "#lendJumpToTrgtPage", function () {
 
 //用户信息
 $("#content").on("click", ".lendUserID", function (event) {
-    let currLendEqptID = $(event.target).attr("name");
-    alert(currLendEqptID);
+    let currLendUserID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/query_user.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, userID: currLendUserID },
+        dataType: "json",
+        error: function () {
+            alert("查询用户信息失败，请联系管理员并反馈问题");
+        },
+        success: function (userJSON) {
+            $("#mask").attr("style", "visibility: visible;");
+
+            $("body").append(
+                "<div id='lendUserInfoDiv' name='lendUserInfoDiv' class='popup'><form id='lendUserInfoForm' name='lendUserInfoForm'>" +
+                "<table id='lendUserInfoTbl' name='lendUserInfoTbl'><tr><th colspan='2'><span>用户信息</span></th></tr>" +
+                "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' placeholder='" + userJSON[0].UserID + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' placeholder='" + userJSON[0].UserName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户性别</label></td><td><input type='text' id='userGen' name='userGen' placeholder='" + userJSON[0].UserGen + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户角色</label></td><td><input type='text' id='userRole' name='userRole' placeholder='" + userJSON[0].UserRole + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' placeholder='" + userJSON[0].UserEmail + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>入学年份</label></td><td><input type='text' id='userAdms' name='userAdms' placeholder='" + (userJSON[0].UserAdms === null ? "暂无" : userJSON[0].UserAdms) + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>隶属学院</label></td><td><input type='text' id='colgName' name='colgName' placeholder='" + userJSON[0].ColgName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>专业名称</label></td><td><input type='text' id='mjrName' name='mjrName' placeholder='" + userJSON[0].MjrName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td colspan='2'><input type='button' id='lendUserInfoCancel' name='lendUserInfoCancel' class='lendCancelBtn' value='取消' /></td></tr>" +
+                "</table></form></div>"
+            );
+        }
+    });
 });
 
 //设备信息
@@ -125,7 +153,7 @@ $("#content").on("click", ".lentEqptID", function (event) {
         data: { userRole: userInfo.userRole, eqptID: currLentEqptID },
         dataType: "json",
         error: function () {
-            alert("查询数据库失败，请联系管理员并反馈问题");
+            alert("查询设备信息失败，请联系管理员并反馈问题");
         },
         success: function (eqptJson) {
             $("#mask").attr("style", "visibility: visible;");
