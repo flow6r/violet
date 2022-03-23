@@ -56,18 +56,18 @@ if (mysqli_connect_error()) {
 //根据用户角色查询数据库
 switch ($userRole) {
     case "学生":
-        $query = "SELECT A.* FROM Applications AS A WHERE A.UserID = ? AND A." . $searchType . "LIKE ?";
+        $query = "SELECT L.* FROM Lend AS L WHERE L.UserID = ? AND L." . $searchType . "LIKE ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param("ss", $userID, $searchItem);
         break;
     case "教师":
-        $query = "SELECT A.* FROM Users AS U, Applications AS A WHERE U.UserID = A.UserID AND U.MjrName = ? AND A." . $searchType . " LIKE ? AND U.UserRole != '管理员'";
+        $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U.MjrName = ? AND L." . $searchType . " LIKE ? AND U.UserRole != '管理员'";
         $stmt = $db->prepare($query);
         $stmt->bind_param("ss", $mjrName, $searchItem);
         break;
     case "管理员":
-        if ($fromTblUsers) $query = "SELECT A.* FROM Users AS U, Applications AS A WHERE U.UserID = A.UserID AND U." . $searchType . " LIKE ?";
-        else $query = "SELECT A.* FROM Applications AS A WHERE A.$searchType LIKE ?";
+        if ($fromTblUsers) $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U." . $searchType . " LIKE ?";
+        else $query = "SELECT L.* FROM Lend AS L WHERE L." . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param("s", $searchItem);
         break;
@@ -87,3 +87,4 @@ echo $lendRecordsJSON;
 $stmt->free_result();
 $db->close();
 exit;
+?>
