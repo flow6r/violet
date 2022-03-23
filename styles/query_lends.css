@@ -69,8 +69,9 @@
     border-radius: 15px;
 }
 
-#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn,
-#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn {
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #rtnEqptsBtn,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100px;
@@ -82,8 +83,9 @@
     border-radius: 15px;
 }
 
-#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn:hover,
-#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn:hover {
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #rtnEqptsBtn:hover,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #creBrkRecsBtn:hover,
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu #delLendRecsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100px;
@@ -107,7 +109,8 @@
     width: 83px;
 }
 
-#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(4) {
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(4),
+#queryLendsDiv #queryLendsForm #queryLendsFormMenu tr:nth-child(2) td:nth-child(5) {
     width: 108px;
 }
 
@@ -128,4 +131,19 @@
     background-color: #c4cdda;
     color: #000000;
     border: 1px solid #ffffff;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs a {
+    text-decoration: none;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs .lentTime {
+    width: 220px;
+}
+
+#queryLendsDiv #queryLendsForm #lendEqptsRecs .rtnEqptBtn,
+#queryLendsDiv #queryLendsForm #lendEqptsRecs .brkEqptBtn,
+#queryLendsDiv #queryLendsForm #lendEqptsRecs .delRecBtn {
+    font-size: 1.1em;
+    margin-right: 10px;
 }
