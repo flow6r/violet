@@ -1300,21 +1300,12 @@
     border-radius: 15px;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userGen {
-    float: right;
-    font-size: 1.2em;
-    width: 50px;
-    height: 30px;
-    outline: none;
-    border: 2px solid #2569c3;
-    border-radius: 15px;
-}
-
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userGen,
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userRole,
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userAdms {
     float: right;
     font-size: 1.2em;
-    width: 100px;
+    width: 65px;
     height: 30px;
     outline: none;
     border: 2px solid #2569c3;
