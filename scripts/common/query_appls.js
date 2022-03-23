@@ -100,13 +100,13 @@ function echoApplsRecords(page) {
 
 //上一页
 $("#content").on("click", "#applsPrevPage", function () {
-    let trgtPage = currPage - 1;
+    let trgtPage = applsCurrPage - 1;
     echoApplsRecords(trgtPage);
 });
 
 //下一页
 $("#content").on("click", "#applsNextPage", function () {
-    let trgtPage = currPage + 1;
+    let trgtPage = applsCurrPage + 1;
     echoApplsRecords(trgtPage);
 });
 
