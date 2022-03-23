@@ -76,12 +76,12 @@ $stmt->execute();
 
 //将查询结果以JSON数据格式返回给浏览器
 $result = $stmt->get_result();
-$lendRecords = $result->fetch_all(MYSQLI_ASSOC);
-$lendRecordsJSON = json_encode($lendRecords, JSON_UNESCAPED_UNICODE);
-echo $lendRecordsJSON;
+$lentRecords = $result->fetch_all(MYSQLI_ASSOC);
+$lentRecordsJSON = json_encode($lentRecords, JSON_UNESCAPED_UNICODE);
+echo $lentRecordsJSON;
 
 //将JSON写入文件
-// file_put_contents("lend.json", $lendRecordsJSON);
+// file_put_contents("lend.json", $lentRecordsJSON);
 
 //释放结果集并关闭链接
 $stmt->free_result();
