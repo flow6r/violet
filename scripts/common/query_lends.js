@@ -195,3 +195,31 @@ $("body").on("click", ".lendCancelBtn", function () {
     }
     queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 });
+
+//归还单个设备
+$("#content").on("click", ".rtnEqptBtn", function (event) {
+    let currLentEqptID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/return_eqpt.php",
+        type: "POST",
+        async: false,
+        data: { userID: userInfo.userID, userRole: userInfo.userRole, eqptID: currLentEqptID },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功归还设备ID为" + currLentEqptID + "的设备");
+
+                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "lendStat";
+                }
+                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+            } else alert(status);
+        }
+    });
+});
