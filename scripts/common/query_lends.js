@@ -357,7 +357,7 @@ $("body").on("click", "#bulkCreBrkRecsBtn", function () {
             url: "../../library/common/create_brkrecs.php",
             type: "POST",
             async: false,
-            data: { userID: userInfo.userID, userRole: userInfo.userRole, lendIDs: lendIDs },
+            data: { userID: userInfo.userID, userRole: userInfo.userRole, lendIDs: lendIDs, brkDesc: brkDesc },
             success: function (status) {
                 $("#mask").attr("style", "visibility: hidden;");
                 $(".popup").remove();
