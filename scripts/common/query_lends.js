@@ -76,10 +76,17 @@ function echoLentEqptRecs(page) {
             "<td class='lentTime'>" + lentEqptRecs[begnPage].LendEnd + "</td>" +
             "<td>" + lentEqptRecs[begnPage].LendStat + "</td>" +
             "<td class='lentTime'>" + (lentEqptRecs[begnPage].LendRtn === null ? "暂无" : lentEqptRecs[begnPage].LendRtn) + "</td>" +
-            "<td><input type='button' id='rtn" + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
-            "<input type='button' id='brk" + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
-            "<input type='button' id='del" + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
+            "<td><input type='button' id='rtn" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
+            "<input type='button' id='brk" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
+            "<input type='button' id='del" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
         );
+
+        if (lentEqptRecs[begnPage].LendStat === "未归还") {
+            $("#content").find("input[name='" + lentEqptRecs[begnPage].EqptID + "'][value='删除']").attr("disabled", "disabled");
+        } else {
+            $("#content").find("input[name='" + lentEqptRecs[begnPage].EqptID + "'][value='归还']").attr("disabled", "disabled");
+            $("#content").find("input[name='" + lentEqptRecs[begnPage].EqptID + "'][value='报修']").attr("disabled", "disabled");
+        }
     }
 
     $("#content").find("#lendRecsPagesInfo").val("第" + lentCurrPage + "页，共" + lentTotPages + "页");
@@ -218,7 +225,35 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
                     searchType = "lendStat";
                 }
                 queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+            } else alert(status);
+        }
+    });
+});
 
+
+//删除单个设备借用记录
+$("#content").on("click", ".delRecBtn", function (event) {
+    let currLentEqptID = $(event.target).attr("name");
+    let currLendBegn = ($(event.target).attr("id")).substr(3, 19);
+
+    $.ajax({
+        url: "../../library/common/delete_lend.php",
+        type: "POST",
+        async: false,
+        data: { userID: userInfo.userID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功删除设备借用记录");
+    
+                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+    
+                $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "lendStat";
+                }
+                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
             } else alert(status);
         }
     });
