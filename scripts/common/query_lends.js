@@ -230,6 +230,35 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
     });
 });
 
+//报修单个设备
+$("#content").on("click", ".brkEqptBtn", function (event) {
+    let charPos = ($(event.target).attr("id")).indexOf("|");
+    let currLendUserID = ($(event.target).attr("id")).substring(0, charPos);
+    let currLentEqptID = $(event.target).attr("name");
+    let currLendBegn = ($(event.target).attr("id")).substring(charPos + 1);
+
+    $.ajax({
+        url: "../../library/common/create_brkrec.php",
+        type: "POST",
+        async: false,
+        data: { userID: currLendUserID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功报修");
+
+                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "lendStat";
+                }
+                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+            } else alert(status);
+        }
+    });
+});
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
