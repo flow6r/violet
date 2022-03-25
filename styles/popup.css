@@ -800,7 +800,7 @@
     color: #2569c3;
 }
 
-#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEqptsID{
+#lendEqptsDiv #lendEqptsForm #lendEqptsTbl #lendEqptsID {
     font-size: 1.2em;
     width: 228px;
     height: 36px;
@@ -1337,13 +1337,14 @@
 }
 
 /*报修弹窗*/
-#creBrkRecDiv {
+#creBrkRecDiv,
+#creBrkRecsDiv {
     position: relative;
     padding: 0;
     margin: 0 auto;
     top: 75px;
     width: 450px;
-    height: 365px;
+    height: 310px;
     border-radius: 25px;
     background-color: #ffffff;
     border: 2px solid #2569c3;
@@ -1351,7 +1352,8 @@
     z-index: 10;
 }
 
-#creBrkRecDiv #creBrkRecForm{
+#creBrkRecDiv #creBrkRecForm,
+#creBrkRecsDiv #creBrkRecsForm {
     position: absolute;
     padding: 0;
     margin: 0 auto;
@@ -1361,7 +1363,8 @@
     background-color: #ffffff;
 }
 
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1369,13 +1372,15 @@
     border-spacing: 15px;
 }
 
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl span {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl span,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl span {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl label {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl label,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl label {
     float: left;
     font-size: 1.5em;
     font-weight: bold;
@@ -1393,7 +1398,19 @@
     border-radius: 15px;
 }
 
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl textarea {
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #brkLendIDs,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #brkLentEqptIDs {
+    float: right;
+    font-size: 1.2em;
+    width: 228px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl textarea,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl textarea {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1407,7 +1424,9 @@
 }
 
 #creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecCancelBtn,
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #creBrkRecsCancelBtn,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #bulkCreBrkRecsBtn {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 170px;
@@ -1420,7 +1439,9 @@
 }
 
 #creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecCancelBtn:hover,
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #creBrkRecsCancelBtn:hover,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #bulkCreBrkRecsBtn:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 170px;
@@ -1433,6 +1454,8 @@
 }
 
 #creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn,
-#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover {
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #bulkCreBrkRecsBtn,
+#creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #bulkCreBrkRecsBtn:hover {
     float: right;
 }
