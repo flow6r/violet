@@ -271,7 +271,6 @@ $("#content").on("click", "#rtnEqptsBtn", function () {
             }
         });
     }
-
 });
 
 //报修单个设备
@@ -327,4 +326,33 @@ $("#content").on("click", ".delRecBtn", function (event) {
             } else alert(status);
         }
     });
+});
+
+//批量删除设备借用记录
+$("#content").on("click", "#delLendRecsBtn", function () {
+    if (lendIDs.length === 0) alert("您选择了0条借用记录，请选择至少一条记录后再执行批量删除操作");
+    else {
+        $.ajax({
+            url: "../../library/common/delete_lends.php",
+            type: "POST",
+            async: false,
+            data: { userRole: userInfo.userRole, lendIDs: lendIDs },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功删除" + lendIDs.length + "条设备借用记录");
+
+                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "lendStat";
+                    }
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                } else alert(status);
+            }
+        });
+    }
 });
