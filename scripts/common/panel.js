@@ -325,7 +325,7 @@ function printLentEqpts() {
     $("#content").append(
         "<div id='queryLendsDiv' name='queryLendsDiv'><form id='queryLendsForm' name='queryLendsForm'>" +
         "<table id='queryLendsFormMenu' name='queryLendsFormMenu'><tr><td colspan='5'><span>设备借用记录查询</span></td></tr>" +
-        "<tr><td><input type='text' id='searchItem' name='searchItem'/></td>" +
+        "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词'/></td>" +
         "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option><option value='eqptID'>设备ID</option>" +
         "<option value='lendStat'>借用状态</option><option value='mjrName'>专业名称</option><option value='colgName'>学院名称</option></select></td>" +
         "<td><input type='button' id='queryLendEqptsBtn' name='queryLendEqptsBtn' value='查询' /></td>" +
