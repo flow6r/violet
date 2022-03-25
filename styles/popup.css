@@ -1335,3 +1335,104 @@
     background-color: #4586db;
     border-radius: 15px;
 }
+
+/*报修弹窗*/
+#creBrkRecDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 75px;
+    width: 450px;
+    height: 365px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#creBrkRecDiv #creBrkRecForm{
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 450px;
+    height: 310px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 15px;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl label {
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #brkLendID,
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #brkLentEqptID {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl textarea {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 100px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecCancelBtn,
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecCancelBtn:hover,
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 170px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn,
+#creBrkRecDiv #creBrkRecForm #creBrkRecTbl #creBrkRecBtn:hover {
+    float: right;
+}
