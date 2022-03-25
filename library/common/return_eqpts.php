@@ -25,6 +25,8 @@ if (mysqli_connect_error()) {
 }
 
 //查询借用记录状态
+$cantRtnLendIDs = null;
+$cantRtnLendIDIndx = 0;
 $canRtn = true;
 for ($indx = 0; $indx < count($lendIDs); $indx++) {
     $currLendID = intval($lendIDs[$indx]);
@@ -37,7 +39,10 @@ for ($indx = 0; $indx < count($lendIDs); $indx++) {
         $stmt->bind_result($lendStat);
         $stmt->fetch();
         $stmt->free_result();
-        if ($lendStat === "已归还") $canRtn = false;
+        if ($lendStat === "已归还") {
+            $canRtn = false;
+            $cantRtnLendIDs[$cantRtnLendIDIndx++] = $currLendID;
+        }
     } else {
         echo "查询设备借用记录时发生错误，发生异常的设备借用记录ID为" . $currLendID . "，请联系管理员并反馈问题";
         $stmt->free_result();
@@ -66,7 +71,11 @@ if ($canRtn) {
         $stmt->execute();
     }
 } else {
-    echo "借用记录ID为" . $currLendID . "的记录无法删除，该设备已归还，请勿重复执行归还操作";
+    $tips = null;
+    for ($indx = 0; $indx < count($cantRtnLendIDs); $indx++) {
+        $tips .= "\n借用记录ID：" . $cantRtnLendIDs[$indx] . "，借用记录状态：已归还";
+    }
+    echo "您提交的借用记录ID中含有不符合归还条件的记录：" . $tips . "请检查无误后再执行批量归还操作";
     $db->close();
     exit;
 }
