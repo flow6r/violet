@@ -273,7 +273,7 @@ $("#content").on("click", "#rtnEqptsBtn", function () {
     }
 });
 
-//报修单个设备
+//报修单个设备弹窗
 $("#content").on("click", ".brkEqptBtn", function (event) {
     let currLendID = ($(event.target).attr("id")).substring(3);
     let currLentEqptID = $(event.target).attr("name");
@@ -283,17 +283,16 @@ $("#content").on("click", ".brkEqptBtn", function (event) {
     $("body").append(
         "<div id='creBrkRecDiv' name='creBrkRecDiv' class='popup'><form id='creBrkRecForm' name='creBrkRecForm'>" +
         "<table id='creBrkRecTbl' name='creBrkRecTbl'><tr><th colspan='2'><span>报修设备</span></th></tr>" +
-        "<tr><td><label>借用ID</label></td><td><input type='text' id='brkLendID' name='brkLendID' value='" + currLendID + "' placeholder='" + currLendID + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>设备ID</label></td><td><input type='text' id='brkLentEqptID' name='brkLentEqptID' value='" + currLentEqptID + "' placeholder='" + currLentEqptID + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>报修原因</label></td><td><textarea id='brkDesc' name='brkDesc'></textarea></td></tr>" +
         "<tr><td><input type='button' id='creBrkRecCancelBtn' name='creBrkRecCancelBtn' class='lendCancelBtn' value='取消' /></td>" +
-        "<td><input type='button' id='creBrkRecBtn' name='creBrkRecBtn' value='报修' /></td></tr></table></form></div>"
+        "<td><input type='button' id='creBrkRecBtn' name='" + currLendID + "' value='报修' /></td></tr></table></form></div>"
     );
 });
 
 //实现报修单个设备的函数
 $("body").on("click", "#creBrkRecBtn", function () {
-    let currLendID = $("body").find("#brkLendID").val();
+    let currLendID = $("body").find("#creBrkRecBtn").attr("name");
     let currLentEqptID = $("body").find("#brkLentEqptID").val();
     let brkDesc = $("body").find("#brkDesc").val();
 
@@ -325,7 +324,31 @@ $("body").on("click", "#creBrkRecBtn", function () {
             }
         });
     }
-})
+});
+
+//批量报修设备弹窗
+$("#content").on("click", "#creBrkRecsBtn", function () {
+    if (lendIDs.length === 0) alert("您选择了0条借用记录，请选择至少一条记录后再执行批量报修操作");
+    else {
+        $("#mask").attr("style", "visibility: visible;");
+
+        $("body").append(
+            "<div id='creBrkRecsDiv' name='creBrkRecsDiv' class='popup'><form id='creBrkRecsForm' name='creBrkRecsForm'>" +
+            "<table id='creBrkRecsTbl' name='creBrkRecsTbl'><tr><th colspan='2'><span>报修设备</span></th></tr>" +
+            "<tr><td><label>设备ID</label></td><td><select id='brkLentEqptIDs' name='brkLentEqptIDs'></select></td></tr>" +
+            "<tr><td><label>报修描述</label></td><td><textarea id='brkDesc' name='brkDesc'></textarea></td></tr>" +
+            "<tr><td><input type='button' id='creBrkRecsCancelBtn' name='creBrkRecsCancelBtn' class='lendCancelBtn' value='取消' /></td>" +
+            "<td><input type='button' id='bulkCreBrkRecsBtn' name='bulkCreBrkRecsBtn' value='报修' /></td></tr></table></form></div>"
+        );
+
+        for (let indx = 0; indx < lendIDs.length; indx++) {
+            let currLentEqptIDIndx = lentEqptRecs.findIndex(lentEqptRecs => lentEqptRecs.LendID == lendIDs[indx]);
+            $("body").find("#brkLentEqptIDs").append("<option value='" + lentEqptRecs[currLentEqptIDIndx].EqptID + "'>" + lentEqptRecs[currLentEqptIDIndx].EqptID + "</option>");
+        }
+    }
+});
+
+//实现批量报修
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
