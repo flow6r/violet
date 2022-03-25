@@ -2,8 +2,8 @@ var lentEqptRecs = null;
 var lentRecsLimit = 16;
 var lentTotPages = null;
 var lentCurrPage = null;
-var lentEqptIDs = new Array();
-var lentEqptIDsIndx = 0;
+var lendIDs = new Array();
+var lendIDsIndx = 0;
 
 //查询设备借用记录
 $("#content").on("click", "#queryLendEqptsBtn", function () {
@@ -52,8 +52,8 @@ function queryLentEqptRecs(userID, userRole, mjrName, searchItem, searchType) {
 
 //显示指定页的设备借用记录
 function echoLentEqptRecs(page) {
-    lentEqptIDs = new Array();
-    lentEqptIDsIndx = 0;
+    lendIDs = new Array();
+    lendIDsIndx = 0;
     lentCurrPage = page;
 
     if (lentCurrPage === 1) $("#content").find("#lendPrevPage").attr("disabled", "disabled");
@@ -203,6 +203,21 @@ $("body").on("click", ".lendCancelBtn", function () {
     queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 });
 
+//获取选择的多个借用记录ID
+$("#content").on("click", ".lendCheckbox", function (event) {
+    let currLendID = $(event.target).val();
+
+    if ($(event.target).attr("checked")) {
+        $(event.target).removeAttr("checked");
+        let currLendIndx = lendIDs.indexOf(currLendID);
+        lendIDs.splice(currLendIndx, 1);
+        lendIDsIndx--;
+    } else {
+        $(event.target).attr("checked", "ture");
+        lendIDs[lendIDsIndx++] = currLendID;
+    }
+});
+
 //归还单个设备
 $("#content").on("click", ".rtnEqptBtn", function (event) {
     let currLendID = ($(event.target).attr("id")).substring(3);
@@ -229,6 +244,34 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
             } else alert(status);
         }
     });
+});
+
+//批量归还借用的设备
+$("#content").on("click", "#rtnEqptsBtn", function () {
+    if (lendIDs.length === 0) alert("您选择了0条借用记录，请选择至少一条记录后再执行批量归还操作");
+    else {
+        $.ajax({
+            url: "../../library/common/return_eqpts.php",
+            type: "POST",
+            async: false,
+            data: { userRole: userInfo.userRole, lendIDs: lendIDs },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功归还" + lendIDs.length + "个设备")
+                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "lendStat";
+                    }
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+                } else alert(status);
+            }
+        });
+    }
+
 });
 
 //报修单个设备
