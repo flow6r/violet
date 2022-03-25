@@ -26,6 +26,32 @@ if (mysqli_connect_error()) {
     exit;
 }
 
+//查询数据库
+$query = "SELECT LendStat FROM Lend WHERE UserID = ? AND EqptID = ? AND LendBegn = ?";
+$stmt = $db->prepare($query);
+$stmt->bind_param("sss", $userID, $eqptID, $lendBegn);
+$stmt->execute();
+$stmt->store_result();
+if ($stmt->num_rows()) {
+    $stmt->free_result();
+    $stmt->bind_result($lendStat);
+    $stmt->fetch();
+    if ($lendStat === "未归还") echo "该设备已归还，请勿重复执行归还操作";
+    else {
+        $query = "DELETE FROM Lend WHERE UserID = ? AND EqptID = ? AND LendBegn = ?";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("sss", $userID, $eqptID, $lendBegn);
+        $stmt->execute();
+    }
+} else {
+    echo "查询设备借用记录时发生错误，请联系管理员并反馈问题";
+    $stmt->free_result();
+    $db->close();
+    exit;
+}
+
+echo "successful";
+
 //释放结果集并关闭链接
 $stmt->free_result();
 $db->close();
