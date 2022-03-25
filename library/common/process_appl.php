@@ -67,7 +67,7 @@ $stmt->execute();
 //新建设备借用记录
 $lendStat = "未归还";
 for ($indx = 0; $indx < count($eqptID); $indx++) {
-    $query = "INSERT INTO Lend VALUES(?,?,?,?,?,NULL)";
+    $query = "INSERT INTO Lend VALUES(NULL,?,?,?,?,?,NULL)";
     $stmt = $db->prepare($query);
     $stmt->bind_param("sssss", $userID, $eqptID[$indx]["EqptID"], $lendBegn, $lendEnd, $lendStat);
     $stmt->execute();
