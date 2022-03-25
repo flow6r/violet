@@ -25,7 +25,7 @@ if (mysqli_connect_error()) {
 }
 
 //查询借用记录状态
-$cantRtnLendIDs = null;
+$cantRtnLendIDs = array();
 $cantRtnLendIDIndx = 0;
 $canRtn = true;
 for ($indx = 0; $indx < count($lendIDs); $indx++) {
