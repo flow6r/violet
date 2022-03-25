@@ -69,16 +69,16 @@ function echoLentEqptRecs(page) {
 
     for (; begnPage <= endPage && begnPage < lentEqptRecs.length; begnPage++) {
         $("#content").find("#lendEqptsRecs").append(
-            "<tr><td><input type='checkbox' name='lendCheckbox' class='lendCheckbox' value='" + lentEqptRecs[begnPage].EqptID + "' /></td>" +
+            "<tr><td><input type='checkbox' name='lendCheckbox' class='lendCheckbox' value='" + lentEqptRecs[begnPage].LendID + "' /></td>" +
             "<td><a class='lendUserID' name='" + lentEqptRecs[begnPage].UserID + "' href='#'>" + lentEqptRecs[begnPage].UserID + "</a></td>" +
             "<td><a class='lentEqptID' name='" + lentEqptRecs[begnPage].EqptID + "' href='#'>" + lentEqptRecs[begnPage].EqptID + "</a></td>" +
             "<td class='lentTime'>" + lentEqptRecs[begnPage].LendBegn + "</td>" +
             "<td class='lentTime'>" + lentEqptRecs[begnPage].LendEnd + "</td>" +
             "<td>" + lentEqptRecs[begnPage].LendStat + "</td>" +
             "<td class='lentTime'>" + (lentEqptRecs[begnPage].LendRtn === null ? "暂无" : lentEqptRecs[begnPage].LendRtn) + "</td>" +
-            "<td><input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
-            "<input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
-            "<input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
+            "<td><input type='button' id='rtn" + lentEqptRecs[begnPage].LendID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
+            "<input type='button' id='brk" + lentEqptRecs[begnPage].LendID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
+            "<input type='button' id='del" + lentEqptRecs[begnPage].LendID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
         );
 
         if (lentEqptRecs[begnPage].LendStat === "未归还") {
@@ -134,14 +134,14 @@ $("#content").on("click", ".lendUserID", function (event) {
             $("body").append(
                 "<div id='lendUserInfoDiv' name='lendUserInfoDiv' class='popup'><form id='lendUserInfoForm' name='lendUserInfoForm'>" +
                 "<table id='lendUserInfoTbl' name='lendUserInfoTbl'><tr><th colspan='2'><span>用户信息</span></th></tr>" +
-                "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' placeholder='" + userJSON[0].UserID + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' placeholder='" + userJSON[0].UserName + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>用户性别</label></td><td><input type='text' id='userGen' name='userGen' placeholder='" + userJSON[0].UserGen + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>用户角色</label></td><td><input type='text' id='userRole' name='userRole' placeholder='" + userJSON[0].UserRole + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' placeholder='" + userJSON[0].UserEmail + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>入学年份</label></td><td><input type='text' id='userAdms' name='userAdms' placeholder='" + (userJSON[0].UserAdms === null ? "暂无" : userJSON[0].UserAdms) + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>隶属学院</label></td><td><input type='text' id='colgName' name='colgName' placeholder='" + userJSON[0].ColgName + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>专业名称</label></td><td><input type='text' id='mjrName' name='mjrName' placeholder='" + userJSON[0].MjrName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' value='" + userJSON[0].UserID + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' value='" + userJSON[0].UserName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户性别</label></td><td><input type='text' id='userGen' name='userGen' value='" + userJSON[0].UserGen + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>用户角色</label></td><td><input type='text' id='userRole' name='userRole' value='" + userJSON[0].UserRole + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + userJSON[0].UserEmail + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>入学年份</label></td><td><input type='text' id='userAdms' name='userAdms' value='" + (userJSON[0].UserAdms === null ? "暂无" : userJSON[0].UserAdms) + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>隶属学院</label></td><td><input type='text' id='colgName' name='colgName' value='" + userJSON[0].ColgName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>专业名称</label></td><td><input type='text' id='mjrName' name='mjrName' value='" + userJSON[0].MjrName + "' disabled='disabled' /></td></tr>" +
                 "<tr><td colspan='2'><input type='button' id='lendUserInfoCancel' name='lendUserInfoCancel' class='lendCancelBtn' value='取消' /></td></tr>" +
                 "</table></form></div>"
             );
@@ -169,16 +169,16 @@ $("#content").on("click", ".lentEqptID", function (event) {
                 "<div id='lentEqptInfoDiv' name='lentEqptInfoDiv' class='popup'><form id='lentEqptInfoForm' name='lentEqptInfoForm'>" +
                 "<table id='lentEqptInfoTbl' name='lentEqptInfoTbl'><tr><th colspan='2'><span>实验设备详情</span></th>" +
                 "</tr><tr><td colspan='2'><img src='" + eqptJson[0].ImgPath + "' width='200' height='200' alt='eqptImg' title='' /></td>" +
-                "</tr><tr><td><label>设备ID</label></td><td><input type='text' id='eqptID' name='eqptID' placeholder='" + eqptJson[0].EqptID + "' disabled='disabled' />" +
+                "</tr><tr><td><label>设备ID</label></td><td><input type='text' id='eqptID' name='eqptID' value='" + eqptJson[0].EqptID + "' placeholder='" + eqptJson[0].EqptID + "' disabled='disabled' />" +
                 "</td></tr><tr><td><label>设备名称</label></td>" +
-                "<td><input type='text' id='eqptName' name='eqptName' placeholder='" + eqptJson[0].EqptName + "' disabled='disabled' />" +
+                "<td><input type='text' id='eqptName' name='eqptName' value='" + eqptJson[0].EqptName + "' placeholder='" + eqptJson[0].EqptName + "' disabled='disabled' />" +
                 "</td></tr><tr><td><label>设备分类</label></td>" +
-                "<td><input type='text' id='eqptCls' name='eqptCls' placeholder='" + eqptJson[0].ClsName + "' disabled='disabled' /></td>" +
+                "<td><input type='text' id='eqptCls' name='eqptCls' value='" + eqptJson[0].ClsName + "' placeholder='" + eqptJson[0].ClsName + "' disabled='disabled' /></td>" +
                 "</tr><tr><td><label>隶属学院</label></td>" +
-                "<td><input type='text' id='colgName' name='colgName' placeholder='" + eqptJson[0].ColgName + "' disabled='disabled' /></td>" +
+                "<td><input type='text' id='colgName' name='colgName' value='" + eqptJson[0].ColgName + "' placeholder='" + eqptJson[0].ColgName + "' disabled='disabled' /></td>" +
                 "</tr><tr><td><label>入库时间</label></td>" +
-                "<td><input type='text' id='eqptCre' name='eqptCre' placeholder='" + eqptJson[0].EqptCre + "' disabled='disabled' /></td>" +
-                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "'></textarea></td></tr><tr>" +
+                "<td><input type='text' id='eqptCre' name='eqptCre' value='" + eqptJson[0].EqptCre + "' placeholder='" + eqptJson[0].EqptCre + "' disabled='disabled' /></td>" +
+                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "'>" + eqptJson[0].EqptDesc + "</textarea></td></tr><tr>" +
                 "<td colspan='2'><input type='button' id='lendEqptInfoCancel' name='lendEqptInfoCancel' class='lendCancelBtn' value='取消'></td>" +
                 "</tr></table></form></div>"
             );
@@ -205,13 +205,14 @@ $("body").on("click", ".lendCancelBtn", function () {
 
 //归还单个设备
 $("#content").on("click", ".rtnEqptBtn", function (event) {
+    let currLendID = ($(event.target).attr("id")).substring(3);
     let currLentEqptID = $(event.target).attr("name");
 
     $.ajax({
         url: "../../library/common/return_eqpt.php",
         type: "POST",
         async: false,
-        data: { userID: userInfo.userID, userRole: userInfo.userRole, eqptID: currLentEqptID },
+        data: { userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID },
         success: function (status) {
             if (status === "successful") {
                 alert("成功归还设备ID为" + currLentEqptID + "的设备");
@@ -232,16 +233,14 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
 
 //报修单个设备
 $("#content").on("click", ".brkEqptBtn", function (event) {
-    let charPos = ($(event.target).attr("id")).indexOf("|");
-    let currLendUserID = ($(event.target).attr("id")).substring(0, charPos);
+    let currLendID = ($(event.target).attr("id")).substring(3);
     let currLentEqptID = $(event.target).attr("name");
-    let currLendBegn = ($(event.target).attr("id")).substring(charPos + 1);
 
     $.ajax({
         url: "../../library/common/create_brkrec.php",
         type: "POST",
         async: false,
-        data: { userID: currLendUserID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
+        data: { userID: userInfo.userID, userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID },
         success: function (status) {
             if (status === "successful") {
                 alert("成功报修");
@@ -262,19 +261,16 @@ $("#content").on("click", ".brkEqptBtn", function (event) {
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
-    let charPos = ($(event.target).attr("id")).indexOf("|");
-    let currLendUserID = ($(event.target).attr("id")).substring(0, charPos);
-    let currLentEqptID = $(event.target).attr("name");
-    let currLendBegn = ($(event.target).attr("id")).substring(charPos + 1);
+    let currLendID = ($(event.target).attr("id")).substring(3);
 
     $.ajax({
         url: "../../library/common/delete_lend.php",
         type: "POST",
         async: false,
-        data: { userID: currLendUserID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
+        data: { userRole: userInfo.userRole, lendID: currLendID },
         success: function (status) {
             if (status === "successful") {
-                alert("成功删除设备借用记录");
+                alert("成功删除借用ID为" + currLendID + "的设备借用记录");
 
                 let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
                 let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
