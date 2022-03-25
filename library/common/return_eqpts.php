@@ -39,7 +39,7 @@ for ($indx = 0; $indx < count($lendIDs); $indx++) {
         $stmt->free_result();
         if ($lendStat === "已归还") $canRtn = false;
     } else {
-        echo "查询设备借用记录时发生错误，发生异常的设备借用记录ID为" . $lendIDs[$indx] . "，请联系管理员并反馈问题";
+        echo "查询设备借用记录时发生错误，发生异常的设备借用记录ID为" . $currLendID . "，请联系管理员并反馈问题";
         $stmt->free_result();
         $db->close();
         exit;
@@ -66,7 +66,7 @@ if ($canRtn) {
         $stmt->execute();
     }
 } else {
-    echo "借用记录ID为的记录无法删除，该设备已归还，请勿重复执行归还操作";
+    echo "借用记录ID为" . $currLendID . "的记录无法删除，该设备已归还，请勿重复执行归还操作";
     $db->close();
     exit;
 }
