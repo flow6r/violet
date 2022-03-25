@@ -76,9 +76,9 @@ function echoLentEqptRecs(page) {
             "<td class='lentTime'>" + lentEqptRecs[begnPage].LendEnd + "</td>" +
             "<td>" + lentEqptRecs[begnPage].LendStat + "</td>" +
             "<td class='lentTime'>" + (lentEqptRecs[begnPage].LendRtn === null ? "暂无" : lentEqptRecs[begnPage].LendRtn) + "</td>" +
-            "<td><input type='button' id='rtn" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
-            "<input type='button' id='brk" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
-            "<input type='button' id='del" + lentEqptRecs[begnPage].LendBegn + lentEqptRecs[begnPage].EqptID + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
+            "<td><input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='rtnEqptBtn' value='归还' />" +
+            "<input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='brkEqptBtn' value='报修' />" +
+            "<input type='button' id='" + lentEqptRecs[begnPage].UserID + "|" + lentEqptRecs[begnPage].LendBegn + "' name='" + lentEqptRecs[begnPage].EqptID + "' class='delRecBtn' value='删除' /></td></tr>"
         );
 
         if (lentEqptRecs[begnPage].LendStat === "未归还") {
@@ -233,21 +233,23 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
+    let charPos = ($(event.target).attr("id")).indexOf("|");
+    let currLendUserID = ($(event.target).attr("id")).substring(0, charPos);
     let currLentEqptID = $(event.target).attr("name");
-    let currLendBegn = ($(event.target).attr("id")).substr(3, 19);
+    let currLendBegn = ($(event.target).attr("id")).substring(charPos + 1);
 
     $.ajax({
         url: "../../library/common/delete_lend.php",
         type: "POST",
         async: false,
-        data: { userID: userInfo.userID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
+        data: { userID: currLendUserID, userRole: userInfo.userRole, eqptID: currLentEqptID, lendBegn: currLendBegn },
         success: function (status) {
             if (status === "successful") {
                 alert("成功删除设备借用记录");
-    
+
                 let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
                 let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-    
+
                 $("#content").find("#lendEqptsRecsHead").siblings().remove();
                 if (searchItem === "") {
                     searchItem = "";
