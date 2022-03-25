@@ -304,12 +304,11 @@ $("body").on("click", "#creBrkRecBtn", function () {
             async: false,
             data: { userID: userInfo.userID, userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID, brkDesc: brkDesc },
             success: function (status) {
+                $("#mask").attr("style", "visibility: hidden;");
+                $(".popup").remove();
+
                 if (status === "successful") {
                     alert("成功报修");
-
-                    $("#mask").attr("style", "visibility: hidden;");
-
-                    $(".popup").remove();
 
                     let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
                     let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
@@ -349,6 +348,38 @@ $("#content").on("click", "#creBrkRecsBtn", function () {
 });
 
 //实现批量报修
+$("body").on("click", "#bulkCreBrkRecsBtn", function () {
+    let brkDesc = $("body").find("#brkDesc").val();
+
+    if (brkDesc === "") alert("报修原因不能为空");
+    else {
+        $.ajax({
+            url: "../../library/common/create_brkrecs.php",
+            type: "POST",
+            async: false,
+            data: { userID: userInfo.userID, userRole: userInfo.userRole, lendIDs: lendIDs },
+            success: function (status) {
+                $("#mask").attr("style", "visibility: hidden;");
+                $(".popup").remove();
+
+                if (status === "successful") {
+                    alert("成功报修" + lendIDs.length + "个设备");
+
+                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "lendStat";
+                    }
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                } else alert(status);
+            }
+        });
+    }
+});
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
