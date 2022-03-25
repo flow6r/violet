@@ -1,10 +1,8 @@
 <?php
 /*删除单个设备借用记录的脚本*/
 //获取POST请求的数据
-$userID = $_POST["userID"];
 $userRole = $_POST["userRole"];
-$eqptID = $_POST["eqptID"];
-$lendBegn = $_POST["lendBegn"];
+$lendID = intval($_POST["lendID"]);
 
 //引入数据库用户信息脚本
 switch ($userRole) {
@@ -27,20 +25,23 @@ if (mysqli_connect_error()) {
 }
 
 //查询数据库
-$query = "SELECT LendStat FROM Lend WHERE UserID = ? AND EqptID = ? AND LendBegn = ?";
+$query = "SELECT LendStat FROM Lend WHERE LendID = ?";
 $stmt = $db->prepare($query);
-$stmt->bind_param("sss", $userID, $eqptID, $lendBegn);
+$stmt->bind_param("i", $lendID);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows()) {
-    $stmt->free_result();
     $stmt->bind_result($lendStat);
     $stmt->fetch();
-    if ($lendStat === "未归还") echo "该设备已归还，请勿重复执行归还操作";
-    else {
-        $query = "DELETE FROM Lend WHERE UserID = ? AND EqptID = ? AND LendBegn = ?";
+    $stmt->free_result();
+    if ($lendStat === "未归还") {
+        echo "借用ID为" . $lendID . "的记录当前状态为‘未归还’，不符合删除条件，无法删除";
+        $db->close();
+        exit;
+    } else {
+        $query = "DELETE FROM Lend WHERE LendID = ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("sss", $userID, $eqptID, $lendBegn);
+        $stmt->bind_param("i", $lendID);
         $stmt->execute();
     }
 } else {
