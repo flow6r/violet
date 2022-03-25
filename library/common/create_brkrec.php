@@ -5,6 +5,7 @@ $userID = $_POST["userID"];
 $userRole = $_POST["userRole"];
 $lendID = intval($_POST["lendID"]);
 $eqptID = $_POST["eqptID"];
+$brkDesc = $_POST["brkDesc"];
 
 //引入数据库用户信息脚本
 switch ($userRole) {
@@ -67,9 +68,9 @@ $stmt->execute();
 $stmt->free_result();
 $brkStat = "未处理";
 $brkCre = date("Y-m-d H:i:s");
-$query = "INSERT INTO Breakages VALUES(NULL,?,?,?,?,NUll,NULL)";
+$query = "INSERT INTO Breakages VALUES(NULL,?,?,?,?,?,NUll,NULL)";
 $stmt = $db->prepare($query);
-$stmt->bind_param("ssss", $userID, $eqptID, $brkCre, $brkStat);
+$stmt->bind_param("sssss", $userID, $eqptID, $brkCre, $brkDesc, $brkStat);
 $stmt->execute();
 
 echo "successful";
