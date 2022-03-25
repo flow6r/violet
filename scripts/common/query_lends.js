@@ -278,28 +278,54 @@ $("#content").on("click", ".brkEqptBtn", function (event) {
     let currLendID = ($(event.target).attr("id")).substring(3);
     let currLentEqptID = $(event.target).attr("name");
 
-    $.ajax({
-        url: "../../library/common/create_brkrec.php",
-        type: "POST",
-        async: false,
-        data: { userID: userInfo.userID, userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID },
-        success: function (status) {
-            if (status === "successful") {
-                alert("成功报修");
+    $("#mask").attr("style", "visibility: visible;");
 
-                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-
-                $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                if (searchItem === "") {
-                    searchItem = "";
-                    searchType = "lendStat";
-                }
-                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
-            } else alert(status);
-        }
-    });
+    $("body").append(
+        "<div id='creBrkRecDiv' name='creBrkRecDiv' class='popup'><form id='creBrkRecForm' name='creBrkRecForm'>" +
+        "<table id='creBrkRecTbl' name='creBrkRecTbl'><tr><th colspan='2'><span>报修设备</span></th></tr>" +
+        "<tr><td><label>借用ID</label></td><td><input type='text' id='brkLendID' name='brkLendID' value='" + currLendID + "' placeholder='" + currLendID + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>设备ID</label></td><td><input type='text' id='brkLentEqptID' name='brkLentEqptID' value='" + currLentEqptID + "' placeholder='" + currLentEqptID + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>报修原因</label></td><td><textarea id='brkDesc' name='brkDesc'></textarea></td></tr>" +
+        "<tr><td><input type='button' id='creBrkRecCancelBtn' name='creBrkRecCancelBtn' class='lendCancelBtn' value='取消' /></td>" +
+        "<td><input type='button' id='creBrkRecBtn' name='creBrkRecBtn' value='报修' /></td></tr></table></form></div>"
+    );
 });
+
+//实现报修单个设备的函数
+$("body").on("click", "#creBrkRecBtn", function () {
+    let currLendID = $("body").find("#brkLendID").val();
+    let currLentEqptID = $("body").find("#brkLentEqptID").val();
+    let brkDesc = $("body").find("#brkDesc").val();
+
+    if (brkDesc === "") alert("报修原因不能为空");
+    else {
+        $.ajax({
+            url: "../../library/common/create_brkrec.php",
+            type: "POST",
+            async: false,
+            data: { userID: userInfo.userID, userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID, brkDesc: brkDesc },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功报修");
+
+                    $("#mask").attr("style", "visibility: hidden;");
+
+                    $(".popup").remove();
+
+                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+                    if (searchItem === "") {
+                        searchItem = "";
+                        searchType = "lendStat";
+                    }
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+                } else alert(status);
+            }
+        });
+    }
+})
 
 //删除单个设备借用记录
 $("#content").on("click", ".delRecBtn", function (event) {
