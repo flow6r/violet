@@ -3,8 +3,8 @@
 //获取POST的请求数据
 $userID = $_POST["userID"];
 $userRole = $_POST["userRole"];
+$lendID = intval($_POST["lendID"]);
 $eqptID = $_POST["eqptID"];
-$lendBegn = $_POST["lendBegn"];
 
 //引入数据库用户信息脚本
 switch ($userRole) {
@@ -27,9 +27,9 @@ if (mysqli_connect_error()) {
 }
 
 //检查设备借用记录状态
-$query = "SELECT E.EqptStat, L.LendStat FROM Equipments AS E, Lend AS L WHERE E.EqptID = L.EqptID AND L.UserID = ? AND L.EqptID = ? AND L.LendBegn = ?";
+$query = "SELECT E.EqptStat, L.LendStat FROM Equipments AS E, Lend AS L WHERE E.EqptID = L.EqptID AND L.LendID = ?";
 $stmt = $db->prepare($query);
-$stmt->bind_param("sss", $userID, $eqptID, $lendBegn);
+$stmt->bind_param("i", $lendID);
 $stmt->execute();
 $stmt->store_result();
 if ($stmt->num_rows()) {
@@ -42,7 +42,7 @@ if ($stmt->num_rows()) {
         exit;
     }
 } else {
-    echo "查询设备记录时发生错误，请联系管理员并反馈问题";
+    echo "查询设备记录时发生错误，发生异常的设备借用记录ID为" . $lendID . "请联系管理员并反馈问题";
     $stmt->free_result();
     $db->close();
     exit;
@@ -51,9 +51,9 @@ if ($stmt->num_rows()) {
 //更新设备借用记录状态
 $lendStat = "已归还";
 $lendRtn = date("Y-m-d H:i:s");
-$query = "UPDATE Lend SET LendStat = ?, LendRtn = ? WHERE UserID = ? AND EqptID = ? AND LendBegn = ?";
+$query = "UPDATE Lend SET LendStat = ?, LendRtn = ? WHERE LendID = ?";
 $stmt = $db->prepare($query);
-$stmt->bind_param("sssss", $lendStat, $lendRtn, $userID, $eqptID, $lendBegn);
+$stmt->bind_param("ssi", $lendStat, $lendRtn, $lendID);
 $stmt->execute();
 
 //更新设备借用状态
