@@ -1,0 +1,135 @@
+#queryBrkRecsDiv {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu{
+    width: 100%;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu span{
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #searchItem {
+    font-size: 1.5em;
+    width: 350px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #searchType {
+    padding: 1px 2px;
+    font-size: 1.5em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #queryBrkRecsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #queryBrkRecsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 75px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #delBrkRecsBtn,
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #procBrkRecsBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #delBrkRecsBtn:hover,
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu #procBrkRecsBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu tr:nth-child(2) td:nth-child(1) {
+    width: 366px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu tr:nth-child(2) td:nth-child(2) {
+    width: 158px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu tr:nth-child(2) td:nth-child(3) {
+    width: 83px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #queryBrkRecsMenu tr:nth-child(2) td:nth-child(4) {
+    width: 108px;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl th {
+    font-size: 1.2em;
+    background-color: #4d86d1;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl td {
+    font-size: 1.1em;
+    background-color: #c4cdda;
+    color: #000000;
+    border: 1px solid #ffffff;
+}
+
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl a {
+    text-decoration: none;
+}
