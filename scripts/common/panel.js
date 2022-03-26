@@ -340,7 +340,40 @@ function printLentEqpts() {
         "</table></form></div>"
     );
 
+    if (userInfo.userRole === "学生") {
+        $("#content").find("option[value='userID']").remove();
+        $("#content").find("option[value='mjrName']").remove();
+        $("#content").find("option[value='colgName']").remove();
+    }
+
     queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "lendStat");
+}
+
+/*设备报修记录*/
+$(".userNav").on("click", "#BrkRecs", function () {
+    printBrkEqpts();
+});
+
+function printBrkEqpts() {
+    $("#content").empty();
+    $("#content").append(
+        "<div id='queryBrkRecsDiv' name='queryBrkRecsDiv'><form id='queryBrkRecsForm' name='queryBrkRecsForm'><table id='queryBrkRecsMenu' name='queryBrkRecsMenu'>" +
+        "<tr><td><span>损坏设备报修记录查询</span></td></tr><tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
+        "<td><select id='searchType' name='searchType'><option value='brkID'>报修ID</option><option value='userID'>上报用户ID</option><option value='eqptID'>报修设备ID</option>" +
+        "<option value='eqptName'>设备名称</option><option value='clsName'>设备分类</option><option value='brkStat'>报修状态</option><option value='dspUser'>处理用户ID</option></select></td>" +
+        "<td><input type='button' id='queryBrkRecsBtn' name='queryBrkRecsBtn' value='查询' /></td>" +
+        "<td><input type='button' id='delBrkRecsBtn' name='delBrkRecsBtn' value='批量删除'/></td>" +
+        "<td><input type='button' id='procBrkRecsBtn' name='procBrkRecsBtn' value='批量处理'/></td></tr></table><table id='brkRecsTbl' name='brkRecsTbl'>" +
+        "<tr id='brkRecsTblHead' name='brkRecsTblHead'><th width='20px'></th><th>报修ID</th><th>上报用户</th><th>报修设备</th><th>报修状态</th><th>报修详情</th><th>其他操作</th>" +
+        "</tr></table><table id='brkRecsPageCtl' name='brkRecsPageCtl'><tr><td><input type='button' id='brkPrevPage' name='brkPrevPage' value='上一页' /></td>" +
+        "<td><input type='text' id='brkRecsPageInfo' name='brkRecsPageInfo' size='12' disabled='disabled' /></td>" +
+        "<td><input type='button' id='brkNextPage' name='brkNextPage' value='下一页' /></td>" +
+        "<td><input type='text' id='brkRecsTrgtPage' name='brkRecsTrgtPage' placeholder='请输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='brkJupmToTrgtPage' name='brkJupmToTrgtPage' value='跳转' /></td></tr></table></form></div>"
+    );
+
+    if (userInfo.userRole === "学生") $("#content").find("option[value='userID']").remove();
+
 }
 
 /*退出登录*/
