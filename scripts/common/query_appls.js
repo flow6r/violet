@@ -49,6 +49,9 @@ function queryAppls(userID, userRole, colgName, searchItem, searchType) {
                 if (appls.length < applsRecLimit) {
                     applsTotPages = 1;
                     applsCurrPage = 1;
+                    
+                    $("#content").find("#applsTrgtPage").attr("disabled", "disabled");
+                    $("#content").find("#applsJump").attr("disabled", "disabled");
                 } else {
                     applsTotPages = parseInt(appls.length / applsRecLimit);
                     if (appls.length % applsRecLimit) applsTotPages++;
