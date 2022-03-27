@@ -31,17 +31,22 @@ function queryEqpts(userRole, colgName, searchItem, searchType) {
 
             if (eqptInfo.length === 0) {
                 alert("共0条设备记录");
-                
+
                 totPages = 0;
                 currPage = 0;
 
-                ($("#content").find("#pageInfo")).val("第0页，共0页");
                 $("#content").find("#prevPage").attr("disabled", "disabled");
+                ($("#content").find("#pageInfo")).val("第0页，共0页");
                 $("#content").find("#nextPage").attr("disabled", "disabled");
+                $("#content").find("#trgtPage").attr("disabled", "disabled");
+                $("#content").find("#jump").attr("disabled", "disabled");
             } else {
                 if (eqptInfo.length < recLimit) {
                     totPages = 1;
                     currPage = 1;
+
+                    $("#content").find("#trgtPage").attr("disabled", "disabled");
+                    $("#content").find("#jump").attr("disabled", "disabled");
                 } else {
                     totPages = parseInt(eqptInfo.length / recLimit);
                     if (eqptInfo.length % recLimit) totPages++;
