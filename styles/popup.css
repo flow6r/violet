@@ -1147,7 +1147,8 @@
     border-radius: 15px;
 }
 
-#lentEqptInfoDiv {
+#lentEqptInfoDiv,
+#brkEqptInfoDiv {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1161,7 +1162,8 @@
     z-index: 10;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm {
+#lentEqptInfoDiv #lentEqptInfoForm,
+#brkEqptInfoDiv #brkEqptInfoForm {
     position: absolute;
     padding: 0px;
     margin: 0 auto;
@@ -1169,7 +1171,8 @@
     height: 630px;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1177,17 +1180,20 @@
     border-spacing: 8px;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl th {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl th,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl th {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl tr:nth-child(2) {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl tr:nth-child(2),
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl tr:nth-child(2) {
     text-align: center;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl label {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl label,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl label {
     font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
@@ -1197,7 +1203,12 @@
 #lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptName,
 #lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptCls,
 #lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #colgName,
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptCre {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #eqptCre,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #eqptID,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #eqptName,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #eqptCls,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #colgName,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #eqptCre {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1207,7 +1218,8 @@
     border-radius: 15px;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl textarea {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl textarea,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl textarea {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1220,7 +1232,8 @@
     background-color: rgba(241, 241, 241, .98);
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #brkEqptInfoCancel {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100%;
@@ -1232,7 +1245,8 @@
     border-radius: 15px;
 }
 
-#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel:hover {
+#lentEqptInfoDiv #lentEqptInfoForm #lentEqptInfoTbl #lendEqptInfoCancel:hover,
+#brkEqptInfoDiv #brkEqptInfoForm #brkEqptInfoTbl #brkEqptInfoCancel:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100%;
