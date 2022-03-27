@@ -312,7 +312,7 @@ function printQueryAppl() {
         $("#content").find("option[value='userID']").remove();
     }
 
-    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "applStat");
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "applStat");
 }
 
 /*设备借用记录*/
