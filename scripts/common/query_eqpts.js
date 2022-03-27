@@ -87,6 +87,7 @@ function echoEqptRecords(page) {
             "<td><input type='button' id='" + eqptInfo[begnPage].EqptID + "' class='lendBtn' value='借用' /></td>" +
             "</tr>"
         );
+        
         if (eqptInfo[begnPage].EqptStat != "未借出") $("input[type='checkbox'][value='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
         if (eqptInfo[begnPage].EqptStat != "未借出") $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
     }
