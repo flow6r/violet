@@ -43,6 +43,9 @@ function queryLentEqptRecs(userID, userRole, colgName, searchItem, searchType) {
                 if (lentEqptRecs.length < lentRecsLimit) {
                     lentTotPages = 1;
                     lentCurrPage = 1;
+
+                    $("#content").find("#lendTrgtPage").attr("disabled", "disabled");
+                    $("#content").find("#lendJumpToTrgtPage").attr("disabled", "disabled");    
                 } else {
                     lentTotPages = parseInt(lentEqptRecs.length / lentRecsLimit);
                     if (lentEqptRecs.length % lentRecsLimit) lentTotPages++;
