@@ -15,16 +15,16 @@ $("#content").on("click", "#queryEqptsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#queryRsltTblHead").siblings().remove();
-        queryEqpts(userInfo.userRole, searchItem, searchType);
+        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
     } else alert("请输入关键词");
 });
 
-function queryEqpts(userRole, searchItem, searchType) {
+function queryEqpts(userRole, colgName, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_eqpts.php",
         type: "GET",
         async: false,
-        data: { userRole: userRole, searchItem: searchItem, searchType: searchType },
+        data: { userRole: userRole, colgName: colgName, searchItem: searchItem, searchType: searchType },
         dataType: "json",
         success: function (eqptJSON) {
             eqptInfo = eqptJSON;
@@ -54,6 +54,8 @@ function queryEqpts(userRole, searchItem, searchType) {
 
 //打印每页设备的记录
 function echoEqptRecords(page) {
+    eqptIDs = new Array();
+    eqptIDsIndx = 0;
     currPage = page;
 
     if (currPage === 1) $("#content").find("#prevPage").attr("disabled", "disabled");
@@ -204,11 +206,11 @@ $("body").on("click", "#editDetlCancelBtn", function () {
     let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
     if (searchItem === "") {
-        searchItem = userInfo.colgName;
-        searchType = "colgName";
+        searchItem = "";
+        searchType = "eqptID";
     }
 
-    queryEqpts(userInfo.userRole, searchItem, searchType);
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //保存更新的信息并更新设备信息
@@ -254,12 +256,11 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
     let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
     if (searchItem === "") {
-        searchItem = userInfo.colgName;
-        searchType = "colgName";
+        searchItem = "";
+        searchType = "eqptID";
     }
 
-    queryEqpts(userInfo.userRole, searchItem, searchType);
-
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 /*添加设备*/
@@ -396,11 +397,11 @@ $("body").on("click", ".cancelBtn", function () {
     let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
     if (searchItem === "") {
-        searchItem = userInfo.colgName;
-        searchType = "colgName";
+        searchItem = "";
+        searchType = "eqptID";
     }
 
-    queryEqpts(userInfo.userRole, searchItem, searchType);
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 
     eqptIDs = new Array();
     eqptIDsIndx = 0;
@@ -464,11 +465,11 @@ $("body").on("click", "#lendAnEqptBtn", function () {
                         let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
                         if (searchItem === "") {
-                            searchItem = userInfo.colgName;
-                            searchType = "colgName";
+                            searchItem = "";
+                            searchType = "eqptID";
                         }
 
-                        queryEqpts(userInfo.userRole, searchItem, searchType);
+                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
                     }
                 }
             });
@@ -569,11 +570,11 @@ $("body").on("click", "#bulkLendEqptsBtn", function () {
                         let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
                         if (searchItem === "") {
-                            searchItem = userInfo.colgName;
-                            searchType = "colgName";
+                            searchItem = "";
+                            searchType = "eqptID";
                         }
 
-                        queryEqpts(userInfo.userRole, searchItem, searchType);
+                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 
                         eqptIDs = new Array();
                         eqptIDsIndx = 0;
@@ -612,11 +613,11 @@ $("#content").on("click", "#delEqptsBtn", function () {
                         let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
 
                         if (searchItem === "") {
-                            searchItem = userInfo.colgName;
-                            searchType = "colgName";
+                            searchItem = "";
+                            searchType = "eqptID";
                         }
 
-                        queryEqpts(userInfo.userRole, searchItem, searchType);
+                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
                     }
                 }
             });
