@@ -268,6 +268,7 @@ $("#content").on("click", "#rtnEqptsBtn", function () {
             success: function (status) {
                 if (status === "successful") {
                     alert("成功归还" + lendIDs.length + "个设备")
+                    
                     let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
                     let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
 
@@ -354,6 +355,7 @@ $("#content").on("click", "#creBrkRecsBtn", function () {
 
         for (let indx = 0; indx < lendIDs.length; indx++) {
             let currLentEqptIDIndx = lentEqptRecs.findIndex(lentEqptRecs => lentEqptRecs.LendID == lendIDs[indx]);
+            
             $("body").find("#brkLentEqptIDs").append("<option value='" + lentEqptRecs[currLentEqptIDIndx].EqptID + "'>" + lentEqptRecs[currLentEqptIDIndx].EqptID + "</option>");
         }
     }
