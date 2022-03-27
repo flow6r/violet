@@ -133,3 +133,9 @@
 #queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl a {
     text-decoration: none;
 }
+
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl .procBrkRecBtn,
+#queryBrkRecsDiv #queryBrkRecsForm #brkRecsTbl .delBrkRecBtn {
+    font-size: 1.1em;
+    margin-right: 10px;
+}
