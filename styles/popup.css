@@ -1244,7 +1244,8 @@
     border-radius: 15px;
 }
 
-#lendUserInfoDiv {
+#lendUserInfoDiv,
+#brkUserInfoDiv {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1258,7 +1259,8 @@
     z-index: 10;
 }
 
-#lendUserInfoDiv #lendUserInfoForm {
+#lendUserInfoDiv #lendUserInfoForm,
+#brkUserInfoDiv #brkUserInfoForm {
     position: absolute;
     padding: 0px;
     margin: 0 auto;
@@ -1266,7 +1268,8 @@
     height: 490px;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1274,13 +1277,15 @@
     border-spacing: 8px;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl th {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl th,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl th {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl label {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl label,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl label {
     font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
@@ -1290,7 +1295,12 @@
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userName,
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userEmail,
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #colgName,
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #mjrName {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #mjrName,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userID,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userName,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userEmail,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #colgName,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #mjrName {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1302,7 +1312,10 @@
 
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userGen,
 #lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userRole,
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userAdms {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #userAdms,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userGen,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userRole,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #userAdms {
     float: right;
     font-size: 1.2em;
     width: 65px;
@@ -1312,7 +1325,8 @@
     border-radius: 15px;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #lendUserInfoCancel {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #lendUserInfoCancel,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #brkUserInfoCancel {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100%;
@@ -1324,7 +1338,8 @@
     border-radius: 15px;
 }
 
-#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #lendUserInfoCancel:hover {
+#lendUserInfoDiv #lendUserInfoForm #lendUserInfoTbl #lendUserInfoCancel:hover,
+#brkUserInfoDiv #brkUserInfoForm #brkUserInfoTbl #brkUserInfoCancel:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 100%;
