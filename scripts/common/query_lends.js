@@ -29,6 +29,11 @@ function queryLentEqptRecs(userID, userRole, colgName, searchItem, searchType) {
             lentEqptRecs = lentRecsJSON;
 
             if (lentEqptRecs.length === 0) {
+                alert("共0条设备借用记录");
+
+                lentTotPages = 0;
+                lentCurrPage = 0;
+
                 $("#content").find("#lendPrevPage").attr("disabled", "disabled");
                 $("#content").find("#lendRecsPagesInfo").val("第0页，共0页");
                 $("#content").find("#lendNextPage").attr("disabled", "disabled");
