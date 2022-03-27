@@ -211,5 +211,4 @@ $("body").on("click", ".brkCancelBtn", function () {
     }
 
     queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
 });
