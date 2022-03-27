@@ -15,19 +15,19 @@ $("#content").on("click", "#queryApplsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#applRsltsTblHead").siblings().remove();
-        queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
     } else alert("请输入关键词");
 });
 
 //实现查询借用申请记录的函数
-function queryAppls(userID, userRole, mjrName, searchItem, searchType) {
+function queryAppls(userID, userRole, colgName, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_appls.php",
         type: "GET",
         async: false,
         data:
         {
-            userID: userID, userRole: userRole, mjrName: mjrName,
+            userID: userID, userRole: userRole, colgName: colgName,
             searchItem: searchItem, searchType: searchType
         },
         dataType: "json",
@@ -203,7 +203,8 @@ $("body").on("click", ".applsCancelBtn", function () {
         searchItem = "";
         searchType = "applStat";
     }
-    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+    
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //处理单个设备申请记录
@@ -226,7 +227,8 @@ $("#content").on("click", ".procApplBtn", function (event) {
                         searchItem = "";
                         searchType = "applStat";
                     }
-                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                            queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
@@ -255,7 +257,8 @@ $("#content").on("click", "#procApplsBtn", function () {
                             searchItem = "";
                             searchType = "applStat";
                         }
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 
                         applIDs = new Array();
                         applIDsIndx = 0;
@@ -318,7 +321,8 @@ $("body").on("click", "#rjctApplBtn", function () {
                             searchItem = "";
                             searchType = "applStat";
                         }
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                     }
                 }
             });
@@ -381,7 +385,8 @@ $("body").on("click", "#bulkRjctApplsBtn", function () {
                             searchItem = "";
                             searchType = "applStat";
                         }
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 
                         applIDs = new Array();
                         applIDsIndx = 0;
@@ -411,7 +416,8 @@ $("#content").on("click", ".delApplBtn", function (event) {
                     searchItem = "";
                     searchType = "applStat";
                 }
-                queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
             } else alert(status);
         }
     });
@@ -437,6 +443,7 @@ $("#content").on("click", "#delApplsBtn", function () {
                         searchItem = "";
                         searchType = "applStat";
                     }
+
                     queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 
                     applIDs = new Array();
