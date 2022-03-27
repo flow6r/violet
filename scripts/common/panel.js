@@ -378,7 +378,7 @@ function printBrkEqpts() {
         $("#content").find("#procBrkRecsBtn").remove();
     }
 
-    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "eqptID");
+    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "brkID");
 }
 
 /*退出登录*/
