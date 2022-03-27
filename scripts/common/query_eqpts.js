@@ -30,9 +30,11 @@ function queryEqpts(userRole, colgName, searchItem, searchType) {
             eqptInfo = eqptJSON;
 
             if (eqptInfo.length === 0) {
-                alert("共0条记录");
+                alert("共0条设备记录");
+                
                 totPages = 0;
                 currPage = 0;
+
                 ($("#content").find("#pageInfo")).val("第0页，共0页");
                 $("#content").find("#prevPage").attr("disabled", "disabled");
                 $("#content").find("#nextPage").attr("disabled", "disabled");
