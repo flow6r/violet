@@ -373,8 +373,12 @@ function printBrkEqpts() {
         "<td><input type='button' id='brkJupmToTrgtPage' name='brkJupmToTrgtPage' value='跳转' /></td></tr></table></form></div>"
     );
 
-    if (userInfo.userRole === "学生") $("#content").find("option[value='userID']").remove();
+    if (userInfo.userRole === "学生") {
+        $("#content").find("option[value='userID']").remove();
+        $("#content").find("#procBrkRecsBtn").remove();
+    }
 
+    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "eqptID");
 }
 
 /*退出登录*/
