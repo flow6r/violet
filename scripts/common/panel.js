@@ -326,8 +326,7 @@ function printLentEqpts() {
         "<div id='queryLendsDiv' name='queryLendsDiv'><form id='queryLendsForm' name='queryLendsForm'>" +
         "<table id='queryLendsFormMenu' name='queryLendsFormMenu'><tr><td colspan='5'><span>设备借用记录查询</span></td></tr>" +
         "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词'/></td>" +
-        "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option><option value='eqptID'>设备ID</option>" +
-        "<option value='lendStat'>借用状态</option><option value='mjrName'>专业名称</option><option value='colgName'>学院名称</option></select></td>" +
+        "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option><option value='eqptID'>设备ID</option><option value='lendStat'>借用状态</option>" +
         "<td><input type='button' id='queryLendEqptsBtn' name='queryLendEqptsBtn' value='查询' /></td>" +
         "<td><input type='button' id='rtnEqptsBtn' name='rtnEqptsBtn' value='批量归还' /></td>" +
         "<td><input type='button' id='creBrkRecsBtn' name='creBrkRecsBtn' value='批量报修' /></td>" +
@@ -346,12 +345,9 @@ function printLentEqpts() {
         $("#content").find("option[value='colgName']").remove();
     }
 
-    if (userInfo.userRole === "教师") {
-        $("#content").find("option[value='mjrName']").remove();
-        $("#content").find("option[value='colgName']").remove();
-    }
+    if (userInfo.userRole === "教师") $("#content").find("option[value='mjrName']").remove();
 
-    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "lendStat");
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, "", "lendStat");
 }
 
 /*设备报修记录*/
