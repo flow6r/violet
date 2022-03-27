@@ -365,7 +365,7 @@ function printBrkEqpts() {
         "<td><input type='button' id='queryBrkRecsBtn' name='queryBrkRecsBtn' value='查询' /></td>" +
         "<td><input type='button' id='delBrkRecsBtn' name='delBrkRecsBtn' value='批量删除'/></td>" +
         "<td><input type='button' id='procBrkRecsBtn' name='procBrkRecsBtn' value='批量处理'/></td></tr></table><table id='brkRecsTbl' name='brkRecsTbl'>" +
-        "<tr id='brkRecsTblHead' name='brkRecsTblHead'><th width='20px'></th><th>报修ID</th><th>上报用户</th><th>报修设备</th><th>报修状态</th><th>报修详情</th><th>其他操作</th>" +
+        "<tr id='brkRecsTblHead' name='brkRecsTblHead'><th width='25px'></th><th>报修ID</th><th>上报用户</th><th>报修设备</th><th>报修状态</th><th>报修详情</th><th>其他操作</th>" +
         "</tr></table><table id='brkRecsPageCtl' name='brkRecsPageCtl'><tr><td><input type='button' id='brkPrevPage' name='brkPrevPage' value='上一页' /></td>" +
         "<td><input type='text' id='brkRecsPageInfo' name='brkRecsPageInfo' size='12' disabled='disabled' /></td>" +
         "<td><input type='button' id='brkNextPage' name='brkNextPage' value='下一页' /></td>" +
