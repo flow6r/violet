@@ -87,7 +87,7 @@ $breakagesJSON = json_encode($breakages, JSON_UNESCAPED_UNICODE);
 echo $breakagesJSON;
 
 //将JSON写入文件
-file_put_contents("breakages.json", $breakagesJSON);
+// file_put_contents("breakages.json", $breakagesJSON);
 
 //释放结果集并关闭链接
 $stmt->free_result();
