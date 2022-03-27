@@ -35,6 +35,11 @@ function queryAppls(userID, userRole, colgName, searchItem, searchType) {
             appls = applsJSON;
 
             if (appls.length === 0) {
+                alert("共0条设备借用申请记录");
+
+                applsTotPages = 0;
+                applsCurrPage = 0;
+
                 $("#content").find("#applsPrevPage").attr("disabled", "disabled");
                 $("#content").find("#applsPageInfo").val("第0页，共0页");
                 $("#content").find("#applsNextPage").attr("disabled", "disabled");
@@ -203,7 +208,7 @@ $("body").on("click", ".applsCancelBtn", function () {
         searchItem = "";
         searchType = "applStat";
     }
-    
+
     queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
@@ -228,7 +233,7 @@ $("#content").on("click", ".procApplBtn", function (event) {
                         searchType = "applStat";
                     }
 
-                            queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
