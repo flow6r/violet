@@ -346,6 +346,11 @@ function printLentEqpts() {
         $("#content").find("option[value='colgName']").remove();
     }
 
+    if (userInfo.userRole === "教师") {
+        $("#content").find("option[value='mjrName']").remove();
+        $("#content").find("option[value='colgName']").remove();
+    }
+
     queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, "", "lendStat");
 }
 
