@@ -46,7 +46,7 @@ if (mysqli_connect_error()) {
 //根据用户角色查询数据库
 switch ($userRole) {
     case "学生":
-        $query = "SELECT * FROM Lend WHERE UserID = ? AND L." . $searchType . " LIKE ?";
+        $query = "SELECT * FROM Lend WHERE UserID = ? AND " . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param("ss", $userID, $searchItem);
         break;
