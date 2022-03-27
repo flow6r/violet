@@ -46,7 +46,7 @@ if (mysqli_connect_error()) {
 //查询数据库
 switch ($userRole) {
     case "学生":
-        $query = "SELECT A.* FROM Applications AS A WHERE A.UserID = ? AND A." . $searchType . " LIKE ?";
+        $query = "SELECT * FROM Applications WHERE UserID = ? AND " . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param("ss", $userID, $searchItem);
         break;
