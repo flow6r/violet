@@ -527,6 +527,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
         }
 
         let temp = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == eqptIDs[0]);
+        
         $("body").find("img").attr("src", eqptInfo[temp].ImgPath);
         $("body").find("img").attr("title", eqptIDs[0]);
 
@@ -536,6 +537,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
 $("body").on("change", "#lendEqptsID", function () {
     let selEqptID = $("body").find("#lendEqptsID").val();
     selEqptIDIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == selEqptID);
+    
     $("body").find("img").attr("src", eqptInfo[selEqptIDIndx].ImgPath);
     $("body").find("img").attr("title", selEqptID);
 
