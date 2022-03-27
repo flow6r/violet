@@ -212,3 +212,11 @@ $("body").on("click", ".brkCancelBtn", function () {
 
     queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
+
+//处理单个报修设备
+
+//批量处理报修设备
+
+//删除单个报修设备记录
+
+//批量删除报修设备记录
