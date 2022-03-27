@@ -3,14 +3,12 @@
 //获取GET请求的数据
 $userID = $_GET["userID"];
 $userRole = $_GET["userRole"];
-$mjrName = $_GET["mjrName"];
+$colgName = $_GET["colgName"];
 $searchItem = $_GET["searchItem"];
 $searchType = $_GET["searchType"];
 
 //设置查询关键词
 $searchItem = "%" . $searchItem . "%";
-
-$fromTblUsers = false;
 
 //设置查询类型和关键词
 switch ($searchType) {
@@ -22,14 +20,6 @@ switch ($searchType) {
         break;
     case "lendStat":
         $searchType = "LendStat";
-        break;
-    case "mjrName":
-        $searchType = "MjrName";
-        $fromTblUsers = true;
-        break;
-    case "colgName":
-        $searchType = "ColgName";
-        $fromTblUsers = true;
         break;
 }
 
@@ -56,20 +46,19 @@ if (mysqli_connect_error()) {
 //根据用户角色查询数据库
 switch ($userRole) {
     case "学生":
-        $query = "SELECT L.* FROM Lend AS L WHERE L.UserID = ? AND L." . $searchType . " LIKE ?";
+        $query = "SELECT * FROM Lend WHERE UserID = ? AND L." . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param("ss", $userID, $searchItem);
         break;
     case "教师":
-        $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U.MjrName = ? AND L." . $searchType . " LIKE ? AND U.UserRole != '管理员'";
+        $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U.ColgName = ? AND U.UserRole != '管理员' AND  L." . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss", $mjrName, $searchItem);
+        $stmt->bind_param("ss", $colgName, $searchItem);
         break;
     case "管理员":
-        if ($fromTblUsers) $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U." . $searchType . " LIKE ?";
-        else $query = "SELECT L.* FROM Lend AS L WHERE L." . $searchType . " LIKE ?";
+        $query = "SELECT L.* FROM Users AS U, Lend AS L WHERE U.UserID = L.UserID AND U.ColgName = ? AND L." . $searchType . " LIKE ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("s", $searchItem);
+        $stmt->bind_param("ss", $colgName, $searchItem);
         break;
 }
 $stmt->execute();
