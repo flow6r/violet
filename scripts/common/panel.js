@@ -254,7 +254,7 @@ function printQueryEqpt() {
         "<table id='queryEqptsTbl'><tr><td colspan='3'><span id='titleTxt'>实验室设备查询</span></td></tr><tr>" +
         "<td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='eqptID'>设备ID</option><option value='eqptName'>设备名称</option>" +
-        "<option value='clsName'>设备分类</option><option value='colgName'>隶属学院</option><option value='eqptStat'>设备状态</option></select></td>" +
+        "<option value='clsName'>设备分类</option><option value='eqptStat'>设备状态</option></select></td>" +
         "<td><input type='button' id='queryEqptsBtn' name='queryEqptsBtn' value='查询' /></td>" +
         "<td><input type='button' id='lendEqptsBtn' name='lendEqptsBtn' value='批量借用' style='visibility: visible' /></td>" +
         "<td><input type='button' id='addEqptBtn' name='addEqptBtn' value='新增设备' style='visibility: visible' /></td>" +
@@ -274,10 +274,10 @@ function printQueryEqpt() {
         $("#content").find("#impEqptsBtn").attr("style", "visibility: hidden");
         $("#content").find("#delEqptsBtn").attr("style", "visibility: hidden");
     }
-
+    
     $("#content").find("#queryRsltTblHead").siblings().remove();
 
-    queryEqpts(userInfo.userRole, userInfo.colgName, "colgName");
+    queryEqpts(userInfo.userRole, userInfo.colgName, "", "eqptID");
 
 }
 
