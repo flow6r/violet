@@ -12,18 +12,18 @@ $("#content").on("click", "#queryLendEqptsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#lendEqptsRecsHead").siblings().remove();
-        queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+        queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
     } else alert("请输入关键词");
 
 });
 
 //实现查询设备借用记录的函数
-function queryLentEqptRecs(userID, userRole, mjrName, searchItem, searchType) {
+function queryLentEqptRecs(userID, userRole, colgName, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_lends.php",
         type: "GET",
         async: false,
-        data: { userID: userID, userRole: userRole, mjrName: mjrName, searchItem: searchItem, searchType: searchType },
+        data: { userID: userID, userRole: userRole, colgName: colgName, searchItem: searchItem, searchType: searchType },
         dataType: "json",
         success: function (lentRecsJSON) {
             lentEqptRecs = lentRecsJSON;
@@ -200,7 +200,8 @@ $("body").on("click", ".lendCancelBtn", function () {
         searchItem = "";
         searchType = "lendStat";
     }
-    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //获取选择的多个借用记录ID
@@ -240,7 +241,8 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
                     searchItem = "";
                     searchType = "lendStat";
                 }
-                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
             } else alert(status);
         }
     });
@@ -266,7 +268,8 @@ $("#content").on("click", "#rtnEqptsBtn", function () {
                         searchItem = "";
                         searchType = "lendStat";
                     }
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
@@ -318,7 +321,8 @@ $("body").on("click", "#creBrkRecBtn", function () {
                         searchItem = "";
                         searchType = "lendStat";
                     }
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
@@ -373,8 +377,8 @@ $("body").on("click", "#bulkCreBrkRecsBtn", function () {
                         searchItem = "";
                         searchType = "lendStat";
                     }
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
                 } else alert(status);
             }
         });
@@ -402,7 +406,8 @@ $("#content").on("click", ".delRecBtn", function (event) {
                     searchItem = "";
                     searchType = "lendStat";
                 }
-                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+
+                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
             } else alert(status);
         }
     });
@@ -429,8 +434,8 @@ $("#content").on("click", "#delLendRecsBtn", function () {
                         searchItem = "";
                         searchType = "lendStat";
                     }
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
