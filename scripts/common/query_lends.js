@@ -186,7 +186,7 @@ $("#content").on("click", ".lentEqptID", function (event) {
                 "<td><input type='text' id='colgName' name='colgName' value='" + eqptJson[0].ColgName + "' placeholder='" + eqptJson[0].ColgName + "' disabled='disabled' /></td>" +
                 "</tr><tr><td><label>入库时间</label></td>" +
                 "<td><input type='text' id='eqptCre' name='eqptCre' value='" + eqptJson[0].EqptCre + "' placeholder='" + eqptJson[0].EqptCre + "' disabled='disabled' /></td>" +
-                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "'>" + eqptJson[0].EqptDesc + "</textarea></td></tr><tr>" +
+                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "' disabled='disabled'>" + eqptJson[0].EqptDesc + "</textarea></td></tr><tr>" +
                 "<td colspan='2'><input type='button' id='lendEqptInfoCancel' name='lendEqptInfoCancel' class='lendCancelBtn' value='取消'></td>" +
                 "</tr></table></form></div>"
             );
