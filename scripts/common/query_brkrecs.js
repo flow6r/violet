@@ -244,6 +244,34 @@ $("body").on("click", ".brkCancelBtn", function () {
 });
 
 //处理单个报修设备
+$("#content").on("click", ".procBrkRecBtn", function (event) {
+    let currBrkID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/process_brk.php",
+        type: "POST",
+        async: false,
+        data: { userRole: userInfo.userRole, brkID: currBrkID, dspUser: userInfo.userID },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功处理ID为" + currBrkID + "的报修记录");
+
+                let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+
+                $("#content").find("#brkRecsTblHead").siblings().remove();
+
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "brkID";
+                }
+
+                queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+
+            } else alert(status);
+        }
+    });
+});
 
 //批量处理报修设备
 
