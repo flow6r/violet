@@ -2,14 +2,17 @@
 /*查询更新后的用户信息*/
 //获取POST请求的数据
 $userID = $_GET["userID"];
+
 //引入数据库用户信息脚本
 require_once("../dbuser/user.php");
+
 //连接数据库
 $db = mysqli_connect($dbServer, $dbUser, $dbUserPasswd, $dbName);
 if (mysqli_connect_error()) {
     echo "连接数据库时发生错误，请联系管理员并反馈问题";
     exit;
 }
+
 //查询数据库
 $query = "SELECT * FROM Users where UserID = ?";
 $stmt = $db->prepare($query);
@@ -29,6 +32,7 @@ if ($stmt->num_rows()) {
     $userInfoJSON = json_encode($_SESSION["userInfo"], JSON_UNESCAPED_UNICODE);
     echo $userInfoJSON;
 }
+
 //释放结果集并关闭链接
 $stmt->free_result();
 $db->close();
