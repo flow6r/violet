@@ -1488,3 +1488,102 @@
 #creBrkRecsDiv #creBrkRecsForm #creBrkRecsTbl #bulkCreBrkRecsBtn:hover {
     float: right;
 }
+
+/*报修详情弹窗样式表*/
+#brkDetlDiv {
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    top: 25px;
+    width: 425px;
+    height: 515px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#brkDetlDiv #brkDetlForm {
+    position: absolute;
+    padding: 0;
+    margin: 0 auto;
+    width: 425px;
+    height: 515px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 8px;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl label {
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlBrkID,
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlUserID,
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlEqptID,
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlBrkCre,
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlDspUser,
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlDspDate {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl textarea {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 100px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    border: 2px solid #2569c3;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
+
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlCancelBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#brkDetlDiv #brkDetlForm #brkDetlTbl #brkDetlCancelBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
