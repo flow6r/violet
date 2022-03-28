@@ -120,7 +120,7 @@ $("#content").on("click", "#brkJupmToTrgtPage", function () {
 //报修用户信息
 $("#content").on("click", ".brkUserID", function (event) {
     let currUserID = $(event.target).attr("name");
-    
+
     $.ajax({
         url: "../../library/common/query_user.php",
         type: "GET",
@@ -166,7 +166,7 @@ $("#content").on("click", ".brkEqptID", function (event) {
         },
         success: function (eqptJson) {
             $("#mask").attr("style", "visibility: visible;");
-    
+
             $("body").append(
                 "<div id='brkEqptInfoDiv' name='brkEqptInfoDiv' class='popup'><form id='brkEqptInfoForm' name='brkEqptInfoForm'>" +
                 "<table id='brkEqptInfoTbl' name='brkEqptInfoTbl'><tr><th colspan='2'><span>实验设备详情</span></th>" +
@@ -180,7 +180,7 @@ $("#content").on("click", ".brkEqptID", function (event) {
                 "<td><input type='text' id='colgName' name='colgName' value='" + eqptJson[0].ColgName + "' placeholder='" + eqptJson[0].ColgName + "' disabled='disabled' /></td>" +
                 "</tr><tr><td><label>入库时间</label></td>" +
                 "<td><input type='text' id='eqptCre' name='eqptCre' value='" + eqptJson[0].EqptCre + "' placeholder='" + eqptJson[0].EqptCre + "' disabled='disabled' /></td>" +
-                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "'>" + eqptJson[0].EqptDesc + "</textarea></td></tr><tr>" +
+                "</tr><tr><td><label>设备描述</label></td><td><textarea id='eqptDesc' placeholder='" + eqptJson[0].EqptDesc + "' disabled='disabled'>" + eqptJson[0].EqptDesc + "</textarea></td></tr><tr>" +
                 "<td colspan='2'><input type='button' id='brkEqptInfoCancel' name='brkEqptInfoCancel' class='brkCancelBtn' value='取消'></td>" +
                 "</tr></table></form></div>"
             );
@@ -191,7 +191,37 @@ $("#content").on("click", ".brkEqptID", function (event) {
 //报修详情
 $("#content").on("click", ".brkDetl", function (event) {
     let currBrkID = $(event.target).attr("name");
-    alert(currBrkID);
+
+    $.ajax({
+        url: "../../library/common/query_brkdetl.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, brkID: currBrkID },
+        dataType: "json",
+        error: function () { alert("查询报修ID为" + currBrkID + "的报修设备记录时发生错误，请检查无误后再执行查询详情操作"); },
+        success: function (brkDetlJSON) {
+            if (brkDetlJSON.length === 0) alert("报修ID为" + currBrkID + "的报修设备记录不存在");
+            else {
+                $("#mask").attr("style", "visibility: visible;");
+
+                $("body").append(
+                    "<div id='brkDetlDiv' name='brkDetlDiv' class='popup'><form id='brkDetlForm' name='brkDetlForm'><table id='brkDetlTbl' name='brkDetlTbl'>" +
+                    "<tr><th colspan='2'><span>报修详情</span></th></tr>" +
+                    "<tr><td><label>报修ID</label></td><td><input id='brkDetlBrkID' name='brkDetlBrkID' placeholder='" + brkDetlJSON[0].BrkID + "' value='" + brkDetlJSON[0].BrkID + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>报修用户</label></td><td><input id='brkDetlUserID' name='brkDetlUserID' placeholder='" + brkDetlJSON[0].UserID + "' value='" + brkDetlJSON[0].UserID + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>报修设备</label></td><td><input id='brkDetlEqptID' name='brkDetlEqptID' placeholder='" + brkDetlJSON[0].EqptID + "' value='" + brkDetlJSON[0].EqptID + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>创建时间</label></td><td><input id='brkDetlBrkCre' name='brkDetlBrkCre' placeholder='" + brkDetlJSON[0].BrkCre + "' value='" + brkDetlJSON[0].BrkCre + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>报修描述</label></td><td><textarea id='brkDetlBrkDesc' name='brkDetlBrkDesc' placeholder='" + brkDetlJSON[0].BrkDesc + "' disabled='disabled'>" + brkDetlJSON[0].BrkDesc + "</textarea></td></tr>" +
+                    "<tr><td><label>处理用户</label></td><td><input id='brkDetlDspUser' name='brkDetlDspUser' placeholder='" + (brkDetlJSON[0].DspUser === null ? "暂无" : brkDetlJSON[0].DspUser) + "' value='" +
+                    (brkDetlJSON[0].DspUser === null ? "暂无" : brkDetlJSON[0].DspUser) + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>处理时间</label></td><td><input id='brkDetlDspDate' name='brkDetlDspDate' placeholder='" + (brkDetlJSON[0].DspDate === null ? "暂无" : brkDetlJSON[0].DspDate) + "' value='" +
+                    (brkDetlJSON[0].DspDate === null ? "暂无" : brkDetlJSON[0].DspDate) + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td colspan='2'><input type='button' id='brkDetlCancelBtn' name='brkDetlCancelBtn' class='brkCancelBtn' value='取消' /></td></tr>" +
+                    "</table></form></div>"
+                );
+            }
+        }
+    });
 });
 
 //关闭弹框
