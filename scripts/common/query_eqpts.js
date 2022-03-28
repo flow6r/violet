@@ -502,7 +502,7 @@ $("#content").on("click", ".eqptCheckbox", function (event) {
 
 //批量借用实验设备
 $("#content").on("click", "#lendEqptsBtn", function () {
-    if (eqptIDs.length === 0) alert("您未选择任何设备");
+    if (eqptIDs.length === 0) alert("您选择了0条设备记录，请选择至少一条记录后再执行批量借用操作");
     else {
         $("#mask").attr("style", "visibility: visible;");
 
@@ -631,7 +631,7 @@ $("#content").on("click", "#delEqptsBtn", function () {
                     }
                 }
             });
-        } else alert("您选择了" + eqptIDs.length + "条记录，请选择待删除的设备再进行操作");
+        } else alert("您选择了0条设备记录，请选择至少一条记录后再执行批量删除操作");
         eqptIDs = new Array();
         eqptIDsIndx = 0;
     } else alert("禁止学生操作");
