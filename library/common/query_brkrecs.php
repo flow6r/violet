@@ -93,3 +93,4 @@ echo $breakagesJSON;
 $stmt->free_result();
 $db->close();
 exit;
+?>
