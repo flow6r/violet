@@ -273,7 +273,7 @@ $("#content").on("click", "#procApplsBtn", function () {
                     } else alert(status);
                 }
             });
-        } else alert("您选择了0条记录，请选择申请记录后再执行批量处理操作");
+        } else alert("您选择了0条申请记录，请选择至少一条记录后再执行批量处理操作");
     }
 });
 
@@ -357,7 +357,7 @@ $("#content").on("click", "#rjctApplsBtn", function () {
             for (let indx = 0; indx < applIDs.length; indx++) {
                 $("body").find("#rjctedApplsID").append("<option>" + applIDs[indx] + "</option>");
             }
-        } else alert("您选择了0条记录，请选择申请记录后再执行批量驳回操作");
+        } else alert("您选择了0条申请记录，请选择至少一条记录后再执行批量驳回操作");
     }
 });
 
@@ -459,5 +459,5 @@ $("#content").on("click", "#delApplsBtn", function () {
                 } else alert(status);
             }
         });
-    } else alert("您选择了0条记录，请选择申请记录后再执行批量删除操作");
+    } else alert("您选择了0条申请记录，请选择至少一条记录后再执行批量删除操作");
 });
