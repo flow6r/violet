@@ -243,6 +243,21 @@ $("body").on("click", ".brkCancelBtn", function () {
     queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
+//获取选择的报修记录ID
+$("#content").on("click", ".brkCheckbox", function (event) {
+    let currBrkID = $(event.target).val();
+
+    if ($(event.target).attr("checked")) {
+        $(event.target).removeAttr("checked");
+        let currBrkIndx = brkRecsIDs.indexOf(currBrkID);
+        brkRecsIDs.splice(currBrkIndx, 1);
+        brkRecsIDsIndx--;
+    } else {
+        $(event.target).attr("checked", "ture");
+        brkRecsIDs[brkRecsIDsIndx++] = currBrkID;
+    }
+});
+
 //处理单个报修设备
 $("#content").on("click", ".procBrkRecBtn", function (event) {
     let currBrkID = $(event.target).attr("name");
@@ -273,6 +288,21 @@ $("#content").on("click", ".procBrkRecBtn", function (event) {
 });
 
 //批量处理报修设备
+$("#content").on("click", "#procBrkRecsBtn", function () {
+    alert(brkRecsIDs.length);
+
+    let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+
+    $("#content").find("#brkRecsTblHead").siblings().remove();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "brkID";
+    }
+
+    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+});
 
 //删除单个报修设备记录
 $("#content").on("click", ".delBrkRecBtn", function (event) {
@@ -304,3 +334,18 @@ $("#content").on("click", ".delBrkRecBtn", function (event) {
 });
 
 //批量删除报修设备记录
+$("#content").on("click", "#delBrkRecsBtn", function () {
+    alert(brkRecsIDs.length);
+
+    let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+
+    $("#content").find("#brkRecsTblHead").siblings().remove();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "brkID";
+    }
+
+    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+});
