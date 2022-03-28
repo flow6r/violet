@@ -48,4 +48,5 @@ $status = $mail->send();
 
 //创建会话变量，储存随机验证码
 require_once("../session/email_code.php");
+exit;
 ?>
