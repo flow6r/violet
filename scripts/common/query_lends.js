@@ -388,7 +388,7 @@ $("body").on("click", "#bulkCreBrkRecsBtn", function () {
                         searchType = "lendStat";
                     }
 
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
+                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
                 } else alert(status);
             }
         });
