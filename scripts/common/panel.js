@@ -259,7 +259,7 @@ function printQueryEqpt() {
         "<td><input type='button' id='lendEqptsBtn' name='lendEqptsBtn' value='批量借用' style='visibility: visible' /></td>" +
         "<td><input type='button' id='addEqptBtn' name='addEqptBtn' value='新增设备' style='visibility: visible' /></td>" +
         "<td><input type='button' id='impEqptsBtn' name='impEqptsBtn' value='批量导入' style='visibility: visible' /></td>" +
-        "<td><input type='button' id='delEqptsBtn' name='delEqptsBtn' value='删除设备' style='visibility: visible' /></td></tr></table>" +
+        "<td><input type='button' id='delEqptsBtn' name='delEqptsBtn' value='批量删除' style='visibility: visible' /></td></tr></table>" +
         "<table id='queryRsltTbl'><tr id='queryRsltTblHead'><th width='50px'></th><th>设备ID</th><th>设备名称</th><th>隶属学院</th>" +
         "<th>设备状态</th><th>设备详情</th><th>其他操作</th></tr></table><table id='pageCtlTbl'>" +
         "<tr><td><input type='button' id='prevPage' value='上一页' /></td>" +
