@@ -49,7 +49,7 @@ function queryAppls(userID, userRole, colgName, searchItem, searchType) {
                 if (appls.length < applsRecLimit) {
                     applsTotPages = 1;
                     applsCurrPage = 1;
-                    
+
                     $("#content").find("#applsTrgtPage").attr("disabled", "disabled");
                     $("#content").find("#applsJump").attr("disabled", "disabled");
                 } else {
@@ -174,7 +174,7 @@ $("#content").on("click", "#queryApplsDiv a", function (event) {
         "<tr><td colspan='2'><img src='' width='150' height='150' alt='eqptImg' title='EqptID' /></td></tr>" +
         "<tr><td><label>借用开始时间</label></td><td><input type='datetime-local' step='1' id='lendBegn' name='lendBegn' value='" + (appls[applIndx].LendBegn).replace(" ", "T") + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>借用结束时间</label></td><td><input type='datetime-local' step='1' id='lendEnd' name='lendEnd' value='" + (appls[applIndx].LendEnd).replace(" ", "T") + "' disabled='disabled' /></td></tr>" +
-        "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc' name='applDesc' placeholder='" + appls[applIndx].ApplDesc + "'></textarea></td></tr>" +
+        "<tr><td><label>借用用途描述</label></td><td><textarea id='applDesc' name='applDesc' placeholder='" + appls[applIndx].ApplDesc + "' disabled='disabled'>" + appls[applIndx].ApplDesc + "</textarea></td></tr>" +
         "<tr><td><label>创建申请时间</label></td><td><input type='datetime-local' step='1' id='applCre' name='applCre' value='" + (appls[applIndx].ApplCre).replace(" ", "T") + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>处理申请用户</label></td><td><input type='text' id='dspUser' name='dspUser' placeholder='" + (appls[applIndx].DspUser == null ? "暂无" : appls[applIndx].DspUser) + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>处理申请时间</label></td><td><input type='datetime-local' step='1' id='dspDate' name='dspDate' value='" + (appls[applIndx].DspDate == null ? "" : (appls[applIndx].DspDate).replace(" ", "T")) + "' disabled='disabled' /></td></tr>" +
@@ -197,7 +197,7 @@ $("body").on("change", "#applEqptID", function (event) {
     $("body").find("#applDetlDiv").find("img").attr("title", $(event.target).val());
 });
 
-//关闭详情弹窗
+//关闭弹窗
 $("body").on("click", ".applsCancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
 
