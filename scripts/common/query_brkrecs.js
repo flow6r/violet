@@ -267,7 +267,6 @@ $("#content").on("click", ".procBrkRecBtn", function (event) {
                 }
 
                 queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
             } else alert(status);
         }
     });
@@ -276,5 +275,32 @@ $("#content").on("click", ".procBrkRecBtn", function (event) {
 //批量处理报修设备
 
 //删除单个报修设备记录
+$("#content").on("click", ".delBrkRecBtn", function (event) {
+    let currBrkID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/delete_brk.php",
+        type: "POST",
+        async: false,
+        data: { userRole: userInfo.userRole, brkID: currBrkID },
+        success: function (status) {
+            if (status === "successful") {
+                alert("成功删除ID为" + currBrkID + "的报修记录");
+
+                let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+
+                $("#content").find("#brkRecsTblHead").siblings().remove();
+
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "brkID";
+                }
+
+                queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
+            } else alert(status);
+        }
+    });
+});
 
 //批量删除报修设备记录
