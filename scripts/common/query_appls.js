@@ -224,23 +224,22 @@ $("#content").on("click", ".procApplBtn", function (event) {
             async: false,
             data: { userRole: userInfo.userRole, applID: $(event.target).attr("id"), dspUser: userInfo.userName },
             success: function (status) {
-                if (status === "successful") {
-                    alert("申请ID为" + $(event.target).attr("id") + "的借用申请处理成功");
-
-                    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
-
-                    $("#content").find("#applRsltsTblHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "applStat";
-                    }
-
-                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                if (status === "successful") alert("申请ID为" + $(event.target).attr("id") + "的借用申请处理成功");
+                else alert(status);
             }
         });
     } else alert("禁止学生操作");
+
+    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+    $("#content").find("#applRsltsTblHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "applStat";
+    }
+
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //批量处理设备借用申请
@@ -254,27 +253,23 @@ $("#content").on("click", "#procApplsBtn", function () {
                 type: "POST",
                 data: { userRole: userInfo.userRole, appls: applIDs, dspUser: userInfo.userName },
                 success: function (status) {
-                    if (status === "successful") {
-                        alert("成功处理" + applIDs.length + "条记录");
-
-                        let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
-
-                        $("#content").find("#applRsltsTblHead").siblings().remove();
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "applStat";
-                        }
-
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
-                        applIDs = new Array();
-                        applIDsIndx = 0;
-                    } else alert(status);
+                    if (status === "successful") alert("成功处理" + applIDs.length + "条记录");
+                    else alert(status);
                 }
             });
         } else alert("您选择了0条申请记录，请选择至少一条记录后再执行批量处理操作");
     }
+
+    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+    $("#content").find("#applRsltsTblHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "applStat";
+    }
+
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //显示驳回单个申请记录的弹窗
@@ -313,29 +308,26 @@ $("body").on("click", "#rjctApplBtn", function () {
                     applID: rjctedApplID, rjctRsn: rjctRsn
                 },
                 success: function (status) {
+                    $("#mask").attr("style", "visibility: hidden;");
+                    $(".popup").remove();
+
                     if (status != "successful") alert(status);
-                    else {
-                        alert("申请ID为" + rjctedApplID + "的申请，驳回成功");
-
-                        $("#mask").attr("style", "visibility: hidden;");
-
-                        $(".popup").remove();
-
-                        let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
-
-                        $("#content").find("#applRsltsTblHead").siblings().remove();
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "applStat";
-                        }
-
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                    }
+                    else alert("申请ID为" + rjctedApplID + "的申请，驳回成功");
                 }
             });
         }
     }
+
+    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+    $("#content").find("#applRsltsTblHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "applStat";
+    }
+
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //批量驳回设备借用申请记录
@@ -377,32 +369,26 @@ $("body").on("click", "#bulkRjctApplsBtn", function () {
                     appls: applIDs, rjctRsn: rjctRsn
                 },
                 success: function (status) {
+                    $("#mask").attr("style", "visibility: hidden;");
+                    $(".popup").remove();
+
                     if (status != "successful") alert(status);
-                    else {
-                        alert("成功驳回" + applIDs.length + "条设备借用申请");
-
-                        $("#mask").attr("style", "visibility: hidden;");
-
-                        $(".popup").remove();
-
-                        let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
-
-                        $("#content").find("#applRsltsTblHead").siblings().remove();
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "applStat";
-                        }
-
-                        queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
-                        applIDs = new Array();
-                        applIDsIndx = 0;
-                    }
+                    else alert("成功驳回" + applIDs.length + "条设备借用申请");
                 }
             });
         }
     }
+
+    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+    $("#content").find("#applRsltsTblHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "applStat";
+    }
+
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //删除单个设备申请记录
@@ -413,20 +399,19 @@ $("#content").on("click", ".delApplBtn", function (event) {
         async: false,
         data: { userRole: userInfo.userRole, applID: $(event.target).attr("name") },
         success: function (status) {
-            if (status === "successful") {
-                alert("申请ID为" + $(event.target).attr("name") + "的借用申请删除成功");
+            if (status === "successful") alert("申请ID为" + $(event.target).attr("name") + "的借用申请删除成功");
+            else alert(status);
 
-                let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+            let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+            let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
 
-                $("#content").find("#applRsltsTblHead").siblings().remove();
-                if (searchItem === "") {
-                    searchItem = "";
-                    searchType = "applStat";
-                }
+            $("#content").find("#applRsltsTblHead").siblings().remove();
+            if (searchItem === "") {
+                searchItem = "";
+                searchType = "applStat";
+            }
 
-                queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-            } else alert(status);
+            queryAppls(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
         }
     });
 });
@@ -440,24 +425,20 @@ $("#content").on("click", "#delApplsBtn", function () {
             async: false,
             data: { userRole: userInfo.userRole, appls: applIDs },
             success: function (status) {
-                if (status === "successful") {
-                    alert("成功删除" + applIDs.length + "条记录");
-
-                    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
-
-                    $("#content").find("#applRsltsTblHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "applStat";
-                    }
-
-                    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
-
-                    applIDs = new Array();
-                    applIDsIndx = 0;
-                } else alert(status);
+                if (status === "successful") alert("成功删除" + applIDs.length + "条记录");
+                else alert(status);
             }
         });
     } else alert("您选择了0条申请记录，请选择至少一条记录后再执行批量删除操作");
+
+    let searchItem = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryApplsDiv").find("#queryApplsForm").find("#queryApplsMenuTbl").find("#searchType").val();
+
+    $("#content").find("#applRsltsTblHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "applStat";
+    }
+
+    queryAppls(userInfo.userID, userInfo.userRole, userInfo.mjrName, searchItem, searchType);
 });
