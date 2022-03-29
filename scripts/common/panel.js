@@ -49,8 +49,8 @@ function printAdminNav() {
     $("#userInfo").after(
         "<li id='userMgt' name='userMgt'>用户管理\n" +
         "<ul id='userMgtSubNav' name='userMgtSubNav'>\n" +
-        "<li id='stdUser' name='stdUser'>学生用户</li>\n" +
-        "<li id='tchUser' name='tchUser'>教师用户</li>\n" +
+        "<li id='stdMgt' name='stdMgt'>学生用户</li>\n" +
+        "<li id='tchMgt' name='tchMgt'>教师用户</li>\n" +
         "</ul>\n</li>\n<li id='eqptMgt' name='eqptMgt'>设备管理</li>\n"
     );
 }
@@ -236,6 +236,36 @@ function printSecSet() {
     );
 }
 
+/*查询学生用户*/
+$(".userNav").on("click", "#stdMgt", function () {
+    printQueryStdUser();
+});
+
+function printQueryStdUser() {
+    $("#content").empty();
+    $("#content").append(
+        "<div id='stdUserRecsDiv' name='stdUserRecsDiv'><form id='stdUserRecsForm' name='stdUserRecsForm'>" +
+        "<table id='stdUserQueryMenu' name='stdUserQueryMenu'><tr><td><span>学生用户查询</span></td></tr>" +
+        "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
+        "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option>" +
+        "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
+        "<option value='userAdms'>入学时间</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<td><input type='button' id='queryStdUsersBtn' name='queryStdUsersBtn' value='查询' /></td>" +
+        "<td><input type='button' id='addNewStdUserBtn' name='addNewStdUserBtn' value='新增记录' /></td>" +
+        "<td><input type='button' id='importStdUsersBtn' name='importStdUsersBtn' value='批量导入' /></td>" +
+        "<td><input type='button' id='deleteStdUsersBtn' name='deleteStdUsersBtn' value='批量删除' /></td></tr></table>" +
+        "<table id='stdUserRecsTbl' name='stdUserRecsTbl'>" +
+        "<tr id='stdUserRecsHead'><th width='50px'></th><th>ID</th><th>姓名</th><th>性别</th><th>电子邮箱</th><th>详情</th><th>其他操作</th></tr>" +
+        "</table><table id='stdUserRecsPageCtl' name='stdUserRecsPageCtl'><tr>" +
+        "<td><input type='button' id='stdPrevPage' name='stdPrevPage' value='上一页' /></td>" +
+        "<td><input type='text' id='stdUserPagesInfo' name='stdUserPagesInfo' placeholder='' size='12' /></td>" +
+        "<td><input type='button' id='stdNextPage' name='stdNextPage' value='下一页' /></td>" +
+        "<td><input type='text' id='stdTrgePage' name='stdTrgePage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='stdJumpToTrgtPage' name='stdJumpToTrgtPage' value='跳转' /></td>" +
+        "</tr></table></form></div>"
+    );
+}
+
 /*查询设备*/
 $(".userNav").on("click", "#queryEqpts", function () {
     printQueryEqpt()
@@ -274,7 +304,7 @@ function printQueryEqpt() {
         $("#content").find("#impEqptsBtn").attr("style", "visibility: hidden");
         $("#content").find("#delEqptsBtn").attr("style", "visibility: hidden");
     }
-    
+
     $("#content").find("#queryRsltTblHead").siblings().remove();
 
     queryEqpts(userInfo.userRole, userInfo.colgName, "", "eqptID");
