@@ -270,21 +270,20 @@ $("#content").on("click", ".procBrkRecBtn", function (event) {
             async: false,
             data: { userRole: userInfo.userRole, brkID: currBrkID, dspUser: userInfo.userID },
             success: function (status) {
-                if (status === "successful") {
-                    alert("成功处理ID为" + currBrkID + "的报修记录");
+                if (status === "successful") alert("成功处理ID为" + currBrkID + "的报修记录");
+                else alert(status);
 
-                    let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+                let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
 
-                    $("#content").find("#brkRecsTblHead").siblings().remove();
+                $("#content").find("#brkRecsTblHead").siblings().remove();
 
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "brkID";
-                    }
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "brkID";
+                }
 
-                    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
             }
         });
     }
@@ -301,25 +300,24 @@ $("#content").on("click", "#procBrkRecsBtn", function () {
                 async: false,
                 data: { userRole: userInfo.userRole, brkIDs: brkRecsIDs, dspUser: userInfo.userID },
                 success: function (status) {
-                    if (status === "successful") {
-                        alert("成功处理" + brkRecsIDs.length + "条报修记录");
-
-                        let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
-
-                        $("#content").find("#brkRecsTblHead").siblings().remove();
-
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "brkID";
-                        }
-
-                        queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                    } else alert(status);
+                    if (status === "successful") alert("成功处理" + brkRecsIDs.length + "条报修记录");
+                    else alert(status);
                 }
             });
         } else alert("您选择了0条报修记录，请选择至少一条记录后再执行批量处理操作");
     }
+
+    let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+
+    $("#content").find("#brkRecsTblHead").siblings().remove();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "brkID";
+    }
+
+    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //删除单个报修设备记录
@@ -332,21 +330,20 @@ $("#content").on("click", ".delBrkRecBtn", function (event) {
         async: false,
         data: { userRole: userInfo.userRole, brkID: currBrkID },
         success: function (status) {
-            if (status === "successful") {
-                alert("成功删除ID为" + currBrkID + "的报修记录");
+            if (status === "successful") alert("成功删除ID为" + currBrkID + "的报修记录");
+            else alert(status);
 
-                let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
-                let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+            let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+            let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
 
-                $("#content").find("#brkRecsTblHead").siblings().remove();
+            $("#content").find("#brkRecsTblHead").siblings().remove();
 
-                if (searchItem === "") {
-                    searchItem = "";
-                    searchType = "brkID";
-                }
+            if (searchItem === "") {
+                searchItem = "";
+                searchType = "brkID";
+            }
 
-                queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-            } else alert(status);
+            queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
         }
     });
 });
@@ -360,22 +357,20 @@ $("#content").on("click", "#delBrkRecsBtn", function () {
             async: false,
             data: { userRole: userInfo.userRole, brkIDs: brkRecsIDs },
             success: function (status) {
-                if (status === "successful") {
-                    alert("成功删除" + brkRecsIDs.length + "条报修记录");
+                if (status === "successful") alert("成功删除" + brkRecsIDs.length + "条报修记录");
+                else alert(status);
 
-                    let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
+                let searchItem = $("#content").find("#queryBrkRecsDiv").find("#searchItem").val();
+                let searchType = $("#content").find("#queryBrkRecsDiv").find("#searchType").val();
 
-                    $("#content").find("#brkRecsTblHead").siblings().remove();
+                $("#content").find("#brkRecsTblHead").siblings().remove();
 
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "brkID";
-                    }
+                if (searchItem === "") {
+                    searchItem = "";
+                    searchType = "brkID";
+                }
 
-                    queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
-                } else alert(status);
+                queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
             }
         });
     } else alert("您选择了0条报修记录，请选择至少一条记录后再执行批量删除操作");
