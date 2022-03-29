@@ -87,9 +87,11 @@ function echoEqptRecords(page) {
             "<td><input type='button' id='" + eqptInfo[begnPage].EqptID + "' class='lendBtn' value='借用' /></td>" +
             "</tr>"
         );
-        
-        if (eqptInfo[begnPage].EqptStat != "未借出") $("input[type='checkbox'][value='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
-        if (eqptInfo[begnPage].EqptStat != "未借出") $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
+
+        if (eqptInfo[begnPage].EqptStat != "未借出") {
+            $("input[type='checkbox'][value='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
+            $("input[id='" + eqptInfo[begnPage].EqptID + "']").attr("disabled", "disabled");
+        }
     }
 
     ($("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#pageCtlTbl").find("#pageInfo")).val("第" + currPage + "页，共" + totPages + "页");
@@ -197,7 +199,6 @@ $("body").on("click", "#editEqptDetlInfo", function () {
         });
 
         $("body").find("#eqptDetlCre").removeAttr("disabled").val((eqptInfo[eqptIndx].EqptCre).replace(" ", "T"));
-
         $("body").find("#eqptDetlDesc").removeAttr("disabled");
     } else alert("禁止学生操作");
 });
@@ -205,7 +206,6 @@ $("body").on("click", "#editEqptDetlInfo", function () {
 //取消更新设备信息
 $("body").on("click", "#editDetlCancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
-
     $(".popup").remove();
 
     $("#content").find("#queryRsltTblHead").siblings().remove();
@@ -244,6 +244,9 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
         },
         dataType: "text",
         success: function (status) {
+            $("#mask").attr("style", "visibility: hidden;");
+            $(".popup").remove();
+        
             switch (status) {
                 case "0": alert("连接数据库时发生错误，请联系管理员并反馈问题"); break;
                 case "1": alert("已存在同ID设备，请确认后再更新设备ID"); break;
@@ -253,10 +256,6 @@ $("body").on("click", "#editDetlUpdateBtn", function () {
             }
         }
     });
-
-    $("#mask").attr("style", "visibility: hidden;");
-
-    $(".popup").remove();
 
     $("#content").find("#queryRsltTblHead").siblings().remove();
 
@@ -396,7 +395,6 @@ function checkImpNewEqpts() {
 //取消
 $("body").on("click", ".cancelBtn", function () {
     $("#mask").attr("style", "visibility: hidden;");
-
     $(".popup").remove();
 
     $("#content").find("#queryRsltTblHead").siblings().remove();
@@ -410,9 +408,6 @@ $("body").on("click", ".cancelBtn", function () {
     }
 
     queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
-    eqptIDs = new Array();
-    eqptIDsIndx = 0;
 });
 
 //借用单个设备
@@ -459,30 +454,27 @@ $("body").on("click", "#lendAnEqptBtn", function () {
                     lendEnd: lendEndTime, applDesc: applDesc
                 },
                 success: function (status) {
+                    $("#mask").attr("style", "visibility: hidden;");
+                    $(".popup").remove();
+
                     if (status != "successful") alert(status);
-                    else {
-                        alert("借用成功");
-
-                        $("#mask").attr("style", "visibility: hidden;");
-
-                        $(".popup").remove();
-
-                        $("#content").find("#queryRsltTblHead").siblings().remove();
-
-                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
-
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "eqptID";
-                        }
-
-                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                    }
+                    else alert("借用成功");
                 }
             });
         }
     } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "eqptID";
+    }
+
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //获取选中的设备ID
@@ -527,7 +519,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
         }
 
         let temp = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == eqptIDs[0]);
-        
+
         $("body").find("img").attr("src", eqptInfo[temp].ImgPath);
         $("body").find("img").attr("title", eqptIDs[0]);
 
@@ -537,7 +529,7 @@ $("#content").on("click", "#lendEqptsBtn", function () {
 $("body").on("change", "#lendEqptsID", function () {
     let selEqptID = $("body").find("#lendEqptsID").val();
     selEqptIDIndx = eqptInfo.findIndex(eqptInfo => eqptInfo.EqptID == selEqptID);
-    
+
     $("body").find("img").attr("src", eqptInfo[selEqptIDIndx].ImgPath);
     $("body").find("img").attr("title", selEqptID);
 
@@ -566,33 +558,27 @@ $("body").on("click", "#bulkLendEqptsBtn", function () {
                     lendEnd: lendEndTime, applDesc: applDesc
                 },
                 success: function (status) {
+                    $("#mask").attr("style", "visibility: hidden;");
+                    $(".popup").remove();
+
                     if (status != "successful") alert(status);
-                    else {
-                        alert("借用成功");
-
-                        $("#mask").attr("style", "visibility: hidden;");
-
-                        $(".popup").remove();
-
-                        $("#content").find("#queryRsltTblHead").siblings().remove();
-
-                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
-
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "eqptID";
-                        }
-
-                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
-
-                        eqptIDs = new Array();
-                        eqptIDsIndx = 0;
-                    }
+                    else alert("成功借用" + eqptIDs.length + "个设备");
                 }
             });
         }
     } else alert("请将借用开始和结束时间以及借用描述信息完善后再借用设备");
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "eqptID";
+    }
+
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 /*批量删除实验设备*/
@@ -607,32 +593,22 @@ $("#content").on("click", "#delEqptsBtn", function () {
                 data: { userRole: userInfo.userRole, eqptsBeDel: eqptIDs },
                 dataType: "text",
                 success: function (status) {
-                    if (status != "successful") {
-                        alert(status);
-
-                        for (let indx = 0; indx < eqptIDs.length; indx++) {
-                            $("#content").find("input[value='" + eqptIDs[indx] + "']").removeAttr("checked");
-                            $("#content").find("input[value='" + eqptIDs[indx] + "']").prop("checked", false);
-                        }
-                    } else {
-                        alert("成功删除" + eqptIDs.length + "条设备记录");
-
-                        $("#content").find("#queryRsltTblHead").siblings().remove();
-
-                        let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
-                        let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
-
-                        if (searchItem === "") {
-                            searchItem = "";
-                            searchType = "eqptID";
-                        }
-
-                        queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                    }
+                    if (status != "successful") alert(status);
+                    else alert("成功删除" + eqptIDs.length + "条设备记录");
                 }
             });
         } else alert("您选择了0条设备记录，请选择至少一条记录后再执行批量删除操作");
-        eqptIDs = new Array();
-        eqptIDsIndx = 0;
     } else alert("禁止学生操作");
+
+    $("#content").find("#queryRsltTblHead").siblings().remove();
+
+    let searchItem = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchItem").val();
+    let searchType = $("#content").find("#queryEqptsDiv").find("#queryEqptsForm").find("#queryEqptsTbl").find("#searchType").val();
+
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "eqptID";
+    }
+
+    queryEqpts(userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
