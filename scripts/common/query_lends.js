@@ -45,7 +45,7 @@ function queryLentEqptRecs(userID, userRole, colgName, searchItem, searchType) {
                     lentCurrPage = 1;
 
                     $("#content").find("#lendTrgtPage").attr("disabled", "disabled");
-                    $("#content").find("#lendJumpToTrgtPage").attr("disabled", "disabled");    
+                    $("#content").find("#lendJumpToTrgtPage").attr("disabled", "disabled");
                 } else {
                     lentTotPages = parseInt(lentEqptRecs.length / lentRecsLimit);
                     if (lentEqptRecs.length % lentRecsLimit) lentTotPages++;
@@ -238,20 +238,19 @@ $("#content").on("click", ".rtnEqptBtn", function (event) {
         async: false,
         data: { userRole: userInfo.userRole, lendID: currLendID, eqptID: currLentEqptID },
         success: function (status) {
-            if (status === "successful") {
-                alert("成功归还设备ID为" + currLentEqptID + "的设备");
+            if (status === "successful") alert("成功归还设备ID为" + currLentEqptID + "的设备");
+            else alert(status);
 
-                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+            let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+            let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
 
-                $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                if (searchItem === "") {
-                    searchItem = "";
-                    searchType = "lendStat";
-                }
+            $("#content").find("#lendEqptsRecsHead").siblings().remove();
+            if (searchItem === "") {
+                searchItem = "";
+                searchType = "lendStat";
+            }
 
-                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-            } else alert(status);
+            queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
         }
     });
 });
@@ -266,23 +265,22 @@ $("#content").on("click", "#rtnEqptsBtn", function () {
             async: false,
             data: { userRole: userInfo.userRole, lendIDs: lendIDs },
             success: function (status) {
-                if (status === "successful") {
-                    alert("成功归还" + lendIDs.length + "个设备")
-                    
-                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-
-                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "lendStat";
-                    }
-
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                if (status === "successful") alert("成功归还" + lendIDs.length + "个设备")
+                else alert(status);
             }
         });
     }
+
+    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "lendStat";
+    }
+
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //报修单个设备弹窗
@@ -319,23 +317,22 @@ $("body").on("click", "#creBrkRecBtn", function () {
                 $("#mask").attr("style", "visibility: hidden;");
                 $(".popup").remove();
 
-                if (status === "successful") {
-                    alert("成功报修");
-
-                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-
-                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "lendStat";
-                    }
-
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                if (status === "successful") alert("成功报修");
+                else alert(status);
             }
         });
     }
+
+    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "lendStat";
+    }
+
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //批量报修设备弹窗
@@ -355,7 +352,7 @@ $("#content").on("click", "#creBrkRecsBtn", function () {
 
         for (let indx = 0; indx < lendIDs.length; indx++) {
             let currLentEqptIDIndx = lentEqptRecs.findIndex(lentEqptRecs => lentEqptRecs.LendID == lendIDs[indx]);
-            
+
             $("body").find("#brkLentEqptIDs").append("<option value='" + lentEqptRecs[currLentEqptIDIndx].EqptID + "'>" + lentEqptRecs[currLentEqptIDIndx].EqptID + "</option>");
         }
     }
@@ -376,23 +373,22 @@ $("body").on("click", "#bulkCreBrkRecsBtn", function () {
                 $("#mask").attr("style", "visibility: hidden;");
                 $(".popup").remove();
 
-                if (status === "successful") {
-                    alert("成功报修" + lendIDs.length + "个设备");
-
-                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-
-                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "lendStat";
-                    }
-
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                if (status === "successful") alert("成功报修" + lendIDs.length + "个设备");
+                else alert(status);
             }
         });
     }
+
+    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "lendStat";
+    }
+
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
 
 //删除单个设备借用记录
@@ -405,20 +401,19 @@ $("#content").on("click", ".delRecBtn", function (event) {
         async: false,
         data: { userRole: userInfo.userRole, lendID: currLendID },
         success: function (status) {
-            if (status === "successful") {
-                alert("成功删除借用ID为" + currLendID + "的设备借用记录");
+            if (status === "successful") alert("成功删除借用ID为" + currLendID + "的设备借用记录");
+            else alert(status);
 
-                let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+            let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+            let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
 
-                $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                if (searchItem === "") {
-                    searchItem = "";
-                    searchType = "lendStat";
-                }
+            $("#content").find("#lendEqptsRecsHead").siblings().remove();
+            if (searchItem === "") {
+                searchItem = "";
+                searchType = "lendStat";
+            }
 
-                queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-            } else alert(status);
+            queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
         }
     });
 });
@@ -433,21 +428,20 @@ $("#content").on("click", "#delLendRecsBtn", function () {
             async: false,
             data: { userRole: userInfo.userRole, lendIDs: lendIDs },
             success: function (status) {
-                if (status === "successful") {
-                    alert("成功删除" + lendIDs.length + "条设备借用记录");
-
-                    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
-                    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
-
-                    $("#content").find("#lendEqptsRecsHead").siblings().remove();
-                    if (searchItem === "") {
-                        searchItem = "";
-                        searchType = "lendStat";
-                    }
-
-                    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
-                } else alert(status);
+                if (status === "successful") alert("成功删除" + lendIDs.length + "条设备借用记录");
+                else alert(status);
             }
         });
     }
+
+    let searchItem = $("#content").find("#queryLendsDiv").find("#searchItem").val();
+    let searchType = $("#content").find("#queryLendsDiv").find("#searchType").val();
+
+    $("#content").find("#lendEqptsRecsHead").siblings().remove();
+    if (searchItem === "") {
+        searchItem = "";
+        searchType = "lendStat";
+    }
+
+    queryLentEqptRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
 });
