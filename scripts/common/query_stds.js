@@ -221,6 +221,24 @@ $("body").on("click", "#updateStdInfoBtn", function () {
     });
 });
 
+//删除用户
+$("#content").on("click", ".delStdUserBtn", function (event) {
+    let currUserID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/delete_user.php",
+        type: "POST",
+        async: false,
+        data: { userRole: userInfo.userRole, userID: currUserID },
+        success: function (status) {
+            if (status === "successful") alert("成功删除ID为" + currUserID + "的用户");
+            else alert(status);
+
+            ReQueryStdUser();
+        }
+    });
+});
+
 //关闭弹窗
 $("body").on("click", ".stdCancelBtn", function () {
     ReQueryStdUser();
