@@ -118,7 +118,7 @@ $("#content").on("click", ".stdUserDetl", function (event) {
         "<tr><td><span>用户信息</span></td><td><input type='button' id='editUserInfoBtn' name='editUserInfoBtn' value='编辑' /></td></tr>" +
         "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' value='" + stdUsersInfo[currUserIndx].UserID + "' placeholder='" + stdUsersInfo[currUserIndx].UserID + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' value='" + stdUsersInfo[currUserIndx].UserName + "' placeholder='" + stdUsersInfo[currUserIndx].UserName + "' disabled='disabled' /></td></tr>" +
-        "<tr><td><label>用户性别</label></td><td><select id='userGen' disabled='disabled'><option value='male'>男</option value='female'><option>女</option></select></td></tr>" +
+        "<tr><td><label>用户性别</label></td><td><select id='userGen' disabled='disabled'><option value='male'>男</option><option value='female'>女</option></select></td></tr>" +
         "<tr><td><label>用户角色</label></td><td><select id='userRole' disabled='disabled'><option value='std'>学生</option><option value='tch'>教师</option>" +
         "<option value='admin'>管理员</option></select></td></tr>" +
         "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + stdUsersInfo[currUserIndx].UserEmail + "' placeholder='" + stdUsersInfo[currUserIndx].UserEmail + "' disabled='disabled' /></td></tr>" +
@@ -129,8 +129,20 @@ $("#content").on("click", ".stdUserDetl", function (event) {
         "<td><input type='button' id='updateStdInfoBtn' name='" + stdUsersInfo[currUserIndx].UserID + "' value='更新' style='visibility: hidden;'/></td></tr></table></form></div>"
     );
 
-    $("body").find("#userGen").find("option[value='" + stdUsersInfo[currUserIndx].UserGen + "']").attr("selected", "selected");
-    $("body").find("#userRole").find("option[value='" + stdUsersInfo[currUserIndx].userRole + "']").attr("selected", "selected");
+    if (stdUsersInfo[currUserIndx].UserGen === "男") $("body").find("#userGen").find("option[value='male']").attr("selected", "selected");
+    else $("body").find("#userGen").find("option[value='female']").attr("selected", "selected");
+
+    switch (stdUsersInfo[currUserIndx].userRole) {
+        case "学生":
+            $("body").find("#userRole").find("option[value='std']").attr("selected", "selected");
+            break;
+        case "教师":
+            $("body").find("#userRole").find("option[value='tch']").attr("selected", "selected");
+            break;
+        case "管理员":
+            $("body").find("#userRole").find("option[value='admin']").attr("selected", "selected");
+            break;
+    }
 });
 
 //编辑用户信息
