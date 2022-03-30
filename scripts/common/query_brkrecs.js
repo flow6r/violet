@@ -12,7 +12,6 @@ $("#content").on("click", "#queryBrkRecsBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#brkRecsTblHead").siblings().remove();
-        alert(searchItem + "," + searchType);
         queryBrkRecs(userInfo.userID, userInfo.userRole, userInfo.colgName, searchItem, searchType);
     } else alert("请输入关键词");
 });
