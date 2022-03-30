@@ -1587,3 +1587,134 @@
     background-color: #4586db;
     border-radius: 15px;
 }
+
+/*用户信息弹窗-含更新按钮*/
+#userInfoDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 40px;
+    width: 450px;
+    height: 490px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#userInfoDiv #userInfoForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 490px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 8px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #userID,
+#userInfoDiv #userInfoForm #userInfoTbl #userName,
+#userInfoDiv #userInfoForm #userInfoTbl #userEmail {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #userGen,
+#userInfoDiv #userInfoForm #userInfoTbl #userRole,
+#userInfoDiv #userInfoForm #userInfoTbl #userAdms {
+    float: right;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #colgAbrv,
+#userInfoDiv #userInfoForm #userInfoTbl #mjrAbrv {
+    float: right;
+    font-size: 1.2em;
+    width: 228px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #editUserInfoBtn,
+#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#userInfoDiv #userInfoForm #userInfoTbl #editUserInfoBtn:hover,
+#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
