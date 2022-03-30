@@ -50,6 +50,10 @@ else {
     $stmt = $db->prepare($query);
     $stmt->bind_param("ssssssiss", $userID, $userName, $userPasswd, $userGen, $userRole, $userEmail, $userAdms, $colgName, $mjrName);
     $stmt->execute();
+
+    // 引入创建储存用户信息会话的脚本
+    require_once("../session/user_login.php");
+
     echo "successful";
 }
 
