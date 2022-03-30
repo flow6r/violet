@@ -258,12 +258,16 @@ function printQueryStdUser() {
         "<tr id='stdUserRecsHead'><th width='50px'></th><th>ID</th><th>姓名</th><th>性别</th><th>电子邮箱</th><th>详情</th><th>其他操作</th></tr>" +
         "</table><table id='stdUserRecsPageCtl' name='stdUserRecsPageCtl'><tr>" +
         "<td><input type='button' id='stdPrevPage' name='stdPrevPage' value='上一页' /></td>" +
-        "<td><input type='text' id='stdUserPagesInfo' name='stdUserPagesInfo' placeholder='' size='12' /></td>" +
+        "<td><input type='text' id='stdUserPagesInfo' name='stdUserPagesInfo' placeholder='' size='12' disabled='disabled' /></td>" +
         "<td><input type='button' id='stdNextPage' name='stdNextPage' value='下一页' /></td>" +
-        "<td><input type='text' id='stdTrgePage' name='stdTrgePage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='text' id='stdTrgtPage' name='stdTrgtPage' placeholder='输入想要跳转的页数' /></td>" +
         "<td><input type='button' id='stdJumpToTrgtPage' name='stdJumpToTrgtPage' value='跳转' /></td>" +
         "</tr></table></form></div>"
     );
+
+    if (userInfo.userRole === "教师") $("#content").find("option[value='mjrName']").remove();
+
+    queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", "", "userID");
 }
 
 /*查询设备*/
