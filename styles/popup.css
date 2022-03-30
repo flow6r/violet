@@ -1655,8 +1655,8 @@
     border-radius: 15px;
 }
 
-#userInfoDiv #userInfoForm #userInfoTbl #colgAbrv,
-#userInfoDiv #userInfoForm #userInfoTbl #mjrAbrv {
+#userInfoDiv #userInfoForm #userInfoTbl #colgName,
+#userInfoDiv #userInfoForm #userInfoTbl #mjrName {
     float: right;
     font-size: 1.2em;
     width: 228px;
