@@ -75,7 +75,7 @@ if ($canRtn) {
     for ($indx = 0; $indx < count($cantRtnLendIDs); $indx++) {
         $tips .= "\n借用记录ID：" . $cantRtnLendIDs[$indx] . "，借用记录状态：已归还";
     }
-    echo "您提交的借用记录ID中含有不符合归还条件的记录：" . $tips . "请检查无误后再执行批量归还操作";
+    echo "您提交的借用记录ID中含有不符合归还条件的记录：" . $tips . "\n请检查无误后再执行批量归还操作";
     $db->close();
     exit;
 }
