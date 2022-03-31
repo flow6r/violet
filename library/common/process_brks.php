@@ -1,10 +1,6 @@
 <?php
 /*批量处理报修设备的脚本*/
 //获取POST请求的数据
-
-use function Complex\cot;
-use function Complex\ln;
-
 $userRole = $_POST["userRole"];
 $brkIDs = $_POST["brkIDs"];
 $dspUser = $_POST["dspUser"];
