@@ -267,7 +267,7 @@ function printQueryStdUser() {
 
     if (userInfo.userRole === "教师") $("#content").find("option[value='mjrName']").remove();
 
-    queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", "", "userID");
+    queryStdUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", "", "userID");
 }
 
 //查询教师用户
@@ -299,7 +299,7 @@ function printQueryTchUser() {
         "</tr></table></form></div>"
     );
 
-    // queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "tch", "", "userID");
+    queryTchUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "tch", "", "userID");
 }
 
 /*查询设备*/
