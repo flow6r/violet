@@ -5,8 +5,10 @@ $userRole = $_GET["userRole"];
 $colgName = $_GET["colgName"];
 $searchItem = $_GET["searchItem"];
 $searchType = $_GET["searchType"];
+
 //设置查询关键词
 $searchItem = "%".$searchItem."%";
+
 //设置查询类型和关键词
 switch ($searchType) {
     case "eqptID":$searchType = "EqptID";break;
