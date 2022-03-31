@@ -270,6 +270,38 @@ function printQueryStdUser() {
     queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", "", "userID");
 }
 
+//查询教师用户
+$(".userNav").on("click", "#tchMgt", function () {
+    printQueryTchUser();
+});
+
+function printQueryTchUser() {
+    $("#content").empty();
+    $("#content").append(
+        "<div id='tchUserRecsDiv' name='tchUserRecsDiv'><form id='tchUserRecsForm' name='tchUserRecsForm'>" +
+        "<table id='tchUserQueryMenu' name='tchUserQueryMenu'><tr><td><span>学生用户查询</span></td></tr>" +
+        "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
+        "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option>" +
+        "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
+        "<option value='userAdms'>入学时间</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<td><input type='button' id='queryTchUsersBtn' name='queryTchUsersBtn' value='查询' /></td>" +
+        // "<td><input type='button' id='addNewTchUserBtn' name='addNewTchUserBtn' value='新增记录' /></td>" +
+        "<td><input type='button' id='importTchUsersBtn' name='importTchUsersBtn' value='批量导入' /></td>" +
+        "<td><input type='button' id='deleteTchUsersBtn' name='deleteTchUsersBtn' value='批量删除' /></td></tr></table>" +
+        "<table id='tchUserRecsTbl' name='tchUserRecsTbl'>" +
+        "<tr id='tchUserRecsHead'><th width='50px'></th><th>ID</th><th>姓名</th><th>性别</th><th>电子邮箱</th><th>详情</th><th>其他操作</th></tr>" +
+        "</table><table id='tchUserRecsPageCtl' name='tchUserRecsPageCtl'><tr>" +
+        "<td><input type='button' id='tchPrevPage' name='tchPrevPage' value='上一页' /></td>" +
+        "<td><input type='text' id='tchUserPagesInfo' name='tchUserPagesInfo' placeholder='' size='12' disabled='disabled' /></td>" +
+        "<td><input type='button' id='tchNextPage' name='tchNextPage' value='下一页' /></td>" +
+        "<td><input type='text' id='tchTrgtPage' name='tchTrgtPage' placeholder='输入想要跳转的页数' /></td>" +
+        "<td><input type='button' id='tchJumpToTrgtPage' name='tchJumpToTrgtPage' value='跳转' /></td>" +
+        "</tr></table></form></div>"
+    );
+
+    // queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "tch", "", "userID");
+}
+
 /*查询设备*/
 $(".userNav").on("click", "#queryEqpts", function () {
     printQueryEqpt()
