@@ -1691,7 +1691,7 @@
     border-radius: 15px;
 }
 
-#userInfoDiv #userInfoForm #userInfoTbl #editUserInfoBtn,
+#userInfoDiv #userInfoForm #userInfoTbl #editStdInfoBtn,
 #userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn {
     float: right;
     padding: 1px 2px;
@@ -1705,8 +1705,140 @@
     border-radius: 15px;
 }
 
-#userInfoDiv #userInfoForm #userInfoTbl #editUserInfoBtn:hover,
+#userInfoDiv #userInfoForm #userInfoTbl #editStdInfoBtn:hover,
 #userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+/*更新用户密码的弹窗*/
+#updtUserPasswdDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 85px;
+    width: 450px;
+    height: 240px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 240px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #newStdPasswd,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #reEnterStdPasswd {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd:hover {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
