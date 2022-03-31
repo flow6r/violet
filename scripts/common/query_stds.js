@@ -4,6 +4,7 @@ var stdTotPages = null;
 var stdCurrPage = null;
 var stdUserIDs = new Array();
 var stdUserIDsIndx = 0;
+var currUserIndx = null;
 
 //查询学生用户记录
 $("#content").on("click", "#queryStdUsersBtn", function () {
@@ -76,7 +77,8 @@ function echoStdUsers(page) {
             "<td>" + stdUsersInfo[begnPage].UserID + "</td>" +
             "<td>" + stdUsersInfo[begnPage].UserName + "</td><td>" + stdUsersInfo[begnPage].UserGen + "</td><td>" + stdUsersInfo[begnPage].UserEmail + "</td>" +
             "<td><a class='stdUserDetl' name='" + stdUsersInfo[begnPage].UserID + "' href='#'>详情</a></td>" +
-            "<td><input type='button' id='del" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='delStdUserBtn' value='删除' /></td></tr>"
+            "<td><input type='button' id='reset" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='updtStdPasswdBtn' value='更新密码' />" +
+            "<input type='button' id='del" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='delStdUserBtn' value='删除' /></td></tr>"
         );
     }
 
@@ -129,7 +131,7 @@ $("#content").on("click", ".stdUserDetl", function (event) {
 
     $("body").append(
         "<div id='userInfoDiv' name='userInfoDiv' class='popup'><form id='userInfoForm' name='userInfoForm'><table id='userInfoTbl' name='userInfoForm'>" +
-        "<tr><td><span>用户信息</span></td><td><input type='button' id='editUserInfoBtn' name='editUserInfoBtn' value='编辑' /></td></tr>" +
+        "<tr><td><span>用户信息</span></td><td><input type='button' id='editStdInfoBtn' name='editStdInfoBtn' value='编辑' /></td></tr>" +
         "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' value='" + stdUsersInfo[currUserIndx].UserID + "' placeholder='" + stdUsersInfo[currUserIndx].UserID + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' value='" + stdUsersInfo[currUserIndx].UserName + "' placeholder='" + stdUsersInfo[currUserIndx].UserName + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>用户性别</label></td><td><select id='userGen' disabled='disabled'><option value='male'>男</option><option value='female'>女</option></select></td></tr>" +
@@ -160,8 +162,8 @@ $("#content").on("click", ".stdUserDetl", function (event) {
 });
 
 //编辑用户信息
-$("body").on("click", "#editUserInfoBtn", function () {
-    $("body").find("#userInfoDiv").find("#editUserInfoBtn").attr("style", "visibility: hidden;");
+$("body").on("click", "#editStdInfoBtn", function () {
+    $("body").find("#userInfoDiv").find("#editStdInfoBtn").attr("style", "visibility: hidden;");
 
     let currUserColgAbrv = null;
 
@@ -246,6 +248,57 @@ $("body").on("click", "#updateStdInfoBtn", function () {
             ReQueryStdUser();
         }
     });
+});
+
+//更新用户密码
+$("#content").on("click", ".updtStdPasswdBtn", function (event) {
+    let currUserID = $(event.target).attr("name");
+
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='updtUserPasswdDiv' name='updtUserPasswdDiv' class='popup'><form id='updtUserPasswdForm' name='updtUserPasswdForm'>" +
+        "<table id='updtUserPasswdTbl' name='updtUserPasswdTbl'><tr><th colspan='2'><span>更新用户密码</span></th></tr>" +
+        "<tr><td><label>新密码</label></td><td><input type='password' id='newStdPasswd' name='newStdPasswd' /></td></tr>" +
+        "<tr><td><label>重复密码</label></td><td><input type='password' id='reEnterStdPasswd' name='reEnterStdPasswd' /></td></tr>" +
+        "<tr><td><input type='button' class='stdCancelBtn' value='取消' />" +
+        "</td><td><input type='button' id='updtStdPasswd' name='" + currUserID + "' class='updtStdPasswd' value='更新' /></td></tr>" +
+        "</table></form></div>"
+    );
+});
+
+//检查密码
+$("body").on("focusout", "#newStdPasswd", function (event) {
+    if ($(event.target).val() === "")
+        $("body").find("#newStdPasswd").attr("placeholder", "请输入新密码");
+});
+
+//检查重复的密码
+$("body").on("focusout", "#reEnterStdPasswd", function (event) {
+    if ($(event.target).val() === "")
+        $("body").find("#reEnterStdPasswd").attr("placeholder", "两次密码不一致");
+});
+
+//实现更新学生用户密码
+$("body").on("click", "#updtStdPasswd", function (event) {
+    let currUserID = $(event.target).attr("name");
+    let newPasswd = $("body").find("#newStdPasswd").val();
+    let reEnterPasswd = $("body").find("#reEnterStdPasswd").val();
+
+    if (newPasswd === reEnterPasswd && newPasswd != "" && reEnterPasswd != "") {
+        $.ajax({
+            url: "../../library/common/update_userpasswd.php",
+            type: "POST",
+            async: false,
+            data: { userRole: userInfo.userRole, userID: currUserID, userPasswd: newPasswd },
+            success: function (status) {
+                if (status === "successful") alert("成功更新ID为" + currUserID + "的用户的密码");
+                else alert(status);
+
+                ReQueryStdUser();
+            }
+        })
+    } else alert("请将密码信息输入完整再执行更新密码的操作");
 });
 
 //删除单个用户
