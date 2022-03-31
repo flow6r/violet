@@ -251,7 +251,7 @@ function printQueryStdUser() {
         "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
         "<option value='userAdms'>入学时间</option><option value='mjrName'>专业名称</option></select></td>" +
         "<td><input type='button' id='queryStdUsersBtn' name='queryStdUsersBtn' value='查询' /></td>" +
-        "<td><input type='button' id='addNewStdUserBtn' name='addNewStdUserBtn' value='新增记录' /></td>" +
+        // "<td><input type='button' id='addNewStdUserBtn' name='addNewStdUserBtn' value='新增记录' /></td>" +
         "<td><input type='button' id='importStdUsersBtn' name='importStdUsersBtn' value='批量导入' /></td>" +
         "<td><input type='button' id='deleteStdUsersBtn' name='deleteStdUsersBtn' value='批量删除' /></td></tr></table>" +
         "<table id='stdUserRecsTbl' name='stdUserRecsTbl'>" +
