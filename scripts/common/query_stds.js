@@ -4,7 +4,7 @@ var stdTotPages = null;
 var stdCurrPage = null;
 var stdUserIDs = new Array();
 var stdUserIDsIndx = 0;
-var currUserIndx = null;
+var currStdUserIndx = null;
 
 //查询学生用户记录
 $("#content").on("click", "#queryStdUsersBtn", function () {
@@ -13,12 +13,12 @@ $("#content").on("click", "#queryStdUsersBtn", function () {
 
     if (searchItem != "") {
         $("#content").find("#stdUserRecsHead").siblings().remove();
-        queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", searchItem, searchType);
+        queryStdUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", searchItem, searchType);
     } else alert("请输入关键词");
 });
 
 //实现查询用户信息的函数
-function queryUsers(userRole, mjrName, colgName, trgtRole, searchItem, searchType) {
+function queryStdUsers(userRole, mjrName, colgName, trgtRole, searchItem, searchType) {
     $.ajax({
         url: "../../library/common/query_users.php",
         type: "GET",
@@ -75,7 +75,7 @@ function echoStdUsers(page) {
         $("#content").find("#stdUserRecsTbl").append(
             "<tr><td><input type='checkbox' name='stdCheckbox' class='stdCheckbox' value='" + stdUsersInfo[begnPage].UserID + "' /></td>" +
             "<td>" + stdUsersInfo[begnPage].UserID + "</td>" +
-            "<td>" + stdUsersInfo[begnPage].UserName + "</td><td>" + stdUsersInfo[begnPage].UserGen + 
+            "<td>" + stdUsersInfo[begnPage].UserName + "</td><td>" + stdUsersInfo[begnPage].UserGen +
             "</td><td><a href='mailto:" + stdUsersInfo[begnPage].UserEmail + "'>" + stdUsersInfo[begnPage].UserEmail + "</a></td>" +
             "<td><a class='stdUserDetl' name='" + stdUsersInfo[begnPage].UserID + "' href='#'>详情</a></td>" +
             "<td><input type='button' id='reset" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='updtStdPasswdBtn' value='更新密码' />" +
@@ -127,29 +127,29 @@ $("#content").on("click", ".stdCheckbox", function (event) {
 //用户信息详情
 $("#content").on("click", ".stdUserDetl", function (event) {
     let currUserID = $(event.target).attr("name");
-    currUserIndx = stdUsersInfo.findIndex(stdUsersInfo => stdUsersInfo.UserID === currUserID);
+    currStdUserIndx = stdUsersInfo.findIndex(stdUsersInfo => stdUsersInfo.UserID === currUserID);
     $("#mask").attr("style", "visibility: visible;");
 
     $("body").append(
         "<div id='userInfoDiv' name='userInfoDiv' class='popup'><form id='userInfoForm' name='userInfoForm'><table id='userInfoTbl' name='userInfoForm'>" +
         "<tr><td><span>用户信息</span></td><td><input type='button' id='editStdInfoBtn' name='editStdInfoBtn' value='编辑' /></td></tr>" +
-        "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' value='" + stdUsersInfo[currUserIndx].UserID + "' placeholder='" + stdUsersInfo[currUserIndx].UserID + "' disabled='disabled' /></td></tr>" +
-        "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' value='" + stdUsersInfo[currUserIndx].UserName + "' placeholder='" + stdUsersInfo[currUserIndx].UserName + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>用户ID</label></td><td><input type='text' id='userID' name='userID' value='" + stdUsersInfo[currStdUserIndx].UserID + "' placeholder='" + stdUsersInfo[currStdUserIndx].UserID + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>用户姓名</label></td><td><input type='text' id='userName' name='userName' value='" + stdUsersInfo[currStdUserIndx].UserName + "' placeholder='" + stdUsersInfo[currStdUserIndx].UserName + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>用户性别</label></td><td><select id='userGen' disabled='disabled'><option value='male'>男</option><option value='female'>女</option></select></td></tr>" +
         "<tr><td><label>用户角色</label></td><td><select id='userRole' disabled='disabled'><option value='std'>学生</option><option value='tch'>教师</option>" +
         "<option value='admin'>管理员</option></select></td></tr>" +
-        "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + stdUsersInfo[currUserIndx].UserEmail + "' placeholder='" + stdUsersInfo[currUserIndx].UserEmail + "' disabled='disabled' /></td></tr>" +
-        "<tr><td><label>入学年份</label></td><td><select id='userAdms' disabled='disabled'><option>" + stdUsersInfo[currUserIndx].UserAdms + "</option></select></td></tr>" +
-        "<tr><td><label>隶属学院</label></td><td><select id='colgName' disabled='disabled'><option>" + stdUsersInfo[currUserIndx].ColgName + "</option></select></td></tr>" +
-        "<tr><td><label>专业名称</label></td><td><select id='mjrName' disabled='disabled'><option>" + stdUsersInfo[currUserIndx].MjrName + "</option></select></td></tr>" +
+        "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + stdUsersInfo[currStdUserIndx].UserEmail + "' placeholder='" + stdUsersInfo[currStdUserIndx].UserEmail + "' disabled='disabled' /></td></tr>" +
+        "<tr><td><label>入学年份</label></td><td><select id='userAdms' disabled='disabled'><option>" + stdUsersInfo[currStdUserIndx].UserAdms + "</option></select></td></tr>" +
+        "<tr><td><label>隶属学院</label></td><td><select id='colgName' disabled='disabled'><option>" + stdUsersInfo[currStdUserIndx].ColgName + "</option></select></td></tr>" +
+        "<tr><td><label>专业名称</label></td><td><select id='mjrName' disabled='disabled'><option>" + stdUsersInfo[currStdUserIndx].MjrName + "</option></select></td></tr>" +
         "<tr><td><input type='button' id='stdUpdtCancel' name='stdUpdtCancel' class='stdCancelBtn' value='取消' /></td>" +
-        "<td><input type='button' id='updateStdInfoBtn' name='" + stdUsersInfo[currUserIndx].UserID + "' value='更新' style='visibility: hidden;'/></td></tr></table></form></div>"
+        "<td><input type='button' id='updateStdInfoBtn' name='" + stdUsersInfo[currStdUserIndx].UserID + "' value='更新' style='visibility: hidden;'/></td></tr></table></form></div>"
     );
 
-    if (stdUsersInfo[currUserIndx].UserGen === "男") $("body").find("#userGen").find("option[value='male']").attr("selected", "selected");
+    if (stdUsersInfo[currStdUserIndx].UserGen === "男") $("body").find("#userGen").find("option[value='male']").attr("selected", "selected");
     else $("body").find("#userGen").find("option[value='female']").attr("selected", "selected");
 
-    switch (stdUsersInfo[currUserIndx].userRole) {
+    switch (stdUsersInfo[currStdUserIndx].UserRole) {
         case "学生":
             $("body").find("#userRole").find("option[value='std']").attr("selected", "selected");
             break;
@@ -186,7 +186,7 @@ $("body").on("click", "#editStdInfoBtn", function () {
     for (let lower = yyyy - 4; lower <= yyyy; lower++) {
         $("body").find("#userAdms").append("<option value='" + lower + "'>" + lower + "</option>");
     }
-    $("body").find("#userAdms").find("option[value='" + stdUsersInfo[currUserIndx].UserAdms + "']").attr("selected", "selected");
+    $("body").find("#userAdms").find("option[value='" + stdUsersInfo[currStdUserIndx].UserAdms + "']").attr("selected", "selected");
 
     $.ajax({
         url: "../../library/common/query_college.php",
@@ -195,7 +195,7 @@ $("body").on("click", "#editStdInfoBtn", function () {
         success: function (colgJSON) {
             for (let indx = 0; indx < colgJSON.length; indx++) {
                 $("body").find("#colgName").append("<option value='" + colgJSON[indx].ColgAbrv + "'>" + colgJSON[indx].ColgName + "</option>");
-                if (colgJSON[indx].ColgName === stdUsersInfo[currUserIndx].ColgName) {
+                if (colgJSON[indx].ColgName === stdUsersInfo[currStdUserIndx].ColgName) {
                     $("body").find("#colgName").find("option[value='" + colgJSON[indx].ColgAbrv + "']").attr("selected", "selected");
                     currUserColgAbrv = colgJSON[indx].ColgAbrv;
                 }
@@ -212,7 +212,7 @@ $("body").on("click", "#editStdInfoBtn", function () {
         success: function (mjrJSON) {
             for (let indx = 0; indx < mjrJSON.length; indx++) {
                 $("body").find("#mjrName").append("<option value='" + mjrJSON[indx].MjrAbrv + "'>" + mjrJSON[indx].MjrName + "</option>");
-                if (mjrJSON[indx].MjrName === stdUsersInfo[currUserIndx].MjrName)
+                if (mjrJSON[indx].MjrName === stdUsersInfo[currStdUserIndx].MjrName)
                     $("body").find("#mjrName").find("option[value='" + mjrJSON[indx].MjrAbrv + "']").attr("selected", "selected");
             }
         }
@@ -252,7 +252,7 @@ $("body").on("click", "#updateStdInfoBtn", function () {
 });
 
 //批量导入学生用户
-$("#content").on("click", "#importStdUsersBtn", function() {
+$("#content").on("click", "#importStdUsersBtn", function () {
     $("#mask").attr("style", "visibility: visible;");
 
     $("body").append(
@@ -311,7 +311,7 @@ $("body").on("click", "#updtStdPasswd", function (event) {
     let newPasswd = $("body").find("#newStdPasswd").val();
     let reEnterPasswd = $("body").find("#reEnterStdPasswd").val();
 
-    if (newPasswd === reEnterPasswd && newPasswd != "" && reEnterPasswd != "") {
+    if (newPasswd === reEnterPasswd && newPasswd != "" && reEnterPasswd != "" && newPasswd.length >= 6 && newPasswd.length <= 18) {
         $.ajax({
             url: "../../library/common/update_userpasswd.php",
             type: "POST",
@@ -324,7 +324,9 @@ $("body").on("click", "#updtStdPasswd", function (event) {
                 ReQueryStdUser();
             }
         })
-    } else alert("请将密码信息输入完整再执行更新密码的操作");
+    } else if (newPasswd === "" || reEnterPasswd === "") alert("确保密码信息的完整性");
+    else if (newPasswd != reEnterPasswd) alert("两次密码不一致");
+    else alert("密码长度为6~18位");
 });
 
 //删除单个用户
@@ -384,5 +386,5 @@ function ReQueryStdUser() {
         searchType = "userID";
     }
 
-    queryUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", searchItem, searchType);
+    queryStdUsers(userInfo.userRole, userInfo.mjrName, userInfo.colgName, "std", searchItem, searchType);
 }
