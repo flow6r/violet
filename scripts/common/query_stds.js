@@ -4,7 +4,6 @@ var stdTotPages = null;
 var stdCurrPage = null;
 var stdUserIDs = new Array();
 var stdUserIDsIndx = 0;
-var currEqptIndx = null;
 
 //查询学生用户记录
 $("#content").on("click", "#queryStdUsersBtn", function () {
@@ -105,6 +104,21 @@ $("#content").on("click", "#stdJumpToTrgtPage", function () {
 
     if (trgtPage < 1 || trgtPage > stdTotPages) alert("请输入合法的页数");
     else echoStdUsers(trgtPage);
+});
+
+//获取选中的用户ID
+$("#content").on("click", ".stdCheckbox", function (event) {
+    let currUserID = $(event.target).val();
+
+    if ($(event.target).attr("checked")) {
+        $(event.target).removeAttr("checked");
+        let currUserIdIndx = stdUserIDs.indexOf(currUserID);
+        stdUserIDs.splice(currUserIdIndx, 1);
+        stdUserIDsIndx--;
+    } else {
+        $(event.target).attr("checked", "ture");
+        stdUserIDs[stdUserIDsIndx++] = currUserID;
+    }
 });
 
 //用户信息详情
@@ -227,13 +241,14 @@ $("body").on("click", "#updateStdInfoBtn", function () {
         success: function (status) {
             if (status === "successful") {
                 alert("成功更新用户信息");
-                ReQueryStdUser();
             } else alert(status)
+
+            ReQueryStdUser();
         }
     });
 });
 
-//删除用户
+//删除单个用户
 $("#content").on("click", ".delStdUserBtn", function (event) {
     let currUserID = $(event.target).attr("name");
 
@@ -249,6 +264,25 @@ $("#content").on("click", ".delStdUserBtn", function (event) {
             ReQueryStdUser();
         }
     });
+});
+
+//批量删除用户
+$("#content").on("click", "#deleteStdUsersBtn", function () {
+    if (stdUserIDs.length != 0) {
+        $.ajax({
+            url: "../../library/common/delete_users.php",
+            type: "POST",
+            async: false,
+            data: { userRole: userInfo.userRole, userIDs: stdUserIDs },
+            success: function (status) {
+                if (status === "successful") alert("成功删除" + stdUserIDs.length + "条用户记录");
+                else alert(status);
+
+                ReQueryStdUser();
+            }
+        });
+    } else alert("您选择了0条用户记录，请选择至少一条记录后再执行批量删除操作");
+
 });
 
 //关闭弹窗
