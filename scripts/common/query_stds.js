@@ -251,6 +251,31 @@ $("body").on("click", "#updateStdInfoBtn", function () {
     });
 });
 
+//批量导入学生用户
+$("#content").on("click", "#importStdUsersBtn", function() {
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='importStdUsersDiv' name='importStdUsersDiv' class='popup'>" +
+        "<form id='importStdUsersForm' name='importStdUsersForm' enctype='multipart/form-data' action='../../library/common/import_stds.php' method='post' target='doNotRefresh' onsubmit='return checkImpStdFile()'>" +
+        "<table id='importStdUsersTbl' name='importStdUsersTbl'><tr><th colspan='2'><span>批量导入学生信息</span></th></tr>" +
+        "<tr><th colspan='2'><a href='http://localhost/data/tmpl/StdUserInfoTmpl.xlsx'>点击我下载模板文件</a></th></tr>" +
+        "<tr><td><label>学生信息文件</label></td><td><input type='file' id='newStdUsersInfoFile' name='newStdUsersInfoFile' /></td></tr>" +
+        "<tr><td><input type='button' class='stdCancelBtn' value='取消' /></td>" +
+        "<td><input type='submit' name='' class='imptStdUsers' value='导入' /></td>" +
+        "</tr></table></form><iframe id='doNotRefresh' name='doNotRefresh' title='doNotRefresh' style='display: none;'></iframe></div>"
+    );
+});
+
+//检查模板文件
+function checkImpStdFile() {
+    let theFile = $("body").find("#newStdUsersInfoFile").val();
+    if (theFile === "") {
+        alert("请选择待上传的学生信息文件再执行上传操作");
+        return false;
+    }
+}
+
 //更新用户密码
 $("#content").on("click", ".updtStdPasswdBtn", function (event) {
     let currUserID = $(event.target).attr("name");
