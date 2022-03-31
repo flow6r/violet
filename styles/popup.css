@@ -1666,7 +1666,8 @@
     border-radius: 15px;
 }
 
-#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel {
+#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel,
+#userInfoDiv #userInfoForm #userInfoTbl #tchUpdtCancel {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 150px;
@@ -1679,7 +1680,8 @@
 
 }
 
-#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel:hover {
+#userInfoDiv #userInfoForm #userInfoTbl #stdUpdtCancel:hover,
+#userInfoDiv #userInfoForm #userInfoTbl #tchUpdtCancel:hover {
     padding: 1px 2px;
     font-size: 1.2em;
     width: 150px;
@@ -1692,7 +1694,9 @@
 }
 
 #userInfoDiv #userInfoForm #userInfoTbl #editStdInfoBtn,
-#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn {
+#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn,
+#userInfoDiv #userInfoForm #userInfoTbl #editTchInfoBtn,
+#userInfoDiv #userInfoForm #userInfoTbl #updateTchInfoBtn {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1706,7 +1710,9 @@
 }
 
 #userInfoDiv #userInfoForm #userInfoTbl #editStdInfoBtn:hover,
-#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn:hover {
+#userInfoDiv #userInfoForm #userInfoTbl #updateStdInfoBtn:hover,
+#userInfoDiv #userInfoForm #userInfoTbl #editTchInfoBtn:hover,
+#userInfoDiv #userInfoForm #userInfoTbl #updateTchInfoBtn:hover {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1763,7 +1769,9 @@
 }
 
 #updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #newStdPasswd,
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #reEnterStdPasswd {
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #reEnterStdPasswd,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #newTchPasswd,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #reEnterTchPasswd {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1773,7 +1781,8 @@
     border-radius: 15px;
 }
 
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd {
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtTchPasswd {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1786,7 +1795,8 @@
     border-radius: 15px;
 }
 
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd:hover {
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd:hover,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtTchPasswd:hover {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1799,7 +1809,8 @@
     border-radius: 15px;
 }
 
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn {
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .tchCancelBtn {
     float: left;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1812,34 +1823,9 @@
     border-radius: 15px;
 }
 
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn:hover {
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .stdCancelBtn:hover,
+#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl .tchCancelBtn:hover {
     float: left;
-    padding: 1px 2px;
-    font-size: 1.2em;
-    width: 150px;
-    height: 36px;
-    outline: none;
-    color: #ffffff;
-    border: 2px solid #4586db;
-    background-color: #4586db;
-    border-radius: 15px;
-}
-
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd {
-    float: right;
-    padding: 1px 2px;
-    font-size: 1.2em;
-    width: 150px;
-    height: 36px;
-    outline: none;
-    color: #ffffff;
-    border: 2px solid #2569c3;
-    background-color: #2569c3;
-    border-radius: 15px;
-}
-
-#updtUserPasswdDiv #updtUserPasswdForm #updtUserPasswdTbl #updtStdPasswd:hover {
-    float: right;
     padding: 1px 2px;
     font-size: 1.2em;
     width: 150px;
@@ -1852,7 +1838,8 @@
 }
 
 /*批量导入学生弹窗*/
-#importStdUsersDiv {
+#importStdUsersDiv,
+#importTchUsersDiv {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1866,7 +1853,8 @@
     z-index: 10;
 }
 
-#importStdUsersDiv #importStdUsersForm {
+#importStdUsersDiv #importStdUsersForm,
+#importTchUsersDiv #importTchUsersForm {
     position: absolute;
     padding: 0px;
     margin: 0 auto;
@@ -1874,7 +1862,8 @@
     height: 220px;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1882,25 +1871,29 @@
     border-spacing: 15px;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl span {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl span,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl span {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl a {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl a,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl a {
     font-weight: bold;
     color: #2569c3;
     text-decoration: none;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl label {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl label,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl label {
     font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .stdCancelBtn {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .stdCancelBtn,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl .tchCancelBtn {
     float: left;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1913,7 +1906,8 @@
     border-radius: 15px;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .stdCancelBtn:hover {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .stdCancelBtn:hover,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl .tchCancelBtn:hover {
     float: left;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1926,7 +1920,8 @@
     border-radius: 15px;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .imptStdUsers {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .imptStdUsers,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl .imptTchUsers {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1939,7 +1934,8 @@
     border-radius: 15px;
 }
 
-#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .imptStdUsers:hover {
+#importStdUsersDiv #importStdUsersForm #importStdUsersTbl .imptStdUsers:hover,
+#importTchUsersDiv #importTchUsersForm #importTchUsersTbl .imptTchUsers:hover {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
