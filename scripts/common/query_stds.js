@@ -282,7 +282,6 @@ $("#content").on("click", "#deleteStdUsersBtn", function () {
             }
         });
     } else alert("您选择了0条用户记录，请选择至少一条记录后再执行批量删除操作");
-
 });
 
 //关闭弹窗
