@@ -137,6 +137,8 @@
     text-decoration: none;
 }
 
-#stdUserRecsDiv #stdUserRecsForm #stdUserRecsTbl .delStdUserBtn {
+#stdUserRecsDiv #stdUserRecsForm #stdUserRecsTbl .delStdUserBtn,
+#stdUserRecsDiv #stdUserRecsForm #stdUserRecsTbl .updtStdPasswdBtn {
     font-size: 1.1em;
+    margin-right: 10px;
 }
