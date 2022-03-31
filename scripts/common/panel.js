@@ -4,6 +4,7 @@ var userInfo = null;
 $(document).ready(function () {
     $("#content").empty();
     obtainUserInfo();
+    $("#content").append("<h1 style='color: #2569c3;'>实验器材管理系统</h1>");
 });
 
 /*获取用户信息*/
