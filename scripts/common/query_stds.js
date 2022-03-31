@@ -75,7 +75,8 @@ function echoStdUsers(page) {
         $("#content").find("#stdUserRecsTbl").append(
             "<tr><td><input type='checkbox' name='stdCheckbox' class='stdCheckbox' value='" + stdUsersInfo[begnPage].UserID + "' /></td>" +
             "<td>" + stdUsersInfo[begnPage].UserID + "</td>" +
-            "<td>" + stdUsersInfo[begnPage].UserName + "</td><td>" + stdUsersInfo[begnPage].UserGen + "</td><td>" + stdUsersInfo[begnPage].UserEmail + "</td>" +
+            "<td>" + stdUsersInfo[begnPage].UserName + "</td><td>" + stdUsersInfo[begnPage].UserGen + 
+            "</td><td><a href='mailto:" + stdUsersInfo[begnPage].UserEmail + "'>" + stdUsersInfo[begnPage].UserEmail + "</a></td>" +
             "<td><a class='stdUserDetl' name='" + stdUsersInfo[begnPage].UserID + "' href='#'>详情</a></td>" +
             "<td><input type='button' id='reset" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='updtStdPasswdBtn' value='更新密码' />" +
             "<input type='button' id='del" + stdUsersInfo[begnPage].UserID + "' name='" + stdUsersInfo[begnPage].UserID + "' class='delStdUserBtn' value='删除' /></td></tr>"
