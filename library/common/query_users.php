@@ -81,7 +81,7 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
 $usersJSON = json_encode($users, JSON_UNESCAPED_UNICODE);
 echo $usersJSON;
 
-//将JSON写入文件
+//将JSON数据写入文件
 // file_put_contents("users.json", $usersJSON);
 
 //释放结果集并关闭链接
