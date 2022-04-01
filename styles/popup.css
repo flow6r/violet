@@ -1837,6 +1837,168 @@
     border-radius: 15px;
 }
 
+/*添加单个用户*/
+#tchAddNewStdDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 40px;
+    width: 450px;
+    height: 400px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 400px;
+}
+
+#adminAddNewStdDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 40px;
+    width: 450px;
+    height: 445px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#adminAddNewStdDiv #adminAddNewStdForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 445px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+    border-spacing: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl span,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl label,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl label {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2569c3;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdID,
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdName,
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdEmail,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdID,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdName,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdEmail {
+    float: right;
+    font-size: 1.2em;
+    width: 220px;
+    height: 30px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdGen,
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdAdms,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdGen,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdAdms {
+    float: right;
+    font-size: 1.2em;
+    width: 100px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdMjr {
+    float: right;
+    font-size: 1.2em;
+    width: 228px;
+    height: 36px;
+    outline: none;
+    border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl .stdCancelBtn,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn {
+    float: left;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl .stdCancelBtn:hover,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn:hover {
+    float: left;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #tchAddNewStdBtn,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #tchAddNewStdBtn:hover,
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn:hover {
+    float: right;
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 150px;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
+    border-radius: 15px;
+}
+
 /*批量导入学生弹窗*/
 #importStdUsersDiv,
 #importTchUsersDiv {
