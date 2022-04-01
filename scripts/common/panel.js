@@ -66,6 +66,12 @@ $(".userNav").on("click", "label", function () {
     }
 });
 
+//显示用户面板
+$(".userNav").on("click", "#basicInfo", function () {
+    $("#content").empty();
+    $("#content").append("<h1 style='color: #2569c3;'>实验器材管理系统</h1>");
+});
+
 /*显示用户信息设置*/
 $(".userNav").on("click", "#basicInfo", function () {
     printUserInfo();
