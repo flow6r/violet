@@ -124,6 +124,81 @@ $("#content").on("click", ".tchCheckbox", function (event) {
     }
 });
 
+//新增教师用户记录
+$("body").on("click", "#addNewTchUserBtn", function () {
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='adminAddNewTchDiv' name='adminAddNewTchDiv' class='popup'><form id='adminAddNewTchForm' name='adminAddNewTchForm'>" +
+        "<table id='adminAddNewTchTbl' name='adminAddNewTchTbl'><tr><th colspan='2'><span>创建教师用户</span></th></tr>" +
+        "<tr><td><label>教师ID</label></td><td><input type='text' id='newTchID' name='newTchID' maxlength='15' /></td></tr>" +
+        "<tr><td><label>教师姓名</label></td><td><input type='text' id='newTchName' name='newTchName' maxlength='10' /></td></tr>" +
+        "<tr><td><label>教师性别</label></td><td><select id='newTchGen' name='newTchGen'></select></td></tr>" +
+        "<tr><td><label>电子邮箱</label></td><td><input type='text' id='newTchEmail' name='newTchEmail' maxlength='50' /></td></tr>" +
+        "<tr><td><label>所在专业</label></td><td><select id='newTchMjr' name='newTchMjr'></select></td></tr>" +
+        "<tr><td><input type='button' class='tchCancelBtn' value='取消' /></td>" +
+        "<td><input type='button' id='adminAddNewTchBtn' name='adminAddNewTchBtn' value='创建' /></td></tr></table></form></div>"
+    );
+});
+
+//教师性别选择
+$("body").on("focusin", "#newTchGen", function () {
+    $("body").find("#newTchGen").empty();
+    $("body").find("#newTchGen").append(
+        "<option value='male'>男</option>" +
+        "<option value='female'>女</option>"
+    );
+});
+
+//所在专业选择
+$("body").on("focusin", "#newTchMjr", function () {
+    $.ajax({
+        url: "../../library/common/query_major_by_colgname.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, colgName: userInfo.colgName },
+        dataType: "json",
+        success: function (mjrJSON) {
+            $("body").find("#newTchMjr").empty();
+            for (let indx = 0; indx < mjrJSON.length; indx++) {
+                $("body").find("#newTchMjr").append("<option value='" + mjrJSON[indx].MjrName + "'>" + mjrJSON[indx].MjrName + "</option>");
+            }
+        }
+    });
+});
+
+//实现新增教师用户记录
+$("body").on("click", "#adminAddNewTchBtn", function () {
+    let newTchID = $("body").find("#newTchID").val();
+    let newTchName = $("body").find("#newTchName").val();
+    let newTchGen = $("body").find("#newTchGen").val();
+    let newTchEmail = $("body").find("#newTchEmail").val();
+    let newTchMjr = $("body").find("#newTchMjr").val();
+
+    if (newTchID != "" && newTchName != "" && newTchGen != "" &&
+        newTchEmail != "" && newTchMjr != "") {
+        $.ajax({
+            url: "../../library/common/add_tch.php",
+            type: "POST",
+            async: false,
+            data: {
+                procRole: userInfo.userRole,
+                userID: newTchID, userName: newTchName,
+                userGen: newTchGen, userEmail: newTchEmail,
+                colgName: userInfo.colgName, mjrName: newTchMjr
+            },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功新增ID为" + newTchID + "的教师用户记录");
+
+                    ReQueryTchUser();
+                }
+                else alert(status);
+            }
+        });
+    } else alert("请完善教师用户信息后再执行创建操作");
+});
+
 //用户信息详情
 $("#content").on("click", ".tchUserDetl", function (event) {
     let currUserID = $(event.target).attr("name");
