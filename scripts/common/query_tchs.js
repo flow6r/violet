@@ -141,7 +141,7 @@ $("#content").on("click", ".tchUserDetl", function (event) {
         "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + tchUsersInfo[currTchUserIndx].UserEmail + "' placeholder='" + tchUsersInfo[currTchUserIndx].UserEmail + "' disabled='disabled' /></td></tr>" +
         "<tr><td><label>入学年份</label></td><td><select id='userAdms' disabled='disabled'><option>" + tchUsersInfo[currTchUserIndx].UserAdms + "</option></select></td></tr>" +
         "<tr><td><label>隶属学院</label></td><td><select id='colgName' disabled='disabled'><option>" + tchUsersInfo[currTchUserIndx].ColgName + "</option></select></td></tr>" +
-        "<tr><td><label>专业名称</label></td><td><select id='mjrName' disabled='disabled'><option>" + tchUsersInfo[currTchUserIndx].MjrName + "</option></select></td></tr>" +
+        "<tr><td><label>所在专业</label></td><td><select id='mjrName' disabled='disabled'><option>" + tchUsersInfo[currTchUserIndx].MjrName + "</option></select></td></tr>" +
         "<tr><td><input type='button' id='tchUpdtCancel' name='tchUpdtCancel' class='tchCancelBtn' value='取消' /></td>" +
         "<td><input type='button' id='updateTchInfoBtn' name='" + tchUsersInfo[currTchUserIndx].UserID + "' value='更新' style='visibility: hidden;'/></td></tr></table></form></div>"
     );
