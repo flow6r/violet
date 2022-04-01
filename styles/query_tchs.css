@@ -109,14 +109,10 @@
     width: 83px;
 }
 
-#tchUserRecsDiv #tchUserRecsForm #tchUserQueryMenu tr:nth-child(2) td:nth-child(4) {
-    width: 108px;
-}
-
-/* #tchUserRecsDiv #tchUserRecsForm #tchUserQueryMenu tr:nth-child(2) td:nth-child(4),
+#tchUserRecsDiv #tchUserRecsForm #tchUserQueryMenu tr:nth-child(2) td:nth-child(4),
 #tchUserRecsDiv #tchUserRecsForm #tchUserQueryMenu tr:nth-child(2) td:nth-child(5) {
     width: 108px;
-} */
+}
 
 #tchUserRecsDiv #tchUserRecsForm #tchUserRecsTbl {
     width: 100%;
