@@ -50,8 +50,8 @@ function printAdminNav() {
     $("#userInfo").after(
         "<li id='userMgt' name='userMgt'><label><span>用户管理</span><a href='#'></a></label>\n" +
         "<ul id='userMgtSubNav' name='userMgtSubNav'>\n" +
-        "<li id='stdMgt' name='stdMgt'><label><span style='float: right;'>学生管理</span><a href='#'></a></label></li>\n" +
-        "<li id='tchMgt' name='tchMgt'><label><span style='float: right;'>管理教师</span><a href='#'></a></label></li>\n" +
+        "<li id='stdMgt' name='stdMgt'><label><span style='float: right;'>学生用户</span><a href='#'></a></label></li>\n" +
+        "<li id='tchMgt' name='tchMgt'><label><span style='float: right;'>教师用户</span><a href='#'></a></label></li>\n" +
         "</ul>\n</li>\n<li id='eqptMgt' name='eqptMgt'><label><span>设备管理</span><a href='#'></a></label></li>\n"
     );
 }
