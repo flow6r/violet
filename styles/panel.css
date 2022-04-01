@@ -22,7 +22,6 @@ html {
     z-index: 9;
 }
 
-/*从这开始，需要改*/
 .nav {
     position: fixed;
     padding: 0;
@@ -32,20 +31,145 @@ html {
     background-color: #347bd6;
 }
 
-.userNav,
-#userInfoSubNav,
-#userMgtSubNav,
-#userApplsSubNav,
-#lendInfoSubNav {
+.nav a {
+    text-decoration: none;
+    color: #232323;
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 
 .userNav {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
+    width: 100%;
+    min-height: 1rem;
+    position: relative;
 }
-/*到这结束*/
+
+.userNav li {
+    margin: 0;
+    padding: 0;
+}
+
+.userNav>li {
+    width: 100%;
+    min-height: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid #347bd6;
+    transition: all 0.5s;
+    max-height: 1500px;
+}
+
+.userNav>li:hover {
+    width: 100%;
+    min-height: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid #55a2f0;
+    transition: all 0.5s;
+    max-height: 1500px;
+}
+
+
+.userNav>li>label {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    color: #ffffff;
+    font-size: 1.5em;
+    background: #347bd6;
+    display: block;
+}
+
+.userNav>li>label:hover {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    color: #ffffff;
+    font-size: 1.5em;
+    background: #55a2f0;
+    display: block;
+}
+
+.userNav>li>label>span {
+    padding: 0 20px;
+    width: 150px;
+    color: #fff;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.userNav>li>label>a {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.userNav>li>label>i {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 11px;
+}
+
+.userNav>li>ul {
+    width: 100%;
+    min-height: 1px;
+    position: relative;
+}
+
+.userNav>li>ul>li {
+    width: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.userNav>li>ul>li:hover {
+    max-height: calc(200 * 8px);
+}
+
+.userNav>li>ul>li>label {
+    width: 100%;
+    height: 50px;
+    background: #333951;
+    line-height: 50px;
+    position: relative;
+    transition: all 0.5s;
+    display: block;
+}
+
+.userNav>li>ul>li:hover>label {
+    background: #151b32;
+    border-left: 6px solid #347bd6;
+}
+
+.userNav>li>ul>li>label>span {
+    font-size: 15px;
+    color: #a1a3ab;
+    width: 90px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.userNav>li>ul>li>label>a {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
 
 .content {
     position: absolute;
