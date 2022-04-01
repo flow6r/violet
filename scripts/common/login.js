@@ -1,6 +1,6 @@
 $("#userID").on("focusout", function checkUserID() {
-    var userID = $("#userID").val();
-    var verify = $("#verifyUserID");
+    let userID = $("#userID").val();
+    let verify = $("#verifyUserID");
 
     if (userID === "") verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
@@ -8,16 +8,16 @@ $("#userID").on("focusout", function checkUserID() {
 });
 
 $("#userPasswd").on("focusout", function checkUserPasswd() {
-    var userPasswd = $("#userPasswd").val();
-    var verify = $("#verifyUserPasswd");
+    let userPasswd = $("#userPasswd").val();
+    let verify = $("#verifyUserPasswd");
 
     if (userPasswd === "") verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
 });
 
 $("#loginBtn").on("click", function checkLogin() {
-    var userID = $("#userID").val();
-    var userPasswd = $("#userPasswd").val();
+    let userID = $("#userID").val();
+    let userPasswd = $("#userPasswd").val();
 
     if (userID === "" || userPasswd === "") {
         alert("请输入完整的用户ID和密码信息");
