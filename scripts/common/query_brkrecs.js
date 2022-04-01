@@ -142,7 +142,7 @@ $("#content").on("click", ".brkUserID", function (event) {
                 "<tr><td><label>电子邮箱</label></td><td><input type='text' id='userEmail' name='userEmail' value='" + userJSON[0].UserEmail + "' disabled='disabled' /></td></tr>" +
                 "<tr><td><label>入学年份</label></td><td><input type='text' id='userAdms' name='userAdms' value='" + (userJSON[0].UserAdms === null ? "暂无" : userJSON[0].UserAdms) + "' disabled='disabled' /></td></tr>" +
                 "<tr><td><label>隶属学院</label></td><td><input type='text' id='colgName' name='colgName' value='" + userJSON[0].ColgName + "' disabled='disabled' /></td></tr>" +
-                "<tr><td><label>专业名称</label></td><td><input type='text' id='mjrName' name='mjrName' value='" + userJSON[0].MjrName + "' disabled='disabled' /></td></tr>" +
+                "<tr><td><label>所在专业</label></td><td><input type='text' id='mjrName' name='mjrName' value='" + userJSON[0].MjrName + "' disabled='disabled' /></td></tr>" +
                 "<tr><td colspan='2'><input type='button' id='brkUserInfoCancel' name='brkUserInfoCancel' class='brkCancelBtn' value='取消' /></td></tr>" +
                 "</table></form></div>"
             );
