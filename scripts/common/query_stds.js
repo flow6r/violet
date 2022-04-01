@@ -124,6 +124,144 @@ $("#content").on("click", ".stdCheckbox", function (event) {
     }
 });
 
+//新增学生用户记录
+$("#content").on("click", "#addNewStdUserBtn", function () {
+    if (userInfo.userRole === "教师") tchAddNewStd();
+    else adminAddNewStd();
+});
+
+//打印新增学生用户记录的弹窗
+function tchAddNewStd() {
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='tchAddNewStdDiv' name='tchAddNewStdDiv' class='popup'><form id='tchAddNewStdForm' name='tchAddNewStdForm'>" +
+        "<table id='tchAddNewStdTbl' name='tchAddNewStdTbl'><tr><th colspan='2'><span>创建学生用户</span></th></tr>" +
+        "<tr><td><label>学生ID</label></td><td><input type='text' id='newStdID' name='newStdID' maxlength='15' /></td></tr>" +
+        "<tr><td><label>学生姓名</label></td><td><input type='text' id='newStdName' name='newStdName' maxlength='10' /></td></tr>" +
+        "<tr><td><label>学生性别</label></td><td><select id='newStdGen' name='newStdGen'></select></td></tr>" +
+        "<tr><td><label>电子邮箱</label></td><td><input type='text' id='newStdEmail' name='newStdEmail' maxlength='50' /></td></tr>" +
+        "<tr><td><label>入学年份</label></td><td><select id='newStdAdms' name='newStdAdms'></select></td></tr>" +
+        "<tr><td><input type='button' class='stdCancelBtn' value='取消' /></td>" +
+        "<td><input type='button' id='tchAddNewStdBtn' name='tchAddNewStdBtn' value='创建' /></td></tr></table></form></div>"
+    );
+}
+
+function adminAddNewStd() {
+    $("#mask").attr("style", "visibility: visible;");
+
+    $("body").append(
+        "<div id='adminAddNewStdDiv' name='adminAddNewStdDiv' class='popup'><form id='adminAddNewStdForm' name='adminAddNewStdForm'>" +
+        "<table id='adminAddNewStdTbl' name='adminAddNewStdTbl'><tr><th colspan='2'><span>创建学生用户</span></th></tr>" +
+        "<tr><td><label>学生ID</label></td><td><input type='text' id='newStdID' name='newStdID' maxlength='15' /></td></tr>" +
+        "<tr><td><label>学生姓名</label></td><td><input type='text' id='newStdName' name='newStdName' maxlength='10' /></td></tr>" +
+        "<tr><td><label>学生性别</label></td><td><select id='newStdGen' name='newStdGen'></select></td></tr>" +
+        "<tr><td><label>电子邮箱</label></td><td><input type='text' id='newStdEmail' name='newStdEmail' maxlength='50' /></td></tr>" +
+        "<tr><td><label>入学年份</label></td><td><select id='newStdAdms' name='newStdAdms'></select></td></tr>" +
+        "<tr><td><label>所在专业</label></td><td><select id='newStdMjr' name='newStdMjr'></select></td></tr>" +
+        "<tr><td><input type='button' class='stdCancelBtn' value='取消' /></td>" +
+        "<td><input type='button' id='adminAddNewStdBtn' name='adminAddNewStdBtn' value='创建' /></td></tr></table></form></div>"
+    );
+}
+
+//性别选择
+$("body").on("focusin", "#newStdGen", function () {
+    $("body").find("#newStdGen").empty();
+    $("body").find("#newStdGen").append(
+        "<option value='male'>男</option>" +
+        "<option value='female'>女</option>"
+    );
+});
+
+//入学年份选择
+$("body").on("focusin", "#newStdAdms", function () {
+    $("body").find("#newStdAdms").empty();
+    let currYear = new Date();
+    let yyyy = Number(currYear.getFullYear());
+    for (let lower = yyyy - 4; lower <= yyyy; lower++) {
+        $("body").find("#newStdAdms").append("<option value='" + lower + "'>" + lower + "</option>");
+    }
+});
+
+//专业选择
+$("body").on("focusin", "#newStdMjr", function () {
+    $.ajax({
+        url: "../../library/common/query_major_by_colgname.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, colgName: userInfo.colgName },
+        dataType: "json",
+        success: function (mjrJSON) {
+            $("body").find("#newStdMjr").empty();
+            for (let indx = 0; indx < mjrJSON.length; indx++) {
+                $("body").find("#newStdMjr").append("<option value='" + mjrJSON[indx].MjrName + "'>" + mjrJSON[indx].MjrName + "</option>");
+            }
+        }
+    });
+});
+
+//实现新增学生用户记录
+$("body").on("click", "#tchAddNewStdBtn", function () {
+    let newStdID = $("body").find("#newStdID").val();
+    let newStdName = $("body").find("#newStdName").val();
+    let newStdGen = $("body").find("#newStdGen").val();
+    let newStdEmail = $("body").find("#newStdEmail").val();
+    let newStdAdms = $("body").find("#newStdAdms").val();
+
+    if (newStdID != "" && newStdName != "" && newStdGen != "" &&
+        newStdEmail != "" && newStdAdms != "") {
+        $.ajax({
+            url: "../../library/common/add_std.php",
+            type: "POST",
+            async: false,
+            data: {
+                procRole: userInfo.userRole, userID: newStdID, userName: newStdName,
+                userGen: newStdGen, userEmail: newStdEmail, userAdms: newStdAdms,
+                colgName: userInfo.colgName, mjrName: userInfo.mjrName
+            },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功新增ID为" + newStdID + "的学生用户记录");
+
+                    ReQueryStdUser();
+                }
+                else alert(status);
+            }
+        });
+    } else alert("请完善学生用户信息后再执行创建操作");
+});
+
+$("body").on("click", "#adminAddNewStdBtn", function () {
+    let newStdID = $("body").find("#newStdID").val();
+    let newStdName = $("body").find("#newStdName").val();
+    let newStdGen = $("body").find("#newStdGen").val();
+    let newStdEmail = $("body").find("#newStdEmail").val();
+    let newStdAdms = $("body").find("#newStdAdms").val();
+    let newStdMjr = $("body").find("#newStdMjr").val();
+
+    if (newStdID != "" && newStdName != "" && newStdGen != "" &&
+        newStdEmail != "" && newStdAdms != "" && newStdMjr != "") {
+        $.ajax({
+            url: "../../library/common/add_std.php",
+            type: "POST",
+            async: false,
+            data: {
+                procRole: userInfo.userRole, userID: newStdID, userName: newStdName,
+                userGen: newStdGen, userEmail: newStdEmail, userAdms: newStdAdms,
+                colgName: userInfo.colgName, mjrName: newStdMjr
+            },
+            success: function (status) {
+                if (status === "successful") {
+                    alert("成功新增ID为" + newStdID + "的学生用户记录");
+
+                    ReQueryStdUser();
+                }
+                else alert(status);
+            }
+        });
+    } else alert("请完善学生用户信息后再执行创建操作");
+});
+
 //用户信息详情
 $("#content").on("click", ".stdUserDetl", function (event) {
     let currUserID = $(event.target).attr("name");
