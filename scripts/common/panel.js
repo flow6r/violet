@@ -94,10 +94,10 @@ function printUserInfo() {
         "</select></td></tr><tr><td><label for='userAdms'>入学年份</label></td>" +
         "<td><select id='userAdms' name='userAdms' class='basicInfo' disabled='disabled'>" +
         "<option selected='selected'>" + userInfo.userAdms + "</option></select></td></tr><tr>" +
-        "<td><label for='colgName'>学院</label></td>" +
+        "<td><label for='colgName'>隶属学院</label></td>" +
         "<td><select id='colgName' name='colgName' class='basicInfo' disabled='disabled'>" +
         "<option selected='selected'>" + userInfo.colgName + "</option></select></td></tr><tr>" +
-        "<td><label for='mjrName'>专业</label></td>" +
+        "<td><label for='mjrName'>所在专业</label></td>" +
         "<td><select id='mjrName' name='mjrName' class='basicInfo' disabled='disabled'>" +
         "<option selected='selected'>" + userInfo.mjrName + "</option></select></td></tr><tr><td>" +
         "<input type='button' id='editInfoBtn' name='editInfoBtn' value='编辑' /></td>" +
@@ -266,9 +266,9 @@ function printQueryStdUser() {
         "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option>" +
         "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
-        "<option value='userAdms'>入学时间</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<option value='userAdms'>入学年份</option><option value='mjrName'>所在专业</option></select></td>" +
         "<td><input type='button' id='queryStdUsersBtn' name='queryStdUsersBtn' value='查询' /></td>" +
-        // "<td><input type='button' id='addNewStdUserBtn' name='addNewStdUserBtn' value='新增记录' /></td>" +
+        "<td><input type='button' id='addNewStdUserBtn' name='addNewStdUserBtn' value='新增记录' /></td>" +
         "<td><input type='button' id='importStdUsersBtn' name='importStdUsersBtn' value='批量导入' /></td>" +
         "<td><input type='button' id='deleteStdUsersBtn' name='deleteStdUsersBtn' value='批量删除' /></td></tr></table>" +
         "<table id='stdUserRecsTbl' name='stdUserRecsTbl'>" +
@@ -300,7 +300,7 @@ function printQueryTchUser() {
         "<tr><td><input type='text' id='searchItem' name='searchItem' placeholder='请输入待搜索的关键词' /></td>" +
         "<td><select id='searchType' name='searchType'><option value='userID'>用户ID</option>" +
         "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
-        "<option value='userAdms'>入学时间</option><option value='mjrName'>专业名称</option></select></td>" +
+        "<option value='userAdms'>入学年份</option><option value='mjrName'>所在专业</option></select></td>" +
         "<td><input type='button' id='queryTchUsersBtn' name='queryTchUsersBtn' value='查询' /></td>" +
         // "<td><input type='button' id='addNewTchUserBtn' name='addNewTchUserBtn' value='新增记录' /></td>" +
         "<td><input type='button' id='importTchUsersBtn' name='importTchUsersBtn' value='批量导入' /></td>" +
