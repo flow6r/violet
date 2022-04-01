@@ -1,19 +1,19 @@
 $("#userEmail").on("focusout", function checkUserEmail() {
     /*需要改进，验证邮箱地址是否合法！*/
-    var userEmail = $("#userEmail").val();
-    var verify = $("#verifyUserEmail");
+    let userEmail = $("#userEmail").val();
+    let verify = $("#verifyUserEmail");
 
     if (userEmail === "") verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
 });
 
 $("#sendCodeBtn").on("click", function sendCode() {
-    var userEmail = $("#userEmail").val();
+    let userEmail = $("#userEmail").val();
     if (userEmail === "") alert("请输合法的电子邮箱地址");
     else {
         $.post("../../library/common/verify_email.php", { userEmail: userEmail }, function (bound) {
             if (bound === "bound") {
-                var resetForm = $("#resetForm");
+                let resetForm = $("#resetForm");
                 $("table").remove();
                 resetForm.append(
                     "<table><tr><th>验证邮箱</th></tr>\n" +
@@ -30,10 +30,10 @@ $("#sendCodeBtn").on("click", function sendCode() {
 });
 
 $("#resetForm").on("click", "#verifyCodeBtn", function verifyCode() {
-    var code = $("#code").val();
+    let code = $("#code").val();
     $.post("../../library/common/verify_code.php", { code: code }, function (valid) {
         if (valid === "valid") {
-            var resetForm = $("#resetForm");
+            let resetForm = $("#resetForm");
             $("table").remove();
             resetForm.append(
                 "<table style='text-align: center;'>\n<tr><th>重置密码</th></tr>" +
@@ -52,25 +52,25 @@ $("#resetForm").on("click", "#verifyCodeBtn", function verifyCode() {
 });
 
 $("#resetForm").on("focusout", "#userPasswd", function () {
-    var userPasswd = $("#userPasswd").val();
-    var verify = $("#verifyUserPasswd");
+    let userPasswd = $("#userPasswd").val();
+    let verify = $("#verifyUserPasswd");
 
     if (userPasswd === "") verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
 });
 
 $("#resetForm").on("focusout", "#retype", function () {
-    var userPasswd = $("#userPasswd").val();
-    var retype = $("#retype").val();
-    var verify = $("#verifyRetype");
+    let userPasswd = $("#userPasswd").val();
+    let retype = $("#retype").val();
+    let verify = $("#verifyRetype");
 
     if (userPasswd != retype) verify.attr("style", "visibility: visible;");
     else verify.attr("style", "visibility: hidden;");
 });
 
 $("#resetForm").on("click", "#resetPasswdBtn", function resetPasswd() {
-    var userPasswd = $("#userPasswd").val();
-    var retype = $("#retype").val();
+    let userPasswd = $("#userPasswd").val();
+    let retype = $("#retype").val();
     if (userPasswd != "" && retype != "" && userPasswd === retype) {
         $.post("../../library/common/reset_passwd.php", { userPasswd: userPasswd }, function (status) {
             if (status != "successful") alert(status);
