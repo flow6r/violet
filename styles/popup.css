@@ -1882,8 +1882,31 @@
     height: 445px;
 }
 
+#adminAddNewTchDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0 auto;
+    top: 40px;
+    width: 450px;
+    height: 400px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #2569c3;
+    visibility: visible;
+    z-index: 10;
+}
+
+#adminAddNewTchDiv #adminAddNewTchForm {
+    position: absolute;
+    padding: 0px;
+    margin: 0 auto;
+    width: 450px;
+    height: 400px;
+}
+
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1892,14 +1915,16 @@
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl span,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl span {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl span,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl span {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl label,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl label {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl label,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl label {
     font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
@@ -1910,7 +1935,10 @@
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdEmail,
 #adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdID,
 #adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdName,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdEmail {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdEmail,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #newTchID,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #newTchName,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #newTchEmail {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1923,7 +1951,8 @@
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdGen,
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #newStdAdms,
 #adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdGen,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdAdms {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdAdms,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #newTchGen {
     float: right;
     font-size: 1.2em;
     width: 100px;
@@ -1933,7 +1962,8 @@
     border-radius: 15px;
 }
 
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdMjr {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #newStdMjr,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #newTchMjr {
     float: right;
     font-size: 1.2em;
     width: 228px;
@@ -1944,7 +1974,8 @@
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl .stdCancelBtn,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl .tchCancelBtn {
     float: left;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1958,7 +1989,8 @@
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl .stdCancelBtn:hover,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn:hover {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl .stdCancelBtn:hover,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl .tchCancelBtn:hover {
     float: left;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1972,7 +2004,8 @@
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #tchAddNewStdBtn,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #adminAddNewTchBtn {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
@@ -1986,7 +2019,8 @@
 }
 
 #tchAddNewStdDiv #tchAddNewStdForm #tchAddNewStdTbl #tchAddNewStdBtn:hover,
-#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn:hover {
+#adminAddNewStdDiv #adminAddNewStdForm #adminAddNewStdTbl #adminAddNewStdBtn:hover,
+#adminAddNewTchDiv #adminAddNewTchForm #adminAddNewTchTbl #adminAddNewTchBtn:hover {
     float: right;
     padding: 1px 2px;
     font-size: 1.2em;
