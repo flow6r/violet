@@ -302,7 +302,7 @@ function printQueryTchUser() {
         "<option value='userName'>用户姓名</option><option value='userGen'>用户性别</option>" +
         "<option value='userAdms'>入学年份</option><option value='mjrName'>所在专业</option></select></td>" +
         "<td><input type='button' id='queryTchUsersBtn' name='queryTchUsersBtn' value='查询' /></td>" +
-        // "<td><input type='button' id='addNewTchUserBtn' name='addNewTchUserBtn' value='新增记录' /></td>" +
+        "<td><input type='button' id='addNewTchUserBtn' name='addNewTchUserBtn' value='新增记录' /></td>" +
         "<td><input type='button' id='importTchUsersBtn' name='importTchUsersBtn' value='批量导入' /></td>" +
         "<td><input type='button' id='deleteTchUsersBtn' name='deleteTchUsersBtn' value='批量删除' /></td></tr></table>" +
         "<table id='tchUserRecsTbl' name='tchUserRecsTbl'>" +
