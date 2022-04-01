@@ -59,7 +59,7 @@ html {
     overflow: hidden;
     border-bottom: 1px solid #347bd6;
     transition: all 0.5s;
-    max-height: 1500px;
+    max-height: 40px;
 }
 
 .userNav>li:hover {
@@ -68,7 +68,7 @@ html {
     overflow: hidden;
     border-bottom: 1px solid #55a2f0;
     transition: all 0.5s;
-    max-height: 1500px;
+    max-height: 40px;
 }
 
 
