@@ -22,11 +22,15 @@ $("#loginBtn").on("click", function checkLogin() {
     if (userID === "" || userPasswd === "") {
         alert("请输入完整的用户ID和密码信息");
     } else {
-        $.post("../../library/common/check_login.php",
-            { userID: userID, userPasswd: userPasswd },
-            function (status) {
+        $.ajax({
+            url: "../../library/common/check_login.php",
+            type: "POST",
+            async: false,
+            data: { userID: userID, userPasswd: userPasswd },
+            success: function (status) {
                 if (status === "valid") window.location.href = "../../pages/panel.html";
                 else alert(status);
-            });
+            }
+        });
     }
 });
