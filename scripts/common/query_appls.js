@@ -82,16 +82,29 @@ function echoApplsRecords(page) {
     let endPage = (applsCurrPage * applsRecLimit) - 1;
 
     for (; begnPage <= endPage && begnPage < appls.length; begnPage++) {
-        $("#content").find("#applRsltsTbl").append(
-            "<tr><td><input type='checkbox' name='applCheckbox' class='applCheckbox' value='" + appls[begnPage].ApplID + "' /></td>" +
-            "<td>" + appls[begnPage].ApplID + "</td>" +
-            "<td>" + appls[begnPage].UserID + "</td>" +
-            "<td><a name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
-            "<td>" + appls[begnPage].ApplStat + "</td>" +
-            "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
-            "<input type='button' name='" + appls[begnPage].ApplID + "' class='rjctApplBtn' value='驳回' />" +
-            "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
-        );
+        if (appls[begnPage].ApplStat === "已驳回") {
+            $("#content").find("#applRsltsTbl").append(
+                "<tr><td><input type='checkbox' name='applCheckbox' class='applCheckbox' value='" + appls[begnPage].ApplID + "' /></td>" +
+                "<td>" + appls[begnPage].ApplID + "</td>" +
+                "<td>" + appls[begnPage].UserID + "</td>" +
+                "<td><a class='queryApplDetl' name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
+                "<td><a class='beenRjcted' name='" + appls[begnPage].ApplID + "' href='#' style='color: red;'>" + appls[begnPage].ApplStat + "</a></td>" +
+                "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
+                "<input type='button' name='" + appls[begnPage].ApplID + "' class='rjctApplBtn' value='驳回' />" +
+                "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
+            );
+        } else {
+            $("#content").find("#applRsltsTbl").append(
+                "<tr><td><input type='checkbox' name='applCheckbox' class='applCheckbox' value='" + appls[begnPage].ApplID + "' /></td>" +
+                "<td>" + appls[begnPage].ApplID + "</td>" +
+                "<td>" + appls[begnPage].UserID + "</td>" +
+                "<td><a class='queryApplDetl' name='" + appls[begnPage].ApplID + "' href='#'>详情</a></td>" +
+                "<td>" + appls[begnPage].ApplStat + "</td>" +
+                "<td><input type='button' id='" + appls[begnPage].ApplID + "' name='procApplBtn' class='procApplBtn' value='处理' />" +
+                "<input type='button' name='" + appls[begnPage].ApplID + "' class='rjctApplBtn' value='驳回' />" +
+                "<input type='button' name='" + appls[begnPage].ApplID + "' class='delApplBtn' value='删除'/></td></tr>"
+            );
+        }
         if (appls[begnPage].ApplStat != "未通过") {
             $("#content").find("input[type='button'][id='" + appls[begnPage].ApplID + "']").attr("disabled", "disabled");
             $("#content").find("input[type='button'][name='" + appls[begnPage].ApplID + "'][class='rjctApplBtn']").attr("disabled", "disabled");
@@ -159,7 +172,7 @@ function queryEqptsByApplID(applID) {
 }
 
 //显示详情
-$("#content").on("click", "#queryApplsDiv a", function (event) {
+$("#content").on("click", "#queryApplsDiv a[class='queryApplDetl']", function (event) {
     applIndx = appls.findIndex(appls => appls.ApplID == $(event.target).attr("name"));
 
     queryEqptsByApplID($(event.target).attr("name"));
@@ -195,6 +208,33 @@ $("#content").on("click", "#queryApplsDiv a", function (event) {
 $("body").on("change", "#applEqptID", function (event) {
     $("body").find("#applDetlDiv").find("img").attr("src", $(event.target).val());
     $("body").find("#applDetlDiv").find("img").attr("title", $(event.target).val());
+});
+
+//查看驳回原因
+$("body").on("click", "#queryApplsDiv a[class='beenRjcted']", function (event) {
+    let currApplID = $(event.target).attr("name");
+
+    $.ajax({
+        url: "../../library/common/query_rjctrsn.php",
+        type: "GET",
+        async: false,
+        data: { userRole: userInfo.userRole, applID: currApplID },
+        dataType: "text",
+        error: function (error) { alert(error); },
+        success: function (rjctRsn) {
+            if (rjctRsn != "") {
+                $("#mask").attr("style", "visibility: visible;");
+
+                $("body").append(
+                    "<div id='rjctDetlDiv' name='rjctDetlDiv' class='popup'><form id='rjctDetlForm' name='rjctDetlForm'>" +
+                    "<table id='rjctDetlTbl' name='rjctDetlTbl'><tr><th colspan='2'><span>驳回详情</span></th></tr>" +
+                    "<tr><td><label>申请ID</label></td><td><input type='text' id='rjctedApplID' name='rjctedApplID' placeholder='" + currApplID + "' value='" + currApplID + "' disabled='disabled' /></td></tr>" +
+                    "<tr><td><label>驳回原因</label></td><td><textarea id='rjctedRsn' name='rjctedRsn' placeholder='" + rjctRsn + "' disabled='disabled'>" + rjctRsn + "</textarea></td></tr>" +
+                    "<tr><td colspan='2'><input type='button' class='applsCancelBtn' value='取消' /></td></tr></table></form></div>"
+                );
+            } else alert("查询驳回原因时发生错误，发生异常的申请ID为，请联系管理员并反馈问题");
+        }
+    });
 });
 
 //关闭弹窗
