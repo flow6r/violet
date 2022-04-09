@@ -98,3 +98,21 @@ th {
     background-color: #4586db;
     border: 2px solid #4586db;
 }
+
+#footerTxtDiv {
+    position: relative;
+    padding: 0px;
+    margin: 20px auto;
+    width: 400px;
+    height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid #2569c3;
+    background-color: #ffffff;
+}
+
+#footerTxt {
+    margin: 0 auto;
+    font-size: small;
+    color: #2569c3;
+}
