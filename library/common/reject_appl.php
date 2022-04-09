@@ -90,6 +90,12 @@ for ($indx = 0; $indx < count($eqptID); $indx++) {
     $stmt->execute();
 }
 
+//将驳回信息插入数据库
+$query = "INSERT INTO Reject VALUES(?,?)";
+$stmt = $db->prepare($query);
+$stmt->bind_param("is", $applID, $rjctRsn);
+$stmt->execute();
+
 //向申请人发送驳回邮件
 // 引入PHPMailer的核心文件
 require_once("../PHPMailer/PHPMailer.php");
