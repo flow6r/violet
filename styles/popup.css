@@ -1021,7 +1021,8 @@
 
 /*驳回设备借用申请的弹窗*/
 #rjctApplDiv,
-#rjctApplsDiv {
+#rjctApplsDiv,
+#rjctDetlDiv {
     position: relative;
     padding: 0;
     margin: 0 auto;
@@ -1036,7 +1037,8 @@
 }
 
 #rjctApplDiv #rjctApplForm,
-#rjctApplsDiv #rjctApplsForm {
+#rjctApplsDiv #rjctApplsForm,
+#rjctDetlDiv #rjctDetlForm {
     position: absolute;
     padding: 0;
     margin: 0 auto;
@@ -1047,7 +1049,8 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl,
-#rjctApplsDiv #rjctApplsForm #rjctApplsTbl {
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl,
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl {
     position: relative;
     padding: 0px;
     margin: 0 auto;
@@ -1056,21 +1059,24 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl span,
-#rjctApplsDiv #rjctApplsForm #rjctApplsTbl span {
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl span,
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl span {
     font-size: 2em;
     font-weight: bold;
     color: #2569c3;
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl label,
-#rjctApplsDiv #rjctApplsForm #rjctApplsTbl label {
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl label,
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl label {
     float: left;
     font-size: 1.5em;
     font-weight: bold;
     color: #2569c3;
 }
 
-#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctedApplID {
+#rjctApplDiv #rjctApplForm #rjctApplTbl #rjctedApplID,
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl #rjctedApplID {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1081,7 +1087,8 @@
 }
 
 #rjctApplDiv #rjctApplForm #rjctApplTbl textarea,
-#rjctApplsDiv #rjctApplsForm #rjctApplsTbl textarea {
+#rjctApplsDiv #rjctApplsForm #rjctApplsTbl textarea,
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl textarea {
     float: right;
     font-size: 1.2em;
     width: 220px;
@@ -1144,6 +1151,30 @@
     height: 36px;
     outline: none;
     border: 2px solid #2569c3;
+    border-radius: 15px;
+}
+
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl .applsCancelBtn {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #2569c3;
+    background-color: #2569c3;
+    border-radius: 15px;
+}
+
+#rjctDetlDiv #rjctDetlForm #rjctDetlTbl .applsCancelBtn:hover {
+    padding: 1px 2px;
+    font-size: 1.2em;
+    width: 100%;
+    height: 36px;
+    outline: none;
+    color: #ffffff;
+    border: 2px solid #4586db;
+    background-color: #4586db;
     border-radius: 15px;
 }
 
