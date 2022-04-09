@@ -137,6 +137,10 @@
     text-decoration: none;
 }
 
+/* #queryApplsDiv #queryApplsForm #applRsltsTbl .beenRjcted {
+    color: red;
+} */
+
 #queryApplsDiv #queryApplsForm #applRsltsTbl .procApplBtn,
 #queryApplsDiv #queryApplsForm #applRsltsTbl .rjctApplBtn,
 #queryApplsDiv #queryApplsForm #applRsltsTbl .delApplBtn {
