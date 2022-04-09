@@ -101,6 +101,12 @@ for ($applIDIndx = 0; $applIDIndx < count($appls); $applIDIndx++) {
         $stmt->bind_param("ss", $eqptStat, $eqptID[$indx]["EqptID"]);
         $stmt->execute();
     }
+
+    //将驳回信息插入数据库
+    $query = "INSERT INTO Reject VALUES(?,?)";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("is", $currApplID, $rjctRsn);
+    $stmt->execute();
     
     // 实例化PHPMailer核心类
     $mail = new PHPMailer\PHPMailer\PHPMailer();
